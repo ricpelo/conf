@@ -22,3 +22,6 @@
 [submodule "auto-pairs"]
 	path = auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vim-easymotion"]
+	path = vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion
