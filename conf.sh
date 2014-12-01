@@ -60,11 +60,12 @@ echo "Creando enlaces..."
 
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.vimrc ~/.vimrc
-ln -sf $PWD/.vim ~/vim
+ln -sf $PWD/.vim ~/.vim
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
 ln -sf $PWD/.dircolors ~/.dircolors
 ln -sf $PWD/.lessfilter ~/.lessfilter
 ln -sf $PWD/.config/sakura ~/sakura
+ln -sf $PWD/.i3 ~/.i3
 
 echo "Instalando powerline..."
 
