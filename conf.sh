@@ -9,7 +9,7 @@ do
 	if ! dpkg -s $p > /dev/null 2>&1
 	then
 		P="$p $P"
-		[ "$p" == "zsh" ] && Z="1"
+		[ "$p" = "zsh" ] && Z="1"
 	fi
 done
 
