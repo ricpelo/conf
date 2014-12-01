@@ -13,6 +13,7 @@ set background=dark
 colorscheme solarized
 highlight Normal ctermbg=NONE guibg=Black
 highlight NonText ctermbg=NONE guibg=Black
+set guifont=Liberation\ Mono\ for\ Powerline\ 13
 
 set nocompatible                " choose no compatibility with legacy vi
 set encoding=utf-8
@@ -30,7 +31,7 @@ set nojoinspaces                " Use only 1 space after "." when joining lines,
 
 " Indicator chars
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
-set showbreak=↪\
+set showbreak=↪
 set list
 
 " Avoid showing trailing whitespace when in insert mode
