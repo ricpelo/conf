@@ -3,41 +3,51 @@
 P=""
 Z=""
 
-if dpkg -s zsh > /dev/null
+if ! dpkg -s zsh > /dev/null
 then
 	P="zsh $P"
 	Z="1"
 fi
 
-if dpkg -s curl > /dev/null
+if ! dpkg -s curl > /dev/null
 then
 	P="curl $P"
 fi
 
-if dpkg -s python-pip > /dev/null
+if ! dpkg -s python-pip > /dev/null
 then
 	P="python-pip $P"
 fi
 
-if dpkg -s git > /dev/null
+if ! dpkg -s git > /dev/null
 then
         P="git $P"
 fi
 
-if dpkg -s build-essential > /dev/null
+if ! dpkg -s build-essential > /dev/null
 then
 	P="build-essential $P"
 fi
 
-if dpkg -s python-pygments > /dev/null
+if ! dpkg -s python-pygments > /dev/null
 then
 	P="python-pygments $P"
 fi
 
-echo "Instalando paquetes..."
+if [ -n "$P" ]
+then
+	echo "Instalando paquetes..."
+	sudo apt-get install -y $P
+fi
 
-sudo apt-get install -y $P
-sudo dpkg -i tmux/tmux_*.deb
+if dpkg -s tmux > /dev/null
+then
+	if dpkg -s tmux | grep "^Version: 1.8"
+	then
+		echo "Instalando tmux versión 1.9 ó superior"
+		sudo dpkg -i tmux/tmux_*.deb
+	fi
+fi
 
 echo "Instalando zsh y Oh My ZSH..."
 
