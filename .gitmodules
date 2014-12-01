@@ -14,3 +14,6 @@
 	path = powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts.git
 
+[submodule "vim-multiple-cursors"]
+	path = vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
