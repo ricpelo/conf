@@ -2,14 +2,16 @@
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura"
 P=""
-Z=""
+ZSH_CONF=""
+SAKURA_CONF=""
 
 for p in $PLIST
 do
 	if ! dpkg -s $p > /dev/null 2>&1
 	then
 		P="$p $P"
-		[ "$p" = "zsh" ] && Z="1"
+		[ "$p" = "zsh" ] && ZSH_CONF="1"
+		[ "$p" = "sakura" ] && SAKURA_CONF="1"
 	fi
 done
 
@@ -28,13 +30,21 @@ fi
 
 echo "Instalando zsh y Oh My ZSH..."
 
-if [ -n $Z ]
+if [ -n $ZSH_CONF ]
 then
-	curl -L http://install.ohmyz.sh | sh
+	if [ ! -d ~/.oh-my-zsh ]
+	then
+		curl -L http://install.ohmyz.sh | sh
+	fi
 	if grep -qs $USER /etc/passwd | grep -vqs zsh
 	then
 		sudo chsh -s /bin/zsh $USER
 	fi
+fi
+
+if [ -n $SAKURA_CONF ]
+then
+	sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 fi
 
 echo "Instalando fuentes..."
