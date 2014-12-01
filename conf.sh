@@ -19,13 +19,11 @@ then
 	sudo apt-get install -y $P
 fi
 
-if dpkg -s tmux > /dev/null
+if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Version: 1.8" )
 then
-	if dpkg -s tmux | grep "^Version: 1.8"
-	then
-		echo "Instalando tmux versión 1.9 ó superior"
-		sudo dpkg -i tmux/tmux_*.deb
-	fi
+	echo "Instalando tmux versión 1.9 ó superior..."
+	sudo dpkg -i tmux_*.deb
+	sudo apt-get -f install
 fi
 
 echo "Instalando zsh y Oh My ZSH..."
@@ -33,7 +31,7 @@ echo "Instalando zsh y Oh My ZSH..."
 if [ -n $Z ]
 then
 	curl -L http://install.ohmyz.sh | sh
-	if grep $USER /etc/passwd | grep -v zsh
+	if grep -qs $USER /etc/passwd | grep -vqs zsh
 	then
 		sudo chsh -s /bin/zsh $USER
 	fi
@@ -61,5 +59,4 @@ ln -sf $PWD/.i3 ~/.i3
 echo "Instalando powerline..."
 
 pip install --user git+https://github.com/Lokaltog/powerline
-
 
