@@ -17,3 +17,6 @@
 [submodule "vim-multiple-cursors"]
 	path = vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "vim-tmux-navigator"]
+	path = vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
