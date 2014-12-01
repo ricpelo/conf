@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLIST="zsh curl python-pip git build-essential python-pygments"
+PLIST="zsh curl python-pip git build-essential python-pygments sakura"
 P=""
 Z=""
 
