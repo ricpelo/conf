@@ -1,50 +1,51 @@
 #!/bin/sh
 
-PLIST="zsh curl python-pip git build-essential python-pygments sakura"
+PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
+unclutter"
 P=""
 ZSH_CONF=""
 SAKURA_CONF=""
 
 for p in $PLIST
 do
-	if ! dpkg -s $p > /dev/null 2>&1
-	then
-		P="$p $P"
-		[ "$p" = "zsh" ] && ZSH_CONF="1"
-		[ "$p" = "sakura" ] && SAKURA_CONF="1"
-	fi
+    if ! dpkg -s $p > /dev/null 2>&1
+    then
+        P="$p $P"
+        [ "$p" = "zsh" ] && ZSH_CONF="1"
+        [ "$p" = "sakura" ] && SAKURA_CONF="1"
+    fi
 done
 
 if [ -n "$P" ]
 then
-	echo "Instalando paquetes..."
-	sudo apt-get install -y $P
+    echo "Instalando paquetes..."
+    sudo apt-get install -y $P
 fi
 
 if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Version: 1.8" )
 then
-	echo "Instalando tmux versión 1.9 ó superior..."
-	sudo dpkg -i tmux_*.deb
-	sudo apt-get -f install
+    echo "Instalando tmux versión 1.9 ó superior..."
+    sudo dpkg -i tmux_*.deb
+    sudo apt-get -f install
 fi
-
-echo "Instalando zsh y Oh My ZSH..."
 
 if [ -n $ZSH_CONF ]
 then
-	if [ ! -d ~/.oh-my-zsh ]
-	then
-		curl -L http://install.ohmyz.sh | sh
-	fi
-	if grep -qs $USER /etc/passwd | grep -vqs zsh
-	then
-		sudo chsh -s /bin/zsh $USER
-	fi
+    if [ ! -d ~/.oh-my-zsh ]
+    then
+        echo "Instalando Oh My ZSH..."
+        curl -L http://install.ohmyz.sh | sh
+    fi
+    if grep -qs $USER /etc/passwd | grep -vqs zsh
+    then
+        echo "Instalando ZSH al usuario actual..."
+        sudo chsh -s /bin/zsh $USER
+    fi
 fi
 
 if [ -n $SAKURA_CONF ]
 then
-	sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+    sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 fi
 
 echo "Instalando fuentes..."
