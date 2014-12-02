@@ -45,6 +45,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # usar el plugin de arranque automático de tmux:
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
+ZSH_TMUX_AUTOQUIT="false"
 export TERM=xterm-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
