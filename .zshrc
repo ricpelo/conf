@@ -85,8 +85,9 @@ export EDITOR="vim"
 #export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 #export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 #export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-export LESSOPEN="|~/.lessfilter %s"
+#export LESSOPEN="|~/.lessfilter %s"
 
+eval `lesspipe`
 eval `dircolors ~/.dircolors`
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
