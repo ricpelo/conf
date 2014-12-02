@@ -45,6 +45,7 @@ fi
 
 if [ -n $SAKURA_CONF ]
 then
+    echo "Estableciendo sakura como terminal predeterminado..."
     sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 fi
 
