@@ -41,11 +41,11 @@ HIST_STAMPS="dd/mm/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Estas dos líneas deben ir antes de llamar a oh-my-zsh.sh si se quiere
-# usar el plugin de arranque automático de tmux:
+# Estas líneas deben ir antes de llamar a oh-my-zsh.sh si se quiere usar el
+# plugin de arranque automático de tmux:
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
-ZSH_TMUX_AUTOQUIT="false"
+# ZSH_TMUX_AUTOQUIT="false"
 export TERM=xterm-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -78,14 +78,14 @@ export EDITOR="vim"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Less Colors for Man Pages
-#export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-#export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-#export LESS_TERMCAP_me=$'\E[0m'           # end mode
-#export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-#export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-#export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-#export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-#export LESSOPEN="|~/.lessfilter %s"
+# export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+# export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+# export LESS_TERMCAP_me=$'\E[0m'           # end mode
+# export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+# export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+# export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+# export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+# export LESSOPEN="|~/.lessfilter %s"
 
 eval `lesspipe`
 eval `dircolors ~/.dircolors`
