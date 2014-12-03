@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter"
@@ -53,16 +53,20 @@ then
     sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 fi
 
-if [[ ! -f ~/.fonts/*Powerline* ]]
-then
-    echo "Instalando fuentes..."
-    ACTUAL=$PWD
-    cd powerline-fonts
-    sudo ./install.sh
-    cd $ACTUAL
-else
-    echo "Fuentes ya instaladas..."
-fi
+for f in "~/.fonts/*Powerline*"
+do
+    if [ -e "$f" ]
+    then
+        echo "Instalando fuentes..."
+        ACTUAL=$PWD
+        cd powerline-fonts
+        sudo ./install.sh
+        cd $ACTUAL
+    else
+        echo "Fuentes ya instaladas..."
+    fi
+    break
+done
 
 echo "Creando enlaces..."
 
@@ -87,7 +91,7 @@ ln -sf $PWD/.lessfilter ~/.lessfilter
 backup_and_link .config/sakura sakura
 backup_and_link .i3
 
-if [ ! -f ~/.local/bin/powerline ]
+if [ ! -e ~/.local/bin/powerline ]
 then
     echo "Instalando powerline..."
     pip install --user git+https://github.com/Lokaltog/powerline
