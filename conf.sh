@@ -2,17 +2,43 @@
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter"
+
+fn_zsh()
+{
+    if [ ! -d ~/.oh-my-zsh ]
+    then
+        echo "Instalando Oh My ZSH..."
+        curl -L http://install.ohmyz.sh | sh
+    else
+        echo "Oh My ZSH ya instalado."
+    fi
+    if grep -qs $USER /etc/passwd | grep -vqs zsh
+    then
+        echo "Instalando ZSH al usuario actual..."
+        sudo chsh -s /bin/zsh $USER
+    else
+        echo "Zsh ya asignado al usuario actual."
+    fi
+}
+
+fn_sakura()
+{
+    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
+    then
+        echo "Estableciendo sakura como terminal predeterminado..."
+        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+    else
+        echo "sakura ya es el terminal predeterminado."
+    fi
+}
+
 P=""
-ZSH_CONF=""
-SAKURA_CONF=""
 
 for p in $PLIST
 do
     if ! dpkg -s $p > /dev/null 2>&1
     then
         P="$p $P"
-        [ "$p" = "zsh" ] && ZSH_CONF="1"
-        [ "$p" = "sakura" ] && SAKURA_CONF="1"
     fi
 done
 
@@ -33,30 +59,13 @@ else
     echo "tmux 1.9 ó superior ya instalado."
 fi
 
-if [ -n $ZSH_CONF ]
-then
-    if [ ! -d ~/.oh-my-zsh ]
+for p in $PLIST
+do
+    if type fn_$p | grep -q "is a shell function" > /dev/null
     then
-        echo "Instalando Oh My ZSH..."
-        curl -L http://install.ohmyz.sh | sh
+        eval fn_$p
     fi
-    if grep -qs $USER /etc/passwd | grep -vqs zsh
-    then
-        echo "Instalando ZSH al usuario actual..."
-        sudo chsh -s /bin/zsh $USER
-    fi
-fi
-
-if [ -n $SAKURA_CONF ]
-then
-    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
-    then
-        echo "Estableciendo sakura como terminal predeterminado..."
-        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
-    else
-        echo "sakura ya es el terminal predeterminado."
-    fi
-fi
+done
 
 for f in ~/.fonts/*Powerline*
 do
