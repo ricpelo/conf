@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter"
@@ -20,6 +20,8 @@ if [ -n "$P" ]
 then
     echo "Instalando paquetes..."
     sudo apt-get install -y $P
+else
+    echo "Paquetes ya instalados..."
 fi
 
 if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Version: 1.8" )
@@ -27,6 +29,8 @@ then
     echo "Instalando tmux versión 1.9 ó superior..."
     sudo dpkg -i tmux_*.deb
     sudo apt-get -f install
+else
+    echo "tmux 1.9 ó superior ya instalado..."
 fi
 
 if [ -n $ZSH_CONF ]
@@ -49,29 +53,45 @@ then
     sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 fi
 
-echo "Instalando fuentes..."
-
-ACTUAL=$PWD
-cd powerline-fonts
-sudo ./install.sh
-cd $ACTUAL
+if [[ ! -f ~/.fonts/*Powerline* ]]
+then
+    echo "Instalando fuentes..."
+    ACTUAL=$PWD
+    cd powerline-fonts
+    sudo ./install.sh
+    cd $ACTUAL
+else
+    echo "Fuentes ya instaladas..."
+fi
 
 echo "Creando enlaces..."
 
+backup_and_link()
+{
+    [ -d ~/$1 ] && mv -f ~/$1 ~/$1.viejo
+    if [ -n "$2" ]
+    then
+        ln -sf $PWD/$2 ~/$1
+    else
+        ln -sf $PWD/$1 ~/$1
+    fi
+}
+
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.vimrc ~/.vimrc
-[ -d ~/.vim ] && mv -f ~/.vim ~/.vim.viejo
-ln -sf $PWD/.vim ~/.vim
+backup_and_link .vim
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
 ln -sf $PWD/.dircolors ~/.dircolors
 ln -sf $PWD/.lessfilter ~/.lessfilter
 [ -d ~/.config ] || mkdir ~/.config
-[ -d ~/.config/sakura ] && mv -f ~/.config/sakura ~/.config/sakura.viejo
-ln -sf $PWD/sakura ~/.config/sakura
-[ -d ~/.i3 ] && mv -f ~/.i3 ~/.i3.viejo
-ln -sf $PWD/.i3 ~/.i3
+backup_and_link .config/sakura sakura
+backup_and_link .i3
 
-echo "Instalando powerline..."
-
-pip install --user git+https://github.com/Lokaltog/powerline
+if [ ! -f ~/.local/bin/powerline ]
+then
+    echo "Instalando powerline..."
+    pip install --user git+https://github.com/Lokaltog/powerline
+else
+    echo "Powerline ya instalado..."
+fi
 
