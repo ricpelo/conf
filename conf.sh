@@ -21,7 +21,7 @@ then
     echo "Instalando paquetes..."
     sudo apt-get install -y $P
 else
-    echo "Paquetes ya instalados..."
+    echo "Paquetes ya instalados."
 fi
 
 if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Version: 1.8" )
@@ -30,7 +30,7 @@ then
     sudo dpkg -i tmux_*.deb
     sudo apt-get -f install
 else
-    echo "tmux 1.9 ó superior ya instalado..."
+    echo "tmux 1.9 ó superior ya instalado."
 fi
 
 if [ -n $ZSH_CONF ]
@@ -49,21 +49,26 @@ fi
 
 if [ -n $SAKURA_CONF ]
 then
-    echo "Estableciendo sakura como terminal predeterminado..."
-    sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
+    then
+        echo "Estableciendo sakura como terminal predeterminado..."
+        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+    else
+        echo "sakura ya es el terminal predeterminado."
+    fi
 fi
 
-for f in "~/.fonts/*Powerline*"
+for f in ~/.fonts/*Powerline*
 do
-    if [ -e "$f" ]
+    if [ ! -e "$f" ]
     then
-        echo "Instalando fuentes..."
+        echo "Instalando tipografías..."
         ACTUAL=$PWD
         cd powerline-fonts
         sudo ./install.sh
         cd $ACTUAL
     else
-        echo "Fuentes ya instaladas..."
+        echo "Tipografías ya instaladas."
     fi
     break
 done
@@ -96,6 +101,6 @@ then
     echo "Instalando powerline..."
     pip install --user git+https://github.com/Lokaltog/powerline
 else
-    echo "Powerline ya instalado..."
+    echo "Powerline ya instalado."
 fi
 
