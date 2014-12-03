@@ -51,21 +51,24 @@ fi
 
 echo "Instalando fuentes..."
 
+ACTUAL=$PWD
 cd powerline-fonts
 sudo ./install.sh
-cd ..
+cd $ACTUAL
 
 echo "Creando enlaces..."
 
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.vimrc ~/.vimrc
+[ -d ~/.vim ] && mv -f ~/.vim ~/.vim.viejo
 ln -sf $PWD/.vim ~/.vim
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
 ln -sf $PWD/.dircolors ~/.dircolors
 ln -sf $PWD/.lessfilter ~/.lessfilter
 [ -d ~/.config ] || mkdir ~/.config
-[ -d ~/.config/sakura ] && rm -rf ~/.config/sakura
+[ -d ~/.config/sakura ] && mv -f ~/.config/sakura ~/.config/sakura.viejo
 ln -sf $PWD/sakura ~/.config/sakura
+[ -d ~/.i3 ] && mv -f ~/.i3 ~/.i3.viejo
 ln -sf $PWD/.i3 ~/.i3
 
 echo "Instalando powerline..."
