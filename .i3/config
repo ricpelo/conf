@@ -171,5 +171,5 @@ bar {
 
 exec --no-startup-id xset r rate 250 50
 exec --no-startup-id unclutter &
-exec --no-startup-id xloadimage -onroot ~/Descargas/Planet-on-top-of-blue-clouds_1280x1024.jpg
+exec --no-startup-id xloadimage -onroot ~/fondo.jpg
 
