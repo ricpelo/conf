@@ -104,6 +104,7 @@ ln -sf $PWD/.vimrc ~/.vimrc
 backup_and_link .vim
 ln -sf $PWD/.tmux.conf ~/.tmux.conf
 ln -sf $PWD/.dircolors ~/.dircolors
+ln -sf $PWD/.less ~/.less
 ln -sf $PWD/.lessfilter ~/.lessfilter
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
