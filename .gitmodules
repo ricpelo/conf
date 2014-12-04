@@ -1,9 +1,6 @@
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "solarized"]
-	path = solarized
-	url = https://github.com/altercation/solarized.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
@@ -25,3 +22,6 @@
 [submodule "vim-easymotion"]
 	path = vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
+[submodule "solarized"]
+	path = solarized
+	url = https://github.com/ricpelo/solarized
