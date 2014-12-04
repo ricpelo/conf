@@ -12,7 +12,7 @@ fn_zsh()
     else
         echo "Oh My ZSH ya instalado."
     fi
-    if grep -qs $USER /etc/passwd | grep -vqs zsh
+    if grep $USER /etc/passwd | grep -vqs zsh
     then
         echo "Instalando ZSH al usuario actual..."
         sudo chsh -s /bin/zsh $USER
