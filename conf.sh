@@ -86,7 +86,11 @@ echo "Creando enlaces..."
 
 backup_and_link()
 {
-    [ -d ~/$1 ] && mv -f ~/$1 ~/$1.viejo
+    if [ -d ~/$1 ]
+    then
+        [ -d ~/$1.viejo ] && rm -rf ~/$1.viejo
+        mv -f ~/$1 ~/$1.viejo
+    fi
     if [ -n "$2" ]
     then
         ln -sf $PWD/$2 ~/$1
