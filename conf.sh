@@ -99,13 +99,13 @@ backup_and_link()
     fi
 }
 
-ln -sf $PWD/.zshrc ~/.zshrc
-ln -sf $PWD/.vimrc ~/.vimrc
+backup_and_link .zshrc
+backup_and_link .vimrc
 backup_and_link .vim
-ln -sf $PWD/.tmux.conf ~/.tmux.conf
-ln -sf $PWD/.dircolors ~/.dircolors
-ln -sf $PWD/.less ~/.less
-ln -sf $PWD/.lessfilter ~/.lessfilter
+backup_and_link .tmux.conf
+backup_and_link .dircolors
+backup_and_link .less
+backup_and_link .lessfilter
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .i3
