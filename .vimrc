@@ -11,10 +11,11 @@ set t_Co=256
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-highlight Normal ctermbg=NONE guibg=Black
-highlight NonText ctermbg=NONE guibg=Black
-highlight ExtraWhiteSpace ctermbg=16 guibg=Black
-autocmd BufWinEnter * match ExtraWhiteSpace /\t/
+" highlight Normal ctermbg=NONE guibg=Black
+" highlight NonText ctermbg=NONE guibg=Black
+" highlight ExtraWhiteSpace ctermbg=16 guibg=Black
+" highlight rubyDefine ctermbg=NONE guibg=Black
+" autocmd BufWinEnter * match ExtraWhiteSpace /\t/
 set guifont=Liberation\ Mono\ for\ Powerline\ 13
 
 set nocompatible                " choose no compatibility with legacy vi
