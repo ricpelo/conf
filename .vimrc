@@ -13,6 +13,8 @@ set background=dark
 colorscheme solarized
 highlight Normal ctermbg=NONE guibg=Black
 highlight NonText ctermbg=NONE guibg=Black
+highlight ExtraWhiteSpace ctermbg=16 guibg=Black
+autocmd BufWinEnter * match ExtraWhiteSpace /\t/
 set guifont=Liberation\ Mono\ for\ Powerline\ 13
 
 set nocompatible                " choose no compatibility with legacy vi
@@ -35,8 +37,8 @@ set showbreak=↪
 set list
 
 " Avoid showing trailing whitespace when in insert mode
-au InsertEnter * :set listchars-=trail:•
-au InsertLeave * :set listchars+=trail:•
+autocmd InsertEnter * :set listchars-=trail:•
+autocmd InsertLeave * :set listchars+=trail:•
 
 " Searching
 set hlsearch                    " highlight matches
@@ -51,25 +53,26 @@ set colorcolumn=80
 set autoindent
 set smartindent
 
-set number
-set relativenumber
-set cursorline
+" Desactivo estas opciones por cuestiones de eficiencia:
+" set number
+" set relativenumber
+" set cursorline
 set scrolloff=3
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+autocmd FileType python setl softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
 " Treat JSON files like JavaScript
-au BufNewFile,BufRead *.json setf javascript
+autocmd BufNewFile,BufRead *.json setf javascript
 
 " Some file types use real tabs
-au FileType {make,gitconfig} set noexpandtab
+autocmd FileType {make,gitconfig} set noexpandtab
 
 " clear the search buffer when hitting return
-:nnoremap <CR> :nohlsearch<cr>
+nnoremap <CR> :nohlsearch<cr>
 
 " toggle the current fold
-:nnoremap <Space> za
+nnoremap <Space> za
 
 command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
