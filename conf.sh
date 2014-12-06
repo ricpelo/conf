@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
-unclutter xloadimage"
+unclutter xloadimage x11-xserver-utils"
 
 fn_zsh()
 {
