@@ -54,7 +54,7 @@ if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Ve
 then
     echo "Instalando tmux versión 1.9 ó superior..."
     sudo dpkg -i tmux_*.deb
-    sudo apt-get -f install
+    sudo apt-get -fy install
 else
     echo "tmux 1.9 ó superior ya instalado."
 fi
