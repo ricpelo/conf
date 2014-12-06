@@ -74,7 +74,7 @@ do
         echo "Instalando tipografías..."
         ACTUAL=$PWD
         cd powerline-fonts
-        sudo ./install.sh
+        ./install.sh
         cd $ACTUAL
     else
         echo "Tipografías ya instaladas."
