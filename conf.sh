@@ -110,15 +110,7 @@ backup_and_link .lessfilter
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .i3
-
-if [ ! -e ~/fondo.jpg ]
-then
-    echo "Copiando fondo..."
-else
-    echo "Fondo ya instalado."
-fi
-
-cp fondo.jpg ~
+backup_and_link fondo.jpg
 
 if [ ! -e ~/.local/bin/powerline ]
 then
