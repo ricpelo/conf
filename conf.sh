@@ -1,8 +1,8 @@
 #!/bin/sh
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
-unclutter xloadimage x11-xserver-utils xbase-clients xserver-xorg
-xdg-user-dirs ranger command-not-found fonts-freefont-ttf"
+unclutter xloadimage x11-xserver-utils xbase-clients xorg xdg-user-dirs
+ranger command-not-found fonts-freefont-ttf"
 
 fn_zsh()
 {
