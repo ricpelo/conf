@@ -51,14 +51,39 @@ else
     echo "Paquetes ya instalados."
 fi
 
-if ! dpkg -s tmux > /dev/null 2>&1 || ( dpkg -s tmux 2>/dev/null | grep -qs "^Version: 1.8" )
-then
-    echo "Instalando tmux versión 1.9 ó superior..."
-    sudo dpkg -i tmux_*.deb
-    sudo apt-get -fy install
-else
-    echo "tmux 1.9 ó superior ya instalado."
-fi
+nombre_paquete()
+{
+    echo -n "$1"
+    [ -n "$2" ] && echo -n " versión $2 ó superior"
+
+}
+
+paquete_local()
+{
+    COND=""
+
+    if [ -n "$2" ]
+    then
+        ! dpkg -s $1 > /dev/null 2>&1 || ( dpkg -s $1 2> /dev/null | grep -qs "^Version: $3" ) && COND="1"
+    else
+        ! dpkg -s $1 > /dev/null 2>&1 && COND="1"
+    fi
+
+    if [ -n "$COND" ]
+    then
+        echo -n "Instalando paquete "
+        nombre_paquete $1 $2
+        echo "..."
+        sudo dpkg -i $1_*.deb
+        sudo apt-get -fy install
+    else
+        nombre_paquete $1 $2
+        echo " ya instalado."
+    fi
+}
+
+paquete_local tmux 1.9 1.8
+paquete_local udisks-glue
 
 for p in $PLIST
 do
@@ -107,6 +132,7 @@ backup_and_link .tmux.conf
 backup_and_link .dircolors
 backup_and_link .less
 backup_and_link .lessfilter
+backup_and_link .udisks-glue.conf
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .i3

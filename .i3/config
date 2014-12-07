@@ -172,4 +172,5 @@ bar {
 exec --no-startup-id xset r rate 250 30
 exec --no-startup-id unclutter &
 exec --no-startup-id xloadimage -onroot ~/fondo.jpg
+exec --no-startup-id udisks-glue
 
