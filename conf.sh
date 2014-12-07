@@ -2,7 +2,7 @@
 
 PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter xloadimage x11-xserver-utils xbase-clients xorg xdg-user-dirs
-ranger command-not-found fonts-freefont-ttf"
+ranger command-not-found fonts-freefont-ttf libnotify-bin"
 
 fn_zsh()
 {
@@ -135,6 +135,7 @@ backup_and_link .lessfilter
 backup_and_link .udisks-glue.conf
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
+backup_and_link .config/dunst dunst
 backup_and_link .i3
 backup_and_link fondo.jpg
 
