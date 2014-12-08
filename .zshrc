@@ -52,7 +52,7 @@ export TERM=xterm-256color
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux)
+plugins=(git tmux command-not-found)
 
 # User configuration
 
@@ -101,8 +101,6 @@ eval `dircolors ~/.dircolors`
 
 # Desactivar si se usa el plugin tmux de oh-my-zsh:
 # alias tmux="tmux -2"
-
-source /etc/zsh_command_not_found
 
 alias rm="rm -i"
 alias cp="cp -i"
