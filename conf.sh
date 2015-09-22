@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLIST="zsh curl python-pip git build-essential python-pygments sakura i3
+PLIST="vim zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter xloadimage x11-xserver-utils xbase-clients xorg xdg-user-dirs
 ranger command-not-found fonts-freefont-ttf libnotify-bin"
 
@@ -74,7 +74,12 @@ paquete_local()
         echo -n "Instalando paquete "
         nombre_paquete $1 $2
         echo "..."
-        sudo dpkg -i $1_*.deb
+        if uname -i | grep x86_64 > /dev/null 2>&1
+        then
+            sudo dpkg -i $1_*_amd64.deb
+        else
+            sudo dpkg -i $1_*_i386.deb
+        fi
         sudo apt-get -fy install
     else
         nombre_paquete $1 $2
