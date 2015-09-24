@@ -25,3 +25,6 @@
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/ricpelo/solarized
+[submodule "nerdtree"]
+	path = nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
