@@ -56,6 +56,7 @@ set textwidth=80
 set colorcolumn=80
 set autoindent
 set smartindent
+set smarttab
 
 " Desactivo estas opciones por cuestiones de eficiencia:
 " set number
