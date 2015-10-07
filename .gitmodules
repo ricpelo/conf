@@ -21,10 +21,10 @@
 	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "vim-easymotion"]
 	path = vim-easymotion
-	url = https://github.com/Lokaltog/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "solarized"]
 	path = solarized
-	url = https://github.com/ricpelo/solarized
+	url = https://github.com/ricpelo/solarized.git
 [submodule "nerdtree"]
 	path = nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
