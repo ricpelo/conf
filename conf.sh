@@ -2,7 +2,7 @@
 
 PLIST="vim zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter xloadimage x11-xserver-utils xbase-clients xorg xdg-user-dirs
-ranger command-not-found fonts-freefont-ttf libnotify-bin"
+ranger command-not-found fonts-freefont-ttf libnotify-bin xclip"
 
 fn_zsh()
 {
