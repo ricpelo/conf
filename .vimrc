@@ -11,6 +11,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_degrade=1
+let g:solarized_contrast="high"
 set background=dark
 colorscheme solarized
 " highlight Normal ctermbg=NONE guibg=Black
