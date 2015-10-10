@@ -40,3 +40,6 @@
 [submodule "vim-snippets"]
 	path = vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "vim-gdscript"]
+	path = vim-gdscript
+	url = https://github.com/ricpelo/vim-gdscript.git
