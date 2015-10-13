@@ -111,3 +111,41 @@ cnoremap <C-K>        <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
+" Tab navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+"nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap tx  :tabclose<CR>
+" Alternatively use
+"nnoremap th :tabnext<CR>
+"nnoremap tl :tabprev<CR>
+nnoremap tn :tabnew<CR>
+
+" Navigation using Alt-num on console
+nnoremap <Esc>1 1gt
+nnoremap <Esc>2 2gt
+nnoremap <Esc>3 3gt
+nnoremap <Esc>4 4gt
+nnoremap <Esc>5 5gt
+nnoremap <Esc>6 6gt
+nnoremap <Esc>7 7gt
+nnoremap <Esc>8 8gt
+nnoremap <Esc>9 9gt
+nnoremap <Esc>0 10gt
+
+" Navigation using Alt-num on GUI
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 10gt
+
