@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLIST="vim zsh curl python-pip git build-essential python-pygments sakura i3
-unclutter xloadimage x11-xserver-utils xbase-clients xorg xdg-user-dirs
+unclutter nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs
 ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 lxpolkit volumeicon-alsa"
 
@@ -142,8 +142,9 @@ backup_and_link .udisks-glue.conf
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .config/dunst dunst
+backup_and_link .config/nitrogen nitrogen
+sed -i "s|^file=.*$|file=$PWD/fondo.jpg|g" ~/.config/nitrogen/bg-saved.cfg
 backup_and_link .i3
-backup_and_link fondo.jpg
 
 if [ ! -e ~/.local/bin/powerline ]
 then
