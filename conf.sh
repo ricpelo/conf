@@ -154,3 +154,16 @@ else
     echo "Powerline ya instalado."
 fi
 
+if ! which xflux > /dev/null 2>&1
+then
+    echo "Instalando xflux..."
+    if uname -i | grep x86_64 > /dev/null 2>&1
+    then
+        cp xflux64 ~/.local/bin/xflux
+    else
+        cp xflux32 ~/.local/bin/xflux
+    fi
+else
+    echo "xflux ya instalado."
+fi
+
