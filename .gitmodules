@@ -43,3 +43,9 @@
 [submodule "vim-gdscript"]
 	path = vim-gdscript
 	url = https://github.com/ricpelo/vim-gdscript.git
+[submodule "vim-session"]
+	path = vim-session
+	url = https://github.com/xolox/vim-session.git
+[submodule "vim-misc"]
+	path = vim-misc
+	url = https://github.com/xolox/vim-misc.git
