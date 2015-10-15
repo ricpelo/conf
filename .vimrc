@@ -60,9 +60,10 @@ set smartindent
 set smarttab
 
 " Desactivo estas opciones por cuestiones de eficiencia:
-" set number
 " set relativenumber
-" set cursorline
+
+set number
+set cursorline
 set scrolloff=3
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
