@@ -149,5 +149,6 @@ nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
-let g:session_autosave = 'no'
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
 
