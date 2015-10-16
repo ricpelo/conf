@@ -179,9 +179,7 @@ bar {
 }
 
 exec --no-startup-id xset r rate 250 30
-exec --no-startup-id unclutter
 exec --no-startup-id nitrogen --restore
-# exec --no-startup-id udisks-glue
 exec --no-startup-id lxpolkit
 exec --no-startup-id volumeicon
 exec --no-startup-id pcmanfm -d
