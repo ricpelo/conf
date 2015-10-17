@@ -34,6 +34,20 @@ fn_sakura()
     fi
 }
 
+prefn_i3()
+{
+    if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
+    then
+        echo "Activando el repositorio con la última versión de i3wm..."
+        echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" | sudo tee /etc/apt/sources.list.d/i3wm.list > /dev/null
+        sudo apt-get update
+        sudo apt-get --allow-unauthenticated install sur5r-keyring
+        sudo apt-get update
+    else
+        echo "Repositorio de i3wm ya activado."
+    fi
+}
+
 P=""
 
 for p in $PLIST
@@ -43,6 +57,15 @@ do
         P="$p $P"
     fi
 done
+
+for p in $PLIST
+do
+    if type prefn_$p | grep -q "is a shell function" > /dev/null
+    then
+        eval prefn_$p
+    fi
+done
+
 
 if [ -n "$P" ]
 then
