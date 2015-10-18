@@ -188,4 +188,5 @@ exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pasystray
 exec --no-startup-id pcmanfm -d
 exec --no-startup-id xflux -l 36.7756 -g -6.3616 -k 4200
+exec --no-startup-id nm-applet
 
