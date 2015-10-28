@@ -181,6 +181,10 @@ bar {
     status_command i3status
 }
 
+assign [title="^Momentum$"] 3
+for_window [title="^Momentum$"] focus
+for_window [title="^Momentum$"] floating enable
+
 exec --no-startup-id xset r rate 250 30
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id lxpolkit
