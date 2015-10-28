@@ -49,3 +49,6 @@
 [submodule "vim-misc"]
 	path = vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "vim-renpy"]
+	path = vim-renpy
+	url = https://github.com/ricpelo/vim-renpy.git
