@@ -34,6 +34,18 @@ fn_sakura()
     fi
 }
 
+fn_nitrogen()
+{
+    D=$HOME/.config/nitrogen
+    if [ -d "$D" ]
+    then
+        [ -d "$D.viejo" ] && rm -rf $D.viejo
+        mv -f $D $D.viejo
+    fi
+    mkdir -p $D
+    echo "[:0.0]\nfile=$PWD/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
+}
+
 prefn_i3()
 {
     if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
@@ -79,7 +91,6 @@ nombre_paquete()
 {
     echo -n "$1"
     [ -n "$2" ] && echo -n " versión $2 ó superior"
-
 }
 
 paquete_local()
@@ -165,8 +176,6 @@ backup_and_link .udisks-glue.conf
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .config/dunst dunst
-backup_and_link .config/nitrogen nitrogen
-sed -i "s|^file=.*$|file=$PWD/fondo.jpg|g" ~/.config/nitrogen/bg-saved.cfg
 backup_and_link .i3
 
 if [ ! -e ~/.local/bin/powerline ]
