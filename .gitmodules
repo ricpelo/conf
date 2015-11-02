@@ -46,3 +46,9 @@
 [submodule "ultisnips"]
 	path = ultisnips
 	url = https://github.com/sirver/ultisnips.git
+[submodule "YouCompleteMe"]
+	path = YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "supertab"]
+	path = supertab
+	url = https://github.com/ervandew/supertab.git
