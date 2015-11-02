@@ -28,15 +28,6 @@
 [submodule "nerdtree"]
 	path = nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "tlib_vim"]
-	path = tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule "vim-addon-mw-utils"]
-	path = vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "vim-snipmate"]
-	path = vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
 [submodule "vim-snippets"]
 	path = vim-snippets
 	url = https://github.com/honza/vim-snippets.git
@@ -52,3 +43,6 @@
 [submodule "vim-renpy"]
 	path = vim-renpy
 	url = https://github.com/ricpelo/vim-renpy.git
+[submodule "ultisnips"]
+	path = ultisnips
+	url = https://github.com/sirver/ultisnips.git

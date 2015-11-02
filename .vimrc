@@ -153,3 +153,8 @@ nnoremap <A-0> 10gt
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
+" Better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
