@@ -3,7 +3,7 @@
 PLIST="vim zsh curl python-pip git build-essential python-pygments sakura i3
 unclutter nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs
 ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
-lxpolkit pulseaudio pasystray network-manager-gnome"
+lxpolkit pulseaudio pasystray network-manager-gnome ctags"
 
 fn_zsh()
 {
