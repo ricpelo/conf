@@ -52,3 +52,6 @@
 [submodule "supertab"]
 	path = supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "tagbar"]
+	path = tagbar
+	url = https://github.com/majutsushi/tagbar.git
