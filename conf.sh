@@ -199,3 +199,6 @@ else
     echo "xflux ya instalado."
 fi
 
+# Post-instalación de vim-fugitive:
+vim -u NONE -c "helptags vim-fugitive/doc" -c q
+
