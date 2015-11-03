@@ -61,3 +61,6 @@
 [submodule "vim-gitgutter"]
 	path = vim-gitgutter
 	url = http://github.com/airblade/vim-gitgutter.git
+[submodule "vim-ruby"]
+	path = vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
