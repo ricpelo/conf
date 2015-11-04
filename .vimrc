@@ -156,8 +156,8 @@ let g:session_autoload = 'yes'
 " Make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<C-k>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:SuperTabCrMapping = 1
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:SuperTabCrMapping = 1
 
 " Better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
