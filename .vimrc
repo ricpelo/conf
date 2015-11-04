@@ -154,8 +154,8 @@ let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
 " Make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<C-k>']
+let g:ycm_key_list_select_completion = ['<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<c-tab>', '<Up>', '<C-k>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 " let g:SuperTabCrMapping = 1
 
@@ -163,6 +163,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<C-k>']
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsListSnippets = "<c-l>"
 
 " Open TagBar
 nmap <F8> :TagbarToggle<CR>
