@@ -61,3 +61,6 @@
 [submodule "vim-ruby"]
 	path = vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vim-endwise"]
+	path = vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
