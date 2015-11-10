@@ -199,6 +199,19 @@ else
     echo "xflux ya instalado."
 fi
 
+if ! which xcape > /dev/null 2>&1
+then
+    echo "Instalando xcape..."
+    if uname -i | grep x86_64 > /dev/null 2>&1
+    then
+        cp xcape64 ~/.local/bin/xcape
+    else
+        cp xcape32 ~/.local/bin/xcape
+    fi
+else
+    echo "xcape ya instalado."
+fi
+
 # Post-instalación de vim-fugitive:
 vim -u NONE -c "helptags vim-fugitive/doc" -c q
 
