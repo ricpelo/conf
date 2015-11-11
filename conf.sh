@@ -46,6 +46,12 @@ fn_nitrogen()
     echo "[:0.0]\nfile=$PWD/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
 }
 
+fn_vim()
+{
+    echo "Post-instalando vim-fugitive..."
+    vim -u NONE -c "helptags vim-fugitive/doc" -c q
+}
+
 prefn_i3()
 {
     if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
@@ -211,7 +217,4 @@ then
 else
     echo "xcape ya instalado."
 fi
-
-# Post-instalación de vim-fugitive:
-vim -u NONE -c "helptags vim-fugitive/doc" -c q
 
