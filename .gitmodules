@@ -64,3 +64,6 @@
 [submodule "vim-endwise"]
 	path = vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
+[submodule "vim-easytags"]
+	path = vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
