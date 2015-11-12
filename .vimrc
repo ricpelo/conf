@@ -67,6 +67,9 @@ set number
 set cursorline
 set scrolloff=3
 
+" <Esc> pasa a modo Normal inmediatamente:
+set timeoutlen=250
+
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 autocmd FileType python setl softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
