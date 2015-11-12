@@ -1,6 +1,33 @@
-execute pathogen#infect()
-syntax on
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'seebi/dircolors-solarized'
+Plugin 'Lokaltog/powerline-fonts'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'ricpelo/solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'honza/vim-snippets'
+Plugin 'ricpelo/vim-gdscript'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'ricpelo/vim-renpy'
+Plugin 'sirver/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
+Plugin 'xolox/vim-easytags'
+call vundle#end()
 filetype plugin indent on
+syntax on
 set fdm=syntax
 
 python from powerline.vim import setup as powerline_setup
