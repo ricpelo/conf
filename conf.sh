@@ -106,7 +106,7 @@ paquete_local()
 
     if [ -n "$2" ]
     then
-        ! dpkg -s $1 > /dev/null 2>&1 || ( dpkg -s $1 2> /dev/null | grep -qs "^Version: $3" ) && COND="1"
+        ! dpkg -s $1 > /dev/null 2>&1 || ( ! dpkg -s $1 2> /dev/null | grep -qs "^Version: $2" ) && COND="1"
     else
         ! dpkg -s $1 > /dev/null 2>&1 && COND="1"
     fi
@@ -129,7 +129,7 @@ paquete_local()
     fi
 }
 
-paquete_local tmux 1.9 1.8
+paquete_local tmux 2.1
 paquete_local udisks-glue
 
 for p in $PLIST
