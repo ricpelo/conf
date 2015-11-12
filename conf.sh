@@ -174,6 +174,7 @@ backup_and_link()
 
 backup_and_link .zshrc
 backup_and_link .vimrc
+backup_and_link .gvimrc
 backup_and_link .vim
 backup_and_link .tmux.conf
 backup_and_link .dircolors
