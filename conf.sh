@@ -187,7 +187,7 @@ backup_and_link .i3
 if [ ! -e ~/.local/bin/powerline ]
 then
     echo "Instalando powerline..."
-    pip install --user git+https://github.com/Lokaltog/powerline
+    pip install --user git+https://github.com/powerline/powerline.git
 else
     echo "Powerline ya instalado."
 fi
