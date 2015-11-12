@@ -10,7 +10,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'ricpelo/solarized'
+Plugin 'ricpelo/solarized', {'rtp': 'vim-colors-solarized/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
 Plugin 'ricpelo/vim-gdscript'

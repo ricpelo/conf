@@ -48,8 +48,9 @@ fn_nitrogen()
 
 fn_vim()
 {
-    echo "Post-instalando vim-fugitive..."
-    vim -u NONE -c "helptags vim-fugitive/doc" -c q
+    echo "Post-instalación de plugins de Vim mediante Vundle..."
+    vim +PluginInstall +qall
+    echo "** No olvides ejecutar YouCompleteMe.sh **"
 }
 
 prefn_i3()
