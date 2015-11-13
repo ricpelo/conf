@@ -140,18 +140,21 @@ do
     fi
 done
 
+echo "Instalando tipografía Input Mono..."
+cp -f InputMono/*.ttf ~/.fonts/
+fc-cache -f .~/fonts/
+
 for f in ~/.fonts/*Powerline*
 do
     if [ ! -e "$f" ]
     then
-        echo "Instalando tipografías..."
+        echo "Instalando tipografías Powerline..."
         ACTUAL=$PWD
-        cp -f InputMono/*.ttf ~/.fonts/
         cd powerline-fonts
         ./install.sh
         cd $ACTUAL
     else
-        echo "Tipografías ya instaladas."
+        echo "Tipografías Powerline ya instaladas."
     fi
     break
 done
