@@ -146,6 +146,7 @@ do
     then
         echo "Instalando tipografías..."
         ACTUAL=$PWD
+        cp -f InputMono/*.ttf ~/.fonts/
         cd powerline-fonts
         ./install.sh
         cd $ACTUAL

@@ -49,7 +49,7 @@ colorscheme solarized
 " highlight ExtraWhiteSpace ctermbg=16 guibg=Black
 " highlight rubyDefine ctermbg=NONE guibg=Black
 " autocmd BufWinEnter * match ExtraWhiteSpace /\t/
-set guifont=Liberation\ Mono\ for\ Powerline\ 13
+set guifont=Input\ Semi-Condensed\ 13
 
 set nocompatible                " choose no compatibility with legacy vi
 set encoding=utf-8
