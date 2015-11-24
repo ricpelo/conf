@@ -24,7 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 Plugin 'xolox/vim-easytags'
-Plugin 'Yggdroot/indentLine'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tomasr/molokai'
 call vundle#end()
 filetype plugin indent on
@@ -198,5 +198,7 @@ let g:UltiSnipsListSnippets = "<c-l>"
 " Open TagBar
 nmap <F8> :TagbarToggle<CR>
 
-let g:indentLine_char = '┆'
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
 
