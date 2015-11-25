@@ -199,4 +199,5 @@ let g:UltiSnipsListSnippets = "<c-l>"
 nmap <F8> :TagbarToggle<CR>
 
 let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
 
