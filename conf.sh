@@ -46,6 +46,15 @@ fn_nitrogen()
     echo "[:0.0]\nfile=$PWD/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
 }
 
+fn_unclutter()
+{
+    if ! grep -qs "noevents" /etc/default/unclutter
+    then
+        echo "Aplicando parche en unclutter para que funcione con Google Chrome..."
+        sudo sed -i -e 's/^EXTRA_OPTS=\"-idle 1 -root\"$/EXTRA_OPTS=\"-idle 1 -root -noevents\"/' /etc/default/unclutter
+    fi
+}
+
 fn_vim()
 {
     echo "Post-instalación de plugins de Vim mediante Vundle..."
