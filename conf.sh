@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLIST="vim-nox-py2 zsh curl python-pip git build-essential python-pygments sakura i3
-unclutter nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs
+nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs
 ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 lxpolkit pulseaudio pasystray network-manager-gnome ctags"
 
@@ -44,15 +44,6 @@ fn_nitrogen()
     fi
     mkdir -p $D
     echo "[:0.0]\nfile=$PWD/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
-}
-
-fn_unclutter()
-{
-    if ! grep -qs "noevents" /etc/default/unclutter
-    then
-        echo "Aplicando parche en unclutter para que funcione con Google Chrome..."
-        sudo sed -i -e 's/^EXTRA_OPTS=\"-idle 1 -root\"$/EXTRA_OPTS=\"-idle 1 -root -noevents\"/' /etc/default/unclutter
-    fi
 }
 
 fn_vim()
@@ -233,5 +224,13 @@ then
     fi
 else
     echo "xcape ya instalado."
+fi
+
+if ! which unclutter > /dev/null 2>&1
+then
+    echo "Instalando unclutter..."
+    cp unclutter ~/.local/bin/unclutter
+else
+    echo "unclutter ya instalado."
 fi
 
