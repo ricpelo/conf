@@ -2,7 +2,7 @@
 
 PLIST="vim-nox-py2 zsh curl python-pip git build-essential python-pygments sakura i3
 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape fluxgui
-ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
+ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm powerline
 lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags"
 
 fn_zsh()
@@ -196,14 +196,6 @@ backup_and_link .lessfilter
 backup_and_link .config/sakura sakura
 backup_and_link .config/dunst dunst
 backup_and_link .i3
-
-if [ ! -e ~/.local/bin/powerline ]
-then
-    echo "Instalando powerline..."
-    pip install --user git+https://github.com/powerline/powerline.git
-else
-    echo "Powerline ya instalado."
-fi
 
 if ! which unclutter > /dev/null 2>&1
 then
