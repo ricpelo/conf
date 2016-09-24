@@ -197,7 +197,7 @@ backup_and_link .config/sakura sakura
 backup_and_link .config/dunst dunst
 backup_and_link .i3
 
-if ! which unclutter > /dev/null 2>&1
+if [ ! -f ~/.local/bin/unclutter ]
 then
     echo "Instalando unclutter..."
     cp unclutter ~/.local/bin/unclutter
