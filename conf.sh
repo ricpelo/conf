@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PLIST="vim-nox-py2 zsh curl python-pip git build-essential python-pygments sakura i3
-nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs
+nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape fluxgui
 ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags"
 
@@ -58,12 +58,24 @@ prefn_i3()
     if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
     then
         echo "Activando el repositorio con la última versión de i3wm..."
-        echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" | sudo tee /etc/apt/sources.list.d/i3wm.list > /dev/null
-        sudo apt-get update
-        sudo apt-get --allow-unauthenticated install sur5r-keyring
-        sudo apt-get update
+        echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee /etc/apt/sources.list.d/i3wm.list > /dev/null
+        sudo apt update
+        sudo apt --allow-unauthenticated install sur5r-keyring
+        sudo apt update
     else
         echo "Repositorio de i3wm ya activado."
+    fi
+}
+
+prefn_fluxgui()
+{
+    if [ ! -f /etc/apt/sources.list.d/nathan-renniewaldock-ubuntu-flux-$(lsb_release -sc).list ]
+    then
+        echo "Activando el repositorio de xflux..."
+        sudo add-apt-repository --yes ppa:nathan-renniewaldock/flux
+        sudo apt update
+    else
+        echo "Repositorio de xflux ya activado."
     fi
 }
 
@@ -85,11 +97,10 @@ do
     fi
 done
 
-
 if [ -n "$P" ]
 then
     echo "Instalando paquetes..."
-    sudo apt-get install -y $P
+    sudo apt install -y $P
 else
     echo "Paquetes ya instalados."
 fi
@@ -122,15 +133,12 @@ paquete_local()
         else
             sudo dpkg -i $1_*_i386.deb
         fi
-        sudo apt-get -fy install
+        sudo apt -fy install
     else
         nombre_paquete $1 $2
         echo " ya instalado."
     fi
 }
-
-paquete_local tmux 2.1
-paquete_local udisks-glue
 
 for p in $PLIST
 do
@@ -139,8 +147,6 @@ do
         eval fn_$p
     fi
 done
-
-eval fn_vim
 
 echo "Instalando tipografía Input Mono..."
 cp -f InputMono/*.ttf ~/.fonts/
@@ -186,7 +192,6 @@ backup_and_link .tmux.conf
 backup_and_link .dircolors
 backup_and_link .less
 backup_and_link .lessfilter
-backup_and_link .udisks-glue.conf
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link .config/sakura sakura
 backup_and_link .config/dunst dunst
@@ -200,32 +205,6 @@ else
     echo "Powerline ya instalado."
 fi
 
-if ! which xflux > /dev/null 2>&1
-then
-    echo "Instalando xflux..."
-    if uname -i | grep x86_64 > /dev/null 2>&1
-    then
-        cp xflux64 ~/.local/bin/xflux
-    else
-        cp xflux32 ~/.local/bin/xflux
-    fi
-else
-    echo "xflux ya instalado."
-fi
-
-if ! which xcape > /dev/null 2>&1
-then
-    echo "Instalando xcape..."
-    if uname -i | grep x86_64 > /dev/null 2>&1
-    then
-        cp xcape64 ~/.local/bin/xcape
-    else
-        cp xcape32 ~/.local/bin/xcape
-    fi
-else
-    echo "xcape ya instalado."
-fi
-
 if ! which unclutter > /dev/null 2>&1
 then
     echo "Instalando unclutter..."
@@ -233,4 +212,6 @@ then
 else
     echo "unclutter ya instalado."
 fi
+
+eval fn_vim
 
