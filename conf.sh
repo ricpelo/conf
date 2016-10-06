@@ -150,7 +150,7 @@ done
 
 echo "Instalando tipografía Input Mono..."
 cp -f InputMono/*.ttf ~/.fonts/
-fc-cache -f .~/fonts/
+fc-cache -f ~/.fonts/
 
 for f in ~/.fonts/*Powerline*
 do
