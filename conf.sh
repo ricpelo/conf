@@ -59,7 +59,7 @@ prefn_i3()
     then
         echo "Activando el repositorio con la última versión de i3wm..."
         echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee /etc/apt/sources.list.d/i3wm.list > /dev/null
-        sudo apt update
+        sudo apt-get update
         sudo apt --allow-unauthenticated install sur5r-keyring
         sudo apt update
     else
