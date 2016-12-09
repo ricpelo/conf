@@ -199,13 +199,19 @@ backup_and_link .i3
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 
-if [ ! -f ~/.local/bin/unclutter ]
-then
-    echo "Instalando unclutter..."
-    cp unclutter ~/.local/bin/unclutter
-else
-    echo "unclutter ya instalado."
-fi
+local_bin()
+{
+    if [ ! -f ~/.local/bin/$1 ]
+    then
+        echo "Instalando $1..."
+        cp $1 ~/.local/bin/$1
+    else
+        echo "$1 ya instalado."
+    fi
+}
+
+local_bin unclutter
+local_bin lesscurl
 
 eval fn_vim
 

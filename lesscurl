@@ -1,0 +1,5 @@
+#!/bin/sh
+# lesscurl: cURL con paginación y resaltado de sintaxis HTTP
+
+curl -si $* | pygmentize 2>/dev/null -l http | less
+
