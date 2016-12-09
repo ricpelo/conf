@@ -108,4 +108,5 @@ eval `dircolors ~/.dircolors`
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
+alias glg="git lg"
 

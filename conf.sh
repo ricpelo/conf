@@ -50,7 +50,7 @@ fn_vim()
 {
     echo "Post-instalación de plugins de Vim mediante Vundle..."
     vim +PluginInstall +qall
-    echo "** No olvides ejecutar YouCompleteMe.sh **"
+#    echo "** No olvides ejecutar YouCompleteMe.sh **"
 }
 
 prefn_i3()
@@ -214,4 +214,6 @@ local_bin unclutter
 local_bin lesscurl
 
 eval fn_vim
+
+echo "** Ejecuta git-config.sh para configurar git **"
 
