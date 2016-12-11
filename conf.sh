@@ -102,6 +102,8 @@ fn_atom()
     fi
 }
 
+git submodule update --init --recursive
+
 P=""
 
 for p in $PLIST
