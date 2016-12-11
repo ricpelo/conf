@@ -3,7 +3,7 @@
 PLIST="vim-nox-py2 zsh curl python-pip git build-essential python-pygments sakura i3
 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape fluxgui
 ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm powerline
-lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags"
+lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags atom"
 
 fn_zsh()
 {
@@ -76,6 +76,29 @@ prefn_fluxgui()
         sudo apt update
     else
         echo "Repositorio de xflux ya activado."
+    fi
+}
+
+prefn_atom()
+{
+    if [ ! -f /etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list ]
+    then
+        echo "Activando el repositorio de Atom..."
+        sudo add-apt-repository --yes ppa:webupd8team/atom
+        sudo apt update
+    else
+        echo "Repositorio de Atom ya activado."
+    fi
+}
+
+fn_atom()
+{
+    if ! apm list -b | grep sync-settings
+    then
+        echo "Instalando paquete sync-settings en Atom..."
+        apm install sync-settings
+    else
+        echo "Paquete sync-settings de Atom ya instalado."
     fi
 }
 
