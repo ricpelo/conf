@@ -6,6 +6,11 @@ echo $DESC
 echo "Vete a https://github.com/settings/tokens/new?scopes=repo&description=$DESC"
 echo -n "Token: "
 read TOKEN
-composer global config -g github-oauth.github.com $TOKEN
+composer config -g github-oauth.github.com $TOKEN
+if [ ! -d /.composer ]
+then
+    COMPOSER_DIR=$(composer config -g home)
+    ln -sf $COMPOSER_DIR /opt/composer
+fi
 composer global require --prefer-dist friendsofphp/php-cs-fixer squizlabs/php_codesniffer yiisoft/yii2-coding-standards phpmd/phpmd
 
