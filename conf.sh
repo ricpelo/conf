@@ -93,7 +93,7 @@ prefn_atom()
 
 fn_atom()
 {
-    if ! apm list -b | grep sync-settings
+    if ! apm list -b | grep sync-settings > /dev/null
     then
         echo "Instalando paquete sync-settings en Atom..."
         apm install sync-settings
