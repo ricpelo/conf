@@ -173,11 +173,14 @@ do
     fi
 done
 
-echo "Instalando tipografía Input Mono..."
-cp -f InputMono/*.ttf ~/.local/share/fonts/
-fc-cache -f ~/.local/share/fonts/
+FONTS_DIR=~/.local/share/fonts
 
-for f in ~/.local/share/fonts/*Powerline*
+echo "Instalando tipografía Input Mono..."
+mkdir -p $FONTS_DIR
+cp -f InputMono/*.ttf $FONTS_DIR
+fc-cache -f $FONTS_DIR
+
+for f in $FONTS_DIR/*Powerline*
 do
     if [ ! -e "$f" ]
     then
