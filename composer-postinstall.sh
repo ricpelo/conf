@@ -15,5 +15,4 @@ then
     COMPOSER_DIR=$(composer config -g home)
     sudo ln -sf $COMPOSER_DIR /opt/composer
 fi
-composer global require --prefer-dist friendsofphp/php-cs-fixer squizlabs/php_codesniffer yiisoft/yii2-coding-standards phpmd/phpmd
-
+composer global require --prefer-dist friendsofphp/php-cs-fixer squizlabs/php_codesniffer yiisoft/yii2-coding-standards
