@@ -240,6 +240,7 @@ local_bin()
 
 local_bin unclutter
 local_bin lesscurl
+local_bin proyecto.sh
 
 eval fn_vim
 
