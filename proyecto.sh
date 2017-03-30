@@ -16,4 +16,9 @@ echo "Extrayendo el esqueleto..."
 echo "Eliminando archivos temporales..."
 /bin/cp -rf $TEMP_DIR/pre-master/. $1
 /bin/rm -r $TEMP_ZIP $TEMP_DIR
+cd $1
+composer update
+git init
+git add .
+git commit -m "Carga inicial"
 
