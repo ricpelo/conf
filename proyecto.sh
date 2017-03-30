@@ -17,7 +17,12 @@ echo "Eliminando archivos temporales..."
 /bin/cp -rf $TEMP_DIR/pre-master/. $1
 /bin/rm -r $TEMP_ZIP $TEMP_DIR
 cd $1
+echo "Modificando archivos con el nombre del proyecto..."
+/bin/sed -i s/proyecto/$1/g db/* config/*
+/bin/mv db/proyecto.sql db/$1.sql
+echo "Ejecutando composer update..."
 composer update
+echo "Creando repositorio git..."
 git init
 git add .
 git commit -m "Carga inicial"
