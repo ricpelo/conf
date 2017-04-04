@@ -91,27 +91,6 @@ prefn_atom()
     fi
 }
 
-fn_atom()
-{
-    for p in $(<atom-packages.txt)
-    do
-        if ! apm list -b | grep $p > /dev/null
-        then
-            echo "Instalando paquete $p en Atom..."
-            apm install $p
-        else
-            echo "Paquete $p de Atom ya instalado."
-        fi
-    done
-    if [ ! -f ~/.atom/config.cson ]
-    then
-        echo "Copiando archivo config.cson en ~/.atom..."
-        /bin/cp -f config.cson ~/.atom
-    else
-        echo "Archivo config.cson ya copiado en ~/.atom."
-    fi
-}
-
 git submodule update --init --recursive
 
 P=""
