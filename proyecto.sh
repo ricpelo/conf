@@ -19,4 +19,11 @@ echo "Creando repositorio git..."
 git init
 git add .
 git commit -m "Carga inicial"
+if ! grep -q "$1.local" /etc/hosts > /dev/null
+then
+    echo "Añadiendo entrada para $1.local en /etc/hosts..."
+    echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts
+else
+    echo "Ya existe una entrada para $1.local en /etc/hosts."
+fi
 
