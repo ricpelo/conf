@@ -93,12 +93,22 @@ prefn_atom()
 
 fn_atom()
 {
-    if ! apm list -b | grep sync-settings > /dev/null
+    for p in $(<atom-packages.txt)
+    do
+        if ! apm list -b | grep $p > /dev/null
+        then
+            echo "Instalando paquete $p en Atom..."
+            apm install $p
+        else
+            echo "Paquete $p de Atom ya instalado."
+        fi
+    done
+    if [ ! -f ~/.atom/config.cson ]
     then
-        echo "Instalando paquete sync-settings en Atom..."
-        apm install sync-settings
+        echo "Copiando archivo config.cson en ~/.atom..."
+        /bin/cp -f config.cson ~/.atom
     else
-        echo "Paquete sync-settings de Atom ya instalado."
+        echo "Archivo config.cson ya copiado en ~/.atom."
     fi
 }
 
