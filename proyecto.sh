@@ -24,7 +24,7 @@ then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
     if grep -q "^$" /etc/hosts > /dev/null
     then
-        sudo sed "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
+        sudo sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
     else
         echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts
     fi
