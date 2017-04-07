@@ -23,6 +23,8 @@ Reiniciar y elegir `i3` como entorno de trabajo en la pantalla de inicio.
 
 * Gestor de ventanas gráfico [i3wm](http://i3wm.org)
 * Shell `zsh` con [Oh-My-Zsh](http://ohmyz.sh)
+* Coloreado de la consola basado en [Solarized
+  Dark](https://github.com/seebi/dircolors-solarized)
 * Sakura como emulador de terminal
 * `tmux` como multiplexor de terminales
 * `vim` (y muchos plugins) como editor de consola
@@ -44,4 +46,7 @@ poquísimos recursos y que sigue la filosofía de los [gestores de ventana tipo
 mosaico](https://en.wikipedia.org/wiki/Tiling_window_manager), lo que reduce al
 mínimo la necesidad del uso del ratón. Resulta perfecto para trabajar en un
 entorno rápido, limpio y sin distracciones.
+
+## Scripts adicionales
+
 
