@@ -38,7 +38,6 @@ Reiniciar y elegir `i3` como entorno de trabajo en la pantalla de inicio.
   hora del día
 * [Atom](https://atom.io) como editor gráfico
 
-
 ## Gestor de ventanas `i3wm`
 
 [i3wm](http://i3wm.org) es un gestor de ventanas minimalista que consume
@@ -47,6 +46,38 @@ mosaico](https://en.wikipedia.org/wiki/Tiling_window_manager), lo que reduce al
 mínimo la necesidad del uso del ratón. Resulta perfecto para trabajar en un
 entorno rápido, limpio y sin distracciones.
 
+Con este repositorio se instala `i3wm` con la siguiente configuración:
+
+* La tecla de modificación es la `Super` (tecla _Windows_ izquierda)
+* `Super+Espacio` abre `dmenu`
+* `Super+q` cierra la aplicación actual
+* `Super+u` alterna el borde de la ventana actual
+* `Super+Tab` alterna entre el _workspace_ actual y el anterior
+* Durante el arranque inicial:
+  * Ajusta la velocidad de repetición del teclado a 250/30
+  * Intercambia las teclas `Bloq Mayús` y `Ctrl` izquierdo
+  * Aplica un fondo al escritorio con `Nitrogen`
+  * Arranca `f.lux` según las coordenadas de Sanlúcar de Bda.
+  * Arranca `unclutter` para que el cursor del ratón se oculte automáticamente
+    después de un segundo de inactividad
+  * Arranca el applet de NetworkManager
+  * Arranca el navegador predeterminado en el _workspace_ 1 maximizado sin
+    bordes
+  * Arranca una terminal Sakura en el _workspace_ 2 a pantalla completa
+
 ## Scripts adicionales
 
+* `git-config.sh`: configura varios aspectos básicos de Git
+* `atom/atom-postinstall.sh`: configura Atom con paquetes para PHP
+* `composer/composer-install.sh`: instala [Composer](https://getcomposer.org)
+* `composer/composer-postinstall.sh`: crea un token de GitHub para Composer e
+  instala algunos paquetes globales, creando enlace simbólico `/opt/composer`
+
+## Scripts que se instalan en `~/.local/bin/` para uso general
+
+* `lesscurl`: cURL con paginación y resaltado de sintaxis HTTP
+* `proyecto.sh`: crear un esqueleto inicial de proyecto basado en la plantilla
+  básica del framework [Yii2](http://www.yiiframework.com) y modificaciones
+  propias al mismo del repositorio
+  [`ricpelo/pre`](https://github.com/ricpelo/pre)
 
