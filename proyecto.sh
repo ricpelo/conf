@@ -31,4 +31,17 @@ then
 else
     echo "Ya existe una entrada para $1.local en /etc/hosts."
 fi
+if [ -f "proyecto.conf" ]
+then
+    if [ ! -f "/etc/apache2/sites-available/$1.conf" ]
+    then
+        echo "Creando sitio virtual $1.local en Apache2..."
+        /bin/sed -i s/proyecto/$1/g proyecto.conf
+        sudo /bin/mv proyecto.conf /etc/apache2/sites-available/$1.conf
+        sudo a2ensite $1
+        sudo service apache2 reload
+    else
+        echo "El sitio virtual $1.local ya existe en Apache2."
+    fi
+fi
 
