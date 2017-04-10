@@ -6,39 +6,39 @@ gusto.
 ## Requisitos previos
 
 * Ubuntu 16.04 LTS (recomendable [Lubuntu](http://lubuntu.net))
-* `git`
+* [Git](https://git-scm.com)
+* *Recomendable*: disponer de cuenta en [GitHub.com](https://github.com)
 
 ## Instalación
 
 ```sh
-$ cd ~
-$ git clone --recursive https://github.com/ricpelo/conf.git .conf
-$ cd .conf
+$ git clone --recursive https://github.com/ricpelo/conf.git ~/.conf
+$ cd ~/.conf
 $ ./conf.sh
 ```
 
-Reiniciar y elegir `i3` como entorno de trabajo en la pantalla de inicio.
+Reiniciar y elegir *i3* como entorno de trabajo en la pantalla de inicio.
 
 ## Objetivos
 
 * Gestor de ventanas gráfico [i3wm](http://i3wm.org)
-* Shell `zsh` con [Oh-My-Zsh](http://ohmyz.sh)
+* Shell Zsh con [Oh-My-Zsh](http://ohmyz.sh)
 * Coloreado de la consola basado en [Solarized
   Dark](https://github.com/seebi/dircolors-solarized)
 * Sakura como emulador de terminal
-* `tmux` como multiplexor de terminales
-* `vim` (y muchos plugins) como editor de consola
-* [Powerline](https://github.com/powerline/powerline) para `Zsh`, `tmux` y `vim`
+* [tmux](https://tmux.github.io) como multiplexor de terminales
+* [Vim](http://www.vim.org) (y muchos plugins) como editor de consola
+* [Powerline](https://github.com/powerline/powerline) para Zsh, tmux y Vim
 * [Tipografías](https://github.com/powerline/fonts) adaptadas a Powerline
 * Tipografía [Input Mono](http://input.fontbureau.com)
 * PulseAudio como servidor de sonido
 * Control de volumen gráfico para PulseAudio
 * NetworkManager para configuración de red
-* [`f.lux`](https://justgetflux.com) para acomodar el color del monitor a la
+* [f.lux](https://justgetflux.com) para acomodar el color del monitor a la
   hora del día
 * [Atom](https://atom.io) como editor gráfico
 
-## Gestor de ventanas `i3wm`
+## Gestor de ventanas i3wm
 
 [i3wm](http://i3wm.org) es un gestor de ventanas minimalista que consume
 poquísimos recursos y que sigue la filosofía de los [gestores de ventana tipo
@@ -72,10 +72,17 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
 * `composer/composer-install.sh`: instala [Composer](https://getcomposer.org)
 * `composer/composer-postinstall.sh`: crea un token de GitHub para Composer e
   instala algunos paquetes globales, creando enlace simbólico `/opt/composer`
+* `ruby/rbenv-install.sh`: primer paso para instalar Ruby con
+  [rbenv](http://rbenv.org)
+* `ruby/rbenv-postinstall.sh`: segundo (y último) paso para instalar Ruby con
+  rbenv
+* `YouCompleteMe.sh`: instala el plugin
+  [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) de Vim
 
 ## Scripts que se instalan en `~/.local/bin/` para uso general
 
-* `lesscurl`: cURL con paginación y resaltado de sintaxis HTTP
+* `lesscurl`: [curl](https://curl.haxx.se) con paginación y resaltado de
+   sintaxis HTTP
 * `proyecto.sh`: crear un esqueleto inicial de proyecto basado en la plantilla
   básica del framework [Yii2](http://www.yiiframework.com) y modificaciones
   propias al mismo del repositorio
