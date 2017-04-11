@@ -89,3 +89,10 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
   propias al mismo del repositorio
   [`ricpelo/pre`](https://github.com/ricpelo/pre)
 
+## Otros archivos
+
+* `apt/dagon.apt-clone.tar.gz`: archivo de backup creado con
+  [apt-clone](https://github.com/mvo5/apt-clone)
+* `apt/dpkg--get-selections.txt`: archivo de backup creado con `dpkg
+  --get-selections`
+
