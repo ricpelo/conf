@@ -182,6 +182,9 @@ nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
+" Press F12 to switch to cp850 encoding
+nnoremap <F12> :e ++enc=cp850<CR>
+
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
