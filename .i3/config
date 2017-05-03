@@ -193,8 +193,8 @@ for_window [title="^Momentum$"] focus
 for_window [title="^Momentum$"] floating enable
 
 exec --no-startup-id xset r rate 250 30
-# exec --no-startup-id xset m 3/2 4
-exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Constant Deceleration' 1.5
+exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Constant Deceleration' 3
+exec --no-startup-id xet m 3 6
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 # exec --no-startup-id ~/.local/bin/xcape -e 'Control_L=Escape'
 exec --no-startup-id nitrogen --restore
