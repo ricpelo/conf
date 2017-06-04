@@ -221,7 +221,7 @@ local_bin()
     if [ ! -f ~/.local/bin/$1 ]
     then
         echo "Instalando $1..."
-        cp $1 ~/.local/bin/$1
+        ln -sf $PWD/$1 ~/.local/bin/$1
     else
         echo "$1 ya instalado."
     fi
