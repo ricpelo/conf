@@ -20,11 +20,6 @@ if [ ! -d ~/.atom/packages/$p ]
 then
     apm install ricpelo/$p
 fi
-if [ ! -f ~/.atom/config.cson ]
-then
-    echo "Copiando archivo config.cson en ~/.atom..."
-    cp -f config.cson ~/.atom
-else
-    echo "Archivo config.cson ya copiado en ~/.atom."
-fi
+echo "Copiando archivo config.cson en ~/.atom..."
+cp -f config.cson ~/.atom
 
