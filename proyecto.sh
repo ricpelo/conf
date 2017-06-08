@@ -7,6 +7,12 @@ fi
 
 echo "Creando el proyecto desde la plantilla básica de Yii2..."
 composer create-project --no-install --no-scripts yiisoft/yii2-app-basic $1
+echo "Creando repositorio git..."
+cd $1
+git init
+git add .
+git commit -m "Carga incial"
+cd ..
 echo "Extrayendo el esqueleto modificado del proyecto..."
 curl -L https://github.com/ricpelo/pre/tarball/master | tar xvz --strip 1 -C $1
 cd $1
@@ -44,8 +50,7 @@ then
         echo "El sitio virtual $1.local ya existe en Apache2."
     fi
 fi
-echo "Creando repositorio git..."
-git init
+echo "Creando nuevo commit..."
 git add .
-git commit -m "Carga inicial"
+git commit -m "Cambios de la plantilla del proyecto"
 
