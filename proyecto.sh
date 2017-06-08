@@ -12,11 +12,11 @@ if [ "$1" = "-d" ]; then
     else
         echo "Eliminando proyecto $2..."
         if [ -d $2 ]; then
-            sudo /bin/rm -rf $2
+            sudo rm -rf $2
         fi
-        sudo /bin/sed -i /$2.local/d /etc/hosts
+        sudo sed -i /$2.local/d /etc/hosts
         sudo a2dissite $2
-        sudo /bin/rm -rf /etc/apache2/sites-available/$2.conf
+        sudo rm -f /etc/apache2/sites-available/$2.conf
         sudo service apache2 reload
         exit 0
     fi
@@ -35,10 +35,10 @@ curl -L https://github.com/ricpelo/pre/tarball/master | tar xvz --strip 1 -C $1
 cd $1
 echo "Modificando configuración del proyecto..."
 cat config/web.php | tr '\n' '\f' | sed "s/'log' => .*'db'/'log' => require(__DIR__ . '\/log.php'),\f        'db'/" | tr '\f' '\n' > config/web.php.temp
-/bin/mv -f config/web.php.temp config/web.php
+mv -f config/web.php.temp config/web.php
 echo "Modificando archivos con el nombre del proyecto..."
-/bin/sed -i s/proyecto/$1/g db/* config/*
-/bin/mv db/proyecto.sql db/$1.sql
+sed -i s/proyecto/$1/g db/* config/*
+mv db/proyecto.sql db/$1.sql
 echo "Ejecutando composer install y run-script..."
 composer install
 composer run-script post-create-project-cmd
@@ -47,7 +47,7 @@ then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
     if grep -q "^$" /etc/hosts > /dev/null
     then
-        sudo /bin/sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
+        sudo sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
     else
         echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts
     fi
@@ -59,8 +59,8 @@ then
     if [ ! -f "/etc/apache2/sites-available/$1.conf" ]
     then
         echo "Creando sitio virtual $1.local en Apache2..."
-        /bin/sed -i s/proyecto/$1/g proyecto.conf
-        sudo /bin/mv proyecto.conf /etc/apache2/sites-available/$1.conf
+        sed -i s/proyecto/$1/g proyecto.conf
+        sudo mv proyecto.conf /etc/apache2/sites-available/$1.conf
         sudo a2ensite $1
         sudo service apache2 reload
     else
