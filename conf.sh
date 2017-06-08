@@ -99,7 +99,7 @@ for p in $PLIST
 do
     if ! dpkg -s $p > /dev/null 2>&1
     then
-        P="$p $P"
+        P="$P $p"
     fi
 done
 
