@@ -233,5 +233,3 @@ local_bin proyecto.sh
 
 eval fn_vim
 
-echo "** Ejecuta git-config.sh para configurar git **"
-
