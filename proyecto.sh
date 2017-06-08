@@ -16,14 +16,9 @@ cat config/web.php | tr '\n' '\f' | sed "s/'log' => .*'db'/'log' => require(__DI
 echo "Modificando archivos con el nombre del proyecto..."
 /bin/sed -i s/proyecto/$1/g db/* config/*
 /bin/mv db/proyecto.sql db/$1.sql
-echo "Ejecutando composer..."
+echo "Ejecutando composer install y run-script..."
 composer install
 composer run-script post-create-project-cmd
-composer install
-echo "Creando repositorio git..."
-git init
-git add .
-git commit -m "Carga inicial"
 if ! grep -q "$1.local" /etc/hosts > /dev/null
 then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
@@ -49,4 +44,8 @@ then
         echo "El sitio virtual $1.local ya existe en Apache2."
     fi
 fi
+echo "Creando repositorio git..."
+git init
+git add .
+git commit -m "Carga inicial"
 
