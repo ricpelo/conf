@@ -15,7 +15,6 @@ linter-phpcs
 linter-ui-default
 lipsum
 merge-conflicts
-metrics
 minimap
 minimap-autohide
 php-cs-fixer
