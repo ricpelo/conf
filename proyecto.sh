@@ -1,8 +1,25 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-    echo "Sintaxis: $0 nombre"
+    echo "Sintaxis: $0 [-d] nombre"
     exit 1
+fi
+
+if [ "$1" = "-d" ]; then
+    if [ -z "$2" ]; then
+        echo "Sintaxis: $0 [-d] nombre"
+        exit 1
+    else
+        echo "Eliminando proyecto $2..."
+        if [ -d $2 ]; then
+            sudo /bin/rm -rf $2
+        fi
+        sudo /bin/sed -i /$2.local/d /etc/hosts
+        sudo a2dissite $2
+        sudo /bin/rm -rf /etc/apache2/sites-available/$2.conf
+        sudo service apache2 reload
+        exit 0
+    fi
 fi
 
 echo "Creando el proyecto desde la plantilla básica de Yii2..."
@@ -30,7 +47,7 @@ then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
     if grep -q "^$" /etc/hosts > /dev/null
     then
-        sudo sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
+        sudo /bin/sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
     else
         echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts
     fi
