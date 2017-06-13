@@ -1,4 +1,3 @@
-atom-alignment
 autoclose-html
 busy-signal
 docblockr
