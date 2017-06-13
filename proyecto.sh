@@ -40,8 +40,8 @@ echo ".php_cs.cache" >> .gitignore
 echo "Modificando archivos con el nombre del proyecto..."
 sed -i s/proyecto/$1/g db/* config/*
 mv db/proyecto.sql db/$1.sql
-sed -i s/proyecto/$1/g $1.conf
 mv proyecto.conf $1.conf
+sed -i s/proyecto/$1/g $1.conf
 echo "Ejecutando composer install y run-script..."
 composer install
 composer run-script post-create-project-cmd
