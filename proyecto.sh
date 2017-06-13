@@ -36,7 +36,7 @@ cd $1
 echo "Modificando configuración del proyecto..."
 cat config/web.php | tr '\n' '\f' | sed "s/'log' => .*'db'/'log' => require(__DIR__ . '\/log.php'),\f        'db'/" | tr '\f' '\n' > config/web.php.temp
 mv -f config/web.php.temp config/web.php
-echo ".php_cs.cache" >> .gitignore
+echo "\n.php_cs.cache" >> .gitignore
 echo "Modificando archivos con el nombre del proyecto..."
 sed -i s/proyecto/$1/g db/* config/*
 mv db/proyecto.sql db/$1.sql
