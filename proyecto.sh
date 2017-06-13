@@ -45,7 +45,6 @@ mv proyecto.conf $1.conf
 echo "Ejecutando composer install y run-script..."
 composer install
 composer run-script post-create-project-cmd
-chmod a+w controllers models views
 if ! grep -q "$1.local" /etc/hosts > /dev/null
 then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
