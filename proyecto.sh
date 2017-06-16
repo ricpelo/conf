@@ -34,8 +34,10 @@ echo "Extrayendo el esqueleto modificado del proyecto..."
 curl -L https://github.com/ricpelo/pre/tarball/master | tar xvz --strip 1 -C $1
 cd $1
 echo "Modificando configuración del proyecto..."
-cat config/web.php | tr '\n' '\f' | sed "s/'log' => .*'db'/'log' => require(__DIR__ . '\/log.php'),\f        'db'/" | tr '\f' '\n' > config/web.php.temp
-mv -f config/web.php.temp config/web.php
+for p in config/web.php config/console.php
+do
+    sed -r -zi "s%('log' => )\[.*\],(.*)'db'%\1require(__DIR__ . '/log.php'),\2'db'%" $p
+done
 echo "\n.php_cs.cache" >> .gitignore
 echo "Modificando archivos con el nombre del proyecto..."
 sed -i s/proyecto/$1/g db/* config/*
