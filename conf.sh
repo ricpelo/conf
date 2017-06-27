@@ -1,9 +1,10 @@
 #!/bin/sh
 
-PLIST="vim-nox-py2 zsh curl python-pip git build-essential python-pygments sakura i3
-nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape fluxgui
-ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm powerline
-lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags atom"
+PLIST="vim-nox-py2 zsh curl wget python-pip git build-essential python-pygments
+sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
+fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
+powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome ctags
+atom"
 
 fn_zsh()
 {
