@@ -15,6 +15,6 @@ fi
 
 echo "Instalando paquetes de PostgreSQL..."
 P="postgresql postgresql-9.6 postgresql-client postgresql-contrib pgadmin3"
-echo "\$ sudo apt install $P"
+echo "\033[1;32m\$\033[0m\033[35m sudo apt install $P\033[0m"
 sudo apt install $P
 
