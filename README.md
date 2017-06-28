@@ -6,7 +6,8 @@ gusto.
 ## Requisitos previos
 
 * Ubuntu 16.04 LTS (recomendable [Lubuntu](http://lubuntu.net))
-* [Git](https://git-scm.com)
+* [Git](https://git-scm.com) instalado y configurado, al menos, con `user.name`
+  y `user.email`
 * *Recomendable*: disponer de cuenta en [GitHub.com](https://github.com)
 
 ## Instalación
@@ -18,6 +19,19 @@ $ ./conf.sh
 ```
 
 Reiniciar y elegir *i3* como entorno de trabajo en la pantalla de inicio.
+
+### Pasos adicionales
+
+En este orden:
+
+1. `./git-config.sh`
+2. `./php-install.sh`
+3. `./postgresql-install.sh`
+4. `cd composer`
+5. `./composer-install.sh`
+6. `./composer-postinstall.sh`
+7. `cd ../atom`
+8. `./atom-postinstall.sh`
 
 ## Objetivos
 
