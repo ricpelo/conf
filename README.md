@@ -51,7 +51,7 @@ En este orden:
 * NetworkManager para configuración de red
 * [f.lux](https://justgetflux.com) para acomodar el color del monitor a la
   hora del día
-* [Atom](https://atom.io) como editor gráfico
+* [Atom](https://atom.io) como editor de texto en modo gráfico
 
 ## Gestor de ventanas i3wm
 
@@ -86,10 +86,10 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
 * `atom/atom-postinstall.sh`: configura Atom con paquetes para PHP
 * `composer/composer-install.sh`: instala [Composer](https://getcomposer.org)
 * `composer/composer-postinstall.sh`: crea un token de GitHub para Composer e
-  instala algunos paquetes globales, creando enlace simbólico `/opt/composer`
-* `ruby/rbenv-install.sh`: primer paso para instalar Ruby con
+  instala algunos paquetes globales, creando el enlace simbólico `/opt/composer`
+* `rbenv/rbenv-install.sh`: primer paso para instalar Ruby con
   [rbenv](http://rbenv.org)
-* `ruby/rbenv-postinstall.sh`: segundo (y último) paso para instalar Ruby con
+* `rbenv/rbenv-postinstall.sh`: segundo (y último) paso para instalar Ruby con
   rbenv
 * `YouCompleteMe.sh`: instala el plugin
   [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) de Vim
