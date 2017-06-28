@@ -106,7 +106,7 @@ done
 
 for p in $PLIST
 do
-    if type prefn_$p | grep -q "is a shell function" > /dev/null
+    if type prefn_$p | grep -qs "is a shell function"
     then
         eval prefn_$p
     fi
@@ -142,7 +142,7 @@ paquete_local()
         echo -n "Instalando paquete "
         nombre_paquete $1 $2
         echo "..."
-        if uname -i | grep x86_64 > /dev/null 2>&1
+        if uname -i | grep -qs x86_64
         then
             sudo dpkg -i $1_*_amd64.deb
         else
@@ -157,7 +157,7 @@ paquete_local()
 
 for p in $PLIST
 do
-    if type fn_$p | grep -q "is a shell function" > /dev/null
+    if type fn_$p | grep -qs "is a shell function"
     then
         eval fn_$p
     fi

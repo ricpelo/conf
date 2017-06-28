@@ -47,10 +47,10 @@ sed -i s/proyecto/$1/g $1.conf
 echo "Ejecutando composer install y run-script..."
 composer install
 composer run-script post-create-project-cmd
-if ! grep -q "$1.local" /etc/hosts > /dev/null
+if ! grep -qs "$1.local" /etc/hosts
 then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
-    if grep -q "^$" /etc/hosts > /dev/null
+    if grep -qs "^$" /etc/hosts
     then
         sudo sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
     else
