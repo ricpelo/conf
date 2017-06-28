@@ -30,4 +30,12 @@ then
 else
     echo "Uso de apm con sudo ya desactivado."
 fi
+L="%sudo	ALL=!/usr/bin/atom"
+if ! sudo cat /etc/sudoers | grep -qs "$L"
+then
+    echo "Desactivando el uso de atom con sudo..."
+    echo "\n$L\n" | sudo tee -a /etc/sudoers > /dev/null
+else
+    echo "Uso de atom con sudo ya desactivado."
+fi
 
