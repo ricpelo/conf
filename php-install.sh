@@ -13,7 +13,8 @@ echo "Instalando paquetes ensenciales de PHP..."
 P="php php7.1 libapache2-mod-php php-cli"
 echo "\$ sudo apt install $P"
 sudo apt install $P
-echo "Paquetes adicionales:"
+echo "Instalando paquetes adicionales..."
 P="php-pgsql php-sqlite3 php-intl php-mbstring php-gd php-curl php-xml php-xdebug php-json"
-echo $P
+echo "\$ sudo apt install $P"
+sudo apt install $P
 
