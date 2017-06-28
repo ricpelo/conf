@@ -11,10 +11,10 @@ fi
 
 echo "Instalando paquetes ensenciales de PHP..."
 P="php php7.1 libapache2-mod-php php-cli"
-echo "\$ sudo apt install $P"
+echo "\033[1;32m\$\033[0m\033[35m sudo apt install $P\033[0m"
 sudo apt install $P
 echo "Instalando paquetes adicionales..."
 P="php-pgsql php-sqlite3 sqlite php-intl php-mbstring php-gd php-curl php-xml php-xdebug php-json"
-echo "\$ sudo apt install $P"
+echo "\033[1;32m\$\033[0m\033[35m sudo apt install $P\033[0m"
 sudo apt install $P
 
