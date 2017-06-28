@@ -22,11 +22,15 @@ then
 fi
 echo "Copiando archivo config.cson en ~/.atom..."
 cp -f config.cson ~/.atom
+if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]
+then
+    echo "" | sudo tee -a /etc/sudoers > /dev/null
+fi
 L="%sudo	ALL=!/usr/bin/apm"
 if ! sudo cat /etc/sudoers | grep -qs "$L"
 then
     echo "Desactivando el uso de apm con sudo..."
-    echo "\n$L\n" | sudo tee -a /etc/sudoers > /dev/null
+    echo "$L" | sudo tee -a /etc/sudoers > /dev/null
 else
     echo "Uso de apm con sudo ya desactivado."
 fi
@@ -34,7 +38,7 @@ L="%sudo	ALL=!/usr/bin/atom"
 if ! sudo cat /etc/sudoers | grep -qs "$L"
 then
     echo "Desactivando el uso de atom con sudo..."
-    echo "\n$L\n" | sudo tee -a /etc/sudoers > /dev/null
+    echo "$L" | sudo tee -a /etc/sudoers > /dev/null
 else
     echo "Uso de atom con sudo ya desactivado."
 fi

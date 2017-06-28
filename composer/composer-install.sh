@@ -16,11 +16,15 @@ RESULT=$?
 rm composer-setup.php
 sudo install -o root -g root composer.phar /usr/local/bin/composer
 rm composer.phar
+if [ "`sudo cat /etc/sudoers | tail -c1`" != ""  ]
+then
+    echo "" | sudo tee -a /etc/sudoers > /dev/null
+fi
 L="%sudo	ALL=!/usr/local/bin/composer"
 if ! sudo cat /etc/sudoers | grep -qs "$L"
 then
     echo "Desactivando el uso de composer con sudo..."
-    echo "\n$L\n" | sudo tee -a /etc/sudoers > /dev/null
+    echo "$L" | sudo tee -a /etc/sudoers > /dev/null
 else
     echo "Uso de composer con sudo ya desactivado."
 fi
