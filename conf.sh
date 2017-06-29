@@ -44,7 +44,7 @@ fn_nitrogen()
         mv -f $D $D.viejo
     fi
     mkdir -p $D
-    echo "[:0.0]\nfile=$PWD/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
+    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
 }
 
 fn_vim()
@@ -167,7 +167,7 @@ FONTS_DIR=~/.local/share/fonts
 
 echo "Instalando tipografía Input Mono..."
 mkdir -p $FONTS_DIR
-cp -f InputMono/*.ttf $FONTS_DIR
+cp -f fonts/InputMono/*.ttf $FONTS_DIR
 fc-cache -f $FONTS_DIR
 
 for f in $FONTS_DIR/*Powerline*
@@ -176,7 +176,7 @@ do
     then
         echo "Instalando tipografías Powerline..."
         ACTUAL=$PWD
-        cd powerline-fonts
+        cd fonts/powerline-fonts
         ./install.sh
         cd $ACTUAL
     else
@@ -196,9 +196,9 @@ backup_and_link()
     fi
     if [ -n "$2" ]
     then
-        ln -sf $PWD/$2 ~/$1
+        ln -sf $PWD/config/$2 ~/$1
     else
-        ln -sf $PWD/$1 ~/$1
+        ln -sf $PWD/config/$1 ~/$1
     fi
 }
 
@@ -222,7 +222,7 @@ local_bin()
     if [ ! -f ~/.local/bin/$1 ]
     then
         echo "Instalando $1..."
-        ln -sf $PWD/$1 ~/.local/bin/$1
+        ln -sf $PWD/bin/$1 ~/.local/bin/$1
     else
         echo "$1 ya instalado."
     fi

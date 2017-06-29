@@ -1,6 +1,8 @@
 #!/bin/sh
 
-if ! composer config -g github-oauth.github.com > /dev/null 2>&1
+. $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
+
+if [ -z "$(token_github)" ]
 then
     DESC="Composer and Gist on $(hostname) $(date +%Y-%m-%d\ %H%M)"
     DESC=$(echo $DESC | tr " " "+")
@@ -9,7 +11,7 @@ then
     echo -n "Token: "
     read TOKEN
     echo "Creando token de GitHub para Composer..."
-    composer config -g github-oauth.github.com $TOKEN
+    token_github $TOKEN
 else
     echo "Token de GitHub ya creado."
 fi

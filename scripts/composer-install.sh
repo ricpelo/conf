@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
+
 echo "Descargando y ejecutando instalador de composer..."
 
 EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
@@ -19,18 +21,7 @@ rm composer-setup.php
 echo "Instalando en /usr/local/bin/composer..."
 sudo install -o root -g root composer.phar /usr/local/bin/composer
 rm composer.phar
-if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]
-#if test `sudo cat /etc/sudoers | tail -c1`
-then
-    echo "" | sudo tee -a /etc/sudoers > /dev/null
-fi
-L="%sudo	ALL=!/usr/local/bin/composer"
-if ! sudo cat /etc/sudoers | grep -qs "$L"
-then
-    echo "Desactivando el uso de composer con sudo..."
-    echo "$L" | sudo tee -a /etc/sudoers > /dev/null
-else
-    echo "Uso de composer con sudo ya desactivado."
-fi
+asegura_salto_linea_sudoers
+desactiva_sudo "/usr/local/bin/composer"
 exit $RESULT
 
