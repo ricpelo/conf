@@ -23,6 +23,7 @@ fi
 echo "Copiando archivo config.cson en ~/.atom..."
 cp -f config.cson ~/.atom
 if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]
+#if test `sudo cat /etc/sudoers | tail -c1`
 then
     echo "" | sudo tee -a /etc/sudoers > /dev/null
 fi

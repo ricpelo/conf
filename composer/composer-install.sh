@@ -19,7 +19,8 @@ rm composer-setup.php
 echo "Instalando en /usr/local/bin/composer..."
 sudo install -o root -g root composer.phar /usr/local/bin/composer
 rm composer.phar
-if [ "`sudo cat /etc/sudoers | tail -c1`" != ""  ]
+if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]
+#if test `sudo cat /etc/sudoers | tail -c1`
 then
     echo "" | sudo tee -a /etc/sudoers > /dev/null
 fi
