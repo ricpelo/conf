@@ -1,9 +1,9 @@
 #!/bin/sh
 
-DIR=$(dirname $(readlink -f "$0"))
-if [ "$DIR" != "$PWD" ]
+BASE_DIR=$(dirname $(readlink -f "$0"))
+if [ "$BASE_DIR" != "$PWD" ]
 then
-    echo "Error: debe ejecutar el script desde el directorio $DIR."
+    echo "Error: debe ejecutar el script desde el directorio $BASE_DIR."
     exit 1
 fi
 
@@ -44,14 +44,14 @@ fn_sakura()
 
 fn_nitrogen()
 {
-    D=$HOME/.config/nitrogen
-    if [ -d "$D" ]
+    local DIR=$HOME/.config/nitrogen
+    if [ -d "$DIR" ]
     then
-        [ -d "$D.viejo" ] && rm -rf $D.viejo
-        mv -f $D $D.viejo
+        [ -d "$DIR.viejo" ] && rm -rf $DIR.viejo
+        mv -f $DIR $DIR.viejo
     fi
-    mkdir -p $D
-    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $D/bg-saved.cfg
+    mkdir -p $DIR
+    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $DIR/bg-saved.cfg
 }
 
 fn_vim()
@@ -135,7 +135,7 @@ nombre_paquete()
 
 paquete_local()
 {
-    COND=""
+    local COND=""
 
     if [ -n "$2" ]
     then
@@ -203,11 +203,11 @@ backup_and_link()
     fi
     if [ -n "$2" ]
     then
-        RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
+        local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
         ln -srf $RP -t $HOME/$2 $1
     else
-        RP=$(realpath -s --relative-to=$HOME $PWD/config/$1)
-        ln -sfv $RP $HOME/$1
+        local RP=$(realpath -s --relative-to=$HOME $PWD/config/$1)
+        ln -sf $RP $HOME/$1
     fi
 }
 
@@ -231,7 +231,7 @@ local_bin()
     if [ ! -f ~/.local/bin/$1 ]
     then
         echo "Instalando $1..."
-        RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
+        local RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
         ln -sf $RP/$1 ~/.local/bin/$1
     else
         echo "$1 ya instalado."

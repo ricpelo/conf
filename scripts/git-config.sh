@@ -12,7 +12,7 @@ netrc()
     then
         perl -i -0pe "s/machine $1\n  login \w+\n  password \w+/machine $1\n  login $NOMBRE\n  password $TOKEN/" ~/.netrc
     else
-        asegura_salto_linea "~/.netrc"
+        asegura_salto_linea "$HOME/.netrc"
         echo "machine $1\n  login $NOMBRE\n  password $TOKEN" >> ~/.netrc
     fi
 }

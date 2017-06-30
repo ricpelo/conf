@@ -17,7 +17,7 @@ asegura_salto_linea()
 
 desactiva_sudo()
 {
-    L="%sudo	ALL=!$1"
+    local L="%sudo	ALL=!$1"
     if ! sudo cat /etc/sudoers | grep -qs "$L"
     then
         echo "Desactivando el uso de $1 con sudo..."
