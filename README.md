@@ -38,7 +38,7 @@ En este orden:
 * Shell Zsh con [Oh-My-Zsh](http://ohmyz.sh)
 * Coloreado de la consola basado en [Solarized
   Dark](https://github.com/seebi/dircolors-solarized)
-* Coloreado de `less`  basado en Pygments
+* Coloreado de `less` basado en Pygments
 * Sakura como emulador de terminal
 * [tmux](https://tmux.github.io) como multiplexor de terminales
 * [Vim](http://www.vim.org) (y muchos plugins) como editor de consola
