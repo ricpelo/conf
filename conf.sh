@@ -203,9 +203,11 @@ backup_and_link()
     fi
     if [ -n "$2" ]
     then
-        ln -sf $PWD/config/$2 ~/$1
+        RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
+        ln -srf $RP -t $HOME/$2 $1
     else
-        ln -sf $PWD/config/$1 ~/$1
+        RP=$(realpath -s --relative-to=$HOME $PWD/config/$1)
+        ln -sfv $RP $HOME/$1
     fi
 }
 
@@ -218,8 +220,8 @@ backup_and_link .dircolors
 backup_and_link .less
 backup_and_link .lessfilter
 [ -d ~/.config ] || mkdir ~/.config
-backup_and_link .config/sakura sakura
-backup_and_link .config/dunst dunst
+backup_and_link sakura .config
+backup_and_link dunst .config
 backup_and_link .i3
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
@@ -229,7 +231,8 @@ local_bin()
     if [ ! -f ~/.local/bin/$1 ]
     then
         echo "Instalando $1..."
-        ln -sf $PWD/bin/$1 ~/.local/bin/$1
+        RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
+        ln -sf $RP/$1 ~/.local/bin/$1
     else
         echo "$1 ya instalado."
     fi
