@@ -1,5 +1,12 @@
 #!/bin/sh
 
+DIR=$(dirname $(readlink -f "$0"))
+if [ "$DIR" != "$PWD" ]
+then
+    echo "Error: debe ejecutar el script desde el directorio $DIR."
+    exit 1
+fi
+
 PLIST="vim-nox-py2 zsh curl wget python-pip git build-essential python-pygments
 sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
 fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
