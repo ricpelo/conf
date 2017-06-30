@@ -96,3 +96,10 @@ local_bin proyecto.sh
 
 eval fn_vim
 
+echo -n "¿Ejecutar los scripts adicionales? (s/N): "
+read SN
+if [ "$SN" = "S" ] || [ "$SN" = "s" ]
+then
+    . scripts/scripts.sh
+fi
+
