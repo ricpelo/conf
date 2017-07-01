@@ -121,15 +121,15 @@ paquete_local()
 
 backup_and_link()
 {
-    if [ -d ~/$1 ]
+    if [ -d $HOME/$2/$1 ]
     then
-        [ -d ~/$1.viejo ] && rm -rf ~/$1.viejo
-        mv -f ~/$1 ~/$1.viejo
+        [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
+        mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
     fi
     if [ -n "$2" ]
     then
         local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-        ln -srf $RP -t $HOME/$2 $1
+        ln -sf $RP $HOME/$2/$1
     else
         local RP=$(realpath -s --relative-to=$HOME $PWD/config/$1)
         ln -sf $RP $HOME/$1
