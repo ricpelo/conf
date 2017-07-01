@@ -126,14 +126,8 @@ backup_and_link()
         [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
         mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
     fi
-    if [ -n "$2" ]
-    then
-        local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-        ln -sf $RP $HOME/$2/$1
-    else
-        local RP=$(realpath -s --relative-to=$HOME $PWD/config/$1)
-        ln -sf $RP $HOME/$1
-    fi
+    local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
+    ln -sf $RP $HOME/$2/$1
 }
 
 local_bin()
