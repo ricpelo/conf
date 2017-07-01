@@ -11,7 +11,7 @@ do
     read SN
     if [ "$SN" = "S" ] || [ "$SN" = "s" ]
     then
-        . $BASE_DIR/$p
+        $BASE_DIR/$p
         echo ""
     fi
 done
