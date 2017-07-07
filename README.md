@@ -106,6 +106,6 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
 
 * `apt/dagon.apt-clone.tar.gz`: archivo de backup creado con
   [apt-clone](https://github.com/mvo5/apt-clone)
-* `apt/dpkg--get-selections.txt`: archivo de backup creado con `dpkg
+* `apt/dpkg--get-selections.txt.gz`: archivo de backup creado con `dpkg
   --get-selections`
 
