@@ -26,6 +26,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'xolox/vim-easytags'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tomasr/molokai'
+Plugin 'vimoutliner/vimoutliner'
 call vundle#end()
 filetype plugin indent on
 syntax on
