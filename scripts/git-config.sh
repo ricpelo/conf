@@ -22,6 +22,7 @@ if [ -n "$TOKEN" ]
 then
     echo -n "Nombre de usuario en GitHub (NO el email): "
     read NOMBRE
+    [ -f ~/.netrc ] || touch ~/.netrc
     netrc "github.com"
     netrc "api.github.com"
 fi
