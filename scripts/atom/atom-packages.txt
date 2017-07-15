@@ -8,11 +8,11 @@ highlight-line
 hyperclick
 intentions
 jumpy
+language-pgsql
 linter
 linter-php
 linter-phpcs
 linter-ui-default
-lipsum
 merge-conflicts
 minimap
 minimap-autohide
@@ -21,11 +21,8 @@ php-debug
 php-integrator-annotations
 php-integrator-autocomplete-plus
 php-integrator-base
-php-integrator-call-tips
-php-integrator-linter
 php-integrator-navigation
 php-integrator-refactoring
-php-integrator-tooltips
 project-manager
 susave
 symbol-gen
