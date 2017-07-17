@@ -13,6 +13,7 @@ linter-phpcs
 linter-ui-default
 minimap
 minimap-autohider
+multi-cursor
 php-cs-fixer
 php-debug
 php-integrator-annotations
@@ -21,9 +22,10 @@ php-integrator-base
 php-integrator-navigation
 php-integrator-refactoring
 project-manager
+simple-align
 susave
 symbol-gen
-symbols-tree-view
+symbols-list
 tabs-to-spaces
 zentabs
 

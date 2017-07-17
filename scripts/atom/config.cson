@@ -15,10 +15,9 @@
       "language-perl"
       "metrics"
       "linter-php"
-      "symbols-tree-view"
     ]
     packagesWithKeymapsDisabled: [
-      "git-plus"
+      "multi-cursor"
     ]
     telemetryConsent: "no"
     themes: [
@@ -52,15 +51,15 @@
       "**/views/**"
       "**/tests/**"
     ]
+  "linter-ui-default":
+    panelHeight: 166
   "markdown-preview":
     useGitHubStyle: true
-  "markdown-preview-plus":
-    enablePandoc: true
   minimap:
     absoluteMode: true
     plugins:
-      "minimap-autohide": true
-      "minimap-autohideDecorationsZIndex": 0
+      "minimap-autohider": true
+      "minimap-autohiderDecorationsZIndex": 0
   "one-dark-ui":
     fontSize: 14
   "one-light-ui":
@@ -73,6 +72,7 @@
     AutoExpandLocals: true
     currentPanelMode: "bottom"
   "php-integrator-autocomplete-plus": {}
+  "php-integrator-base:confirmed-upgrade-message": true
   "php-integrator-navigation":
     navigationRequireAltKey: false
     navigationRequireMetaKey: true
@@ -83,10 +83,8 @@
     leftEditorColor: "red"
     rightEditorColor: "green"
     syncHorizontalScroll: true
-  "symbols-tree-view":
-    autoHide: true
-    autoToggle: true
-    zAutoHideTypes: "variable namespace"
+  "symbols-list":
+    hideOnEmptyList: true
   welcome:
     showOnStartup: false
   zentabs:

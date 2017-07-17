@@ -18,13 +18,9 @@ then
 else
     echo "Todos los paquetes de Atom ya instalados."
 fi
-p="php-integrator-symbol-viewer"
-if [ ! -d ~/.atom/packages/$p ]
-then
-    apm install ricpelo/$p
-fi
-echo "Copiando archivo config.cson en ~/.atom..."
+echo "Copiando archivos de configuración en ~/.atom..."
 cp -f $SCR_DIR/atom/config.cson ~/.atom
+cp -f $SCR_DIR/atom/keymap.cson ~/.atom
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"
