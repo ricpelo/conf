@@ -12,12 +12,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'ricpelo/solarized', {'rtp': 'vim-colors-solarized/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
-Plugin 'ricpelo/vim-gdscript'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
-Plugin 'ricpelo/vim-renpy'
 Plugin 'sirver/ultisnips'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -27,6 +24,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tomasr/molokai'
 Plugin 'vimoutliner/vimoutliner'
+" Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 syntax on
@@ -91,9 +89,9 @@ set smarttab
 
 " Desactivo estas opciones por cuestiones de eficiencia:
 " set relativenumber
+" set cursorline
 
 set number
-set cursorline
 set scrolloff=3
 
 " <Esc> pasa a modo Normal inmediatamente:
