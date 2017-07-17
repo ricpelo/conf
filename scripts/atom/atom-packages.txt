@@ -2,8 +2,6 @@ autoclose-html
 busy-signal
 docblockr
 file-icons
-git-plus
-git-time-machine
 highlight-line
 hyperclick
 intentions
@@ -13,9 +11,8 @@ linter
 linter-php
 linter-phpcs
 linter-ui-default
-merge-conflicts
 minimap
-minimap-autohide
+minimap-autohider
 php-cs-fixer
 php-debug
 php-integrator-annotations
