@@ -27,7 +27,7 @@ hide_edge_borders vertical
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec ~/.i3/i3-shell.sh
 
 # kill focused window
 bindsym $mod+q kill
