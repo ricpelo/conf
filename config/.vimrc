@@ -24,6 +24,8 @@ Plugin 'xolox/vim-easytags'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tomasr/molokai'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'lifepillar/pgsql.vim'
+Plugin 'ivalkeen/vim-simpledb'
 " Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
@@ -202,4 +204,6 @@ nmap <F8> :TagbarToggle<CR>
 
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
+
+let g:sql_type_default = 'pgsql'
 
