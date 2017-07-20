@@ -2,7 +2,6 @@ autoclose-html
 busy-signal
 docblockr
 file-icons
-highlight-line
 hyperclick
 intentions
 jumpy
