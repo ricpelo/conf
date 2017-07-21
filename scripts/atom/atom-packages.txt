@@ -26,5 +26,6 @@ susave
 symbol-gen
 symbols-list
 tabs-to-spaces
+toggle-quotes
 zentabs
 
