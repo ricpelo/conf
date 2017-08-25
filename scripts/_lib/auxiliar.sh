@@ -33,7 +33,7 @@ token_github()
     then
         composer config -g github-oauth.github.com $1
     else
-        echo $(composer config -g github-oauth.github.com 2>&1)
+        echo $(composer config -g github-oauth.github.com 2>/dev/null)
     fi
 }
 
