@@ -69,6 +69,7 @@ else
     echo "El sitio virtual $1.local ya existe en Apache2."
 fi
 echo "Creando nuevo commit..."
+git checkout -- README.md
 git add .
 git commit -m "Cambios de la plantilla del proyecto"
 
