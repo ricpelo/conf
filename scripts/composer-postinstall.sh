@@ -1,24 +1,41 @@
 #!/bin/sh
 
-. $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
+BASE_DIR=$(dirname $(readlink -f "$0"))
+. $BASE_DIR/_lib/auxiliar.sh
 
-if [ -z "$(token_github)" ]
-then
-    DESC="Composer and Gist on $(hostname) $(date +%Y-%m-%d\ %H%M)"
-    DESC=$(echo $DESC | tr " " "+")
-    xdg-open "https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC"
-    echo "Vete a https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC para crear un token, pulsa en 'Generate token', cópialo y pégalo aquí."
-    echo -n "Token: "
-    read TOKEN
-    echo "Creando token de GitHub para Composer..."
-    token_github $TOKEN
-else
-    echo "Token de GitHub ya creado."
-fi
+while true
+do
+    if [ -z "$(token_composer)" ]
+    then
+        TOKEN=$(github token)
+        if [ -n "$TOKEN" ]
+        then
+            echo "Creando token de GitHub para Composer..."
+            token_composer $TOKEN
+            break
+        else
+            echo "El token para GitHub no está definido aún."
+            echo "Ejecuta el script git-config.sh antes de continuar."
+            echo -n "¿Quieres hacerlo ahora? (s/N): "
+            read SN
+            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            then
+                $BASE_DIR/git-config.sh
+            else
+                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script git-config.sh"
+                exit 1
+            fi
+        fi
+    else
+        echo "Token de GitHub para Composer ya creado."
+        break
+    fi
+done
+
 if [ ! -d /opt/composer ]
 then
-    echo "Creando enlace simbólico de /opt/composer a $COMPOSER_DIR..."
     COMPOSER_DIR=$(composer config -g home)
+    echo "Creando enlace simbólico de /opt/composer a $COMPOSER_DIR..."
     sudo ln -sf $COMPOSER_DIR /opt/composer
 else
     echo "Enlace simbólico /opt/composer ya creado."

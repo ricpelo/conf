@@ -27,7 +27,18 @@ desactiva_sudo()
     fi
 }
 
-token_github()
+github()
+{
+    if [ -n "$2" ]
+    then
+        git config --global github.$1 $2
+    else
+        echo $(git config --global github.$1)
+    fi
+
+}
+
+token_composer()
 {
     if [ -n "$1" ]
     then

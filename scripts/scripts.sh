@@ -2,8 +2,8 @@
 
 BASE_DIR=$(dirname $(readlink -f "$0"))
 
-SLIST="php-install.sh postgresql-install.sh composer-install.sh
-composer-postinstall.sh git-config.sh atom-postinstall.sh"
+SLIST="git-config.sh php-install.sh postgresql-install.sh composer-install.sh
+composer-postinstall.sh atom-postinstall.sh"
 
 for p in $SLIST
 do

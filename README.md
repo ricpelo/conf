@@ -25,11 +25,11 @@ Reiniciar y elegir *i3* como entorno de trabajo en la pantalla de inicio.
 En este orden:
 
 1. `cd scripts`
-2. `./php-install.sh`
-3. `./postgresql-install.sh`
-4. `./composer-install.sh`
-5. `./composer-postinstall.sh`
-6. `./git-config.sh`
+2. `./git-config.sh`
+3. `./php-install.sh`
+4. `./postgresql-install.sh`
+5. `./composer-install.sh`
+6. `./composer-postinstall.sh`
 7. `./atom-postinstall.sh`
 
 ## Objetivos
