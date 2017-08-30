@@ -1,10 +1,10 @@
 #!/bin/sh
 
-SCR_DIR=$(dirname $(readlink -f "$0"))
-. $SCR_DIR/_lib/auxiliar.sh
+BASE_DIR=$(dirname $(readlink -f "$0"))
+. $BASE_DIR/_lib/auxiliar.sh
 
 P=""
-for p in $(cat $SCR_DIR/atom/atom-packages.txt)
+for p in $(cat $BASE_DIR/atom/atom-packages.txt)
 do
     if [ ! -d ~/.atom/packages/$p ]
     then
@@ -19,8 +19,8 @@ else
     echo "Todos los paquetes de Atom ya instalados."
 fi
 echo "Copiando archivos de configuración en ~/.atom..."
-cp -f $SCR_DIR/atom/config.cson ~/.atom
-cp -f $SCR_DIR/atom/keymap.cson ~/.atom
+cp -f $BASE_DIR/atom/config.cson ~/.atom
+cp -f $BASE_DIR/atom/keymap.cson ~/.atom
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"
