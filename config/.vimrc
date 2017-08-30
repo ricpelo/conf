@@ -21,7 +21,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 Plugin 'xolox/vim-easytags'
-Plugin 'Yggdroot/indentLine'
 Plugin 'tomasr/molokai'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'lifepillar/pgsql.vim'
@@ -201,9 +200,6 @@ let g:UltiSnipsListSnippets = "<c-l>"
 
 " Open TagBar
 nmap <F8> :TagbarToggle<CR>
-
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
 
 let g:sql_type_default = 'pgsql'
 
