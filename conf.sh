@@ -22,7 +22,7 @@ P=""
 
 for p in $PLIST
 do
-    if ! dpkg -s $p > /dev/null 2>&1
+    if no_instalado $p
     then
         P="$P $p"
     fi

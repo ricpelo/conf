@@ -1,3 +1,22 @@
+no_instalado()
+{
+    local RET=1
+    if ! dpkg -s $1 > /dev/null 2>&1
+    then
+        RET=0
+    fi
+    return $RET
+}
+
+asegura_s_p_c()
+{
+    local P="software-properties-common"
+    if no_instalado $P
+    then
+        sudo apt $P
+    fi
+}
+
 prefn_i3()
 {
     if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
@@ -17,6 +36,7 @@ prefn_fluxgui()
     if [ ! -f /etc/apt/sources.list.d/nathan-renniewaldock-ubuntu-flux-$(lsb_release -sc).list ]
     then
         echo "Activando el repositorio de xflux..."
+        asegura_s_p_c
         sudo add-apt-repository --yes ppa:nathan-renniewaldock/flux
         sudo apt update
     else
@@ -29,6 +49,7 @@ prefn_atom()
     if [ ! -f /etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list ]
     then
         echo "Activando el repositorio de Atom..."
+        asegura_s_p_c
         sudo add-apt-repository --yes ppa:webupd8team/atom
         sudo apt update
     else
@@ -82,41 +103,6 @@ fn_vim()
     echo "Post-instalación de plugins de Vim mediante Vundle..."
     vim +PluginInstall +qall
 #    echo "** No olvides ejecutar YouCompleteMe.sh **"
-}
-
-nombre_paquete()
-{
-    echo -n "$1"
-    [ -n "$2" ] && echo -n " versión $2 ó superior"
-}
-
-paquete_local()
-{
-    local COND=""
-
-    if [ -n "$2" ]
-    then
-        ! dpkg -s $1 > /dev/null 2>&1 || ( ! dpkg -s $1 2> /dev/null | grep -qs "^Version: $2" ) && COND="1"
-    else
-        ! dpkg -s $1 > /dev/null 2>&1 && COND="1"
-    fi
-
-    if [ -n "$COND" ]
-    then
-        echo -n "Instalando paquete "
-        nombre_paquete $1 $2
-        echo "..."
-        if uname -i | grep -qs x86_64
-        then
-            sudo dpkg -i $1_*_amd64.deb
-        else
-            sudo dpkg -i $1_*_i386.deb
-        fi
-        sudo apt -fy install
-    else
-        nombre_paquete $1 $2
-        echo " ya instalado."
-    fi
 }
 
 backup_and_link()
