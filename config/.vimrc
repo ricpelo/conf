@@ -25,7 +25,7 @@ Plugin 'tomasr/molokai'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'ivalkeen/vim-simpledb'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'von-forks/vim-bracketed-paste'
 call vundle#end()
 filetype plugin indent on
 syntax on
