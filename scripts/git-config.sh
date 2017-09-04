@@ -71,7 +71,7 @@ then
     DESC="Token de GitHub en $(hostname) $(date +%Y-%m-%d\ %H%M)"
     DESC=$(echo $DESC | tr " " "+")
     URL="https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC"
-    xdg-open $URL
+    xdg-open $URL >/dev/null 2>&1
     echo "Vete a $URL para crear un token, pulsa en 'Generate token', cópialo y pégalo aquí."
     echo -n "Token: "
     read TOKEN
