@@ -81,8 +81,10 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 set wrap
-set wrapmargin=2
-set textwidth=80
+set linebreak
+set nolist
+set wrapmargin=0
+set textwidth=0
 set colorcolumn=80
 set autoindent
 set smarttab
