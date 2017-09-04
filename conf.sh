@@ -78,6 +78,7 @@ done
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link sakura .config
 backup_and_link dunst .config
+backup_and_link powerline .config
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 
