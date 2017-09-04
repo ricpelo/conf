@@ -27,6 +27,18 @@ desactiva_sudo()
     fi
 }
 
+
+git_user()
+{
+    if [ -n "$2" ]
+    then
+        git config --global user.$1 $2
+    else
+        echo $(git config --global user.$1)
+    fi
+
+}
+
 github()
 {
     if [ -n "$2" ]

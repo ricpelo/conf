@@ -17,6 +17,40 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git config --global push.default simple
 # git config --global pull.rebase true
 
+USER_NAME=$(git_user name)
+if [ -z "$USER_NAME" ]
+then
+    echo -n "Nombre completo del programador: "
+    read USER_NAME
+    if [ -n "$USER_NAME" ]
+    then
+        echo "Creando configuración user.name..."
+        git_user name $USER_NAME
+    fi
+else
+    echo "Configuración user.name ya creada."
+fi
+
+USER_EMAIL=$(git_user email)
+if [ -z "$USER_EMAIL" ]
+then
+    echo -n "Dirección de email: "
+    read USER_EMAIL
+    if [ -n "$USER_EMAIL" ]
+    then
+        echo "Creando configuración user.email..."
+        git_user email $USER_EMAIL
+    fi
+else
+    echo "Configuración user.email ya creada."
+fi
+
+if [ -z "$USER_NAME" ] || [ -z "$USER_EMAIL" ]
+then
+    echo "Configura el nombre y la dirección de email antes de continuar."
+    exit 1
+fi
+
 USUARIO=$(github user)
 if [ -z "$USUARIO" ]
 then
