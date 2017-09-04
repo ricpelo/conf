@@ -27,7 +27,6 @@ desactiva_sudo()
     fi
 }
 
-
 git_user()
 {
     if [ -n "$2" ]
