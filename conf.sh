@@ -60,20 +60,11 @@ mkdir -p $FONTS_DIR
 cp -f fonts/InputMono/*.ttf $FONTS_DIR
 fc-cache -f $FONTS_DIR
 
-for f in $FONTS_DIR/*Powerline*
-do
-    if [ ! -e "$f" ]
-    then
-        echo "Instalando tipografías Powerline..."
-        ACTUAL=$PWD
-        cd fonts/powerline-fonts
-        ./install.sh
-        cd $ACTUAL
-    else
-        echo "Tipografías Powerline ya instaladas."
-    fi
-    break
-done
+echo "Instalando tipografías Powerline..."
+ACTUAL=$PWD
+cd fonts/powerline-fonts
+./install.sh
+cd $ACTUAL
 
 echo "Creando enlaces..."
 
