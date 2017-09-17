@@ -54,10 +54,13 @@ done
 
 FONTS_DIR=~/.local/share/fonts
 
-echo "Instalando tipografía Input Mono..."
-
+FLIST="InputMono FiraCode mononoki"
 mkdir -p $FONTS_DIR
-cp -f fonts/InputMono/*.ttf $FONTS_DIR
+for f in $FLIST
+do
+    echo "Instalando tipografía $f..."
+    cp -f fonts/$f/* $FONTS_DIR
+done
 fc-cache -f $FONTS_DIR
 
 echo "Instalando tipografías Powerline..."
