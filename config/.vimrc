@@ -106,7 +106,7 @@ autocmd FileType python setl softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 autocmd BufNewFile,BufRead *.json setf javascript
 
 " Some file types use real tabs
-autocmd FileType {make,gitconfig} set noexpandtab
+autocmd FileType {make,gitconfig,apache} set noexpandtab
 
 " clear the search buffer when hitting return
 nnoremap <CR> :nohlsearch<cr>
