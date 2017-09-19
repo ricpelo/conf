@@ -109,5 +109,6 @@ alias cd..="cd .."
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
+alias git="LANG=C git"
 alias glg="git lg"
 
