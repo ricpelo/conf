@@ -81,14 +81,17 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
 
 ## Scripts adicionales
 
-* `git-config.sh`: configura varios aspectos básicos de Git
-* `atom/atom-postinstall.sh`: configura Atom con paquetes para PHP
-* `composer/composer-install.sh`: instala [Composer](https://getcomposer.org)
-* `composer/composer-postinstall.sh`: crea un token de GitHub para Composer e
-  instala algunos paquetes globales, creando el enlace simbólico `/opt/composer`
-* `rbenv/rbenv-install.sh`: primer paso para instalar Ruby con
+* `git-config.sh`: configura varios aspectos básicos de Git y crea un token
+   para GitHub
+* `php-install.sh`: instala PHP 7.1 y extensiones interesantes
+* `postgresql-install.sh`: instala PostgreSQL 9.6
+* `atom-postinstall.sh`: configura Atom con paquetes para PHP
+* `composer-install.sh`: instala [Composer](https://getcomposer.org)
+* `composer-postinstall.sh`: aplica el token de GitHub en Composer e instala
+  algunos paquetes globales, creando el enlace simbólico `/opt/composer`
+* `rbenv-install.sh`: primer paso para instalar Ruby con
   [rbenv](http://rbenv.org)
-* `rbenv/rbenv-postinstall.sh`: segundo (y último) paso para instalar Ruby con
+* `rbenv-postinstall.sh`: segundo (y último) paso para instalar Ruby con
   rbenv
 * `YouCompleteMe.sh`: instala el plugin
   [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) de Vim
