@@ -55,6 +55,8 @@ set nocompatible                " choose no compatibility with legacy vi
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 
+set foldlevelstart=20           " se empieza con todos los pliegues desplegados
+
 " Whitespace
 set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
