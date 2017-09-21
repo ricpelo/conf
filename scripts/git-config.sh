@@ -18,31 +18,45 @@ git config --global push.default simple
 # git config --global pull.rebase true
 
 USER_NAME=$(git_user name)
-if [ -z "$USER_NAME" ]
+if [ -n "$USER_NAME" ]
+then
+    echo -n "Configuración user.name ya creada. ¿Quieres cambiarla? (S/n): "
+    read SN
+    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
+    then
+        SN="S"
+    fi
+fi
+if [ -z "$USER_NAME" ] || [ "$SN" = "S" ]
 then
     echo -n "Nombre completo del programador: "
     read USER_NAME
     if [ -n "$USER_NAME" ]
     then
         echo "Creando configuración user.name..."
-        git_user name $USER_NAME
+        git_user name "$USER_NAME"
     fi
-else
-    echo "Configuración user.name ya creada."
 fi
 
 USER_EMAIL=$(git_user email)
-if [ -z "$USER_EMAIL" ]
+if [ -n "$USER_EMAIL" ]
+then
+    echo -n "Configuración user.email ya creada. ¿Quieres cambiarla? (S/n): "
+    read SN
+    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
+    then
+        SN="S"
+    fi
+fi
+if [ -z "$USER_EMAIL" ] || [ "$SN" = "S" ]
 then
     echo -n "Dirección de email: "
     read USER_EMAIL
     if [ -n "$USER_EMAIL" ]
     then
         echo "Creando configuración user.email..."
-        git_user email $USER_EMAIL
+        git_user email "$USER_EMAIL"
     fi
-else
-    echo "Configuración user.email ya creada."
 fi
 
 if [ -z "$USER_NAME" ] || [ -z "$USER_EMAIL" ]
@@ -52,21 +66,37 @@ then
 fi
 
 USUARIO=$(github user)
-if [ -z "$USUARIO" ]
+if [ -n "$USUARIO" ]
+then
+    echo -n "Configuración github.user ya creada. ¿Quieres cambiarla? (S/n): "
+    read SN
+    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
+    then
+        SN="S"
+    fi
+fi
+if [ -z "$USUARIO" ] || [ "$SN" = "S" ]
 then
     echo -n "Nombre de usuario en GitHub (NO el email): "
     read USUARIO
     if [ -n "$USUARIO" ]
     then
         echo "Creando configuración github.user..."
-        github user $USUARIO
+        github user "$USUARIO"
     fi
-else
-    echo "Configuración github.user ya creada."
 fi
 
 TOKEN=$(github token)
-if [ -z "$TOKEN"  ]
+if [ -n "$TOKEN" ]
+then
+    echo -n "Token de GitHub ya creado. ¿Quieres cambiarlo? (S/n): "
+    read SN
+    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
+    then
+        SN="S"
+    fi
+fi
+if [ -z "$TOKEN" ] || [ "$SN" = "S" ]
 then
     DESC="Token de GitHub en $(hostname) $(date +%Y-%m-%d\ %H%M)"
     DESC=$(echo $DESC | tr " " "+")
@@ -78,10 +108,8 @@ then
     if [ -n "$TOKEN" ]
     then
         echo "Creando token de GitHub..."
-        github token $TOKEN
+        github token "$TOKEN"
     fi
-else
-    echo "Token de GitHub ya creado."
 fi
 
 if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]
