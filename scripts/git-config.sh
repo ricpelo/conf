@@ -20,12 +20,9 @@ git config --global push.default simple
 USER_NAME=$(git_user name)
 if [ -n "$USER_NAME" ]
 then
-    echo -n "Configuración user.name ya creada. ¿Quieres cambiarla? (S/n): "
+    echo -n "Configuración user.name ya creada. ¿Quieres cambiarla? (s/N): "
     read SN
-    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
-    then
-        SN="S"
-    fi
+    [ "$SN" = "s" ] && SN="S"
 fi
 if [ -z "$USER_NAME" ] || [ "$SN" = "S" ]
 then
@@ -41,12 +38,9 @@ fi
 USER_EMAIL=$(git_user email)
 if [ -n "$USER_EMAIL" ]
 then
-    echo -n "Configuración user.email ya creada. ¿Quieres cambiarla? (S/n): "
+    echo -n "Configuración user.email ya creada. ¿Quieres cambiarla? (s/N): "
     read SN
-    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
-    then
-        SN="S"
-    fi
+    [ "$SN" = "s" ] && SN="S"
 fi
 if [ -z "$USER_EMAIL" ] || [ "$SN" = "S" ]
 then
@@ -68,12 +62,9 @@ fi
 USUARIO=$(github user)
 if [ -n "$USUARIO" ]
 then
-    echo -n "Configuración github.user ya creada. ¿Quieres cambiarla? (S/n): "
+    echo -n "Configuración github.user ya creada. ¿Quieres cambiarla? (s/N): "
     read SN
-    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
-    then
-        SN="S"
-    fi
+    [ "$SN" = "s" ] && SN="S"
 fi
 if [ -z "$USUARIO" ] || [ "$SN" = "S" ]
 then
@@ -89,12 +80,9 @@ fi
 TOKEN=$(github token)
 if [ -n "$TOKEN" ]
 then
-    echo -n "Token de GitHub ya creado. ¿Quieres cambiarlo? (S/n): "
+    echo -n "Token de GitHub ya creado. ¿Quieres cambiarlo? (s/N): "
     read SN
-    if [ "$SN" != "n" ] && [ "$SN" != "N" ]
-    then
-        SN="S"
-    fi
+    [ "$SN" = "s" ] && SN="S"
 fi
 if [ -z "$TOKEN" ] || [ "$SN" = "S" ]
 then
