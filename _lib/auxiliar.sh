@@ -63,6 +63,7 @@ fn_zsh()
     then
         echo "Instalando Oh My ZSH..."
         curl -L http://install.ohmyz.sh | sh
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     else
         echo "Oh My ZSH ya instalado."
     fi
