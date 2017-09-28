@@ -86,6 +86,7 @@ backup_and_link powerline .config
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 
 local_bin unclutter
+local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
 

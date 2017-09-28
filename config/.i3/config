@@ -204,7 +204,7 @@ exec --no-startup-id nitrogen --restore
 # exec --no-startup-id pasystray
 # exec --no-startup-id pcmanfm -d
 exec --no-startup-id xflux -l 36.7756 -g -6.3616 -k 4200
-exec --no-startup-id ~/.local/bin/unclutter --timeout 1 --fork
+exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
 # exec --no-startup-id dropbox start
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
