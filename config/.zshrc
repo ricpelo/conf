@@ -119,9 +119,15 @@ bindkey '^K' history-substring-search-up
 bindkey '^J' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey "^[[5~" history-substring-search-up
+bindkey "^[[6~" history-substring-search-down
 
 zle -N dirhistory_zle_dirhistory_back
 zle -N dirhistory_zle_dirhistory_future
 bindkey "^H" dirhistory_zle_dirhistory_back
 bindkey "^L" dirhistory_zle_dirhistory_future
+
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[3~" delete-char
 
