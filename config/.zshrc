@@ -52,7 +52,7 @@ export TERM=screen-256color
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux command-not-found composer history-substring-search zsh-syntax-highlighting dirhistory z)
+plugins=(git tmux command-not-found composer history-substring-search zsh-syntax-highlighting z)
 
 # User configuration
 
@@ -123,11 +123,6 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey "^[[5~" history-substring-search-up
 bindkey "^[[6~" history-substring-search-down
-
-zle -N dirhistory_zle_dirhistory_back
-zle -N dirhistory_zle_dirhistory_future
-bindkey "^H" dirhistory_zle_dirhistory_back
-bindkey "^L" dirhistory_zle_dirhistory_future
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
