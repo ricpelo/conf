@@ -76,7 +76,10 @@
   "php-integrator-navigation":
     navigationRequireAltKey: false
     navigationRequireMetaKey: true
-  "php-integrator-symbol-viewer": {}
+  "spell-check":
+    locales: [
+      "es_ES.UTF-8"
+    ]
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
