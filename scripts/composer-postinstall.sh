@@ -32,6 +32,8 @@ do
     fi
 done
 
+desactiva_xdebug
+
 echo "Instalando paquetes globales interesantes para proyectos..."
 composer global require --prefer-dist "fxp/composer-asset-plugin:^1.4.2" "squizlabs/php_codesniffer:^2.0" friendsofphp/php-cs-fixer yiisoft/yii2-coding-standards
 composer global exec -- phpcs --config-set default_standard /opt/composer/vendor/yiisoft/yii2-coding-standards/Yii2

@@ -59,3 +59,12 @@ token_composer()
     fi
 }
 
+desactiva_xdebug()
+{
+    if phpquery -q -v 7.1 -s cli -m xdebug
+    then
+        echo "Desactivando módulo xdebug de PHP para el SAPI cli..."
+        sudo phpdismod -s cli xdebug
+    fi
+}
+
