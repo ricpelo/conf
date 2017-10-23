@@ -1,5 +1,7 @@
 #!/bin/sh
 
+VER=9.6
+
 if [ ! -f /etc/apt/sources.list.d/pgdg.list ]
 then
     echo "Activando el repositorio de PostgreSQL..."
@@ -14,7 +16,12 @@ else
 fi
 
 echo "Instalando paquetes de PostgreSQL..."
-P="postgresql-9.6 postgresql-client-9.6 postgresql-contrib-9.6"
+P="postgresql-$VER postgresql-client-$VER postgresql-contrib-$VER"
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
+
+echo "Estableciendo intervalstyle = 'iso_8601'..."
+sudo sed -r -i "s/^#?intervalstyle\s*=/intervalstyle = 'iso_8601' #/" /etc/postgresql/$VER/main/postgresql.conf
+echo "Estableciendo timezone = 'UTC'..."
+sudo sed -r -i "s/^#?timezone\s*=/timezone = 'UTC' #/" /etc/postgresql/$VER/main/postgresql.conf
 
