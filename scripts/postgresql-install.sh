@@ -20,8 +20,19 @@ P="postgresql-$VER postgresql-client-$VER postgresql-contrib-$VER"
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 
-echo "Estableciendo intervalstyle = 'iso_8601'..."
-sudo sed -r -i "s/^#?intervalstyle\s*=/intervalstyle = 'iso_8601' #/" /etc/postgresql/$VER/main/postgresql.conf
-echo "Estableciendo timezone = 'UTC'..."
-sudo sed -r -i "s/^#?timezone\s*=/timezone = 'UTC' #/" /etc/postgresql/$VER/main/postgresql.conf
+CONF="/etc/postgresql/$VER/main/postgresql.conf"
+if ! grep -qs "^intervalstyle = 'iso_8601'" $CONF
+then
+    echo "Estableciendo intervalstyle = 'iso_8601'..."
+    sudo sed -r -i "s/^\s*#?intervalstyle\s*=/intervalstyle = 'iso_8601' #/" $CONF
+else
+    echo "Parámetro intervalstyle = 'iso_8601' ya establecido."
+fi
+if ! grep -qs "^timezone = 'UTC'" $CONF
+then
+    echo "Estableciendo timezone = 'UTC'..."
+    sudo sed -r -i "s/^\s*#?timezone\s*=/timezone = 'UTC' #/" $CONF
+else
+    echo "Parámetro timezone = 'UTC ya establecido.'"
+fi
 

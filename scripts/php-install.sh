@@ -26,9 +26,15 @@ activa_modulo_apache php$VER
 activa_modulo_apache rewrite
 desactiva_xdebug
 
-echo "Estableciendo date.timezone = 'UTC'..."
 for p in apache2 cli
 do
-    sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/date\.timezone = 'UTC'/" /etc/php/$VER/$p/php.ini
+    CONF="/etc/php/$VER/$p/php.ini"
+    if ! grep -qs "^date.timezone = 'UTC'$" $CONF
+    then
+        echo "Estableciendo date.timezone = 'UTC' en $CONF..."
+        sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/date\.timezone = 'UTC'/" $CONF
+    else
+        echo "Parámetro date.timezone = 'UTC' ya establecido en $CONF."
+    fi
 done
 
