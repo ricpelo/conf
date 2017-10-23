@@ -23,5 +23,12 @@ sudo install -p -o root -g root composer.phar /usr/local/bin/composer
 rm composer.phar
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/local/bin/composer"
+
+if dpkg -s composer > /dev/null 2>&1
+then
+    echo "Desinstalando paquete composer de Apt..."
+    sudo apt -y purge composer
+fi
+
 exit $RESULT
 
