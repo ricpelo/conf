@@ -2,6 +2,8 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
+VER=7.1
+
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]
 then
     echo "Activando el repositorio de PHP..."
@@ -12,15 +14,21 @@ else
 fi
 
 echo "Instalando paquetes ensenciales de PHP..."
-P="php7.1 apache2 libapache2-mod-php7.1 php7.1-cli"
+P="php$VER apache2 libapache2-mod-php$VER php$VER-cli"
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 echo "Instalando paquetes adicionales..."
-P="php7.1-pgsql php7.1-sqlite3 sqlite sqlite3 php7.1-intl php7.1-mbstring php7.1-gd php7.1-curl php7.1-xml php7.1-xdebug php7.1-json"
+P="php$VER-pgsql php$VER-sqlite3 sqlite sqlite3 php$VER-intl php$VER-mbstring php$VER-gd php$VER-curl php$VER-xml php$VER-xdebug php$VER-json"
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 
-activa_modulo_apache php7.1
+activa_modulo_apache php$VER
 activa_modulo_apache rewrite
 desactiva_xdebug
+
+echo "Estableciendo date.timezone = 'UTC'..."
+for p in apache2 cli
+do
+    sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/date\.timezone = 'UTC'/" /etc/php/$VER/$p/php.ini
+done
 
