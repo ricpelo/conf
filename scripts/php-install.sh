@@ -20,13 +20,7 @@ P="php7.1-pgsql php7.1-sqlite3 sqlite sqlite3 php7.1-intl php7.1-mbstring php7.1
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 
-if ! a2query -q -m php7.1
-then
-    echo "Activando módulo de PHP para Apache2..."
-    sudo a2enmod php7.1
-else
-    echo "Módulo de PHP para Apache2 ya activado."
-fi
-
+activa_modulo_apache php7.1
+activa_modulo_apache rewrite
 desactiva_xdebug
 

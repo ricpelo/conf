@@ -59,6 +59,17 @@ token_composer()
     fi
 }
 
+activa_modulo_apache()
+{
+    if ! a2query -q -m $1
+    then
+        echo "Activando módulo $1 de Apache2..."
+        sudo a2enmod $1
+    else
+        echo "Módulo $1 de Apache2 ya activado."
+    fi
+}
+
 desactiva_xdebug()
 {
     if phpquery -q -v 7.1 -s cli -m xdebug
