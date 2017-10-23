@@ -34,5 +34,5 @@ done
 
 echo "Instalando paquetes globales interesantes para proyectos..."
 composer global require --prefer-dist friendsofphp/php-cs-fixer "squizlabs/php_codesniffer:^2.0" yiisoft/yii2-coding-standards
-composer global exec phpcs --config-set default_standard /opt/composer/vendor/yiisoft/yii2-coding-standards/Yii2
+composer global exec -- phpcs --config-set default_standard /opt/composer/vendor/yiisoft/yii2-coding-standards/Yii2
 
