@@ -1,14 +1,19 @@
 #!/bin/sh
 
-if [ -z "$1" ]; then
-    echo "Sintaxis: $0 [-d] nombre"
+ayuda()
+{
+    echo "\nSintaxis: $(basename $0) [-d] <nombre>\n"
+    echo "    -d: elimina el proyecto en lugar de crearlo\n"
     exit 1
+}
+
+if [ -z "$1" ]; then
+    ayuda
 fi
 
 if [ "$1" = "-d" ]; then
     if [ -z "$2" ]; then
-        echo "Sintaxis: $0 [-d] nombre"
-        exit 1
+        ayuda
     else
         echo "Eliminando proyecto $2..."
         if [ -d $2 ]; then
