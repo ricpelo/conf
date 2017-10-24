@@ -36,3 +36,5 @@ else
     echo "Parámetro timezone = 'UTC ya establecido.'"
 fi
 
+sudo service postgresql restart
+
