@@ -29,26 +29,37 @@ desactiva_xdebug
 for p in apache2 cli
 do
     CONF="/etc/php/$VER/$p/php.ini"
-    if ! grep -qs "^date.timezone = 'UTC'$" $CONF
+    PARAM="error_reporting = E_ALL"
+    if ! grep -qs "^$PARAM$" $CONF
     then
-        echo "Estableciendo date.timezone = 'UTC' en $CONF..."
-        sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/date\.timezone = 'UTC'/" $CONF
+        echo "Estableciendo $PARAM en $CONF..."
+        sudo sed -r -i "s/^;?\s*error_reporting\s*=.*$/$PARAM/" $CONF
     else
-        echo "Parámetro date.timezone = 'UTC' ya establecido en $CONF."
+        echo "Parámetro $PARAM ya establecido en $CONF."
     fi
-    if ! grep -qs "^display_errors = On$" $CONF
+    PARAM="display_errors = On"
+    if ! grep -qs "^$PARAM$" $CONF
     then
-        echo "Estableciendo display_errors = On en $CONF..."
-        sudo sed -r -i "s/^;?\s*display_errors\s*=.*$/display_errors = On/" $CONF
+        echo "Estableciendo $PARAM en $CONF..."
+        sudo sed -r -i "s/^;?\s*display_errors\s*=.*$/$PARAM/" $CONF
     else
-        echo "Parámetro display_errors = On ya establecido en $CONF."
+        echo "Parámetro $PARAM ya establecido en $CONF."
     fi
-    if ! grep -qs "^display_startup_errors = On$" $CONF
+    PARAM="display_startup_errors = On"
+    if ! grep -qs "^$PARAM$" $CONF
     then
-        echo "Estableciendo display_startup_errors = On en $CONF..."
-        sudo sed -r -i "s/^;?\s*display_startup_errors\s*=.*$/display_startup_errors = On/" $CONF
+        echo "Estableciendo $PARAM en $CONF..."
+        sudo sed -r -i "s/^;?\s*display_startup_errors\s*=.*$/$PARAM/" $CONF
     else
-        echo "Parámetro display_startup_errors = On ya establecido en $CONF."
+        echo "Parámetro $PARAM ya establecido en $CONF."
+    fi
+    PARAM="date.timezone = 'UTC'"
+    if ! grep -qs "^$PARAM$" $CONF
+    then
+        echo "Estableciendo $PARAM en $CONF..."
+        sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/$PARAM/" $CONF
+    else
+        echo "Parámetro $PARAM ya establecido en $CONF."
     fi
 done
 
