@@ -29,38 +29,10 @@ desactiva_xdebug
 for p in apache2 cli
 do
     CONF="/etc/php/$VER/$p/php.ini"
-    PARAM="error_reporting = E_ALL"
-    if ! grep -qs "^$PARAM$" $CONF
-    then
-        echo "Estableciendo $PARAM en $CONF..."
-        sudo sed -r -i "s/^;?\s*error_reporting\s*=.*$/$PARAM/" $CONF
-    else
-        echo "Parámetro $PARAM ya establecido en $CONF."
-    fi
-    PARAM="display_errors = On"
-    if ! grep -qs "^$PARAM$" $CONF
-    then
-        echo "Estableciendo $PARAM en $CONF..."
-        sudo sed -r -i "s/^;?\s*display_errors\s*=.*$/$PARAM/" $CONF
-    else
-        echo "Parámetro $PARAM ya establecido en $CONF."
-    fi
-    PARAM="display_startup_errors = On"
-    if ! grep -qs "^$PARAM$" $CONF
-    then
-        echo "Estableciendo $PARAM en $CONF..."
-        sudo sed -r -i "s/^;?\s*display_startup_errors\s*=.*$/$PARAM/" $CONF
-    else
-        echo "Parámetro $PARAM ya establecido en $CONF."
-    fi
-    PARAM="date.timezone = 'UTC'"
-    if ! grep -qs "^$PARAM$" $CONF
-    then
-        echo "Estableciendo $PARAM en $CONF..."
-        sudo sed -r -i "s/^;?\s*date\.timezone\s*=.*$/$PARAM/" $CONF
-    else
-        echo "Parámetro $PARAM ya establecido en $CONF."
-    fi
+    asigna_param_php "error_reporting" "E_ALL" $CONF
+    asigna_param_php "display_errors" "On" $CONF
+    asigna_param_php "display_startup_errors" "On" $CONF
+    asigna_param_php "date.timezone" "'UTC'" $CONF "date\.timezone"
 done
 
 sudo service apache2 restart
