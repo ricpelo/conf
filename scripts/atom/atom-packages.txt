@@ -9,7 +9,6 @@ intentions
 jumpy
 language-pgsql
 linter
-linter-php
 linter-phpcs
 linter-ui-default
 minimap

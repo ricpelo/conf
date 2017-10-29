@@ -20,7 +20,6 @@
       "language-objective-c"
       "language-perl"
       "metrics"
-      "linter-php"
       "linter"
       "linter-ui-default"
     ]
