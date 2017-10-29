@@ -1,4 +1,10 @@
 "*":
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnType: false
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
+    use: {}
   "autoclose-html":
     legacyMode: true
   "autocomplete-plus":
@@ -15,6 +21,8 @@
       "language-perl"
       "metrics"
       "linter-php"
+      "linter"
+      "linter-ui-default"
     ]
     packagesWithKeymapsDisabled: [
       "multi-cursor"
@@ -51,8 +59,6 @@
       "**/views/**"
       "**/tests/**"
     ]
-  "linter-ui-default":
-    panelHeight: 166
   "markdown-preview":
     useGitHubStyle: true
   minimap:
@@ -88,6 +94,8 @@
     syncHorizontalScroll: true
   "symbols-list":
     hideOnEmptyList: true
+  "vim-mode-plus":
+    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
   welcome:
     showOnStartup: false
   zentabs:

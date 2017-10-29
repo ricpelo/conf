@@ -1,6 +1,8 @@
+atom-ide-ui
 autoclose-html
 busy-signal
 docblockr
+ex-mode
 file-icons
 hyperclick
 intentions
@@ -18,7 +20,6 @@ php-debug
 php-integrator-annotations
 php-integrator-autocomplete-plus
 php-integrator-base
-php-integrator-navigation
 php-integrator-refactoring
 project-manager
 simple-align
@@ -27,5 +28,6 @@ symbol-gen
 symbols-list
 tabs-to-spaces
 toggle-quotes
+vim-mode-plus
 zentabs
 
