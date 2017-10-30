@@ -3,6 +3,9 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 . $BASE_DIR/_lib/auxiliar.sh
 
+comprueba_php
+comprueba_composer
+
 while true
 do
     if [ -z "$(token_composer)" ]

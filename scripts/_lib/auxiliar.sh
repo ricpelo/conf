@@ -101,3 +101,62 @@ asigna_param_php()
     fi
 }
 
+comprueba_atom()
+{
+    if [ "$(which atom)" != "/usr/bin/atom" ]
+    then
+        echo "Atom no está instalado. Instálalo antes de continuar."
+        exit 1
+    else
+        echo "Atom ya instalado."
+    fi
+}
+
+comprueba_php()
+{
+    while true
+    do
+        if [ "$(which php)" != "/usr/bin/php" ]
+        then
+            echo "PHP no está instalado."
+            echo "Ejecuta el script php-install.sh antes de continuar."
+            echo -n "¿Quieres hacerlo ahora? (s/N): "
+            read SN
+            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            then
+                $BASE_DIR/php-install.sh
+            else
+                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script php-install.sh"
+                exit 1
+            fi
+        else
+            echo "PHP ya instalado."
+            break
+        fi
+    done
+}
+
+comprueba_composer()
+{
+    while true
+    do
+        if [ "$(which composer)" != "/usr/local/bin/composer" ]
+        then
+            echo "Composer no está instalado."
+            echo "Ejecuta el script composer-install.sh antes de continuar."
+            echo -n "¿Quieres hacerlo ahora? (s/N): "
+            read SN
+            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            then
+                $BASE_DIR/composer-install.sh
+            else
+                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script composer-install.sh"
+                exit 1
+            fi
+        else
+            echo "Composer ya instalado."
+            break
+        fi
+    done
+}
+

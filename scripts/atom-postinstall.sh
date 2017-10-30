@@ -3,6 +3,10 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 . $BASE_DIR/_lib/auxiliar.sh
 
+comprueba_atom
+comprueba_php
+comprueba_composer
+
 P=""
 for p in $(cat $BASE_DIR/atom/atom-packages.txt)
 do

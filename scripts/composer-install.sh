@@ -2,6 +2,8 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
+comprueba_php
+
 echo "Descargando y ejecutando instalador de composer..."
 
 EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
