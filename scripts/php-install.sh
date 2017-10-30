@@ -37,3 +37,9 @@ done
 
 sudo service apache2 restart
 
+echo "Instalando PsySH en /usr/local/bin/psysh..."
+wget -q https://git.io/psysh
+chmod a+x psysh
+sudo install -p -o root -g root psysh /usr/local/bin/psysh
+rm psysh
+
