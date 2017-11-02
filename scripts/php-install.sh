@@ -38,8 +38,10 @@ done
 sudo service apache2 restart
 
 echo "Instalando PsySH en /usr/local/bin/psysh..."
-wget -q https://git.io/psysh
-chmod a+x psysh
-sudo install -p -o root -g root psysh /usr/local/bin/psysh
-rm psysh
+DEST=/usr/local/bin/psysh
+sudo wget -q -O $DEST https://git.io/psysh
+sudo chmod a+x $DEST
+DEST=~/.local/share/psysh
+mkdir -p $DEST
+wget -q -O $DEST/php_manual.sqlite http://psysh.org/manual/es/php_manual.sqlite
 
