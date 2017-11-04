@@ -31,17 +31,17 @@ echo "Creando el proyecto desde la plantilla básica de Yii2..."
 composer create-project --no-install --no-scripts yiisoft/yii2-app-basic $1
 echo "Creando repositorio git..."
 cd $1
-git init
+git init -q
 git add .
-git commit -m "Carga incial"
+git commit -q -m "Carga incial"
 cd ..
 echo "Extrayendo el esqueleto modificado del proyecto..."
-curl -L https://github.com/ricpelo/pre/tarball/master | tar xvz --strip 1 -C $1
+curl -s -L https://github.com/ricpelo/pre/tarball/master | tar xz --strip 1 -C $1
 cd $1
 echo "Modificando configuración del proyecto..."
 for p in config/web.php config/console.php
 do
-    sed -r -zi "s%('log' => )\[.*\],(.*)'db'%\1require(__DIR__ . '/log.php'),\2'db'%" $p
+     sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => require(__DIR__ . '/log.php'),\1'%" $p
 done
 echo "\n\n.php_cs.cache" >> .gitignore
 echo "tests/chromedriver" >> .gitignore
@@ -50,9 +50,16 @@ sed -i s/proyecto/$1/g db/* config/* .travis.yml
 mv db/proyecto.sql db/$1.sql
 mv proyecto.conf $1.conf
 sed -i s/proyecto/$1/g $1.conf
-echo "Ejecutando composer install y run-script..."
-composer install
+echo "Ejecutando composer install..."
+composer install --no-scripts
+echo "Ejecutando composer run-script post-create-project-cmd..."
 composer run-script post-create-project-cmd
+echo "Eliminando espacios en blanco sobrantes de config/test.php..."
+sed -i 's/[[:blank:]]*$//' config/test.php
+echo "Creando nuevo commit..."
+git checkout -- README.md
+git add .
+git commit -q -m "Cambios de la plantilla del proyecto"
 if ! grep -qs "$1.local" /etc/hosts
 then
     echo "Añadiendo entrada para $1.local en /etc/hosts..."
@@ -74,8 +81,4 @@ then
 else
     echo "El sitio virtual $1.local ya existe en Apache2."
 fi
-echo "Creando nuevo commit..."
-git checkout -- README.md
-git add .
-git commit -m "Cambios de la plantilla del proyecto"
 
