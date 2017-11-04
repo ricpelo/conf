@@ -27,8 +27,6 @@ for f in keymap.cson config.cson; do
     [ -f ~/.atom/$f ] && mv -f ~/.atom/$f ~/.atom/$f.viejo
     cp -f $BASE_DIR/atom/$f ~/.atom
 done
-COMPOSER_DIR=$(composer config -g home 2>/dev/null)
-sed -r -i "s%/opt/composer/%$COMPOSER_DIR/%" ~/.atom/config.cson
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"

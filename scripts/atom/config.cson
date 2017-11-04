@@ -51,9 +51,8 @@
     highContrast: true
   "linter-php": {}
   "linter-phpcs":
-    autoExecutableSearch: false
-    codeStandardOrConfigFile: "/opt/composer/vendor/yiisoft/yii2-coding-standards/Yii2"
-    executablePath: "/opt/composer/vendor/bin/phpcs"
+    codeStandardOrConfigFile: "vendor/yiisoft/yii2-coding-standards/Yii2"
+    executablePath: "vendor/bin/phpcs"
     ignorePatterns: [
       "**/views/**"
       "**/tests/**"
@@ -70,7 +69,7 @@
   "one-light-ui":
     fontSize: 14
   "php-cs-fixer":
-    executablePath: "/opt/composer/vendor/bin/php-cs-fixer"
+    executablePath: "vendor/bin/php-cs-fixer"
     executeOnSave: true
     pathMode: "intersection"
   "php-debug":
