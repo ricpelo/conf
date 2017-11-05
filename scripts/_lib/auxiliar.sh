@@ -84,18 +84,11 @@ asigna_param_php()
     # $1: param
     # $2: valor
     # $3: archivo
-    # $4: patrón (si no coincide con $1)
     PARAM="$1 = $2"
     if ! grep -qs "^$PARAM$" $3
     then
         echo "Estableciendo $PARAM en $3..."
-        if [ -n "$3" ]
-        then
-            PATRON="$4"
-        else
-            PATRON="$1"
-        fi
-        sudo sed -r -i "s/^;?\s*$PATRON\s*=.*$/$PARAM/" $3
+        sudo sed -r -i "s/^;?\s*$1\s*=.*$/$PARAM/" $3
     else
         echo "Parámetro $PARAM ya establecido en $3."
     fi

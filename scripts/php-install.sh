@@ -32,7 +32,7 @@ do
     asigna_param_php "error_reporting" "E_ALL" $CONF
     asigna_param_php "display_errors" "On" $CONF
     asigna_param_php "display_startup_errors" "On" $CONF
-    asigna_param_php "date.timezone" "'UTC'" $CONF "date\.timezone"
+    asigna_param_php "date.timezone" "'UTC'" $CONF
 done
 
 sudo service apache2 restart
