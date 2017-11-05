@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
+
 VER=9.6
 
 if [ ! -f /etc/apt/sources.list.d/pgdg.list ]
@@ -21,20 +23,7 @@ echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 
 CONF="/etc/postgresql/$VER/main/postgresql.conf"
-if ! grep -qs "^intervalstyle = 'iso_8601'" $CONF
-then
-    echo "Estableciendo intervalstyle = 'iso_8601'..."
-    sudo sed -r -i "s/^\s*#?intervalstyle\s*=/intervalstyle = 'iso_8601' #/" $CONF
-else
-    echo "Parámetro intervalstyle = 'iso_8601' ya establecido."
-fi
-if ! grep -qs "^timezone = 'UTC'" $CONF
-then
-    echo "Estableciendo timezone = 'UTC'..."
-    sudo sed -r -i "s/^\s*#?timezone\s*=/timezone = 'UTC' #/" $CONF
-else
-    echo "Parámetro timezone = 'UTC ya establecido.'"
-fi
-
+asigna_param_postgresql "intervalstyle" "'iso_8601'" $CONF
+asigna_param_postgresql "timezone" "'UTC'" $CONF
 sudo service postgresql restart
 

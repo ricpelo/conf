@@ -94,6 +94,21 @@ asigna_param_php()
     fi
 }
 
+asigna_param_postgresql()
+{
+    # $1: param
+    # $2: valor
+    # $3: archivo
+    PARAM="$1 = $2"
+    if ! grep -qs "^$PARAM" $3
+    then
+        echo "Estableciendo $PARAM..."
+        sudo sed -r -i "s/^\s*#?$1\s*=/$PARAM #/" $3
+    else
+        echo "Parámetro $PARAM ya establecido."
+    fi
+}
+
 comprueba_atom()
 {
     if [ "$(which atom)" != "/usr/bin/atom" ]
