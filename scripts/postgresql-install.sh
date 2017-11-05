@@ -25,5 +25,11 @@ sudo apt -y install $P
 CONF="/etc/postgresql/$VER/main/postgresql.conf"
 asigna_param_postgresql "intervalstyle" "'iso_8601'" $CONF
 asigna_param_postgresql "timezone" "'UTC'" $CONF
+asigna_param_postgresql "lc_messages" "en_US.UTF-8" $CONF
+asigna_param_postgresql "lc_monetary" "en_US.UTF-8" $CONF
+asigna_param_postgresql "lc_numeric" "en_US.UTF-8" $CONF
+asigna_param_postgresql "lc_time" "en_US.UTF-8" $CONF
+asigna_param_postgresql "default_text_search_config" "pg_catalog.english" $CONF
+
 sudo service postgresql restart
 
