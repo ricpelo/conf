@@ -23,6 +23,10 @@ if [ "$1" = "-d" ]; then
         sudo a2dissite $2
         sudo rm -f /etc/apache2/sites-available/$2.conf
         sudo service apache2 reload
+        sudo service postgresql status > /dev/null || sudo service postgresql start
+        sudo -u postgres dropdb --if-exists $2
+        sudo -u postgres dropdb --if-exists $2_test
+        sudo -u postgres dropuser --if-exists $2
         exit 0
     fi
 fi
