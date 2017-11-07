@@ -8,4 +8,3 @@ rbenv install $VER
 rbenv global $VER
 rbenv shell $VER
 rbenv rehash
-

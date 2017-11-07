@@ -132,4 +132,3 @@ local_bin()
         echo "$1 ya instalado."
     fi
 }
-

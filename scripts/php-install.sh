@@ -68,4 +68,3 @@ then
     mkdir -p $DEST
     wget -q -O $DEST/php_manual.sqlite http://psysh.org/manual/es/php_manual.sqlite
 fi
-

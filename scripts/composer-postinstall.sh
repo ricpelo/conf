@@ -36,4 +36,3 @@ do
 done
 
 desactiva_xdebug
-

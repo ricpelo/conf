@@ -167,4 +167,3 @@ comprueba_composer()
         fi
     done
 }
-

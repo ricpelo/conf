@@ -30,4 +30,3 @@ done
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"
-

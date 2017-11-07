@@ -98,4 +98,3 @@ if [ "$SN" = "S" ] || [ "$SN" = "s" ]
 then
     scripts/scripts.sh
 fi
-

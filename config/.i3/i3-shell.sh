@@ -38,4 +38,3 @@ if [ -n "$CWD" ]; then
 else
     $CMD
 fi
-
