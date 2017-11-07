@@ -45,7 +45,8 @@ cd $1
 echo "Modificando configuración del proyecto..."
 for p in config/web.php config/console.php
 do
-     sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => require(__DIR__ . '/log.php'),\1'%" $p
+    sed -r -i "s%^(\\\$db = require __DIR__ . '/db.php';)$%\1\n\\\$log = require __DIR__ . '/log.php';%" $p
+    sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $p
 done
 echo "\n\n.php_cs.cache" >> .gitignore
 echo "tests/chromedriver" >> .gitignore
