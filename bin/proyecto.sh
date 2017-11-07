@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ayuda()
 {
@@ -48,6 +48,20 @@ do
     sed -r -i "s%^(\\\$db = require __DIR__ . '/db.php';)$%\1\n\\\$log = require __DIR__ . '/log.php';%" $p
     sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $p
 done
+read -r -d '' MAP <<'EOT'
+    'controllerMap' => [
+        'fixture' => [ // Fixture generation command line.
+            'class' => 'yii\\faker\\FixtureController',
+        ],
+        'api' => [
+            'class' => 'yii\\apidoc\\commands\\ApiController',
+        ],
+        'guide' => [
+            'class' => 'yii\\apidoc\\commands\\GuideController',
+        ],
+    ],
+EOT
+perl -i -0pe "s%/\*(.|\n)*\*/%$MAP%" config/console.php
 echo "\n\n.php_cs.cache" >> .gitignore
 echo "tests/chromedriver" >> .gitignore
 echo "Modificando archivos con el nombre del proyecto..."
