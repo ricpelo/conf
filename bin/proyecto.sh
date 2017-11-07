@@ -48,7 +48,7 @@ do
     sed -r -i "s%^(\\\$db = require __DIR__ . '/db.php';)$%\1\n\\\$log = require __DIR__ . '/log.php';%" $p
     sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $p
 done
-read -r -d '' MAP <<'EOT'
+read -r -d '' SUB <<'EOT'
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.
             'class' => 'yii\\faker\\FixtureController',
@@ -61,7 +61,14 @@ read -r -d '' MAP <<'EOT'
         ],
     ],
 EOT
-perl -i -0pe "s%/\*(.|\n)*\*/%$MAP%" config/console.php
+perl -i -0pe "s%/\*(.|\n)*\*/%$SUB%" config/console.php
+read -r -d '' SUB <<'EOT'
+    'aliases' => [
+        '\@bower' => '\@vendor/bower-asset',
+        '\@npm'   => '\@vendor/npm-asset',
+    ],
+EOT
+perl -i -0pe "s%(\s*)'components'%\1$SUB\1'components'%" config/console.php
 echo "\n\n.php_cs.cache" >> .gitignore
 echo "tests/chromedriver" >> .gitignore
 echo "Modificando archivos con el nombre del proyecto..."
