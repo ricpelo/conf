@@ -1,4 +1,5 @@
 atom-ide-ui
+atom-overtype-mode
 autoclose-html
 busy-signal
 docblockr
