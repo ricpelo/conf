@@ -49,6 +49,7 @@ do
     asigna_param_php "date.timezone" "'UTC'" $CONF
 done
 
+echo "Reiniciando Apache 2..."
 sudo service apache2 restart
 
 DEST=/usr/local/bin/psysh

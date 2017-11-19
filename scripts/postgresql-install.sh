@@ -31,4 +31,5 @@ asigna_param_postgresql "lc_numeric" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "lc_time" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "default_text_search_config" "'pg_catalog.english'" $CONF
 
+echo "Reiniciando PostgreSQL..."
 sudo service postgresql restart
