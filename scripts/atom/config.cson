@@ -9,6 +9,7 @@
     legacyMode: true
   "autocomplete-plus":
     autoActivationDelay: 300
+    defaultProvider: "Fuzzy"
   core:
     autoHideMenuBar: true
     disabledPackages: [
@@ -35,7 +36,7 @@
     fontFamily: "Input"
     fontSize: 18
     scrollPastEnd: true
-    scrollSensitivity: 50
+    scrollSensitivity: 200
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
     tabLength: 4
@@ -43,13 +44,8 @@
   "git-log":
     fontFamily: "Input, Inconsolata, Monaco, Consolas, 'Courier New', Courier"
     fontScale: 0.8
-  "highlight-line":
-    enableBackgroundColor: false
-    enableUnderline: true
-    underline: "dotted"
   jumpy:
     highContrast: true
-  "linter-php": {}
   "linter-phpcs":
     codeStandardOrConfigFile: "vendor/yiisoft/yii2-coding-standards/Yii2"
     executablePath: "vendor/bin/phpcs"
@@ -57,8 +53,6 @@
       "**/views/**"
       "**/tests/**"
     ]
-  "markdown-preview":
-    useGitHubStyle: true
   minimap:
     absoluteMode: true
     plugins:
@@ -75,7 +69,6 @@
   "php-debug":
     AutoExpandLocals: true
     currentPanelMode: "bottom"
-  "php-integrator-autocomplete-plus": {}
   "php-integrator-base:confirmed-upgrade-message": true
   "php-integrator-navigation":
     navigationRequireAltKey: false
@@ -92,8 +85,8 @@
     syncHorizontalScroll: true
   "symbols-list":
     hideOnEmptyList: true
-  "vim-mode-plus":
-    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
+  "tree-view":
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
   zentabs:

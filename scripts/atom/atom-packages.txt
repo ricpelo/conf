@@ -3,9 +3,9 @@ atom-overtype-mode
 autoclose-html
 busy-signal
 docblockr
-ex-mode
 file-icons
 hyperclick
+ide-php
 intentions
 jumpy
 language-pgsql
@@ -28,6 +28,5 @@ symbol-gen
 symbols-list
 tabs-to-spaces
 toggle-quotes
-vim-mode-plus
 zentabs
 
