@@ -72,10 +72,12 @@ activa_modulo_apache()
 
 desactiva_xdebug()
 {
-    if phpquery -q -v 7.1 -s cli -m xdebug
+    if phpquery -q -v $1 -s cli -m xdebug
     then
         echo "Desactivando módulo xdebug de PHP para el SAPI cli..."
-        sudo phpdismod -s cli xdebug
+        sudo phpdismod -v $1 -s cli xdebug
+    else
+        echo "Módulo xdebug de PHP ya desactivado para el SAPI cli."
     fi
 }
 

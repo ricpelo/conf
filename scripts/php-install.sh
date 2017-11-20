@@ -38,7 +38,7 @@ sudo apt -y install $P $EXTRA
 
 activa_modulo_apache php$VER
 activa_modulo_apache rewrite
-desactiva_xdebug
+desactiva_xdebug $VER
 
 for p in apache2 cli
 do
