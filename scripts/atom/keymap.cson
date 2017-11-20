@@ -4,5 +4,3 @@
 
   'ctrl-shift-right': 'multi-cursor:move-last-cursor-right'
   'ctrl-shift-left': 'multi-cursor:move-last-cursor-left'
-
-  'ctrl-t': 'toggle-quotes:toggle'
