@@ -4,7 +4,7 @@
 
 lista_paquetes()
 {
-    echo "php$1 libapache2-mod-php$1 php$1-cli php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json"
+    echo "php$1 libapache2-mod-php$1 php$1-cli php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip"
 }
 
 VER=7.1
