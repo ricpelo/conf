@@ -95,8 +95,9 @@ then
     read TOKEN
     if [ -n "$TOKEN" ]
     then
-        echo "Creando token de GitHub..."
+        echo "Creando token de GitHub para git y ghi..."
         github token "$TOKEN"
+        git config --global ghi.token $TOKEN
     fi
 fi
 
