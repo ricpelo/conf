@@ -93,7 +93,7 @@ then
     then
         sudo sed -ie "s/^$/127.0.0.1	$1.local\n/" /etc/hosts
     else
-        echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts
+        echo "127.0.0.1	$1.local" | sudo tee -a /etc/hosts > /dev/null
     fi
 else
     echo "Ya existe una entrada para $1.local en /etc/hosts."
