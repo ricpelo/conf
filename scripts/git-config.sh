@@ -103,8 +103,22 @@ fi
 
 if [ -n "$TOKEN" ]
 then
+    DEST=/usr/local/bin/ghi
+    if [ -x $DEST ]
+    then
+        echo -n "Ghi ya instalado. ¿Desea actualizarlo? (S/n): "
+        read SN
+        [ "$SN" = "n" ] && SN="N"
+    fi
+    if [ "$SN" != "N" ]
+    then
+        echo "Instalando ghi en $DEST..."
+        curl -sL "https://raw.githubusercontent.com/drazisil/ghi/master/ghi" | sudo tee $DEST > /dev/null
+        sudo chmod a+x $DEST
+        echo "Asignando parámetro ghi.token..."
+        git config --global ghi.token $TOKEN
+    fi
     DEST=/usr/local/bin/hub
-    SN="S"
     if [ -x $DEST ]
     then
         echo -n "GitHub-hub ya instalado. ¿Desea actualizarlo? (S/n): "
@@ -118,6 +132,8 @@ then
         FILE="hub-linux-amd64-$VER"
         curl -sL "https://github.com/github/hub/releases/download/v$VER/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
+        echo "Asignando parámetro hub.protocol = https..."
+        git config --global hub.protocol https
         DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
         echo "Creando variable de entorno GITHUB_TOKEN en $DEST..."
         echo "export GITHUB_TOKEN=$TOKEN" > $DEST

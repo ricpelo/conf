@@ -89,7 +89,6 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
-local_bin ghi
 
 eval fn_vim
 
