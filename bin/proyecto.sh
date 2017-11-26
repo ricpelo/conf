@@ -40,8 +40,12 @@ git add .
 git commit -q -m "Carga incial"
 cd ..
 echo "Extrayendo el esqueleto modificado del proyecto..."
-curl -s -L https://github.com/ricpelo/pre/tarball/master | tar xz --strip 1 -C $1
-cd $1
+curl -s -L https://github.com/ricpelo/proyecto/tarball/master | tar xz --strip-components=1 -C $1
+curl -s -L https://github.com/ricpelo/propuesta/tarball/master | tar xz --strip-components=1 -C $1/guia
+cd $1/guia
+rm composer.json composer.lock check-packages.sh check-vendor.sh .gitignore Makefile.propuesta
+mv Makefile.proyecto Makefile
+cd ..
 echo "Modificando configuración del proyecto..."
 for p in config/web.php config/console.php
 do
