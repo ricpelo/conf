@@ -8,7 +8,8 @@ comprueba_composer
 
 while true
 do
-    if [ -z "$(token_composer)" ]
+    TOKEN=$(token_composer)
+    if [ -z "$TOKEN" ]
     then
         TOKEN=$(github token)
         if [ -n "$TOKEN" ]
@@ -30,6 +31,13 @@ do
             fi
         fi
     else
+        GITHUB=$(github token)
+        if [ "$TOKEN" != "$GITHUB" ]
+        then
+            echo "Actualizando token de Composer para que coincida con el de GitHub..."
+            token_composer $GITHUB
+            break
+        fi
         echo "Token de GitHub para Composer ya creado."
         break
     fi
