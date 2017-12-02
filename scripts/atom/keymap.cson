@@ -1,6 +1,6 @@
 'atom-workspace atom-text-editor:not([mini])':
-  'ctrl-shift-down': 'multi-cursor:expandDown'
-  'ctrl-shift-up': 'multi-cursor:expandUp'
+  'ctrl-alt-down': 'multi-cursor:expandDown'
+  'ctrl-alt-up': 'multi-cursor:expandUp'
 
-  'ctrl-shift-right': 'multi-cursor:move-last-cursor-right'
-  'ctrl-shift-left': 'multi-cursor:move-last-cursor-left'
+  'ctrl-alt-right': 'multi-cursor:move-last-cursor-right'
+  'ctrl-alt-left': 'multi-cursor:move-last-cursor-left'
