@@ -13,6 +13,18 @@ netrc()
     fi
 }
 
+crear_usuario_github()
+{
+    echo -n "Nombre de usuario en GitHub (NO el email): "
+    read USUARIO
+    if [ -n "$USUARIO" ]
+    then
+        echo "Creando configuración github.user..."
+        github user "$USUARIO"
+    fi
+    echo $USUARIO
+}
+
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 git config --global push.default simple
 # git config --global pull.rebase true
@@ -68,13 +80,7 @@ then
 fi
 if [ -z "$USUARIO" ] || [ "$SN" = "S" ]
 then
-    echo -n "Nombre de usuario en GitHub (NO el email): "
-    read USUARIO
-    if [ -n "$USUARIO" ]
-    then
-        echo "Creando configuración github.user..."
-        github user "$USUARIO"
-    fi
+    USUARIO=$(crear_usuario_github)
 fi
 
 TOKEN=$(github token)
@@ -86,18 +92,30 @@ then
 fi
 if [ -z "$TOKEN" ] || [ "$SN" = "S" ]
 then
-    DESC="Token de GitHub en $(hostname) $(date +%Y-%m-%d\ %H%M)"
-    DESC=$(echo $DESC | tr " " "+")
-    URL="https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC"
-    xdg-open $URL >/dev/null 2>&1
-    echo "Vete a $URL para crear un token, pulsa en 'Generate token', cópialo y pégalo aquí."
-    echo -n "Token: "
-    read TOKEN
-    if [ -n "$TOKEN" ]
+    if [ -z "$USUARIO" ]
     then
-        echo "Creando token de GitHub para git y ghi..."
-        github token "$TOKEN"
-        git config --global ghi.token $TOKEN
+        echo "Para crear el token, debes indicar tu nombre de usuario en GitHub."
+        echo -n "¿Quieres indicarlo ahora? (S/n): "
+        read SN
+        [ "$SN" = "n" ] && SN="N"
+        if [ "$SN" != "N" ]
+        then
+            USUARIO=$(crear_usuario_github)
+        fi
+    fi
+    if [ -n "$USUARIO" ]
+    then
+        DESC="Token de GitHub en $(hostname) $(date +%Y-%m-%d\ %H:%M)"
+        JSON='{"scopes":["repo","gist"],"note":"'$DESC'"}'
+        TOKEN=$(curl -s -u $USUARIO -d "$JSON" "https://api.github.com/authorizations" | grep '"token"')
+        if [ -n "$TOKEN" ]
+        then
+            TOKEN=$(echo $TOKEN | cut -d":" -f2 | tr -d '", ')
+            echo "Creando token de GitHub para git..."
+            github token "$TOKEN"
+        else
+            echo "Ocurrió un error al crear el token de GitHub."
+        fi
     fi
 fi
 
@@ -115,9 +133,9 @@ then
         echo "Instalando ghi en $DEST..."
         curl -sL "https://raw.githubusercontent.com/drazisil/ghi/master/ghi" | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
-        echo "Asignando parámetro ghi.token..."
-        git config --global ghi.token $TOKEN
     fi
+    echo "Asignando parámetro ghi.token..."
+    git config --global ghi.token $TOKEN
     DEST=/usr/local/bin/hub
     if [ -x $DEST ]
     then
@@ -132,12 +150,12 @@ then
         FILE="hub-linux-amd64-$VER"
         curl -sL "https://github.com/github/hub/releases/download/v$VER/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
-        echo "Asignando parámetro hub.protocol = https..."
-        git config --global hub.protocol https
-        DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
-        echo "Creando variable de entorno GITHUB_TOKEN en $DEST..."
-        echo "export GITHUB_TOKEN=$TOKEN" > $DEST
     fi
+    echo "Asignando parámetro hub.protocol = https..."
+    git config --global hub.protocol https
+    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
+    echo "Creando variable de entorno GITHUB_TOKEN en $DEST..."
+    echo "export GITHUB_TOKEN=$TOKEN" > $DEST
 fi
 
 if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]
