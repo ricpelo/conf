@@ -2,13 +2,13 @@
   "atom-ide-ui":
     "atom-ide-code-format":
       formatOnType: false
-    "atom-ide-diagnostics-ui":
-      autoVisibility: true
+    "atom-ide-diagnostics-ui": {}
+    "atom-ide-outline-view": {}
+    hyperclick: {}
     use: {}
   "autoclose-html":
-    legacyMode: true
+    makeNeverCloseSelfClosing: false
   "autocomplete-plus":
-    autoActivationDelay: 300
     defaultProvider: "Fuzzy"
   core:
     autoHideMenuBar: true
@@ -40,7 +40,8 @@
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
     tabLength: 4
-  "git-diff": {}
+  "git-diff":
+    showIconsInEditorGutter: true
   "git-log":
     fontFamily: "Input, Inconsolata, Monaco, Consolas, 'Courier New', Courier"
     fontScale: 0.8
@@ -83,8 +84,7 @@
     leftEditorColor: "red"
     rightEditorColor: "green"
     syncHorizontalScroll: true
-  "symbols-list":
-    hideOnEmptyList: true
+  "symbols-list": {}
   "tree-view":
     squashDirectoryNames: true
   welcome:

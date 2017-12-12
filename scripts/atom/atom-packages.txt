@@ -1,3 +1,6 @@
+aligner
+aligner-javascript
+aligner-php
 atom-ide-ui
 atom-overtype-mode
 autoclose-html
