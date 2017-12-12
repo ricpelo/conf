@@ -182,6 +182,10 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+bindsym --release Print exec scrot -u
+bindsym --release Ctrl+Print exec scrot -s
+bindsym --release Shift+Print exec scrot
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
