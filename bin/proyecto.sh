@@ -53,20 +53,6 @@ do
     sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $p
 done
 read -r -d '' SUB <<'EOT'
-    'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\\faker\\FixtureController',
-        ],
-        'api' => [
-            'class' => 'yii\\apidoc\\commands\\ApiController',
-        ],
-        'guide' => [
-            'class' => 'yii\\apidoc\\commands\\GuideController',
-        ],
-    ],
-EOT
-perl -i -0pe "s%/\*(.|\n)*\*/%$SUB%" config/console.php
-read -r -d '' SUB <<'EOT'
     'aliases' => [
         '\@bower' => '\@vendor/bower-asset',
         '\@npm'   => '\@vendor/npm-asset',
