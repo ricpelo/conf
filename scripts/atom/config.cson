@@ -9,7 +9,7 @@
   "autoclose-html":
     makeNeverCloseSelfClosing: false
   "autocomplete-plus":
-    defaultProvider: "Fuzzy"
+    autoActivationDelay: 300
   core:
     autoHideMenuBar: true
     disabledPackages: [
@@ -23,6 +23,7 @@
       "metrics"
       "linter"
       "linter-ui-default"
+      "ide-php"
     ]
     packagesWithKeymapsDisabled: [
       "multi-cursor"
