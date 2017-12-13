@@ -14,8 +14,8 @@ then
     echo "Se ha detectado una configuración previa de Atom en $CONF."
     echo -n "¿Eliminarla previamente para una instalación limpia? (S/n): "
     read SN
-    [ "$SN" = "s" ] && SN="S"
-    if [ "$SN" = "S" ]
+    [ "$SN" = "n" ] && SN="N"
+    if [ "$SN" != "N" ]
     then
         echo "Eliminando directorio $CONF..."
         rm -rf $CONF
