@@ -31,7 +31,7 @@
     telemetryConsent: "no"
     themes: [
       "one-light-ui"
-      "one-light-syntax"
+      "solarized-light-syntax"
     ]
   editor:
     fontFamily: "Input"
