@@ -44,6 +44,7 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="low"
 set background=dark
 colorscheme solarized
+highlight ColorColumn ctermbg=0
 " highlight Normal ctermbg=NONE guibg=Black
 " highlight NonText ctermbg=NONE guibg=Black
 " highlight ExtraWhiteSpace ctermbg=16 guibg=Black
