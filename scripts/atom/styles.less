@@ -1,0 +1,24 @@
+.scrollbars-visible-always {
+    /deep/ ::-webkit-scrollbar {
+        width: 16px;
+        height: 16px;
+
+        &-track {
+          border: 0px;
+        }
+
+        &-thumb {
+          border: 0px;
+        }
+    }
+}
+
+atom-text-editor .gutter {
+    background-color: inherit;
+}
+
+atom-text-editor, :host {
+  .lines .line.cursor-line {
+    background-color: #eee8d5;
+  }
+}

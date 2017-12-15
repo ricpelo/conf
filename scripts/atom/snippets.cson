@@ -1,0 +1,10 @@
+'.text.html.php':
+    'Comentario de archivo':
+      'prefix': 'com'
+      'body': """
+        /**
+         * @author Ricardo Pérez López
+         * @copyright Copyright (c) 2017 Ricardo Pérez López
+         * @license https://www.gnu.org/licenses/gpl.txt
+         */
+        """

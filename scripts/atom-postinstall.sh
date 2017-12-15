@@ -48,7 +48,7 @@ else
     echo "Todos los paquetes de Atom ya instalados."
 fi
 echo "Copiando archivos de configuración en $CONF..."
-for f in keymap.cson config.cson; do
+for f in keymap.cson config.cson snippets.cson styles.less; do
     [ -f "$CONF/$f" ] && mv -f "$CONF/$f" "$CONF/$f.viejo"
     cp -f $BASE_DIR/atom/$f $CONF
 done
