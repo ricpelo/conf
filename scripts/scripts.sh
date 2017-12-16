@@ -7,9 +7,9 @@ composer-postinstall.sh atom-postinstall.sh"
 
 for p in $SLIST
 do
-    echo -n "¿Ejecutar $p? (s/N): "
+    echo -n "¿Ejecutar $p? (S/n): "
     read SN
-    if [ "$SN" = "S" ] || [ "$SN" = "s" ]
+    if [ "$SN" != "N" ] && [ "$SN" != "n" ]
     then
         $BASE_DIR/$p
         echo ""
