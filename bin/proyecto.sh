@@ -38,14 +38,12 @@ cd $1
 git init -q
 git add .
 git commit -q -m "Carga incial"
-cd ..
 echo "Extrayendo el esqueleto modificado del proyecto..."
-curl -s -L https://github.com/ricpelo/proyecto/tarball/master | tar xz --strip-components=1 -C $1
-curl -s -L https://github.com/ricpelo/propuesta/tarball/master | tar xz --strip-components=1 -C $1/guia
-cd $1/guia
-rm composer.json composer.lock check-packages.sh check-vendor.sh .gitignore Makefile.propuesta propuesta.md
-mv Makefile.proyecto Makefile
-cd ..
+curl -s -L https://github.com/ricpelo/proyecto/tarball/master | tar xz --strip-components=1 -C .
+FILES="check-ghi.sh check-label.sh Makefile.proyecto requisitos.php requisitos.xlsx"
+FILES=$(for p in $(echo $FILES); do echo "ricpelo-propuesta-*/$p"; done)
+curl -s -L https://github.com/ricpelo/propuesta/tarball/master | tar xz --strip-components=1 -C guia --wildcards $(echo $FILES)
+mv -f guia/Makefile.proyecto guia/Makefile
 echo "Modificando configuración del proyecto..."
 for p in config/web.php config/console.php
 do
