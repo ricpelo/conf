@@ -39,8 +39,7 @@ let g:nord_italic_comments = 1
 let g:nord_underline = 1
 "set background=light
 try
-  "colorscheme NeoSolarized
-  colorscheme nord
+  colorscheme delek
 catch /^Vim\%((\a\+)\)\=:E185/
   " No hacer nada si no está instalado
 endtry
