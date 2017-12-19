@@ -154,7 +154,7 @@ export EDITOR="vim"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Para que las aplicaciones Java se vean mejor:
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
 # Para que la pestaña de GitHub de Atom funcione:
 export LOCAL_GIT_DIRECTORY=/usr

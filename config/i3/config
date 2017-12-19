@@ -194,6 +194,8 @@ bindsym $mod+z exec --no-startup-id "xset r rate 250 30 ; setxkbmap -option 'ctr
 # Activa y desactiva Picom
 bindsym $mod+i exec --no-startup-id "pgrep picom && killall picom || picom --daemon"
 
+bindsym $mod+Shift+m exec xrandr --output VGA-0 --mode 1280x800 --rate 59.81 --output HDMI-0 --right-of VGA-0
+
 # Bloquea la pantalla
 bindsym $mod+Escape exec i3lock -c 000000
 
@@ -235,7 +237,7 @@ client.background       #242424
 # finds out, if available)
 bar {
     status_command py3status
-    height 25
+#    height 25
     font pango:Source Code Pro 13
     tray_padding 1
     # strip_workspace_numbers yes
@@ -264,20 +266,21 @@ for_window [class="^Steam$" title="Lista de amigos"] floating enable
 for_window [window_type="notification"] floating enable
 
 # Autoarranque
-exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py >/tmp/nvidia-fan-curve.log 2>&1 &
+#exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py >/tmp/nvidia-fan-curve.log 2>&1 &
 exec_always --no-startup-id xset r rate 250 30
-#exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
+exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id nvidia-settings --load-config-only
-exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
+#exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id pasystray
-exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
+# exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
 #exec --no-startup-id "i3-msg 'workspace 2; exec /home/ricardo/.local/bin/alacritty; workspace 1'"
 exec --no-startup-id "i3-msg 'workspace 1; exec x-www-browser'"
 exec --no-startup-id picom --daemon
+exec --no-startup-id xrandr --output VGA-0 --mode 1280x800 --rate 59.81 --output HDMI-0 --right-of VGA-0
+exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
 
 # Gaps
 

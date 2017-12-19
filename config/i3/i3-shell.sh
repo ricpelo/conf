@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
-CMD=/usr/bin/alacritty
+CMD=/usr/bin/sakura
 CWD=''
 
 # Get window ID
