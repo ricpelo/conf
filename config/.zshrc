@@ -5,7 +5,18 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+ZSH_THEME="bullet-train"
+
+# Para que el tema Agnoster no muestre el contexto:
+# DEFAULT_USER=$USER
+
+# Opciones para el tema https://github.com/caiogondim/bullet-train.zsh:
+BULLETTRAIN_PROMPT_ORDER=(context dir git)
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+BULLETTRAIN_DIR_BG=green
+BULLETTRAIN_PROMPT_SEPARATE_LINE=false
+BULLETTRAIN_PROMPT_CHAR="\b"
+BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
