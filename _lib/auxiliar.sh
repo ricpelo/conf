@@ -82,9 +82,7 @@ fn_zsh()
         mkdir -p $dest
     fi
     dest=$dest/bullet-train.zsh-theme
-    # Usa mi propio fork. El original está en:
-    # http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme
-    curl -sL http://raw.github.com/ricpelo/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
+    curl -sL http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
     if grep $USER /etc/passwd | grep -vqs zsh
     then
         echo "Instalando ZSH al usuario actual..."
