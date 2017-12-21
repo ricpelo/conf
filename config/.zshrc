@@ -13,13 +13,18 @@ ZSH_THEME="bullet-train"
 # Opciones para el tema https://github.com/caiogondim/bullet-train.zsh:
 BULLETTRAIN_PROMPT_ORDER=(context dir git)
 BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-BULLETTRAIN_DIR_BG=black
-BULLETTRAIN_GIT_BG=250
-BULLETTRAIN_GIT_FG=white
-BULLETTRAIN_GIT_UNTRACKED=" %F{magenta}✭%F{black}"
+#BULLETTRAIN_DIR_BG=245
+BULLETTRAIN_DIR_BG=green
+BULLETTRAIN_DIR_FG=234
+#BULLETTRAIN_GIT_BG=254
+#BULLETTRAIN_GIT_FG=white
+#BULLETTRAIN_GIT_UNTRACKED=" %F{magenta}✭%F{black}"
 BULLETTRAIN_PROMPT_SEPARATE_LINE=false
 BULLETTRAIN_PROMPT_CHAR=""
 BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
+#BULLETTRAIN_GIT_AHEAD=" %F{white}⬆%F{default}"
+#BULLETTRAIN_GIT_BEHIND=" %F{white}⬇%F{default}"
+#BULLETTRAIN_GIT_DIVERGED=" %F{white}⬍%F{default}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
