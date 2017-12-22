@@ -23,11 +23,17 @@ then
         QUITAR=$(apm list --installed --bare | cut -d"@" -f1 | diff - $BASE_DIR/atom/atom-packages.txt | grep "^< " | cut -c3-)
         if [ -n "$QUITAR" ]
         then
-            echo "Desinstalando paquetes sobrantes..."
-            for p in $(echo $QUITAR)
-            do
-                apm uninstall $p
-            done
+            echo -n "¿Desinstalar paquetes sobrantes? (s/N): "
+            read SN
+            [ "$SN" = "s" ] && SN="S"
+            if [ "$SN" = "S" ]
+            then
+                echo "Desinstalando paquetes sobrantes..."
+                for p in $(echo $QUITAR)
+                do
+                    apm uninstall $p
+                done
+            fi
         fi
     fi
 fi
