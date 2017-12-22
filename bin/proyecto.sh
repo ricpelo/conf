@@ -2,8 +2,8 @@
 
 ayuda()
 {
-    echo "\nSintaxis: $(basename $0) [-d] <nombre>\n"
-    echo "    -d: elimina el proyecto en lugar de crearlo\n"
+    echo -e "\nSintaxis: $(basename $0) [-d] <nombre>\n"
+    echo -e "    -d: elimina el proyecto en lugar de crearlo\n"
     exit 1
 }
 
