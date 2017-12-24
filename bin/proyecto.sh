@@ -80,8 +80,8 @@ else
     ],
 EOT
     perl -i -0pe "s%(\s*)'components'%\1$SUB\1'components'%" config/console.php
-    echo "\n\n.php_cs.cache" >> .gitignore
-    echo "tests/chromedriver" >> .gitignore
+    echo -e "\ntests/chromedriver" >> .gitignore
+    echo -e "\n.php_cs.cache" >> .gitignore
     echo "Modificando archivos con el nombre del proyecto..."
     sed -i s/proyecto/$1/g db/* config/*
     mv db/proyecto.sql db/$1.sql
