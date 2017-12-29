@@ -7,12 +7,6 @@ ayuda()
     exit 1
 }
 
-composer_run_script()
-{
-    echo "Ejecutando composer run-script post-create-project-cmd..."
-    composer run-script post-create-project-cmd
-}
-
 if [ -z "$1" ]
 then
     ayuda
@@ -54,48 +48,18 @@ then
     fi
 else
     CREATE="S"
-    echo "Creando el proyecto desde la plantilla básica de Yii2..."
-    composer create-project --no-install --no-scripts yiisoft/yii2-app-basic $1
-    echo "Creando repositorio git..."
+    echo "Creando el proyecto desde la plantilla ricpelo/yii2-app-basic..."
+    composer create-project --prefer-dist ricpelo/yii2-app-basic:dev-master $1
     cd $1
-    git init -q
-    git add .
-    git commit -q -m "Carga incial"
-    echo "Extrayendo el esqueleto modificado del proyecto..."
-    curl -s -L https://github.com/ricpelo/proyecto/tarball/master | tar xz --strip-components=1 -C .
-    FILES="check-ghi.sh check-label.sh Makefile.proyecto requisitos.php requisitos.xlsx"
-    FILES=$(for p in $(echo $FILES); do echo "ricpelo-propuesta-*/$p"; done)
-    curl -s -L https://github.com/ricpelo/propuesta/tarball/master | tar xz --strip-components=1 -C guia --wildcards $(echo $FILES)
-    mv -f guia/Makefile.proyecto guia/Makefile
-    echo "Modificando configuración del proyecto..."
-    for p in config/web.php config/console.php
-    do
-        sed -r -i "s%^(\\\$db = require __DIR__ . '/db.php';)$%\1\n\\\$log = require __DIR__ . '/log.php';%" $p
-        sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $p
-    done
-    read -r -d '' SUB <<'EOT'
-    'aliases' => [
-        '\@bower' => '\@vendor/bower-asset',
-        '\@npm'   => '\@vendor/npm-asset',
-    ],
-EOT
-    perl -i -0pe "s%(\s*)'components'%\1$SUB\1'components'%" config/console.php
-    echo -e "\ntests/chromedriver" >> .gitignore
-    echo -e "\n.php_cs.cache" >> .gitignore
     echo "Modificando archivos con el nombre del proyecto..."
     sed -i s/proyecto/$1/g db/* config/*
     mv db/proyecto.sql db/$1.sql
     mv proyecto.conf $1.conf
     sed -i s/proyecto/$1/g $1.conf
-    echo "Eliminando espacios en blanco sobrantes de config/test.php..."
-    sed -i 's/[[:blank:]]*$//' config/test.php
-    echo "Ejecutando composer install..."
-    composer install --no-scripts
-    composer_run_script
-    echo "Creando nuevo commit..."
-    git checkout -- README.md
+    echo "Creando repositorio git..."
+    git init -q
     git add .
-    git commit -q -m "Cambios de la plantilla del proyecto"
+    git commit -q -m "Carga inicial"
     cd ..
 fi
 
@@ -104,7 +68,8 @@ then
     cd $1
     if [ -z "$CREATE" ]
     then
-        composer_run_script
+        echo "Ejecutando composer run-script post-create-project-cmd..."
+        composer run-script post-create-project-cmd
     fi
     if ! grep -qs "$1.local" /etc/hosts
     then
