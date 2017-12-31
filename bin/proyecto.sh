@@ -30,6 +30,7 @@ then
         sudo -u postgres dropdb --if-exists $2
         sudo -u postgres dropdb --if-exists $2_test
         sudo -u postgres dropuser --if-exists $2
+        sed -i "/^localhost:5432:\*:$2:$2$/d" ~/.pgpass
         exit 0
     fi
 fi
@@ -68,6 +69,8 @@ then
     cd $1
     if [ -z "$CREATE" ]
     then
+        echo "Ejecutando composer install..."
+        composer install
         echo "Ejecutando composer run-script post-create-project-cmd..."
         composer run-script post-create-project-cmd
     fi
