@@ -52,11 +52,6 @@ else
     echo "Creando el proyecto desde la plantilla ricpelo/yii2-app-basic..."
     composer create-project --prefer-dist ricpelo/yii2-app-basic:dev-master $1
     cd $1
-    echo "Modificando archivos con el nombre del proyecto..."
-    sed -i s/proyecto/$1/g db/* config/*
-    mv db/proyecto.sql db/$1.sql
-    mv proyecto.conf $1.conf
-    sed -i s/proyecto/$1/g $1.conf
     echo "Creando repositorio git..."
     git init -q
     git add .
