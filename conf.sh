@@ -3,6 +3,7 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 
 . $BASE_DIR/_lib/auxiliar.sh
+. $BASE_DIR/scripts/_lib/auxiliar.sh
 
 if [ "$BASE_DIR" != "$PWD" ]
 then
@@ -92,9 +93,13 @@ local_bin proyecto.sh
 
 eval fn_vim
 
-echo -n "¿Ejecutar los scripts adicionales? (s/N): "
-read SN
-if [ "$SN" = "S" ] || [ "$SN" = "s" ]
+if [ "$1" = "-q" ]
+then
+    SN="S"
+else
+    pregunta SN "¿Ejecutar los scripts adicionales?" N
+fi
+if [ "$SN" = "S" ]
 then
     scripts/scripts.sh $*
 fi
