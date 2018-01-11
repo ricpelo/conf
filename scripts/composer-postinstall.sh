@@ -3,6 +3,8 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 . $BASE_DIR/_lib/auxiliar.sh
 
+CALLA=$1
+
 comprueba_php
 comprueba_composer
 
@@ -20,9 +22,8 @@ do
         else
             echo "El token para GitHub no está definido aún."
             echo "Ejecuta el script git-config.sh antes de continuar."
-            echo -n "¿Quieres hacerlo ahora? (s/N): "
-            read SN
-            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            pregunta SN "¿Quieres hacerlo ahora?" N $CALLA
+            if [ "$SN" = "S" ]
             then
                 $BASE_DIR/git-config.sh
             else

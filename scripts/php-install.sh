@@ -2,6 +2,8 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
+CALLA=$1
+
 lista_paquetes()
 {
     echo "php$1 libapache2-mod-php$1 php$1-cli php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip"
@@ -56,11 +58,9 @@ DEST=/usr/local/bin/psysh
 SN="S"
 if [ -x $DEST ]
 then
-    echo -n "PsySH ya instalado. ¿Desea actualizarlo? (S/n): "
-    read SN
-    [ "$SN" = "n" ] && SN="N"
+    pregunta SN "PsySH ya instalado. ¿Quieres actualizarlo?" S $CALLA
 fi
-if [ "$SN" != "N" ]
+if [ "$SN" = "S" ]
 then
     echo "Instalando PsySH en $DEST..."
     sudo wget -q -O $DEST https://git.io/psysh

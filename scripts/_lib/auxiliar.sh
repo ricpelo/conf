@@ -1,3 +1,28 @@
+# $1 = Variable en la que guardar el resultado
+# $2 = Pregunta
+# $3 = Valor por defecto (S o N)
+# $4 = Si vale "-q", se salta la pregunta y devuelve el valor por defecto
+pregunta()
+{
+    local _SN
+    if [ -n "$4" ]
+    then
+        _SN="$3"
+    else
+        echo -n "$2 "
+        [ "$3" = "S" ] && echo -n "(S/n): " || echo -n "(s/N): "
+        read _SN
+        _SN=$(echo "$_SN" | tr '[:lower:]' '[:upper:]')
+        if [ "$3" = "S" ]
+        then
+            [ "$_SN" != "N" ] && _SN="S"
+        else # "$3" = "N"
+            [ "$_SN" != "S" ] && _SN="N"
+        fi
+    fi
+    eval "$1=$_SN"
+}
+
 asegura_salto_linea_sudoers()
 {
     if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]

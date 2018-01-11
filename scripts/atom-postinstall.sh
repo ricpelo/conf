@@ -3,6 +3,8 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 . $BASE_DIR/_lib/auxiliar.sh
 
+CALLA=$1
+
 comprueba_atom
 comprueba_php
 comprueba_composer
@@ -12,10 +14,8 @@ CONF=$HOME/.atom
 if [ -d "$CONF" ]
 then
     echo "Se ha detectado una configuración previa de Atom en $CONF."
-    echo -n "¿Eliminarla previamente para una instalación limpia? (S/n): "
-    read SN
-    [ "$SN" = "n" ] && SN="N"
-    if [ "$SN" != "N" ]
+    pregunta SN "¿Eliminarla previamente para una instalación limpia?" N $CALLA
+    if [ "$SN" = "S" ]
     then
         echo "Eliminando directorio $CONF..."
         rm -rf $CONF
@@ -25,9 +25,7 @@ then
         then
             echo "Detectados los siguienes paquetes sobrantes:"
             echo $QUITAR
-            echo -n "¿Desinstalar paquetes sobrantes? (s/N): "
-            read SN
-            [ "$SN" = "s" ] && SN="S"
+            pregunta SN "¿Desinstalar paquetes sobrantes?" N $CALLA
             if [ "$SN" = "S" ]
             then
                 echo "Desinstalando paquetes sobrantes..."
