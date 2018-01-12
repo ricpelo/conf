@@ -50,7 +50,7 @@ do
             then
                 sudo service postgresql stop
                 echo "Eliminando clúster main de la versión $VER..."
-                sudo pg_dropcluster $VER main
+                sudo pg_dropcluster --stop $VER main
                 echo "Migrando clúster main a la versión $VER..."
                 sudo pg_upgradecluster -m upgrade $V main
             fi
