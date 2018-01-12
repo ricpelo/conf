@@ -2,7 +2,14 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
-VER=9.6
+CALLA=$1
+
+lista_paquetes()
+{
+    echo "postgresql-$1 postgresql-client-$1 postgresql-contrib-$1"
+}
+
+VER=10
 
 if [ ! -f /etc/apt/sources.list.d/pgdg.list ]
 then
@@ -18,7 +25,7 @@ else
 fi
 
 echo "Instalando paquetes de PostgreSQL..."
-P="postgresql-$VER postgresql-client-$VER postgresql-contrib-$VER"
+P=$(lista_paquetes $VER)
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
 
@@ -30,6 +37,33 @@ asigna_param_postgresql "lc_monetary" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "lc_numeric" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "lc_time" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "default_text_search_config" "'pg_catalog.english'" $CONF
+
+for V in 9.6 10
+do
+    if [ "$V" != "$VER" ]
+    then
+        if [ -d /etc/postgresql/$V ]
+        then
+            echo "Se ha detectado la versión $V anterior."
+            pregunta SN "¿Migrar los datos a la versión $VER y desinstalar?" S $CALLA
+            if [ "$SN" = "S" ]
+            then
+                sudo service postgresql stop
+                echo "Eliminando clúster main de la versión $VER..."
+                sudo pg_dropcluster $VER main
+                echo "Migrando clúster main a la versión $VER..."
+                sudo pg_upgradecluster -m upgrade $V main
+            fi
+            pregunta SN "¿Desinstalar la versión $V anterior?" S $CALLA
+            if [ "$SN" = "S" ]
+            then
+                P=$(lista_paquetes $V)
+            fi
+            echo "\033[1;32m\$\033[0m\033[35m sudo apt -y --purge remove $P\033[0m"
+            sudo apt -y --purge remove $P
+        fi
+    fi
+done
 
 echo "Reiniciando PostgreSQL..."
 sudo service postgresql restart
