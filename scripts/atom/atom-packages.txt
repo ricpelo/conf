@@ -21,7 +21,6 @@ multi-cursor
 php-cs-fixer
 php-debug
 php-integrator-annotations
-php-integrator-autocomplete-plus
 php-integrator-base
 php-integrator-refactoring
 project-manager
