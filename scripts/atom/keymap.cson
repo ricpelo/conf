@@ -4,3 +4,5 @@
 
   'ctrl-alt-right': 'multi-cursor:move-last-cursor-right'
   'ctrl-alt-left': 'multi-cursor:move-last-cursor-left'
+
+  'ctrl-enter': 'datatip:toggle'
