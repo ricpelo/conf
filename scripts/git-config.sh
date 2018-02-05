@@ -24,7 +24,6 @@ crear_usuario_github()
         echo "Creando configuración github.user..."
         github user "$USUARIO"
     fi
-    echo $USUARIO
 }
 
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -76,7 +75,7 @@ then
 fi
 if [ -z "$USUARIO" ] || [ "$SN" = "S" ]
 then
-    USUARIO=$(crear_usuario_github)
+    crear_usuario_github
 fi
 
 TOKEN=$(github token)
@@ -92,7 +91,7 @@ then
         pregunta "¿Quieres indicarlo ahora?" S $CALLA
         if [ "$SN" = "S" ]
         then
-            USUARIO=$(crear_usuario_github)
+            crear_usuario_github
         fi
     fi
     if [ -n "$USUARIO" ]
