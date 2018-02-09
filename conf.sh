@@ -83,6 +83,7 @@ done
 backup_and_link sakura .config
 backup_and_link dunst .config
 backup_and_link powerline .config
+backup_and_link htop .config
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 
