@@ -69,8 +69,20 @@ fn_zsh()
     local dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     if [ ! -d $dest ]
     then
+        echo "Instalando Zsh Syntax Highlighting..."
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $dest
+    else
+        echo "Actualizando Zsh Syntax Highlighting..."
+        (cd $dest && git pull)
     fi
+    echo "Instalando/actualizando tema Bullet Train para Zsh..."
+    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
+    if [ ! -d $dest ]
+    then
+        mkdir -p $dest
+    fi
+    dest=$dest/bullet-train.zsh-theme
+    curl -sL http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
     if grep $USER /etc/passwd | grep -vqs zsh
     then
         echo "Instalando ZSH al usuario actual..."

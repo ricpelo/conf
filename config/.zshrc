@@ -5,7 +5,26 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+ZSH_THEME="bullet-train"
+
+# Para que el tema Agnoster no muestre el contexto:
+# DEFAULT_USER=$USER
+
+# Opciones para el tema https://github.com/caiogondim/bullet-train.zsh:
+BULLETTRAIN_PROMPT_ORDER=(context dir git)
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+#BULLETTRAIN_DIR_BG=245
+BULLETTRAIN_DIR_BG=green
+BULLETTRAIN_DIR_FG=234
+#BULLETTRAIN_GIT_BG=254
+#BULLETTRAIN_GIT_FG=white
+#BULLETTRAIN_GIT_UNTRACKED=" %F{magenta}✭%F{black}"
+BULLETTRAIN_PROMPT_SEPARATE_LINE=false
+BULLETTRAIN_PROMPT_CHAR=""
+BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
+#BULLETTRAIN_GIT_AHEAD=" %F{white}⬆%F{default}"
+#BULLETTRAIN_GIT_BEHIND=" %F{white}⬇%F{default}"
+#BULLETTRAIN_GIT_DIVERGED=" %F{white}⬍%F{default}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -46,13 +65,13 @@ HIST_STAMPS="dd/mm/yyyy"
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOQUIT="false"
-export TERM=screen-256color
+export TERM=xterm-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux command-not-found composer history-substring-search zsh-syntax-highlighting z)
+plugins=(git command-not-found composer history-substring-search zsh-syntax-highlighting z)
 
 # User configuration
 
@@ -111,6 +130,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias git="LANG=C git"
 alias glg="git lg"
+alias htop="TERM=screen-256color htop"
 
 bindkey -v
 export KEYTIMEOUT=1

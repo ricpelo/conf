@@ -3,6 +3,7 @@
 BASE_DIR=$(dirname $(readlink -f "$0"))
 
 . $BASE_DIR/_lib/auxiliar.sh
+. $BASE_DIR/scripts/_lib/auxiliar.sh
 
 if [ "$BASE_DIR" != "$PWD" ]
 then
@@ -16,7 +17,7 @@ PLIST="vim-nox-py2 zsh curl wget python-pip git build-essential python-pygments
 sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
 fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
-exuberant-ctags atom ruby"
+exuberant-ctags atom ruby ttf-ancient-fonts"
 
 P=""
 
@@ -82,6 +83,7 @@ done
 backup_and_link sakura .config
 backup_and_link dunst .config
 backup_and_link powerline .config
+backup_and_link htop .config
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 
@@ -92,9 +94,13 @@ local_bin proyecto.sh
 
 eval fn_vim
 
-echo -n "¿Ejecutar los scripts adicionales? (s/N): "
-read SN
-if [ "$SN" = "S" ] || [ "$SN" = "s" ]
+if [ "$1" = "-q" ]
 then
-    scripts/scripts.sh
+    SN="S"
+else
+    pregunta SN "¿Ejecutar los scripts adicionales?" N
+fi
+if [ "$SN" = "S" ]
+then
+    scripts/scripts.sh $*
 fi

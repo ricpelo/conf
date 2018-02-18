@@ -40,9 +40,9 @@ set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_degrade=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="low"
-set background=dark
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="low"
+set background=light
 colorscheme solarized
 highlight ColorColumn ctermbg=0
 " highlight Normal ctermbg=NONE guibg=Black

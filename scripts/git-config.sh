@@ -2,6 +2,8 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
+CALLA=$1
+
 netrc()
 {
     if grep -qs "machine $1" ~/.netrc
@@ -22,7 +24,6 @@ crear_usuario_github()
         echo "Creando configuración github.user..."
         github user "$USUARIO"
     fi
-    echo $USUARIO
 }
 
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -32,9 +33,7 @@ git config --global push.default simple
 USER_NAME=$(git_user name)
 if [ -n "$USER_NAME" ]
 then
-    echo -n "Configuración user.name ya creada. ¿Quieres cambiarla? (s/N): "
-    read SN
-    [ "$SN" = "s" ] && SN="S"
+    pregunta SN "Configuración user.name ya creada. ¿Quieres cambiarla?" N $CALLA
 fi
 if [ -z "$USER_NAME" ] || [ "$SN" = "S" ]
 then
@@ -50,9 +49,7 @@ fi
 USER_EMAIL=$(git_user email)
 if [ -n "$USER_EMAIL" ]
 then
-    echo -n "Configuración user.email ya creada. ¿Quieres cambiarla? (s/N): "
-    read SN
-    [ "$SN" = "s" ] && SN="S"
+    pregunta SN "Configuración user.email ya creada. ¿Quieres cambiarla?" N $CALLA
 fi
 if [ -z "$USER_EMAIL" ] || [ "$SN" = "S" ]
 then
@@ -74,33 +71,27 @@ fi
 USUARIO=$(github user)
 if [ -n "$USUARIO" ]
 then
-    echo -n "Configuración github.user ya creada. ¿Quieres cambiarla? (s/N): "
-    read SN
-    [ "$SN" = "s" ] && SN="S"
+    pregunta SN "Configuración github.user ya creada. ¿Quieres cambiarla?" N $CALLA
 fi
 if [ -z "$USUARIO" ] || [ "$SN" = "S" ]
 then
-    USUARIO=$(crear_usuario_github)
+    crear_usuario_github
 fi
 
 TOKEN=$(github token)
 if [ -n "$TOKEN" ]
 then
-    echo -n "Token de GitHub ya creado. ¿Quieres cambiarlo? (s/N): "
-    read SN
-    [ "$SN" = "s" ] && SN="S"
+    pregunta SN "Token de GitHub ya creado. ¿Quieres cambiarlo?" N $CALLA
 fi
 if [ -z "$TOKEN" ] || [ "$SN" = "S" ]
 then
     if [ -z "$USUARIO" ]
     then
         echo "Para crear el token, debes indicar tu nombre de usuario en GitHub."
-        echo -n "¿Quieres indicarlo ahora? (S/n): "
-        read SN
-        [ "$SN" = "n" ] && SN="N"
-        if [ "$SN" != "N" ]
+        pregunta "¿Quieres indicarlo ahora?" S $CALLA
+        if [ "$SN" = "S" ]
         then
-            USUARIO=$(crear_usuario_github)
+            crear_usuario_github
         fi
     fi
     if [ -n "$USUARIO" ]
@@ -124,11 +115,9 @@ then
     DEST=/usr/local/bin/ghi
     if [ -x $DEST ]
     then
-        echo -n "Ghi ya instalado. ¿Desea actualizarlo? (S/n): "
-        read SN
-        [ "$SN" = "n" ] && SN="N"
+        pregunta SN "Ghi ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
-    if [ "$SN" != "N" ]
+    if [ "$SN" = "S" ]
     then
         echo "Instalando ghi en $DEST..."
         curl -sL "https://raw.githubusercontent.com/drazisil/ghi/master/ghi" | sudo tee $DEST > /dev/null
@@ -139,11 +128,9 @@ then
     DEST=/usr/local/bin/hub
     if [ -x $DEST ]
     then
-        echo -n "GitHub-hub ya instalado. ¿Desea actualizarlo? (S/n): "
-        read SN
-        [ "$SN" = "n" ] && SN="N"
+        pregunta SN "GitHub-hub ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
-    if [ "$SN" != "N" ]
+    if [ "$SN" = "S" ]
     then
         echo "Instalando GitHub-hub en $DEST..."
         VER="2.3.0-pre10"
