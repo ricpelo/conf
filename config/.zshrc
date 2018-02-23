@@ -65,7 +65,8 @@ HIST_STAMPS="dd/mm/yyyy"
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOQUIT="false"
-export TERM=xterm-256color
+
+export TERM=screen-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -130,7 +131,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias git="LANG=C git"
 alias glg="git lg"
-alias htop="TERM=screen-256color htop"
 
 bindkey -v
 export KEYTIMEOUT=1
