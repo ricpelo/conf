@@ -9,7 +9,7 @@ lista_paquetes()
     echo "php$1 libapache2-mod-php$1 php$1-cli php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip php$1-common php$1-opcache php$1-readline libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml-"
 }
 
-VER=7.2
+VER=7.1
 EXTRA="apache2 php-xdebug sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]
