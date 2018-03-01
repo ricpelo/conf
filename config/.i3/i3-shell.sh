@@ -34,7 +34,7 @@ if [ -n "$PID" ]; then
     fi
 fi
 if [ -n "$CWD" ]; then
-    $CMD -d $CWD
+    $CMD -d "$CWD"
 else
     $CMD
 fi
