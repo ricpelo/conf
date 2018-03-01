@@ -45,7 +45,3 @@ do
 done
 
 desactiva_xdebug
-
-echo "Activando mirror packagist.jp..."
-# Se desactiva con composer config -g --unset repos.packagist
-composer config --global repo.packagist composer https://packagist.jp
