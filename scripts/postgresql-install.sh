@@ -11,10 +11,11 @@ lista_paquetes()
 
 VER=10
 
-if [ ! -f /etc/apt/sources.list.d/pgdg.list ]
+LIST=/etc/apt/sources.list.d/pgdg.list
+if [ ! -f $LIST ]
 then
     echo "Activando el repositorio de PostgreSQL..."
-    echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+    echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" | sudo tee $LIST > /dev/null
     if ! apt-key list | grep -qs ACCC4CF8
     then
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
