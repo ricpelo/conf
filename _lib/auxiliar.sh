@@ -19,10 +19,11 @@ asegura_s_p_c()
 
 prefn_i3()
 {
-    if [ ! -f /etc/apt/sources.list.d/i3wm.list ]
+    local LIST=/etc/apt/sources.list.d/i3wm.list
+    if [ ! -f $LIST ]
     then
         echo "Activando el repositorio con la última versión de i3wm..."
-        echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee /etc/apt/sources.list.d/i3wm.list > /dev/null
+        echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
         sudo apt-get update
         sudo apt --allow-unauthenticated install sur5r-keyring
         sudo apt update
