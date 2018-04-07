@@ -46,11 +46,13 @@ prefn_fluxgui()
 
 prefn_atom()
 {
-    if [ ! -f /etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list ]
+    local LIST=/etc/apt/sources.list.d/atom.list
+    if [ ! -f $LIST ]
     then
         echo "Activando el repositorio de Atom..."
         asegura_s_p_c
-        sudo add-apt-repository --yes ppa:webupd8team/atom
+        curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+        echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee $LIST > /dev/null
         sudo apt update
     else
         echo "Repositorio de Atom ya activado."
