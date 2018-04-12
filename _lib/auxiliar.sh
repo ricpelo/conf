@@ -47,6 +47,13 @@ prefn_fluxgui()
 
 prefn_atom()
 {
+    local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
+    if [ -f $OLD ]
+    then
+        echo "Desactivando el antiguo repositorio de Atom..."
+        sudo rm -f $OLD $OLD.save
+        sudo apt update
+    fi
     local LIST=/etc/apt/sources.list.d/atom.list
     if [ ! -f $LIST ]
     then
