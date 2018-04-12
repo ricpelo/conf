@@ -143,6 +143,9 @@ then
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
     echo "Creando variable de entorno GITHUB_TOKEN en $DEST..."
     echo "export GITHUB_TOKEN=$TOKEN" > $DEST
+    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/jekyll.zsh
+    echo "Creando variable de entorno JEKYLL_GITHUB_TOKEN en $DEST..."
+    echo "export JEKYLL_GITHUB_TOKEN=$TOKEN" > $DEST
 fi
 
 if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]
