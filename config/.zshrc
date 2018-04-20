@@ -66,7 +66,8 @@ ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOQUIT="false"
 
-export TERM=screen-256color
+# No es necesario con el plugin tmux:
+#export TERM=screen-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -137,8 +138,10 @@ export KEYTIMEOUT=1
 
 bindkey "^R" history-incremental-search-backward
 
-bindkey "^K" history-substring-search-up
-bindkey "^J" history-substring-search-down
+# No funcionan bien con Midnight Commander:
+#bindkey "^K" history-substring-search-up
+#bindkey "^J" history-substring-search-down
+
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey "^[[5~" history-substring-search-up
@@ -148,4 +151,3 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 bindkey -M vicmd "^[[3~" delete-char
-
