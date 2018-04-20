@@ -26,6 +26,7 @@ Plugin 'vimoutliner/vimoutliner'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'ivalkeen/vim-simpledb'
 Plugin 'von-forks/vim-bracketed-paste'
+Plugin 'ervandew/supertab'
 call vundle#end()
 filetype plugin indent on
 syntax on
@@ -96,8 +97,10 @@ set smarttab
 " set relativenumber
 " set cursorline
 
+set ttyfast
 set number
 set scrolloff=3
+set history=1000
 
 " <Esc> pasa a modo Normal inmediatamente:
 set timeoutlen=250
@@ -207,3 +210,6 @@ nmap <F8> :TagbarToggle<CR>
 
 let g:sql_type_default = 'pgsql'
 
+" Don't recalculate files on start (slow)
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_working_path_mode = 'ra'
