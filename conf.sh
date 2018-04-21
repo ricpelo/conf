@@ -13,7 +13,16 @@ fi
 
 git submodule update --init --recursive
 
-PLIST="vim-nox-py2 zsh curl wget python-pip git build-essential python-pygments
+if no_instalado "curl"
+then
+    echo "Instalando curl..."
+    sudo apt update
+    sudo apt install curl
+else
+    echo "Curl ya instalado."
+fi
+
+PLIST="vim-nox-py2 zsh wget python-pip git build-essential python-pygments
 sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
 fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
