@@ -40,19 +40,6 @@ prefn_i3()
     fi
 }
 
-prefn_fluxgui()
-{
-    if [ ! -f /etc/apt/sources.list.d/nathan-renniewaldock-ubuntu-flux-$(lsb_release -sc).list ]
-    then
-        echo "Activando el repositorio de xflux..."
-        asegura_s_p_c
-        sudo add-apt-repository --yes ppa:nathan-renniewaldock/flux
-        sudo apt update
-    else
-        echo "Repositorio de xflux ya activado."
-    fi
-}
-
 prefn_atom()
 {
     local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
