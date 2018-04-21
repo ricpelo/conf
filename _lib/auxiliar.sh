@@ -19,13 +19,21 @@ asegura_s_p_c()
 
 prefn_i3()
 {
-    local LIST=/etc/apt/sources.list.d/i3wm.list
+    OLD=/etc/apt/sources.list.d/i3wm.list
+    if [ -f $OLD ]
+    then
+        echo "Desactivando el antiguo repositorio de i3wm..."
+        sudo rm -f $OLD $OLD.save
+        sudo apt update
+    fi
+    local LIST=/etc/apt/sources.list.d/sur5r-i3.list
     if [ ! -f $LIST ]
     then
         echo "Activando el repositorio con la última versión de i3wm..."
+        /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
+        sudo dpkg -i ./keyring.deb
+        rm -f keyring.deb
         echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
-        sudo apt-get update
-        sudo apt --allow-unauthenticated install sur5r-keyring
         sudo apt update
     else
         echo "Repositorio de i3wm ya activado."
