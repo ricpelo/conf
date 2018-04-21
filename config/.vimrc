@@ -213,3 +213,10 @@ let g:sql_type_default = 'pgsql'
 " Don't recalculate files on start (slow)
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'ra'
+
+" use an orange cursor in insert mode
+let &t_SI = "\<Esc>]12;orange\x7"
+let &t_EI = "\<Esc>]12;orange\x7"
+silent !echo -ne "\033]12;orange\007"
+" reset cursor when vim exits
+autocmd VimLeave * silent !echo -ne "\033]112\007"
