@@ -23,7 +23,7 @@ else
 fi
 
 PLIST="vim vim-gtk3 zsh wget python-pip git build-essential python-pygments
-sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
+sakura i3 nitrogen x11-xserver-utils x11-utils xdg-user-dirs tmux xcape
 fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
 exuberant-ctags atom ruby ttf-ancient-fonts"
