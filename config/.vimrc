@@ -99,6 +99,9 @@ set number
 set scrolloff=3
 set history=1000
 
+" Hace que gitgutter actualice rápidamente las marcas de Git:
+set updatetime=100
+
 " <Esc> pasa a modo Normal inmediatamente:
 set timeoutlen=250
 
