@@ -1,3 +1,4 @@
+syntax enable
 set background=light
-let g:molokai_original=1
-colorscheme molokai
+colorscheme solarized
+set guifont=Liberation\ Mono\ for\ Powerline\ Regular\ 14

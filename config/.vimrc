@@ -32,17 +32,15 @@ filetype plugin indent on
 syntax on
 set fdm=syntax
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 set laststatus=2
 set t_Co=256
 
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-let g:solarized_degrade=1
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="low"
+
 set background=light
 colorscheme solarized
 highlight ColorColumn ctermbg=0
@@ -51,7 +49,6 @@ highlight ColorColumn ctermbg=0
 " highlight ExtraWhiteSpace ctermbg=16 guibg=Black
 " highlight rubyDefine ctermbg=NONE guibg=Black
 " autocmd BufWinEnter * match ExtraWhiteSpace /\t/
-set guifont=Input\ Semi-Condensed\ 13
 
 set nocompatible                " choose no compatibility with legacy vi
 set encoding=utf-8

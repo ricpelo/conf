@@ -22,7 +22,7 @@ else
     echo "Curl ya instalado."
 fi
 
-PLIST="vim-nox-py2 zsh wget python-pip git build-essential python-pygments
+PLIST="vim vim-gtk3 zsh wget python-pip git build-essential python-pygments
 sakura i3 nitrogen x11-xserver-utils xbase-clients xorg xdg-user-dirs tmux xcape
 fluxgui ranger command-not-found fonts-freefont-ttf libnotify-bin xclip pcmanfm
 powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
@@ -100,8 +100,6 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
-
-eval fn_vim
 
 if [ "$1" = "-q" ]
 then
