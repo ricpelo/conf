@@ -12,7 +12,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'ricpelo/solarized', {'rtp': 'vim-colors-solarized/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
-Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'sirver/ultisnips'
 Plugin 'majutsushi/tagbar'
