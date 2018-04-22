@@ -22,11 +22,11 @@ else
     echo "Curl ya instalado."
 fi
 
-PLIST="vim vim-gtk3 zsh wget python-pip git build-essential python-pygments
-sakura i3 nitrogen x11-xserver-utils x11-utils xdg-user-dirs tmux xcape
-redshift ranger command-not-found fonts-freefont-ttf libnotify-bin xclip
-pcmanfm powerline lxpolkit pulseaudio pasystray pavucontrol
-network-manager-gnome exuberant-ctags atom ruby ttf-ancient-fonts"
+PLIST="zsh wget python-pip git build-essential python-pygments sakura i3
+nitrogen x11-xserver-utils x11-utils xdg-user-dirs tmux xcape redshift ranger
+command-not-found fonts-freefont-ttf libnotify-bin xsel pcmanfm powerline
+lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome exuberant-ctags
+atom ruby ttf-ancient-fonts vim vim-gtk3"
 
 P=""
 
@@ -54,18 +54,11 @@ else
     echo "Paquetes ya instalados."
 fi
 
-for p in $PLIST
-do
-    if type fn_$p | grep -qs "is a shell function"
-    then
-        eval fn_$p
-    fi
-done
-
 FONTS_DIR=~/.local/share/fonts
-
 FLIST="InputMono FiraCode mononoki"
+
 mkdir -p $FONTS_DIR
+
 for f in $FLIST
 do
     echo "Instalando tipografía $f..."
@@ -100,6 +93,14 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
+
+for p in $PLIST
+do
+    if type fn_$p | grep -qs "is a shell function"
+    then
+        eval fn_$p
+    fi
+done
 
 if [ "$1" = "-q" ]
 then
