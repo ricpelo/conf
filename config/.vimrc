@@ -38,8 +38,8 @@ python3 del powerline_setup
 set laststatus=2
 set t_Co=256
 
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
 
 set background=light
 colorscheme solarized
@@ -98,9 +98,6 @@ set ttyfast
 set number
 set scrolloff=3
 set history=1000
-
-" Hace que gitgutter actualice rápidamente las marcas de Git:
-set updatetime=100
 
 " <Esc> pasa a modo Normal inmediatamente:
 set timeoutlen=250
@@ -214,9 +211,12 @@ let g:sql_type_default = 'pgsql'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'ra'
 
-" use an orange cursor in insert mode
-let &t_SI = "\<Esc>]12;orange\x7"
-let &t_EI = "\<Esc>]12;orange\x7"
-silent !echo -ne "\033]12;orange\007"
-" reset cursor when vim exits
-autocmd VimLeave * silent !echo -ne "\033]112\007"
+" Hace que gitgutter actualice rápidamente las marcas de Git:
+" set updatetime=100
+
+" Muestra siempre la columna del gitgutter
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
