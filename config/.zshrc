@@ -66,8 +66,8 @@ ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOQUIT="false"
 
-# No es necesario con el plugin tmux:
-#export TERM=screen-256color
+# Es necesario para mostrar cursivas:
+export TERM=screen-256color
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
