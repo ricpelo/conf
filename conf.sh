@@ -74,7 +74,7 @@ cd $ACTUAL
 
 echo "Creando enlaces..."
 
-BLIST=".zshrc .vimrc .gvimrc .vim .tmux.conf .dircolors .less .lessfilter .i3"
+BLIST=".zshrc .vim .tmux.conf .dircolors .less .lessfilter .i3"
 
 for p in $BLIST
 do
