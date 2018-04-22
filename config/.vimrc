@@ -36,6 +36,8 @@ python3 powerline_setup()
 python3 del powerline_setup
 set laststatus=2
 set t_Co=256
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
 
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
