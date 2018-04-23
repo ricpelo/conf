@@ -26,6 +26,10 @@ BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
 #BULLETTRAIN_GIT_BEHIND=" %F{white}⬇%F{default}"
 #BULLETTRAIN_GIT_DIVERGED=" %F{white}⬍%F{default}"
 
+# Opciones para zsh-syntax-highlighting:
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[comment]='fg=magenta'
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
