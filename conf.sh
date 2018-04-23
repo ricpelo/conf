@@ -26,7 +26,7 @@ PLIST="zsh wget python-pip git build-essential python-pygments sakura i3
 nitrogen x11-xserver-utils x11-utils xdg-user-dirs tmux xcape redshift ranger
 command-not-found fonts-freefont-ttf libnotify-bin xsel pcmanfm powerline
 lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome exuberant-ctags
-atom ruby ttf-ancient-fonts vim vim-gtk3"
+atom ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3"
 
 P=""
 
