@@ -197,6 +197,7 @@ bar {
 assign [title="^Momentum$"] 3
 for_window [title="^Momentum$"] focus
 for_window [title="^Momentum$"] floating enable
+for_window [window_role="^browser$"] border none
 
 # exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Constant Deceleration' 3
 # exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Profile' 4
@@ -213,7 +214,5 @@ exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
 # exec --no-startup-id dropbox start
-exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
-exec --no-startup-id sakura
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; exec sakura -s; workspace 1'"
 exec --no-startup-id x-www-browser
