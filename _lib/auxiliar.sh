@@ -122,9 +122,9 @@ fn_nitrogen()
 
 fn_vim()
 {
-    echo "Post-instalación de plugins de Vim mediante Vundle..."
-    echo | vim +PluginInstall +qall
-#    echo "** No olvides ejecutar YouCompleteMe.sh **"
+    echo "Instalación de SpaceVim..."
+    curl -sLf https://spacevim.org/install.sh | bash
+    tput sgr0
 }
 
 backup_and_link()
