@@ -17,6 +17,16 @@ asegura_s_p_c()
     fi
 }
 
+prefn_emacssnapshot()
+{
+    if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]
+    then
+        echo "Activando el repositorio de Emacs Snapshot..."
+        sudo add-apt-repository ppa:ubuntu-elisp/ppa
+        sudo apt update
+    fi
+}
+
 prefn_i3()
 {
     OLD=/etc/apt/sources.list.d/i3wm.list
@@ -125,6 +135,12 @@ fn_vim()
     echo "Instalación de SpaceVim..."
     curl -sLf https://spacevim.org/install.sh | bash
     tput sgr0
+}
+
+fn_emacs()
+{
+    echo "Instalación de SpaceMacs..."
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 }
 
 backup_and_link()
