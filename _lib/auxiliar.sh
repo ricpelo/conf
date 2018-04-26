@@ -140,6 +140,10 @@ fn_vim()
 fn_emacs()
 {
     echo "Instalación de SpaceMacs..."
+    if [ -d $HOME/.emacs.d ]
+    then
+        mv -f $HOME/.emacs.d $HOME/.emacs.d.viejo
+    fi
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 }
 
