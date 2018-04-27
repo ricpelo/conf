@@ -136,7 +136,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias git="LANG=C git"
 alias glg="git lg"
-alias emacs="TERM=xterm-24bits emacs-snapshot -nw"
 
 bindkey -v
 export KEYTIMEOUT=1
