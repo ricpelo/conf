@@ -133,7 +133,8 @@ fn_nitrogen()
 fn_vim()
 {
     echo "Instalación de SpaceVim..."
-    curl -sLf https://spacevim.org/install.sh | bash
+    bash scripts/SpaceVim-install.sh
+    vim +SPInstall +qall
     tput sgr0
 }
 
