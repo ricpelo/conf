@@ -20,6 +20,7 @@ let g:spacevim_disabled_plugins = ['fcitx.vim']
 let g:spacevim_custom_plugins = [
   \ ['ryanoasis/vim-devicons'],
   \ ]
+let g:spacevim_default_indent = 4
 " }}}
 
 " SpaceVim Layers: {{{
