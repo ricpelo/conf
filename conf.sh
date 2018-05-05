@@ -56,7 +56,7 @@ else
 fi
 
 FONTS_DIR=~/.local/share/fonts
-FLIST="InputMono FiraCode mononoki"
+FLIST="InputMono FiraCode mononoki nerd-fonts"
 
 mkdir -p $FONTS_DIR
 
