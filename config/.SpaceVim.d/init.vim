@@ -19,6 +19,7 @@ let g:spacevim_relativenumber = 0
 let g:spacevim_disabled_plugins = ['fcitx.vim']
 let g:spacevim_custom_plugins = [
   \ ['ryanoasis/vim-devicons'],
+  \ ['von-forks/vim-bracketed-paste'],
   \ ]
 let g:spacevim_default_indent = 4
 " }}}
