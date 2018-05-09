@@ -55,6 +55,15 @@ else
     echo "Paquetes ya instalados."
 fi
 
+for p in $PLIST
+do
+    p=$(echo $p | tr -d "-")
+    if type fn_$p | grep -qs "is a shell function"
+    then
+        eval fn_$p
+    fi
+done
+
 FONTS_DIR=~/.local/share/fonts
 FLIST="InputMono FiraCode mononoki nerd-fonts"
 
@@ -94,15 +103,6 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
-
-for p in $PLIST
-do
-    p=$(echo $p | tr -d "-")
-    if type fn_$p | grep -qs "is a shell function"
-    then
-        eval fn_$p
-    fi
-done
 
 if [ "$1" = "-q" ]
 then

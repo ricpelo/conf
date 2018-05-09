@@ -134,7 +134,6 @@ fn_vim()
 {
     echo "Instalación de SpaceVim..."
     bash scripts/SpaceVim-install.sh
-    vim +SPInstall +qall
     tput sgr0
 }
 
