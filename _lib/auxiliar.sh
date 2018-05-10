@@ -1,8 +1,18 @@
+fn()
+{
+    for p in $1; do
+        p=$(echo $p | tr -d "-")
+        if type $2fn_$p | grep -qs "is a shell function"
+        then
+            eval $2fn_$p
+        fi
+    done
+}
+
 no_instalado()
 {
     local RET=1
-    if ! dpkg -s $1 > /dev/null 2>&1
-    then
+    if ! dpkg -s $1 > /dev/null 2>&1; then
         RET=0
     fi
     return $RET
@@ -11,16 +21,14 @@ no_instalado()
 asegura_s_p_c()
 {
     local P="software-properties-common"
-    if no_instalado $P
-    then
+    if no_instalado $P; then
         sudo apt $P
     fi
 }
 
 backup_and_link()
 {
-    if [ -d $HOME/$2/$1 ]
-    then
+    if [ -d $HOME/$2/$1 ]; then
         [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
         mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
     fi
@@ -30,8 +38,7 @@ backup_and_link()
 
 local_bin()
 {
-    if [ ! -f ~/.local/bin/$1 ]
-    then
+    if [ ! -f ~/.local/bin/$1 ]; then
         echo "Instalando $1..."
         local RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
         ln -sf $RP/$1 ~/.local/bin/$1
@@ -42,8 +49,7 @@ local_bin()
 
 prefn_emacssnapshot()
 {
-    if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]
-    then
+    if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]; then
         echo "Activando el repositorio de Emacs Snapshot..."
         sudo add-apt-repository ppa:ubuntu-elisp/ppa
         sudo apt update
@@ -53,15 +59,13 @@ prefn_emacssnapshot()
 prefn_i3()
 {
     OLD=/etc/apt/sources.list.d/i3wm.list
-    if [ -f $OLD ]
-    then
+    if [ -f $OLD ]; then
         echo "Desactivando el antiguo repositorio de i3wm..."
         sudo rm -f $OLD $OLD.save
         sudo apt update
     fi
     local LIST=/etc/apt/sources.list.d/sur5r-i3.list
-    if [ ! -f $LIST ]
-    then
+    if [ ! -f $LIST ]; then
         echo "Activando el repositorio con la última versión de i3wm..."
         /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
         sudo dpkg -i ./keyring.deb
@@ -76,15 +80,13 @@ prefn_i3()
 prefn_atom()
 {
     local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
-    if [ -f $OLD ]
-    then
+    if [ -f $OLD ]; then
         echo "Desactivando el antiguo repositorio de Atom..."
         sudo rm -f $OLD $OLD.save
         sudo apt update
     fi
     local LIST=/etc/apt/sources.list.d/atom.list
-    if [ ! -f $LIST ]
-    then
+    if [ ! -f $LIST ]; then
         echo "Activando el repositorio de Atom..."
         asegura_s_p_c
         curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
@@ -95,10 +97,9 @@ prefn_atom()
     fi
 }
 
-fn_sakura()
+postfn_sakura()
 {
-    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
-    then
+    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"; then
         echo "Estableciendo sakura como terminal predeterminado..."
         sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
     else
@@ -106,11 +107,10 @@ fn_sakura()
     fi
 }
 
-fn_nitrogen()
+postfn_nitrogen()
 {
     local DIR=$HOME/.config/nitrogen
-    if [ -d "$DIR" ]
-    then
+    if [ -d "$DIR" ]; then
         [ -d "$DIR.viejo" ] && rm -rf $DIR.viejo
         mv -f $DIR $DIR.viejo
     fi
@@ -120,16 +120,14 @@ fn_nitrogen()
 
 postfn_zsh()
 {
-    if [ ! -d ~/.oh-my-zsh ]
-    then
+    if [ ! -d ~/.oh-my-zsh ]; then
         echo "Instalando Oh My ZSH..."
         curl -L http://install.ohmyz.sh | sh
     else
         echo "Oh My ZSH ya instalado."
     fi
     local dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    if [ ! -d $dest ]
-    then
+    if [ ! -d $dest ]; then
         echo "Instalando Zsh Syntax Highlighting..."
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $dest
     else
@@ -138,14 +136,12 @@ postfn_zsh()
     fi
     echo "Instalando/actualizando tema Bullet Train para Zsh..."
     dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
-    if [ ! -d $dest ]
-    then
+    if [ ! -d $dest ]; then
         mkdir -p $dest
     fi
     dest=$dest/bullet-train.zsh-theme
     curl -sL http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
-    if grep $USER /etc/passwd | grep -vqs zsh
-    then
+    if grep $USER /etc/passwd | grep -vqs zsh; then
         echo "Instalando ZSH al usuario actual..."
         sudo chsh -s /bin/zsh $USER
     else
@@ -164,12 +160,10 @@ postfn_vim()
 postfn_emacs()
 {
     echo "Instalación de SpaceMacs..."
-    if [ -d $HOME/.emacs.d ]
-    then
+    if [ -d $HOME/.emacs.d ]; then
         local ACTUAL=$PWD
         cd $HOME/.emacs.d
-        if ! git pull 2>/dev/null
-        then
+        if ! git pull 2>/dev/null; then
             [ -d $HOME/.emacs.d.viejo ] && rm -rf $HOME/.emacs.d.viejo
             mv -f $HOME/.emacs.d $HOME/.emacs.d.viejo
         fi
