@@ -38,6 +38,8 @@ do
     fi
 done
 
+# Preinstalación de paquetes
+
 for p in $PLIST
 do
     p=$(echo $p | tr -d "-")
@@ -46,6 +48,8 @@ do
         eval prefn_$p
     fi
 done
+
+# Instalación de paquetes
 
 if [ -n "$P" ]
 then
@@ -103,6 +107,17 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
+
+# Postinstalación de paquetes
+
+for p in $PLIST
+do
+    p=$(echo $p | tr -d "-")
+    if type postfn_$p | grep -qs "is a shell function"
+    then
+        eval postfn_$p
+    fi
+done
 
 if [ "$1" = "-q" ]
 then

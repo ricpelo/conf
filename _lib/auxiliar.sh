@@ -72,7 +72,7 @@ prefn_atom()
     fi
 }
 
-fn_zsh()
+postfn_zsh()
 {
     if [ ! -d ~/.oh-my-zsh ]
     then
@@ -130,10 +130,11 @@ fn_nitrogen()
     echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $DIR/bg-saved.cfg
 }
 
-fn_vim()
+postfn_vim()
 {
     echo "Instalación de SpaceVim..."
     bash scripts/SpaceVim-install.sh
+    vim +SPInstall +qall
     tput sgr0
 }
 
