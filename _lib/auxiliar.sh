@@ -160,14 +160,11 @@ postfn_vim()
 postfn_emacs()
 {
     echo "Instalación de SpaceMacs..."
-    if [ -d $HOME/.emacs.d ]; then
-        local ACTUAL=$PWD
-        cd $HOME/.emacs.d
-        if ! git pull 2>/dev/null; then
-            [ -d $HOME/.emacs.d.viejo ] && rm -rf $HOME/.emacs.d.viejo
-            mv -f $HOME/.emacs.d $HOME/.emacs.d.viejo
+    if [ -d /.emacs.d ]; then
+        if ! (cd /.emacs.d; git pull 2>/dev/null); then
+            [ -d /.emacs.d.viejo ] && rm -rf /.emacs.d.viejo
+            mv -f /.emacs.d /.emacs.d.viejo
         fi
-        cd $ACTUAL
     fi
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
 }
