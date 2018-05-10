@@ -95,6 +95,7 @@ fi
 
 if [ -n "$TOKEN" ]; then
     DEST=/usr/local/bin/ghi
+    SN="S"
     if [ -x $DEST ]; then
         pregunta SN "Ghi ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
@@ -106,6 +107,7 @@ if [ -n "$TOKEN" ]; then
     echo "Asignando parámetro ghi.token..."
     git config --global ghi.token $TOKEN
     DEST=/usr/local/bin/hub
+    SN="S"
     if [ -x $DEST ]; then
         pregunta SN "GitHub-hub ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
