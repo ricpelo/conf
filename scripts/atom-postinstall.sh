@@ -11,26 +11,21 @@ comprueba_composer
 
 CONF=$HOME/.atom
 
-if [ -d "$CONF" ]
-then
+if [ -d "$CONF" ]; then
     echo "Se ha detectado una configuración previa de Atom en $CONF."
     pregunta SN "¿Eliminarla previamente para una instalación limpia?" N $CALLA
-    if [ "$SN" = "S" ]
-    then
+    if [ "$SN" = "S" ]; then
         echo "Eliminando directorio $CONF..."
         rm -rf $CONF
     else
         QUITAR=$(apm list --installed --bare | cut -d"@" -f1 | diff - $BASE_DIR/atom/atom-packages.txt | grep "^< " | cut -c3-)
-        if [ -n "$QUITAR" ]
-        then
+        if [ -n "$QUITAR" ]; then
             echo "Detectados los siguienes paquetes sobrantes:"
             echo $QUITAR
             pregunta SN "¿Desinstalar paquetes sobrantes?" N $CALLA
-            if [ "$SN" = "S" ]
-            then
+            if [ "$SN" = "S" ]; then
                 echo "Desinstalando paquetes sobrantes..."
-                for p in $(echo $QUITAR)
-                do
+                for p in $(echo $QUITAR); do
                     apm uninstall $p
                 done
             fi
@@ -39,15 +34,12 @@ then
 fi
 
 P=""
-for p in $(cat $BASE_DIR/atom/atom-packages.txt)
-do
-    if [ ! -d "$CONF/packages/$p" ]
-    then
+for p in $(cat $BASE_DIR/atom/atom-packages.txt); do
+    if [ ! -d "$CONF/packages/$p" ]; then
         P="$P$p "
     fi
 done
-if [ -n "$P" ]
-then
+if [ -n "$P" ]; then
     echo "Instalando paquetes de Atom..."
     apm install $P
 else

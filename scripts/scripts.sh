@@ -7,13 +7,10 @@ BASE_DIR=$(dirname $(readlink -f "$0"))
 SLIST="git-config.sh php-install.sh postgresql-install.sh composer-install.sh
 composer-postinstall.sh atom-postinstall.sh"
 
-for p in $SLIST
-do
+for p in $SLIST; do
     pregunta SN "¿Ejecutar $p?" S $1
-    if [ "$SN" = "S" ]
-    then
-        if [ "$1" = "-q" ]
-        then
+    if [ "$SN" = "S" ]; then
+        if [ "$1" = "-q" ]; then
             echo "************************"
             echo "* $p"
             echo "************************"

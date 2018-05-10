@@ -12,8 +12,7 @@ lista_paquetes()
 VER=7.1
 EXTRA="apache2 php-xdebug sqlite sqlite3"
 
-if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]
-then
+if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
     echo "Activando el repositorio de PHP..."
     sudo add-apt-repository --yes ppa:ondrej/php
     sudo apt update
@@ -23,8 +22,7 @@ fi
 
 echo "Desinstalando versiones innecesarias de PHP..."
 P=""
-for V in 5.6 7.0 7.1 7.2
-do
+for V in 5.6 7.0 7.1 7.2; do
     if [ "$V" != "$VER" ]
     then
         P="$P$(lista_paquetes $V) "
@@ -42,8 +40,7 @@ activa_modulo_apache php$VER
 activa_modulo_apache rewrite
 desactiva_xdebug $VER
 
-for p in apache2 cli
-do
+for p in apache2 cli; do
     CONF="/etc/php/$VER/$p/php.ini"
     asigna_param_php "error_reporting" "E_ALL" $CONF
     asigna_param_php "display_errors" "On" $CONF
@@ -56,12 +53,10 @@ sudo service apache2 restart
 
 DEST=/usr/local/bin/psysh
 SN="S"
-if [ -x $DEST ]
-then
+if [ -x $DEST ]; then
     pregunta SN "PsySH ya instalado. ¿Quieres actualizarlo?" S $CALLA
 fi
-if [ "$SN" = "S" ]
-then
+if [ "$SN" = "S" ]; then
     echo "Instalando PsySH en $DEST..."
     sudo wget -q -O $DEST https://git.io/psysh
     sudo chmod a+x $DEST

@@ -8,14 +8,11 @@ CALLA=$1
 comprueba_php
 comprueba_composer
 
-while true
-do
+while true; do
     TOKEN=$(token_composer)
-    if [ -z "$TOKEN" ]
-    then
+    if [ -z "$TOKEN" ]; then
         TOKEN=$(github token)
-        if [ -n "$TOKEN" ]
-        then
+        if [ -n "$TOKEN" ]; then
             echo "Creando token de GitHub para Composer..."
             token_composer $TOKEN
             break
@@ -23,8 +20,7 @@ do
             echo "El token para GitHub no está definido aún."
             echo "Ejecuta el script git-config.sh antes de continuar."
             pregunta SN "¿Quieres hacerlo ahora?" N $CALLA
-            if [ "$SN" = "S" ]
-            then
+            if [ "$SN" = "S" ]; then
                 $BASE_DIR/git-config.sh
             else
                 echo "Imposible continuar. Vuelve cuando hayas ejecutado el script git-config.sh"
@@ -33,8 +29,7 @@ do
         fi
     else
         GITHUB=$(github token)
-        if [ "$TOKEN" != "$GITHUB" ]
-        then
+        if [ "$TOKEN" != "$GITHUB" ]; then
             echo "Actualizando token de Composer para que coincida con el de GitHub..."
             token_composer $GITHUB
             break
