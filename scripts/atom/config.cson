@@ -34,7 +34,7 @@
       "solarized-light-syntax"
     ]
   editor:
-    fontFamily: "Input"
+    fontFamily: "Fira Code"
     fontSize: 18
     scrollPastEnd: true
     scrollSensitivity: 200
@@ -71,6 +71,7 @@
   "php-debug":
     AutoExpandLocals: true
     currentPanelMode: "bottom"
+    showWelcome: false
   "php-integrator-base:confirmed-upgrade-message": true
   "php-integrator-navigation":
     navigationRequireAltKey: false

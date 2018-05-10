@@ -19,10 +19,7 @@ minimap
 minimap-autohider
 multi-cursor
 php-cs-fixer
-php-debug
-php-integrator-annotations
-php-integrator-base
-php-integrator-refactoring
+php-ide-serenata
 project-manager
 simple-align
 solarized-light-ui
