@@ -28,16 +28,6 @@ redshift ranger command-not-found fonts-freefont-ttf libnotify-bin xsel pcmanfm
 powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
 exuberant-ctags atom ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 emacs"
 
-P=""
-
-for p in $PLIST
-do
-    if no_instalado $p
-    then
-        P="$P $p"
-    fi
-done
-
 # Preinstalación de paquetes
 
 for p in $PLIST
@@ -50,6 +40,16 @@ do
 done
 
 # Instalación de paquetes
+
+P=""
+
+for p in $PLIST
+do
+    if no_instalado $p
+    then
+        P="$P $p"
+    fi
+done
 
 if [ -n "$P" ]
 then

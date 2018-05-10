@@ -17,6 +17,29 @@ asegura_s_p_c()
     fi
 }
 
+backup_and_link()
+{
+    if [ -d $HOME/$2/$1 ]
+    then
+        [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
+        mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
+    fi
+    local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
+    ln -sf $RP $HOME/$2/$1
+}
+
+local_bin()
+{
+    if [ ! -f ~/.local/bin/$1 ]
+    then
+        echo "Instalando $1..."
+        local RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
+        ln -sf $RP/$1 ~/.local/bin/$1
+    else
+        echo "$1 ya instalado."
+    fi
+}
+
 prefn_emacssnapshot()
 {
     if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]
@@ -72,6 +95,29 @@ prefn_atom()
     fi
 }
 
+fn_sakura()
+{
+    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
+    then
+        echo "Estableciendo sakura como terminal predeterminado..."
+        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+    else
+        echo "sakura ya es el terminal predeterminado."
+    fi
+}
+
+fn_nitrogen()
+{
+    local DIR=$HOME/.config/nitrogen
+    if [ -d "$DIR" ]
+    then
+        [ -d "$DIR.viejo" ] && rm -rf $DIR.viejo
+        mv -f $DIR $DIR.viejo
+    fi
+    mkdir -p $DIR
+    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $DIR/bg-saved.cfg
+}
+
 postfn_zsh()
 {
     if [ ! -d ~/.oh-my-zsh ]
@@ -107,29 +153,6 @@ postfn_zsh()
     fi
 }
 
-fn_sakura()
-{
-    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"
-    then
-        echo "Estableciendo sakura como terminal predeterminado..."
-        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
-    else
-        echo "sakura ya es el terminal predeterminado."
-    fi
-}
-
-fn_nitrogen()
-{
-    local DIR=$HOME/.config/nitrogen
-    if [ -d "$DIR" ]
-    then
-        [ -d "$DIR.viejo" ] && rm -rf $DIR.viejo
-        mv -f $DIR $DIR.viejo
-    fi
-    mkdir -p $DIR
-    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $DIR/bg-saved.cfg
-}
-
 postfn_vim()
 {
     echo "Instalación de SpaceVim..."
@@ -138,7 +161,7 @@ postfn_vim()
     tput sgr0
 }
 
-fn_emacs()
+postfn_emacs()
 {
     echo "Instalación de SpaceMacs..."
     if [ -d $HOME/.emacs.d ]
@@ -153,27 +176,4 @@ fn_emacs()
         cd $ACTUAL
     fi
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
-}
-
-backup_and_link()
-{
-    if [ -d $HOME/$2/$1 ]
-    then
-        [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
-        mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
-    fi
-    local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-    ln -sf $RP $HOME/$2/$1
-}
-
-local_bin()
-{
-    if [ ! -f ~/.local/bin/$1 ]
-    then
-        echo "Instalando $1..."
-        local RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
-        ln -sf $RP/$1 ~/.local/bin/$1
-    else
-        echo "$1 ya instalado."
-    fi
 }
