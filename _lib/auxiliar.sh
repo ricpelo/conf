@@ -28,8 +28,8 @@ asegura_s_p_c()
 
 backup_and_link()
 {
-    if [ -d $HOME/$2/$1 ]; then
-        [ -d $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
+    if [ -e $HOME/$2/$1 ]; then
+        [ -e $HOME/$2/$1.viejo ] && rm -rf $HOME/$2/$1.viejo
         mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
     fi
     local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
