@@ -205,7 +205,7 @@ for_window [window_role="^browser$"] border none
 exec --no-startup-id xset r rate 250 30
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 # exec --no-startup-id ~/.local/bin/xcape -e 'Control_L=Escape'
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
 # exec --no-startup-id lxpolkit
 # exec --no-startup-id start-pulseaudio-x11
 # exec --no-startup-id pasystray

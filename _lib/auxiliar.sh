@@ -111,17 +111,6 @@ postfn_sakura()
     fi
 }
 
-postfn_nitrogen()
-{
-    local DIR=$HOME/.config/nitrogen
-    if [ -d "$DIR" ]; then
-        [ -d "$DIR.viejo" ] && rm -rf $DIR.viejo
-        mv -f $DIR $DIR.viejo
-    fi
-    mkdir -p $DIR
-    echo "[:0.0]\nfile=$PWD/config/fondo.jpg\nmode=0\nbgcolor=#000000" > $DIR/bg-saved.cfg
-}
-
 postfn_zsh()
 {
     if [ ! -d ~/.oh-my-zsh ]; then
