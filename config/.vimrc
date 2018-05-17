@@ -15,6 +15,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 " Powerline
@@ -30,9 +32,27 @@ set t_8b=[48;2;%lu;%lu;%lum
 set background=light
 colorscheme NeoSolarized
 
-" Opciones generals
+" Opciones generales
 set number
 set cursorline
+set lazyredraw
+
+" Espacios, tabulaciones e indentaciones
+set tabstop=4 shiftwidth=4      " Un tabulador son cuatro espacios
+set expandtab                   " Usa espacios, no tabuladores
+
+" Unir líneas
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j          " Borra carácter comentario al unir líneas comentadas
+endif
+set nojoinspaces                " Usa un solo espacio tras "." al unir líneas, no dos
+
+" Búsquedas
+set hlsearch                    " Resalta ajustes
+set incsearch                   " Búsqueda incremental
+set ignorecase                  " Las búsquedas no distinguen mayúsculas...
+set smartcase                   " ... a menos que contengan al menos una mayúscula
+nnoremap <CR> :nohlsearch<cr>   " Borra el búfer de búsqueda al pusar Entrar
 
 " vim-gitgutter
 set updatetime=100
