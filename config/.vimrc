@@ -59,7 +59,7 @@ set smartcase                   " ... a menos que contengan al menos una mayúsc
 nnoremap <CR> :nohlsearch<cr>   " Borra el búfer de búsqueda al pusar Entrar
 
 " vim-gitgutter
-set updatetime=100
+set updatetime=1000
 if exists('&signcolumn')  " Vim 7.4.2201
   set signcolumn=yes
 else
