@@ -144,9 +144,8 @@ postfn_zsh()
 
 postfn_vim()
 {
-    echo "Instalación de SpaceVim..."
-    bash scripts/SpaceVim-install.sh
-    tput sgr0
+    echo "Instalación de plugins de Vim..."
+    echo | vim +PlugInstall +qall 2>/dev/null
 }
 
 postfn_emacs()
