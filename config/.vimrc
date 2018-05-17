@@ -30,7 +30,11 @@ set termguicolors
 set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set background=light
-colorscheme NeoSolarized
+try
+    colorscheme NeoSolarized
+catch /^Vim\%((\a\+)\)\=:E185/
+    " No hacer nada si no está instalado
+endtry
 
 " Opciones generales
 set number
