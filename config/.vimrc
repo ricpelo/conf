@@ -35,6 +35,8 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     " No hacer nada si no está instalado
 endtry
+" Mejor resaltado de paréntesis
+highlight! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=NONE guibg=NONE
 
 " Opciones generales
 set number
