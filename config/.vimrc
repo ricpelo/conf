@@ -17,6 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'godlygeek/tabular'
+Plug 'lifepillar/pgsql.vim'
 call plug#end()
 
 " Powerline
@@ -75,3 +76,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeWinPos = "right"
 " NERDTree y Startify juntos
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | NERDTree | wincmd w | endif
+
+" pgsql.vim
+let g:sql_type_default = 'pgsql'
