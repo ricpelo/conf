@@ -18,6 +18,7 @@ Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'lifepillar/pgsql.vim'
+Plug 'ivalkeen/vim-simpledb'
 call plug#end()
 
 " Powerline
@@ -79,3 +80,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | NERDTree |
 
 " pgsql.vim
 let g:sql_type_default = 'pgsql'
+
+" (vim-simpledb) Ejecuta sentencias SQL con Ctrl-q en lugar de Enter
+let g:simpledb_use_default_keybindings = 0
+vnoremap <buffer> <c-q> :SimpleDBExecuteSql<cr>
+nnoremap <buffer> <c-q> m':SimpleDBExecuteSql <cr>g`'
+nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
