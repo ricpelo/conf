@@ -60,7 +60,7 @@ echo "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
 echo "Creando enlaces..."
-BLIST=".zshrc .tmux.conf .dircolors .Xresources .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
+BLIST=".zshrc .tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
 for p in $BLIST; do
     backup_and_link $p
 done
