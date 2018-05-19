@@ -8,11 +8,12 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdtree'
 Plug 'von-forks/vim-bracketed-paste'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
