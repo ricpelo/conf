@@ -20,6 +20,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'lifepillar/pgsql.vim'
 Plug 'ivalkeen/vim-simpledb'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Powerline
