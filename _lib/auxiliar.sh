@@ -159,3 +159,13 @@ postfn_emacs()
     fi
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
 }
+
+postfn_commandnotfound()
+{
+    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
+        echo "LP #1766068 ya corregido."
+    else
+        echo "Corrigiendo LP #1766068..."
+        sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
+    fi
+}
