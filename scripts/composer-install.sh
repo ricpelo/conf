@@ -2,9 +2,11 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
-comprueba_php
+$CALLA=$1
 
-echo "Descargando y ejecutando instalador de composer..."
+comprueba_php $CALLA
+
+mensaje "Descargando y ejecutando instalador de composer..."
 
 EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -19,14 +21,14 @@ fi
 php composer-setup.php --quiet
 RESULT=$?
 rm composer-setup.php
-echo "Instalando en /usr/local/bin/composer..."
+mensaje "Instalando en /usr/local/bin/composer..."
 sudo install -p -o root -g root composer.phar /usr/local/bin/composer
 rm composer.phar
 asegura_salto_linea_sudoers
 desactiva_sudo "/usr/local/bin/composer"
 
 if dpkg -s composer > /dev/null 2>&1; then
-    echo "Desinstalando paquete composer de Apt..."
+    mensaje "Desinstalando paquete composer de Apt..."
     sudo apt -y purge composer
 fi
 

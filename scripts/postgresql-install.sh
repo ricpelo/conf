@@ -13,17 +13,17 @@ VER=10
 
 LIST=/etc/apt/sources.list.d/pgdg.list
 if [ ! -f $LIST ]; then
-    echo "Activando el repositorio de PostgreSQL..."
+    mensaje "Activando el repositorio de PostgreSQL..."
     echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" | sudo tee $LIST > /dev/null
     if ! apt-key list | grep -qs ACCC4CF8; then
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     fi
     sudo apt update
 else
-    echo "Repositorio de PostgreSQL ya activado."
+    mensaje "Repositorio de PostgreSQL ya activado."
 fi
 
-echo "Instalando paquetes de PostgreSQL..."
+mensaje "Instalando paquetes de PostgreSQL..."
 P=$(lista_paquetes $VER)
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y install $P
@@ -40,13 +40,13 @@ asigna_param_postgresql "default_text_search_config" "'pg_catalog.english'" $CON
 for V in 9.6 10; do
     if [ "$V" != "$VER" ]; then
         if [ -d /etc/postgresql/$V ]; then
-            echo "Se ha detectado la versión $V anterior."
+            mensaje "Se ha detectado la versión $V anterior."
             pregunta SN "¿Migrar los datos a la versión $VER y desinstalar?" S $CALLA
             if [ "$SN" = "S" ]; then
                 sudo service postgresql stop
-                echo "Eliminando clúster main de la versión $VER..."
+                mensaje "Eliminando clúster main de la versión $VER..."
                 sudo pg_dropcluster --stop $VER main
-                echo "Migrando clúster main a la versión $VER..."
+                mensaje "Migrando clúster main a la versión $VER..."
                 sudo pg_upgradecluster -m upgrade $V main
             fi
             pregunta SN "¿Desinstalar la versión $V anterior?" S $CALLA
@@ -59,5 +59,5 @@ for V in 9.6 10; do
     fi
 done
 
-echo "Reiniciando PostgreSQL..."
+mensaje "Reiniciando PostgreSQL..."
 sudo service postgresql restart

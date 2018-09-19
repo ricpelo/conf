@@ -13,11 +13,11 @@ fi
 git submodule update --init --recursive
 
 if no_instalado "curl"; then
-    echo "Instalando curl..."
+    mensaje "Instalando curl..."
     sudo apt update
     sudo apt install -y curl
 else
-    echo "Curl ya instalado."
+    mensaje "Curl ya instalado."
 fi
 
 PLIST="zsh wget python-pip git build-essential python-pygments sakura i3
@@ -38,11 +38,11 @@ for p in $PLIST; do
 done
 
 if [ -n "$P" ]; then
-    echo "Instalando paquetes..."
+    mensaje "Instalando paquetes..."
     sudo apt update
     sudo apt install -y $P
 else
-    echo "Paquetes ya instalados."
+    mensaje "Paquetes ya instalados."
 fi
 
 # Configuración de paquetes tras la instalación
@@ -52,15 +52,15 @@ FONTS_DIR=~/.local/share/fonts
 FLIST="InputMono FiraCode mononoki nerd-fonts"
 mkdir -p $FONTS_DIR
 for f in $FLIST; do
-    echo "Instalando tipografía $f..."
+    mensaje "Instalando tipografía $f..."
     cp -f fonts/$f/* $FONTS_DIR
 done
 fc-cache -f $FONTS_DIR
 
-echo "Instalando tipografías Powerline..."
+mensaje "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
-echo "Creando enlaces..."
+mensaje "Creando enlaces..."
 BLIST=".tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
 for p in $BLIST; do
     backup_and_link $p
@@ -71,7 +71,7 @@ backup_and_link dunst .config
 backup_and_link powerline .config
 backup_and_link htop .config
 
-echo "Instalando binarios locales..."
+mensaje "Instalando binarios locales..."
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 local_bin unclutter
 local_bin xbanish
@@ -83,7 +83,7 @@ fn "$PLIST" "post"
 
 # Hay que hacerlo después de haber post-instalado el zsh,
 # o este lo machacará:
-echo "Creando enlace a .zshrc..."
+mensaje "Creando enlace a .zshrc..."
 backup_and_link .zshrc
 
 if [ "$1" = "-q" ]; then

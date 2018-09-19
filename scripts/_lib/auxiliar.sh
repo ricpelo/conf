@@ -1,3 +1,19 @@
+mensaje_n()
+{
+    echo -n "\033[1;28m#\033[0m\033[36m $1\033[0m"
+}
+
+mensaje()
+{
+    mensaje_n "$1"
+    echo
+}
+
+mensaje_error()
+{
+    echo "\033[1;28m#\033[0m\033[31m $1\033[0m"
+}
+
 # $1 = Variable en la que guardar el resultado
 # $2 = Pregunta
 # $3 = Valor por defecto (S o N)
@@ -9,7 +25,7 @@ pregunta()
     then
         _SN="$3"
     else
-        echo -n "$2 "
+        echo -n "\033[1;28m*\033[0m\033[34m $2 \033[0m"
         [ "$3" = "S" ] && echo -n "(S/n): " || echo -n "(s/N): "
         read _SN
         _SN=$(echo "$_SN" | tr '[:lower:]' '[:upper:]')
@@ -45,10 +61,10 @@ desactiva_sudo()
     local L="%sudo	ALL=!$1"
     if ! sudo cat /etc/sudoers | grep -qs "$L"
     then
-        echo "Desactivando el uso de $1 con sudo..."
+        mensaje "Desactivando el uso de $1 con sudo..."
         echo "$L" | sudo tee -a /etc/sudoers > /dev/null
     else
-        echo "Uso de $1 con sudo ya desactivado."
+        mensaje "Uso de $1 con sudo ya desactivado."
     fi
 }
 
@@ -88,10 +104,10 @@ activa_modulo_apache()
 {
     if ! a2query -q -m $1
     then
-        echo "Activando módulo $1 de Apache2..."
+        mensaje "Activando módulo $1 de Apache2..."
         sudo a2enmod $1
     else
-        echo "Módulo $1 de Apache2 ya activado."
+        mensaje "Módulo $1 de Apache2 ya activado."
     fi
 }
 
@@ -99,10 +115,10 @@ desactiva_xdebug()
 {
     if phpquery -q -v $1 -s cli -m xdebug
     then
-        echo "Desactivando módulo xdebug de PHP para el SAPI cli..."
+        mensaje "Desactivando módulo xdebug de PHP para el SAPI cli..."
         sudo phpdismod -v $1 -s cli xdebug
     else
-        echo "Módulo xdebug de PHP ya desactivado para el SAPI cli."
+        mensaje "Módulo xdebug de PHP ya desactivado para el SAPI cli."
     fi
 }
 
@@ -114,10 +130,10 @@ asigna_param_php()
     PARAM="$1 = $2"
     if ! grep -qs "^$PARAM$" $3
     then
-        echo "Estableciendo $PARAM en $3..."
+        mensaje "Estableciendo $PARAM en $3..."
         sudo sed -r -i "s/^;?\s*$1\s*=.*$/$PARAM/" $3
     else
-        echo "Parámetro $PARAM ya establecido en $3."
+        mensaje "Parámetro $PARAM ya establecido en $3."
     fi
 }
 
@@ -129,10 +145,10 @@ asigna_param_postgresql()
     PARAM="$1 = $2"
     if ! grep -qs "^$PARAM" $3
     then
-        echo "Estableciendo $PARAM..."
+        mensaje "Estableciendo $PARAM..."
         sudo sed -r -i "s/^\s*#?$1\s*=/$PARAM #/" $3
     else
-        echo "Parámetro $PARAM ya establecido."
+        mensaje "Parámetro $PARAM ya establecido."
     fi
 }
 
@@ -140,32 +156,33 @@ comprueba_atom()
 {
     if [ "$(which atom)" != "/usr/bin/atom" ]
     then
-        echo "Atom no está instalado. Instálalo antes de continuar."
+        mensaje_error "Atom no está instalado. Instálalo antes de continuar."
         exit 1
     else
-        echo "Atom ya instalado."
+        mensaje "Atom ya instalado."
     fi
 }
 
 comprueba_php()
 {
+    local $CALLA=$1
+
     while true
     do
         if [ "$(which php)" != "/usr/bin/php" ]
         then
-            echo "PHP no está instalado."
-            echo "Ejecuta el script php-install.sh antes de continuar."
-            echo -n "¿Quieres hacerlo ahora? (s/N): "
-            read SN
-            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            mensaje "PHP no está instalado."
+            mensaje "Ejecuta el script php-install.sh antes de continuar."
+            pregunta SN "¿Quieres hacerlo ahora? (s/N):" N $CALLA
+            if [ "$SN" = "S" ]
             then
                 $BASE_DIR/php-install.sh
             else
-                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script php-install.sh"
+                mensaje_error "Imposible continuar. Vuelve cuando hayas ejecutado el script php-install.sh"
                 exit 1
             fi
         else
-            echo "PHP ya instalado."
+            mensaje "PHP ya instalado."
             break
         fi
     done
@@ -173,23 +190,24 @@ comprueba_php()
 
 comprueba_composer()
 {
+    local CALLA=$1
+
     while true
     do
         if [ "$(which composer)" != "/usr/local/bin/composer" ]
         then
-            echo "Composer no está instalado."
-            echo "Ejecuta el script composer-install.sh antes de continuar."
-            echo -n "¿Quieres hacerlo ahora? (s/N): "
-            read SN
-            if [ "$SN" = "S"  ] || [ "$SN" = "s"  ]
+            mensaje "Composer no está instalado."
+            mensaje "Ejecuta el script composer-install.sh antes de continuar."
+            pregunta SN "¿Quieres hacerlo ahora?" N $CALLA
+            if [ "$SN" = "S" ]
             then
                 $BASE_DIR/composer-install.sh
             else
-                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script composer-install.sh"
+                mensaje_error "Imposible continuar. Vuelve cuando hayas ejecutado el script composer-install.sh"
                 exit 1
             fi
         else
-            echo "Composer ya instalado."
+            mensaje "Composer ya instalado."
             break
         fi
     done

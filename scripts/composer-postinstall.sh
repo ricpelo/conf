@@ -5,25 +5,25 @@ BASE_DIR=$(dirname $(readlink -f "$0"))
 
 CALLA=$1
 
-comprueba_php
-comprueba_composer
+comprueba_php $CALLA
+comprueba_composer $CALLA
 
 while true; do
     TOKEN=$(token_composer)
     if [ -z "$TOKEN" ]; then
         TOKEN=$(github token)
         if [ -n "$TOKEN" ]; then
-            echo "Creando token de GitHub para Composer..."
+            mensaje "Creando token de GitHub para Composer..."
             token_composer $TOKEN
             break
         else
-            echo "El token para GitHub no está definido aún."
-            echo "Ejecuta el script git-config.sh antes de continuar."
+            mensaje "El token para GitHub no está definido aún."
+            mensaje "Ejecuta el script git-config.sh antes de continuar."
             pregunta SN "¿Quieres hacerlo ahora?" N $CALLA
             if [ "$SN" = "S" ]; then
                 $BASE_DIR/git-config.sh
             else
-                echo "Imposible continuar. Vuelve cuando hayas ejecutado el script git-config.sh"
+                mensaje_error "Imposible continuar. Vuelve cuando hayas ejecutado el script git-config.sh"
                 exit 1
             fi
         fi
@@ -34,7 +34,7 @@ while true; do
             token_composer $GITHUB
             break
         fi
-        echo "Token de GitHub para Composer ya creado."
+        mensaje "Token de GitHub para Composer ya creado."
         break
     fi
 done

@@ -11,9 +11,9 @@ for p in $SLIST; do
     pregunta SN "¿Ejecutar $p?" S $1
     if [ "$SN" = "S" ]; then
         if [ "$1" = "-q" ]; then
-            echo "************************"
-            echo "* $p"
-            echo "************************"
+            mensaje "*********************************************"
+            mensaje $p
+            mensaje "*********************************************"
         fi
         $BASE_DIR/$p $1
         echo ""

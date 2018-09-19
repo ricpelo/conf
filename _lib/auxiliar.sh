@@ -42,25 +42,25 @@ backup_and_link()
         rm -rf $ORIG
     fi
     local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-    echo "$ORIG -> $RP"
+    mensaje "$ORIG -> $RP"
     ln -sf $RP $ORIG
 }
 
 local_bin()
 {
     if [ ! -f ~/.local/bin/$1 ]; then
-        echo "Instalando $1..."
+        mensaje "Instalando $1..."
         local RP=$(realpath --relative-to=$HOME/.local/bin $PWD/bin)
         ln -sf $RP/$1 ~/.local/bin/$1
     else
-        echo "$1 ya instalado."
+        mensaje "$1 ya instalado."
     fi
 }
 
 prefn_emacssnapshot()
 {
     if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]; then
-        echo "Activando el repositorio de Emacs Snapshot..."
+        mensaje "Activando el repositorio de Emacs Snapshot..."
         sudo add-apt-repository ppa:ubuntu-elisp/ppa
         sudo apt update
     fi
@@ -76,14 +76,14 @@ prefn_i3()
     fi
     local LIST=/etc/apt/sources.list.d/sur5r-i3.list
     if [ ! -f $LIST ]; then
-        echo "Activando el repositorio con la última versión de i3wm..."
+        mensaje "Activando el repositorio con la última versión de i3wm..."
         /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
         sudo dpkg -i ./keyring.deb
         rm -f keyring.deb
         echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
         sudo apt update
     else
-        echo "Repositorio de i3wm ya activado."
+        mensaje "Repositorio de i3wm ya activado."
     fi
 }
 
@@ -91,49 +91,49 @@ prefn_atom()
 {
     local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
     if [ -f $OLD ]; then
-        echo "Desactivando el antiguo repositorio de Atom..."
+        mensaje "Desactivando el antiguo repositorio de Atom..."
         sudo rm -f $OLD $OLD.save
         sudo apt update
     fi
     local LIST=/etc/apt/sources.list.d/atom.list
     if [ ! -f $LIST ]; then
-        echo "Activando el repositorio de Atom..."
+        mensaje "Activando el repositorio de Atom..."
         asegura_s_p_c
         curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
         echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee $LIST > /dev/null
         sudo apt update
     else
-        echo "Repositorio de Atom ya activado."
+        mensaje "Repositorio de Atom ya activado."
     fi
 }
 
 postfn_sakura()
 {
     if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"; then
-        echo "Estableciendo sakura como terminal predeterminado..."
+        mensaje "Estableciendo Sakura como terminal predeterminado..."
         sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
     else
-        echo "sakura ya es el terminal predeterminado."
+        mensaje "Sakura ya es el terminal predeterminado."
     fi
 }
 
 postfn_zsh()
 {
     if [ ! -d ~/.oh-my-zsh ]; then
-        echo "Instalando Oh My ZSH..."
+        mensaje "Instalando Oh My ZSH..."
         curl -L http://install.ohmyz.sh | sh
     else
-        echo "Oh My ZSH ya instalado."
+        mensaje "Oh My ZSH ya instalado."
     fi
     local dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     if [ ! -d $dest ]; then
-        echo "Instalando Zsh Syntax Highlighting..."
+        mensaje "Instalando Zsh Syntax Highlighting..."
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $dest
     else
-        echo "Actualizando Zsh Syntax Highlighting..."
+        mensaje "Actualizando Zsh Syntax Highlighting..."
         (cd $dest && git pull)
     fi
-    echo "Instalando/actualizando tema Bullet Train para Zsh..."
+    mensaje "Instalando/actualizando tema Bullet Train para Zsh..."
     dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
     if [ ! -d $dest ]; then
         mkdir -p $dest
@@ -141,22 +141,22 @@ postfn_zsh()
     dest=$dest/bullet-train.zsh-theme
     curl -sL http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
     if grep $USER /etc/passwd | grep -vqs zsh; then
-        echo "Instalando ZSH al usuario actual..."
+        mensaje "Instalando ZSH al usuario actual..."
         sudo chsh -s /bin/zsh $USER
     else
-        echo "Zsh ya asignado al usuario actual."
+        mensaje "Zsh ya asignado al usuario actual."
     fi
 }
 
 postfn_vim()
 {
-    echo "Instalación de plugins de Vim..."
+    mensaje "Instalación de plugins de Vim..."
     echo | vim +PlugInstall +qall 2>/dev/null
 }
 
 postfn_emacs()
 {
-    echo "Instalación de SpaceMacs..."
+    mensaje "Instalación de SpaceMacs..."
     if [ -d /.emacs.d ]; then
         if ! (cd /.emacs.d; git pull 2>/dev/null); then
             [ -d /.emacs.d.viejo ] && rm -rf /.emacs.d.viejo
@@ -169,9 +169,9 @@ postfn_emacs()
 postfn_commandnotfound()
 {
     if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
-        echo "LP #1766068 ya corregido."
+        mensaje "LP #1766068 ya corregido."
     else
-        echo "Corrigiendo LP #1766068..."
+        mensaje "Corrigiendo LP #1766068..."
         sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
     fi
 }

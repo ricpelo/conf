@@ -16,10 +16,10 @@ netrc()
 
 crear_usuario_github()
 {
-    echo -n "Nombre de usuario en GitHub (NO el email): "
+    mensaje_n "Nombre de usuario en GitHub (NO el email): "
     read USUARIO
     if [ -n "$USUARIO" ]; then
-        echo "Creando configuración github.user..."
+        mensaje "Creando configuración github.user..."
         github user "$USUARIO"
     fi
 }
@@ -33,10 +33,10 @@ if [ -n "$USER_NAME" ]; then
     pregunta SN "Configuración user.name ya creada. ¿Quieres cambiarla?" N $CALLA
 fi
 if [ -z "$USER_NAME" ] || [ "$SN" = "S" ]; then
-    echo -n "Nombre completo del programador: "
+    mensaje_n "Nombre completo del programador: "
     read USER_NAME
     if [ -n "$USER_NAME" ]; then
-        echo "Creando configuración user.name..."
+        mensaje "Creando configuración user.name..."
         git_user name "$USER_NAME"
     fi
 fi
@@ -46,16 +46,16 @@ if [ -n "$USER_EMAIL" ]; then
     pregunta SN "Configuración user.email ya creada. ¿Quieres cambiarla?" N $CALLA
 fi
 if [ -z "$USER_EMAIL" ] || [ "$SN" = "S" ]; then
-    echo -n "Dirección de email: "
+    mensaje_n "Dirección de email: "
     read USER_EMAIL
     if [ -n "$USER_EMAIL" ]; then
-        echo "Creando configuración user.email..."
+        mensaje "Creando configuración user.email..."
         git_user email "$USER_EMAIL"
     fi
 fi
 
 if [ -z "$USER_NAME" ] || [ -z "$USER_EMAIL" ]; then
-    echo "Configura el nombre y la dirección de email antes de continuar."
+    mensaje_error "Configura el nombre y la dirección de email antes de continuar."
     exit 1
 fi
 
@@ -73,7 +73,7 @@ if [ -n "$TOKEN" ]; then
 fi
 if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
     if [ -z "$USUARIO" ]; then
-        echo "Para crear el token, debes indicar tu nombre de usuario en GitHub."
+        mensaje "Para crear el token, debes indicar tu nombre de usuario en GitHub."
         pregunta "¿Quieres indicarlo ahora?" S $CALLA
         if [ "$SN" = "S" ]; then
             crear_usuario_github
@@ -85,10 +85,10 @@ if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
         TOKEN=$(curl -s -u $USUARIO -d "$JSON" "https://api.github.com/authorizations" | grep '"token"')
         if [ -n "$TOKEN" ]; then
             TOKEN=$(echo $TOKEN | cut -d":" -f2 | tr -d '", ')
-            echo "Creando token de GitHub para git..."
+            mensaje "Creando token de GitHub para git..."
             github token "$TOKEN"
         else
-            echo "Ocurrió un error al crear el token de GitHub."
+            mensaje_error "Ocurrió un error al crear el token de GitHub."
         fi
     fi
 fi
@@ -100,11 +100,11 @@ if [ -n "$TOKEN" ]; then
         pregunta SN "Ghi ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
     if [ "$SN" = "S" ]; then
-        echo "Instalando ghi en $DEST..."
+        mensaje "Instalando ghi en $DEST..."
         curl -sL "https://raw.githubusercontent.com/drazisil/ghi/master/ghi" | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
     fi
-    echo "Asignando parámetro ghi.token..."
+    mensaje "Asignando parámetro ghi.token..."
     git config --global ghi.token $TOKEN
     DEST=/usr/local/bin/hub
     SN="S"
@@ -112,24 +112,24 @@ if [ -n "$TOKEN" ]; then
         pregunta SN "GitHub-hub ya instalado. ¿Quieres actualizarlo?" S $CALLA
     fi
     if [ "$SN" = "S" ]; then
-        echo "Instalando GitHub-hub en $DEST..."
+        mensaje "Instalando GitHub-hub en $DEST..."
         VER="2.3.0-pre10"
         FILE="hub-linux-amd64-$VER"
         curl -sL "https://github.com/github/hub/releases/download/v$VER/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
     fi
-    echo "Asignando parámetro hub.protocol = https..."
+    mensaje "Asignando parámetro hub.protocol = https..."
     git config --global hub.protocol https
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/hub.zsh
-    echo "Creando variable de entorno GITHUB_TOKEN en $DEST..."
+    mensaje "Creando variable de entorno GITHUB_TOKEN en $DEST..."
     echo "export GITHUB_TOKEN=$TOKEN" > $DEST
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/jekyll.zsh
-    echo "Creando variable de entorno JEKYLL_GITHUB_TOKEN en $DEST..."
+    mensaje "Creando variable de entorno JEKYLL_GITHUB_TOKEN en $DEST..."
     echo "export JEKYLL_GITHUB_TOKEN=$TOKEN" > $DEST
 fi
 
 if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]; then
-    echo "Creando entradas en ~/.netrc..."
+    mensaje "Creando entradas en ~/.netrc..."
     [ -f ~/.netrc ] || touch ~/.netrc
     netrc "github.com" $USUARIO $TOKEN
     netrc "api.github.com" $USUARIO $TOKEN

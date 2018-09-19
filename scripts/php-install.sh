@@ -13,14 +13,14 @@ VER=7.1
 EXTRA="apache2 php-xdebug sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
-    echo "Activando el repositorio de PHP..."
+    mensaje "Activando el repositorio de PHP..."
     sudo add-apt-repository --yes ppa:ondrej/php
     sudo apt update
 else
-    echo "Repositorio de PHP ya activado."
+    mensaje "Repositorio de PHP ya activado."
 fi
 
-echo "Desinstalando versiones innecesarias de PHP..."
+mensaje "Desinstalando versiones innecesarias de PHP..."
 P=""
 for V in 5.6 7.0 7.1 7.2; do
     if [ "$V" != "$VER" ]
@@ -31,7 +31,7 @@ done
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y purge $P\033[0m"
 sudo apt -y purge $P
 
-echo "Instalando paquetes de PHP..."
+mensaje "Instalando paquetes de PHP..."
 P=$(lista_paquetes $VER)
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y --purge install $P $EXTRA
@@ -48,7 +48,7 @@ for p in apache2 cli; do
     asigna_param_php "date.timezone" "'UTC'" $CONF
 done
 
-echo "Reiniciando Apache 2..."
+mensaje "Reiniciando Apache 2..."
 sudo service apache2 restart
 
 DEST=/usr/local/bin/psysh
@@ -57,7 +57,7 @@ if [ -x $DEST ]; then
     pregunta SN "PsySH ya instalado. ¿Quieres actualizarlo?" S $CALLA
 fi
 if [ "$SN" = "S" ]; then
-    echo "Instalando PsySH en $DEST..."
+    mensaje "Instalando PsySH en $DEST..."
     sudo wget -q -O $DEST https://git.io/psysh
     sudo chmod a+x $DEST
     DEST=~/.local/share/psysh
