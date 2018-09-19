@@ -28,16 +28,22 @@ asegura_s_p_c()
 
 backup_and_link()
 {
-    if [ -e $HOME/$2/$1 ]; then
-        if [ ! -e $HOME/$2/$1.viejo ]; then
-            if [ "$(realpath $PWD/config/$1)" != "$(realpath $HOME/$2/$1)" ]; then
-                mv -f $HOME/$2/$1 $HOME/$2/$1.viejo
+    if [ -n "$2" ]; then
+        local ORIG=$HOME/$2/$1
+    else
+        local ORIG=$HOME/$1
+    fi
+    if [ -e $ORIG ]; then
+        if [ ! -e $ORIG.viejo ]; then
+            if [ "$(realpath $PWD/config/$1)" != "$(realpath $ORIG)" ]; then
+                mv -f $ORIG $ORIG.viejo
             fi
         fi
-        rm -rf $HOME/$2/$1
+        rm -rf $ORIG
     fi
     local RP=$(realpath -s --relative-to=$HOME/$2 $PWD/config/$1)
-    ln -sf $RP $HOME/$2/$1
+    echo "$ORIG -> $RP"
+    ln -sf $RP $ORIG
 }
 
 local_bin()
