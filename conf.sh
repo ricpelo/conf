@@ -61,7 +61,7 @@ echo "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
 echo "Creando enlaces..."
-BLIST=".zshrc .tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
+BLIST=".tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
 for p in $BLIST; do
     backup_and_link $p
 done
@@ -80,6 +80,10 @@ local_bin proyecto.sh
 
 # Postinstalación de paquetes
 fn "$PLIST" "post"
+
+# Hay que hacerlo después de haber post-instalado el zsh,
+# o este lo machacará:
+backup_and_link .zshrc
 
 if [ "$1" = "-q" ]; then
     SN="S"
