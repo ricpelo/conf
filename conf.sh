@@ -83,6 +83,7 @@ fn "$PLIST" "post"
 
 # Hay que hacerlo después de haber post-instalado el zsh,
 # o este lo machacará:
+echo "Creando enlace a .zshrc..."
 backup_and_link .zshrc
 
 if [ "$1" = "-q" ]; then
