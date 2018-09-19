@@ -15,7 +15,7 @@ git submodule update --init --recursive
 if no_instalado "curl"; then
     echo "Instalando curl..."
     sudo apt update
-    sudo apt install curl
+    sudo apt install -y curl
 else
     echo "Curl ya instalado."
 fi
@@ -39,6 +39,7 @@ done
 
 if [ -n "$P" ]; then
     echo "Instalando paquetes..."
+    sudo apt update
     sudo apt install -y $P
 else
     echo "Paquetes ya instalados."

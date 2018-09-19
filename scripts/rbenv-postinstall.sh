@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt install build-essential libreadline-dev libssl-dev
+sudo apt install -y build-essential libreadline-dev libssl-dev
 
 VER=$(rbenv install -l | cut -c3- | grep "^[0-9.]*$" | sort -r | head -1)
 
