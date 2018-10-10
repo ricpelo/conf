@@ -21,6 +21,7 @@ Plug 'godlygeek/tabular'
 Plug 'lifepillar/pgsql.vim'
 Plug 'ivalkeen/vim-simpledb'
 Plug 'easymotion/vim-easymotion'
+Plug 'vim-voom/VOoM'
 call plug#end()
 
 " Powerline
@@ -35,9 +36,9 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set background=light
 try
-    colorscheme NeoSolarized
+  colorscheme NeoSolarized
 catch /^Vim\%((\a\+)\)\=:E185/
-    " No hacer nada si no está instalado
+  " No hacer nada si no está instalado
 endtry
 " Mejor resaltado de paréntesis
 highlight! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=NONE guibg=NONE
@@ -88,3 +89,8 @@ let g:simpledb_use_default_keybindings = 0
 vnoremap <buffer> <c-q> :SimpleDBExecuteSql<cr>
 nnoremap <buffer> <c-q> m':SimpleDBExecuteSql <cr>g`'
 nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
+
+" Opciones para gvim
+if has('gui_running')
+  set guifont=LiterationMono\ Nerd\ Font\ Book\ 14
+endif
