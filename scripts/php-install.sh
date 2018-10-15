@@ -10,7 +10,7 @@ lista_paquetes()
 }
 
 VER=7.1
-EXTRA="apache2 php-xdebug sqlite sqlite3"
+EXTRA="apache2 sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
     mensaje "Activando el repositorio de PHP..."
@@ -22,7 +22,7 @@ fi
 
 mensaje "Desinstalando versiones innecesarias de PHP..."
 P=""
-for V in 5.6 7.0 7.1 7.2; do
+for V in 5.6 7.0 7.1 7.2 7.3; do
     if [ "$V" != "$VER" ]
     then
         P="$P$(lista_paquetes $V) "
