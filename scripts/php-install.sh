@@ -58,7 +58,7 @@ if [ -x $DEST ]; then
 fi
 if [ "$SN" = "S" ]; then
     mensaje "Instalando PsySH en $DEST..."
-    sudo wget -q -O $DEST https://git.io/psysh
+    sudo wget -q -O $DEST https://psysh.org/psysh
     sudo chmod a+x $DEST
     DEST=~/.local/share/psysh
     mkdir -p $DEST
