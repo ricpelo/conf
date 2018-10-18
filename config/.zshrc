@@ -105,6 +105,9 @@ export EDITOR="vim"
 # Para que las aplicaciones Java se vean mejor:
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
+# Para que la pestaña de GitHub de Atom funcione:
+export LOCAL_GIT_DIRECTORY=/usr
+
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
