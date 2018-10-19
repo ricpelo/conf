@@ -2,7 +2,7 @@
 
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
-$CALLA=$1
+CALLA=$1
 
 comprueba_php $CALLA
 

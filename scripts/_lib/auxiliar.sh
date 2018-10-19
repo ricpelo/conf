@@ -165,7 +165,7 @@ comprueba_atom()
 
 comprueba_php()
 {
-    local $CALLA=$1
+    local CALLA=$1
 
     while true
     do
