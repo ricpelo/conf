@@ -23,7 +23,7 @@ fi
 PLIST="zsh wget python-pip git build-essential python-pygments sakura i3
 feh x11-xserver-utils x11-utils xdg-user-dirs tmux ncurses-term xcape
 redshift ranger command-not-found fonts-freefont-ttf libnotify-bin xsel pcmanfm
-powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
+fonts-powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
 exuberant-ctags atom ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 emacs"
 
 # Preinstalación de paquetes
@@ -68,7 +68,6 @@ done
 [ -d ~/.config ] || mkdir ~/.config
 backup_and_link sakura .config
 backup_and_link dunst .config
-backup_and_link powerline .config
 backup_and_link htop .config
 
 mensaje "Instalando binarios locales..."

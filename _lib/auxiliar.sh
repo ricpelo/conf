@@ -133,13 +133,14 @@ postfn_zsh()
         mensaje "Actualizando Zsh Syntax Highlighting..."
         (cd $dest && git pull)
     fi
-    mensaje "Instalando/actualizando tema Bullet Train para Zsh..."
-    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
+    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel9k
     if [ ! -d $dest ]; then
-        mkdir -p $dest
+        mensaje "Instalando tema Powerlevel9k..."
+        git clone https://github.com/bhilburn/powerlevel9k.git $dest
+    else
+        mensaje "Actualizando tema Powerlevel9k..."
+        (cd $dest && git pull)
     fi
-    dest=$dest/bullet-train.zsh-theme
-    curl -sL http://raw.github.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme > $dest
     if grep $USER /etc/passwd | grep -vqs zsh; then
         mensaje "Instalando ZSH al usuario actual..."
         sudo chsh -s /bin/zsh $USER

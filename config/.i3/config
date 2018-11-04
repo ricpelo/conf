@@ -192,6 +192,7 @@ bindsym $mod+z exec xset r rate 250 30 ; exec setxkbmap -option "ctrl:swapcaps"
 # finds out, if available)
 bar {
     status_command i3status
+#    font pango:LiterationMono Nerd Font Book 10
 }
 
 assign [title="^Momentum$"] 3

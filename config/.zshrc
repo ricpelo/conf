@@ -5,26 +5,28 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
+POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="white"
+POWERLEVEL9K_CONTEXT_REMOTE_BACKGROUND="red"
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND="darkgreen"
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="yellow"
+POWERLEVEL9K_TIME_BACKGROUND="teal"
+POWERLEVEL9K_VI_INSERT_MODE_STRING=""
 
-# Para que el tema Agnoster no muestre el contexto:
-# DEFAULT_USER=$USER
+# Para que los temas Agnoster y Powerlevel9k no muestre el contexto:
+DEFAULT_USER=$USER
 
 # Opciones para el tema https://github.com/caiogondim/bullet-train.zsh:
 BULLETTRAIN_PROMPT_ORDER=(context dir git)
 BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-#BULLETTRAIN_DIR_BG=245
 BULLETTRAIN_DIR_BG=green
 BULLETTRAIN_DIR_FG=234
-#BULLETTRAIN_GIT_BG=254
-#BULLETTRAIN_GIT_FG=white
-#BULLETTRAIN_GIT_UNTRACKED=" %F{magenta}✭%F{black}"
 BULLETTRAIN_PROMPT_SEPARATE_LINE=false
 BULLETTRAIN_PROMPT_CHAR=""
 BULLETTRAIN_CONTEXT_DEFAULT_USER=$USER
-#BULLETTRAIN_GIT_AHEAD=" %F{white}⬆%F{default}"
-#BULLETTRAIN_GIT_BEHIND=" %F{white}⬇%F{default}"
-#BULLETTRAIN_GIT_DIVERGED=" %F{white}⬍%F{default}"
 
 # Opciones para zsh-syntax-highlighting:
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -77,7 +79,7 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux command-not-found composer history-substring-search z zsh-syntax-highlighting)
+plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
 
 # User configuration
 

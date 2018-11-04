@@ -22,13 +22,9 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'ivalkeen/vim-simpledb'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-voom/VOoM'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-
-" Powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2
 
 " Colores
 set termguicolors
@@ -43,10 +39,14 @@ endtry
 " Mejor resaltado de paréntesis
 highlight! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=NONE guibg=NONE
 
+" Airline
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+
 " Opciones generales
 set number
 set cursorline
-set lazyredraw
+set laststatus=2
 
 " Espacios, tabulaciones e indentaciones
 set tabstop=4 shiftwidth=4      " Un tabulador son cuatro espacios
