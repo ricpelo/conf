@@ -27,7 +27,15 @@ fonts-powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
 exuberant-ctags atom ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 emacs"
 
 # Preinstalación de paquetes
-fn "$PLIST" "pre"
+CAMBIA_APT=""
+if ! fn "$PLIST" "pre"; then
+    CAMBIA_APT="1"
+fi
+
+if [ -n "$CAMBIA_APT" ]; then
+    mensaje "Actualizando lista de paquetes..."
+    sudo apt update
+fi
 
 P=""
 
@@ -39,7 +47,6 @@ done
 
 if [ -n "$P" ]; then
     mensaje "Instalando paquetes..."
-    sudo apt update
     sudo apt install -y $P
 else
     mensaje "Paquetes ya instalados."

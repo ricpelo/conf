@@ -1,12 +1,15 @@
 fn()
 {
+    local CAMBIA_APT=0
     for p in $1; do
         p=$(echo $p | tr -d "-")
-        if type $2fn_$p | grep -qs "is a shell function"
-        then
-            eval $2fn_$p
+        if type $2fn_$p | grep -qs "is a shell function"; then
+            if ! eval $2fn_$p; then
+                CAMBIA_APT=1
+            fi
         fi
     done
+    return $CAMBIA_APT
 }
 
 no_instalado()
@@ -59,20 +62,23 @@ local_bin()
 
 prefn_emacssnapshot()
 {
+    local RET=0
     if [ ! -f /etc/apt/sources.list.d/ubuntu-elisp-ubuntu-ppa-$(lsb_release -sc).list ]; then
         mensaje "Activando el repositorio de Emacs Snapshot..."
-        sudo add-apt-repository ppa:ubuntu-elisp/ppa
-        sudo apt update
+        sudo add-apt-repository --no-update ppa:ubuntu-elisp/ppa
+        RET=1
     fi
+    return $RET
 }
 
 prefn_i3()
 {
-    OLD=/etc/apt/sources.list.d/i3wm.list
+    local OLD=/etc/apt/sources.list.d/i3wm.list
+    local RET=0
     if [ -f $OLD ]; then
         echo "Desactivando el antiguo repositorio de i3wm..."
         sudo rm -f $OLD $OLD.save
-        sudo apt update
+        RET=1
     fi
     local LIST=/etc/apt/sources.list.d/sur5r-i3.list
     if [ ! -f $LIST ]; then
@@ -81,19 +87,21 @@ prefn_i3()
         sudo dpkg -i ./keyring.deb
         rm -f keyring.deb
         echo "deb http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
-        sudo apt update
+        RET=1
     else
         mensaje "Repositorio de i3wm ya activado."
     fi
+    return $RET
 }
 
 prefn_atom()
 {
     local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
+    local RET=0
     if [ -f $OLD ]; then
         mensaje "Desactivando el antiguo repositorio de Atom..."
         sudo rm -f $OLD $OLD.save
-        sudo apt update
+        RET=1
     fi
     local LIST=/etc/apt/sources.list.d/atom.list
     if [ ! -f $LIST ]; then
@@ -101,10 +109,11 @@ prefn_atom()
         asegura_s_p_c
         curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
         echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee $LIST > /dev/null
-        sudo apt update
+        RET=1
     else
         mensaje "Repositorio de Atom ya activado."
     fi
+    return $RET
 }
 
 postfn_sakura()

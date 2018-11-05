@@ -15,7 +15,6 @@ EXTRA="apache2 sqlite sqlite3"
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
     mensaje "Activando el repositorio de PHP..."
     sudo add-apt-repository --yes ppa:ondrej/php
-    sudo apt update
 else
     mensaje "Repositorio de PHP ya activado."
 fi
