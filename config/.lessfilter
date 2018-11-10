@@ -1,21 +1,31 @@
 #!/bin/sh
 case "$1" in
-    *.awk|*.groff|*.java|*.js|*.m4|*.php|*.pl|*.pm|*.pod|*.sh|\
-    *.ad[asb]|*.asm|*.inc|*.[ch]|*.[ch]pp|*.[ch]xx|*.cc|*.hh|\
-    *.htm[l]|*.lsp|*.l|*.lua|*.pas|*.p|*.xml|*.xps|*.xsl|*.axp|\
-    *.ppd|*.pov|*.diff|*.patch|*.py|*.rb|*.sql|*.ebuild|*.eclass)
-        pygmentize -f 256 "$1";;
-    .zshrc|.bashrc|.bash_aliases|.bash_environment)
-        pygmentize -f 256 -l sh "$1"
-        ;;
+    *.a|\
+    *.arj|\
+    *.tar.bz2|\
+    *.bz|\
+    *.bz2|\
+    *.deb|*.udeb|\
+    *.doc|\
+    *.gif|*.jpeg|*.jpg|*.pcd|*.png|*.tga|*.tiff|*.tif|\
+    *.iso|*.raw|*.bin|\
+    *.lha|*.lzh|\
+    *.tar.lz|*.tlz|\
+    *.lz|\
+    *.7z|\
+    *.pdf|\
+    *.rar|*.r[0-9][0-9]|\
+    *.rpm|\
+    *.tar.gz|*.tgz|*.tar.z|*.tar.dz|\
+    *.gz|*.z|*.dz|\
+    *.tar|\
+    *.jar|*.war|*.xpi|*.zip|\
+    *.zoo)
+        exit 1;;
+    .bash_aliases|.bash_environment)
+        pygmentize -l sh "$1";;
     *)
-        grep "#\!/bin/bash" "$1" > /dev/null
-        if [ "$?" -eq "0" ]; then
-            pygmentize -f 256 -l sh "$1"
-        else
-            exit 1
-        fi
+        pygmentize -g "$1";;
 esac
 
 exit 0
-
