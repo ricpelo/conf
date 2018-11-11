@@ -119,14 +119,20 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export LOCAL_GIT_DIRECTORY=/usr
 
 # Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-# export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_so=$(tput bold; tput setaf 16; tput setab 4)
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # start blink
+export LESS_TERMCAP_md=$(tput bold; tput setaf 29) # start bold
+export LESS_TERMCAP_me=$(tput sgr0) # turn off bold, blink and underline
+export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 29) # start standout (reverse video)
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0) # stop standout
+export LESS_TERMCAP_us=$(tput smul; tput setaf 7) # start underline
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0) # stop underline
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
 
 eval `lesspipe`
 eval `dircolors ~/.dircolors`
