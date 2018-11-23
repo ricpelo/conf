@@ -78,7 +78,7 @@
     navigationRequireMetaKey: true
   "spell-check":
     locales: [
-      "es_ES.UTF-8"
+      "es_ES"
     ]
   "split-diff":
     diffWords: true
