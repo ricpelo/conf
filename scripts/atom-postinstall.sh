@@ -17,6 +17,8 @@ if [ -d "$CONF" ]; then
     if [ "$SN" = "S" ]; then
         mensaje "Eliminando directorio $CONF..."
         rm -rf $CONF
+        mensaje "Eliminando caché de php-ide-serenata..."
+        rm -rf $HOME/.cache/php-ide-serenata
     else
         QUITAR=$(apm list --installed --bare | cut -d"@" -f1 | diff - $BASE_DIR/atom/atom-packages.txt | grep "^< " | cut -c3-)
         if [ -n "$QUITAR" ]; then
