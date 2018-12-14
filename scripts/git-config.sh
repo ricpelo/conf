@@ -113,7 +113,7 @@ if [ -n "$TOKEN" ]; then
     fi
     if [ "$SN" = "S" ]; then
         mensaje "Instalando GitHub-hub en $DEST..."
-        VER="2.3.0-pre10"
+        VER="2.6.1"
         FILE="hub-linux-amd64-$VER"
         curl -sL "https://github.com/github/hub/releases/download/v$VER/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
