@@ -134,3 +134,6 @@ if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]; then
     netrc "github.com" $USUARIO $TOKEN
     netrc "api.github.com" $USUARIO $TOKEN
 fi
+
+asegura_salto_linea_sudoers
+desactiva_sudo "/usr/bin/git"
