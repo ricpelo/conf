@@ -39,15 +39,6 @@ pregunta()
     eval "$1=$_SN"
 }
 
-asegura_salto_linea_sudoers()
-{
-    if [ "`sudo cat /etc/sudoers | tail -c1`" != "" ]
-    #if test `sudo cat /etc/sudoers | tail -c1`
-    then
-        echo "" | sudo tee -a /etc/sudoers > /dev/null
-    fi
-}
-
 asegura_salto_linea()
 {
     if [ "`tail -c1 $1`" != "" ]
@@ -59,11 +50,12 @@ asegura_salto_linea()
 desactiva_sudo()
 {
     local L="%sudo	ALL=!$1"
-    if ! sudo cat /etc/sudoers | grep -qs "$L"
+    local F=/etc/sudoers.d/$(echo $1 | tr "/" "-" | cut -c2-)
+    if [ ! -f "$F" ]
     then
         mensaje "Desactivando el uso de $1 con sudo..."
-        asegura_salto_linea_sudoers
-        echo "$L" | sudo tee -a /etc/sudoers > /dev/null
+        echo "$L" | sudo tee $F > /dev/null
+        sudo chmod 440 $F
     else
         mensaje "Uso de $1 con sudo ya desactivado."
     fi
