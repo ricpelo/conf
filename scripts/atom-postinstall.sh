@@ -52,6 +52,5 @@ for f in keymap.cson config.cson snippets.cson styles.less; do
     [ -f "$CONF/$f" ] && mv -f "$CONF/$f" "$CONF/$f.viejo"
     cp -f $BASE_DIR/atom/$f $CONF
 done
-asegura_salto_linea_sudoers
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"

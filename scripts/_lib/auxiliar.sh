@@ -62,6 +62,7 @@ desactiva_sudo()
     if ! sudo cat /etc/sudoers | grep -qs "$L"
     then
         mensaje "Desactivando el uso de $1 con sudo..."
+        asegura_salto_linea_sudoers
         echo "$L" | sudo tee -a /etc/sudoers > /dev/null
     else
         mensaje "Uso de $1 con sudo ya desactivado."
