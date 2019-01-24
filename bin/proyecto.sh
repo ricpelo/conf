@@ -68,6 +68,9 @@ else
     CREATE="S"
     mensaje "Creando el proyecto desde la plantilla ricpelo/yii2-app-basic..."
     composer create-project --prefer-dist ricpelo/yii2-app-basic:dev-master $1
+    if [ $? -ne 0 ]; then
+        exit 1
+    fi
     cd $1
     mensaje "Creando repositorio git..."
     git init -q
