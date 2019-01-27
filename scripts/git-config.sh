@@ -3,6 +3,7 @@
 . $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
 
 CALLA=$1
+HUB_VERSION="2.8.3"
 
 netrc()
 {
@@ -113,9 +114,8 @@ if [ -n "$TOKEN" ]; then
     fi
     if [ "$SN" = "S" ]; then
         mensaje "Instalando GitHub-hub en $DEST..."
-        VER="2.6.1"
-        FILE="hub-linux-amd64-$VER"
-        curl -sL "https://github.com/github/hub/releases/download/v$VER/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
+        FILE="hub-linux-amd64-$HUB_VERSION"
+        curl -sL "https://github.com/github/hub/releases/download/v$HUB_VERSION/$FILE.tgz" | tar xfz - --strip=2 "$FILE/bin/hub" -O | sudo tee $DEST > /dev/null
         sudo chmod a+x $DEST
     fi
     mensaje "Asignando parámetro hub.protocol = https..."
