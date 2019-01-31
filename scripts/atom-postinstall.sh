@@ -52,5 +52,20 @@ for f in keymap.cson config.cson snippets.cson styles.less; do
     [ -f "$CONF/$f" ] && mv -f "$CONF/$f" "$CONF/$f.viejo"
     cp -f $BASE_DIR/atom/$f $CONF
 done
+mensaje "Definiendo manejador para URLs ide://..."
+HANDLER_SH="atom-handler.sh"
+HANDLER_DESKTOP="atom-handler.desktop"
+LOCAL_BIN="$HOME/.local/bin"
+LOCAL_BIN_SH="$LOCAL_BIN/$HANDLER_SH"
+APP_DIR="$HOME/.local/share/applications"
+if [ ! -e "$LOCAL_BIN_SH" ]; then
+    mensaje "Creando enlace simbólico para $HANDLER_SH..."
+    RP=$(realpath -s --relative-to $LOCAL_BIN $BASE_DIR/../bin/$HANDLER_SH)
+    ln -sf $RP $LOCAL_BIN_SH
+fi
+mkdir -p $APP_DIR
+cp -f $BASE_DIR/atom/$HANDLER_DESKTOP $APP_DIR
+update-desktop-database $APP_DIR
+xdg-mime default $HANDLER_DESKTOP x-scheme-handler/ide
 desactiva_sudo "/usr/bin/apm"
 desactiva_sudo "/usr/bin/atom"

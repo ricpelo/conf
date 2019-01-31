@@ -83,6 +83,7 @@ local_bin unclutter
 local_bin xbanish
 local_bin lesscurl
 local_bin proyecto.sh
+local_bin atom-handler.sh
 
 # Postinstalación de paquetes
 fn "$PLIST" "post"

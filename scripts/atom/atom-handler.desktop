@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Atom URL Handler
+GenericName=Text Editor
+Comment=Handle URL Scheme ide://
+Exec=atom-handler.sh %u
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/ide;
+Icon=atom
+Categories=TextEditor;Development;Utility;
+Name[en_US]=Atom URL Handler
