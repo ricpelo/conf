@@ -72,18 +72,18 @@ BLIST=".tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .termi
 for p in $BLIST; do
     backup_and_link $p
 done
-[ -d ~/.config ] || mkdir ~/.config
-backup_and_link sakura .config
-backup_and_link dunst .config
-backup_and_link htop .config
+mkdir -p ~/.config
+BLIST="sakura dunst htop"
+for p in $BLIST; do
+    backup_and_link $p .config
+done
 
 mensaje "Instalando binarios locales..."
-[ -d ~/.local/bin ] || mkdir -p ~/.local/bin
-local_bin unclutter
-local_bin xbanish
-local_bin lesscurl
-local_bin proyecto.sh
-local_bin atom-handler.sh
+mkdir -p ~/.local/bin
+BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh"
+for p in $BLIST; do
+    local_bin $p
+done
 
 # Postinstalación de paquetes
 fn "$PLIST" "post"
