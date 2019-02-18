@@ -8,13 +8,11 @@ busy-signal
 docblockr
 file-icons
 hyperclick
-ide-php
 intentions
 jumpy
 language-pgsql
-linter
 linter-phpcs
-linter-ui-default
+markdown-writer
 minimap
 minimap-autohider
 multi-cursor

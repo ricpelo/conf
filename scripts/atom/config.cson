@@ -6,6 +6,10 @@
     "atom-ide-outline-view": {}
     hyperclick: {}
     use: {}
+  "atom-package-deps":
+    ignored: [
+      "linter-phpcs"
+    ]
   "autoclose-html":
     makeNeverCloseSelfClosing: false
   "autocomplete-plus":
@@ -21,9 +25,6 @@
       "language-objective-c"
       "language-perl"
       "metrics"
-      "linter"
-      "linter-ui-default"
-      "ide-php"
     ]
     packagesWithKeymapsDisabled: [
       "multi-cursor"
@@ -37,7 +38,6 @@
     fontFamily: "Fira Code"
     fontSize: 18
     scrollPastEnd: true
-    scrollSensitivity: 200
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
     tabLength: 4
@@ -78,7 +78,7 @@
     navigationRequireMetaKey: true
   "spell-check":
     locales: [
-      "es_ES"
+      "es-ES"
     ]
   "split-diff":
     diffWords: true
