@@ -35,18 +35,16 @@ if [ -d "$CONF" ]; then
     fi
 fi
 
-P=""
-for p in $(cat $BASE_DIR/atom/atom-packages.txt); do
-    if [ ! -d "$CONF/packages/$p" ]; then
-        P="$P$p "
-    fi
-done
-if [ -n "$P" ]; then
+PONER=$(apm list --installed --bare | cut -d"@" -f1 | diff - $BASE_DIR/atom/atom-packages.txt | grep "^> " | cut -c3-)
+if [ -n "$PONER" ]; then
     mensaje "Instalando paquetes de Atom..."
-    apm install $P
+    for p in $(echo $PONER); do
+        apm install $p
+    done
 else
-    mensaje "Todos los paquetes de Atom ya instalados."
+    mensaje "Ya están instalados todos los paquetes de Atom."
 fi
+
 mensaje "Copiando archivos de configuración en $CONF..."
 for f in keymap.cson config.cson snippets.cson styles.less; do
     [ -f "$CONF/$f" ] && mv -f "$CONF/$f" "$CONF/$f.viejo"
