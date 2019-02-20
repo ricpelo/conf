@@ -13,6 +13,8 @@ if ! dpkg -s code >/dev/null 2>&1; then
     TEMP_DEB="$(mktemp).deb"
     curl -sL -o $TEMP_DEB https://update.code.visualstudio.com/latest/linux-deb-x64/stable && sudo dpkg -i $TEMP_DEB
     rm -f $TEMP_DEB
+else
+    mensaje "Visual Studio Code ya instalado."
 fi
 
 if ! dpkg -s code >/dev/null 2>&1; then
@@ -21,26 +23,25 @@ if ! dpkg -s code >/dev/null 2>&1; then
 fi
 
 CONF=$HOME/.config/Code
-
 if [ -d "$CONF" ]; then
     mensaje "Se ha detectado una configuración previa de Visual Studio Code en $CONF."
     pregunta SN "¿Eliminarla previamente para una instalación limpia?" N $CALLA
     if [ "$SN" = "S" ]; then
         mensaje "Eliminando directorio $CONF..."
         rm -rf $CONF
-    else
-        QUITAR=$(code --list-extensions | diff - $BASE_DIR/code/code-extensions.txt | grep "^< " | cut -c3-)
-        if [ -n "$QUITAR" ]; then
-            mensaje "Detectadas las siguienes extensiones sobrantes:"
-            mensaje $QUITAR
-            pregunta SN "¿Desinstalar extensiones sobrantes?" N $CALLA
-            if [ "$SN" = "S" ]; then
-                mensaje "Desinstalando extensiones sobrantes..."
-                for p in $(echo $QUITAR); do
-                    code --uninstall-extension $p
-                done
-            fi
-        fi
+    fi
+fi
+
+QUITAR=$(code --list-extensions | diff - $BASE_DIR/code/code-extensions.txt | grep "^< " | cut -c3-)
+if [ -n "$QUITAR" ]; then
+    mensaje "Detectadas las siguienes extensiones sobrantes:"
+    mensaje $QUITAR
+    pregunta SN "¿Desinstalar extensiones sobrantes?" N $CALLA
+    if [ "$SN" = "S" ]; then
+        mensaje "Desinstalando extensiones sobrantes..."
+        for p in $(echo $QUITAR); do
+            code --uninstall-extension $p
+        done
     fi
 fi
 
