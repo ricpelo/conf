@@ -57,9 +57,9 @@ if [ -x $DEST ]; then
 fi
 if [ "$SN" = "S" ]; then
     mensaje "Instalando PsySH en $DEST..."
-    sudo wget -q -O $DEST https://psysh.org/psysh
+    sudo curl -sL -o $DEST https://psysh.org/psysh
     sudo chmod a+x $DEST
     DEST=~/.local/share/psysh
     mkdir -p $DEST
-    wget -q -O $DEST/php_manual.sqlite http://psysh.org/manual/es/php_manual.sqlite
+    curl -sL -o $DEST/php_manual.sqlite http://psysh.org/manual/es/php_manual.sqlite
 fi
