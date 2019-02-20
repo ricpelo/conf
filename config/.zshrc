@@ -101,9 +101,10 @@ plugins=(git command-not-found composer history-substring-search z zsh-syntax-hi
 # User configuration
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+emulate sh -c "source /etc/profile"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
