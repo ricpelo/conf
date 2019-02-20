@@ -5,7 +5,7 @@ BASE_DIR=$(dirname $(readlink -f "$0"))
 . $BASE_DIR/_lib/auxiliar.sh
 
 SLIST="git-config.sh php-install.sh postgresql-install.sh composer-install.sh
-composer-postinstall.sh atom-postinstall.sh"
+composer-postinstall.sh atom-postinstall.sh code-install.sh"
 
 for p in $SLIST; do
     pregunta SN "¿Ejecutar $p?" S $1

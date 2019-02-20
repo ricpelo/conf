@@ -1,0 +1,4 @@
+bmewburn.vscode-intelephense-client
+ikappas.phpcs
+junstyle.php-cs-fixer
+neilbrayfield.php-docblocker
