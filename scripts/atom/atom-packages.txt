@@ -4,13 +4,12 @@ aligner-php
 atom-ide-ui
 atom-overtype-mode
 autoclose-html
-busy-signal
 docblockr
 file-icons
-hyperclick
 intentions
 jumpy
 language-pgsql
+linter
 linter-phpcs
 markdown-writer
 minimap
@@ -20,7 +19,6 @@ php-cs-fixer
 php-ide-serenata
 project-manager
 simple-align
-solarized-light-ui
 susave
 symbols-list
 tabs-to-spaces

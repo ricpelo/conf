@@ -2,14 +2,6 @@
   "atom-ide-ui":
     "atom-ide-code-format":
       formatOnType: false
-    "atom-ide-diagnostics-ui": {}
-    "atom-ide-outline-view": {}
-    hyperclick: {}
-    use: {}
-  "atom-package-deps":
-    ignored: [
-      "linter-phpcs"
-    ]
   "autoclose-html":
     makeNeverCloseSelfClosing: false
   "autocomplete-plus":
@@ -17,17 +9,7 @@
   core:
     autoHideMenuBar: true
     disabledPackages: [
-      "language-clojure"
-      "language-csharp"
-      "language-go"
-      "language-java"
-      "language-mustache"
-      "language-objective-c"
-      "language-perl"
-      "metrics"
-    ]
-    packagesWithKeymapsDisabled: [
-      "multi-cursor"
+      "linter"
     ]
     telemetryConsent: "no"
     themes: [
@@ -43,59 +25,34 @@
     tabLength: 4
   "git-diff":
     showIconsInEditorGutter: true
-  "git-log":
-    fontFamily: "Input, Inconsolata, Monaco, Consolas, 'Courier New', Courier"
-    fontScale: 0.8
   jumpy:
     highContrast: true
   "linter-phpcs":
     codeStandardOrConfigFile: "vendor/yiisoft/yii2-coding-standards/Yii2"
-    executablePath: "vendor/bin/phpcs"
     ignorePatterns: [
       "**/views/**"
       "**/tests/**"
     ]
+    tabWidth: 4
   minimap:
     absoluteMode: true
     plugins:
       "minimap-autohider": true
       "minimap-autohiderDecorationsZIndex": 0
-  "one-dark-ui":
-    fontSize: 14
   "one-light-ui":
     fontSize: 14
   "php-cs-fixer":
     executablePath: "vendor/bin/php-cs-fixer"
     executeOnSave: true
     pathMode: "intersection"
-  "php-debug":
-    AutoExpandLocals: true
-    currentPanelMode: "bottom"
-    showWelcome: false
-  "php-integrator-base:confirmed-upgrade-message": true
-  "php-integrator-navigation":
-    navigationRequireAltKey: false
-    navigationRequireMetaKey: true
+  "php-ide-serenata":
+    general:
+      doNotAskForSupport: true
   "spell-check":
     locales: [
       "es-ES"
     ]
-  "split-diff":
-    diffWords: true
-    ignoreWhitespace: true
-    leftEditorColor: "red"
-    rightEditorColor: "green"
-    syncHorizontalScroll: true
-  "symbols-list": {}
-  "tree-view":
-    squashDirectoryNames: true
   welcome:
     showOnStartup: false
   zentabs:
     neverCloseUnsaved: true
-".diff.source":
-  editor:
-    tabLength: 4
-".html.php.text":
-  editor:
-    tabLength: 4
