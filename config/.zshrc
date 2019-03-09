@@ -103,8 +103,13 @@ plugins=(git command-not-found composer history-substring-search z zsh-syntax-hi
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
+local ANTES=$(mktemp) && set > $ANTES
+emulate sh -c 'source /etc/profile'
+local DESPUES=$(mktemp) && set > $DESPUES
+unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*")
+rm -f $ANTES $DESPUES && unset ANTES DESPUES
+
 source $ZSH/oh-my-zsh.sh
-emulate sh -c "source /etc/profile"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
