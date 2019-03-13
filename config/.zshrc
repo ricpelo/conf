@@ -106,7 +106,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 local ANTES=$(mktemp) && set > $ANTES
 emulate sh -c 'source /etc/profile'
 local DESPUES=$(mktemp) && set > $DESPUES
-unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*")
+unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
 rm -f $ANTES $DESPUES && unset ANTES DESPUES
 
 source $ZSH/oh-my-zsh.sh
