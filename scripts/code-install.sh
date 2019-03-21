@@ -10,7 +10,7 @@ comprueba_composer $CALLA
 
 if ! dpkg -s code >/dev/null 2>&1; then
     mensaje "Descargando e instalando Visual Studio Code..."
-    TEMP_DEB="$(mktemp).deb"
+    TEMP_DEB="$(mktemp)"
     curl -sL -o $TEMP_DEB https://update.code.visualstudio.com/latest/linux-deb-x64/stable && sudo dpkg -i $TEMP_DEB
     rm -f $TEMP_DEB
 else
