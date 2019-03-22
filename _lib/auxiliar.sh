@@ -25,7 +25,7 @@ asegura_s_p_c()
 {
     local P="software-properties-common"
     if no_instalado $P; then
-        sudo apt $P
+        sudo apt -y install $P
     fi
 }
 
