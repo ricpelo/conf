@@ -147,7 +147,7 @@ asigna_param_postgresql()
 
 comprueba_atom()
 {
-    if [ "$(which atom)" != "/usr/bin/atom" ]
+    if [ -z "$(which atom)" ]
     then
         mensaje_error "Atom no está instalado. Instálalo antes de continuar."
         exit 1
@@ -162,7 +162,7 @@ comprueba_php()
 
     while true
     do
-        if [ "$(which php)" != "/usr/bin/php" ]
+        if [ -z "$(which php)" ]
         then
             mensaje "PHP no está instalado."
             mensaje "Ejecuta el script php-install.sh antes de continuar."
@@ -187,7 +187,7 @@ comprueba_composer()
 
     while true
     do
-        if [ "$(which composer)" != "/usr/local/bin/composer" ]
+        if [ -z "$(which composer)" ]
         then
             mensaje "Composer no está instalado."
             mensaje "Ejecuta el script composer-install.sh antes de continuar."
