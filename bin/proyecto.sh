@@ -1,7 +1,7 @@
 #!/bin/sh
 
-BASE_DIR=$(readlink -f $0)
-BASE_DIR=$(dirname $BASE_DIR)
+BASE_DIR=$(readlink -f "$0")
+BASE_DIR=$(dirname "$BASE_DIR")
 BASE_DIR=$BASE_DIR/../scripts/_lib
 . $BASE_DIR/auxiliar.sh
 

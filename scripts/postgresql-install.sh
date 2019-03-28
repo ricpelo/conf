@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. $(dirname $(readlink -f "$0"))/_lib/auxiliar.sh
+. $(dirname "$(readlink -f "$0")")/_lib/auxiliar.sh
 
 CALLA=$1
 
