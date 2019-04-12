@@ -6,10 +6,10 @@ CALLA=$1
 
 lista_paquetes()
 {
-    echo "postgresql-$1 postgresql-client-$1 postgresql-contrib-$1"
+    echo "postgresql-$1 postgresql-client-$1"
 }
 
-VER=10
+VER=11
 
 LIST=/etc/apt/sources.list.d/pgdg.list
 if [ ! -f $LIST ]; then
@@ -41,7 +41,7 @@ for V in 9.6 10; do
     if [ "$V" != "$VER" ]; then
         if [ -d /etc/postgresql/$V ]; then
             mensaje "Se ha detectado la versión $V anterior."
-            pregunta SN "¿Migrar los datos a la versión $VER y desinstalar?" S $CALLA
+            pregunta SN "¿Migrar los datos a la versión $VER y desinstalar la $V?" S $CALLA
             if [ "$SN" = "S" ]; then
                 sudo service postgresql stop
                 mensaje "Eliminando clúster main de la versión $VER..."
