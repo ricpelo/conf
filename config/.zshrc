@@ -174,6 +174,7 @@ alias glg="git lg"
 bindkey -v
 export KEYTIMEOUT=1
 
+bindkey "^?" backward-delete-char
 bindkey "^R" history-incremental-search-backward
 
 # No funcionan bien con Midnight Commander:
