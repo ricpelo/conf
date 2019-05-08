@@ -37,21 +37,20 @@ asigna_param_postgresql "lc_numeric" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "lc_time" "'en_US.UTF-8'" $CONF
 asigna_param_postgresql "default_text_search_config" "'pg_catalog.english'" $CONF
 
-for V in 9.6 10; do
-    if [ "$V" != "$VER" ]; then
-        if [ -d /etc/postgresql/$V ]; then
-            mensaje "Se ha detectado la versión $V anterior."
-            pregunta SN "¿Migrar los datos a la versión $VER y desinstalar la $V?" S $CALLA
+for OLD in 9.6 10 11; do
+    if [ "$OLD" != "$VER" ]; then
+        if [ -d /etc/postgresql/$OLD ]; then
+            mensaje "Se ha detectado la versión $OLD anterior."
+            pregunta SN "¿Migrar los datos a la versión $VER y desinstalar la $OLD?" S $CALLA
             if [ "$SN" = "S" ]; then
-                sudo service postgresql stop
                 mensaje "Eliminando clúster main de la versión $VER..."
                 sudo pg_dropcluster --stop $VER main
                 mensaje "Migrando clúster main a la versión $VER..."
-                sudo pg_upgradecluster -m upgrade $V main
+                sudo pg_upgradecluster -m upgrade $OLD main
             fi
-            pregunta SN "¿Desinstalar la versión $V anterior?" S $CALLA
+            pregunta SN "¿Desinstalar la versión $OLD anterior?" S $CALLA
             if [ "$SN" = "S" ]; then
-                P=$(lista_paquetes $V)
+                P=$(lista_paquetes $OLD)
             fi
             echo "\033[1;32m\$\033[0m\033[35m sudo apt -y --purge remove $P\033[0m"
             sudo apt -y --purge remove $P
