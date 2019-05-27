@@ -44,9 +44,17 @@ let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 
 " Opciones generales
-set number
-set cursorline
-set laststatus=2
+set number                      " Display line numbers on the left side
+set cursorline                  " Highlight current line
+set colorcolumn=81              " Display text width column
+set laststatus=2                " Always display the status line
+set ttyfast                     " More characters will be sent to the screen for redrawing
+set ttimeout                    " Time waited for key press(es) to complete. It makes for...
+set ttimeoutlen=50              " ... a faster key response
+set backspace=indent,eol,start  " Make backspace behave properly in insert mode
+set showcmd                     " Display incomplete commands
+set wildmenu                    " A better menu in command mode
+set wildmode=longest:full,full
 
 " Espacios, tabulaciones e indentaciones
 set tabstop=4 shiftwidth=4      " Un tabulador son cuatro espacios
