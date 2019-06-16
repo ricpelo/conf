@@ -164,6 +164,7 @@ eval `dircolors ~/.dircolors`
 # Desactivar si se usa el plugin tmux de oh-my-zsh:
 # alias tmux="tmux -2"
 
+alias ls="ls --color=tty --group-directories-first"
 alias cd..="cd .."
 alias rm="rm -i"
 alias cp="cp -i"
