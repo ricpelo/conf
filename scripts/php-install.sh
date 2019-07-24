@@ -10,7 +10,7 @@ lista_paquetes()
 }
 
 VER=7.3
-EXTRA="apache2 sqlite sqlite3"
+EXTRA="apache2 php-xdebug sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
     mensaje "Activando el repositorio de PHP..."
@@ -37,7 +37,6 @@ sudo apt -y --purge install $P $EXTRA
 
 activa_modulo_apache php$VER
 activa_modulo_apache rewrite
-desactiva_xdebug $VER
 
 for p in apache2 cli; do
     CONF="/etc/php/$VER/$p/php.ini"
