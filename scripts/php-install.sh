@@ -6,11 +6,11 @@ CALLA=$1
 
 lista_paquetes()
 {
-    echo "php$1 libapache2-mod-php$1 php$1-cli php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip php$1-common php$1-opcache php$1-readline libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml-"
+    echo "php$1 php$1-cli php$1-cgi php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip php$1-common php$1-opcache php$1-readline libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml-"
 }
 
 VER=7.3
-EXTRA="apache2 php-xdebug sqlite sqlite3"
+EXTRA="php-xdebug sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
     mensaje "Activando el repositorio de PHP..."
@@ -35,19 +35,11 @@ P=$(lista_paquetes $VER)
 echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y --purge install $P $EXTRA
 
-activa_modulo_apache php$VER
-activa_modulo_apache rewrite
-
-for p in apache2 cli; do
-    CONF="/etc/php/$VER/$p/php.ini"
-    asigna_param_php "error_reporting" "E_ALL" $CONF
-    asigna_param_php "display_errors" "On" $CONF
-    asigna_param_php "display_startup_errors" "On" $CONF
-    asigna_param_php "date.timezone" "'UTC'" $CONF
-done
-
-mensaje "Reiniciando Apache 2..."
-sudo service apache2 restart
+CONF="/etc/php/$VER/cli/php.ini"
+asigna_param_php "error_reporting" "E_ALL" $CONF
+asigna_param_php "display_errors" "On" $CONF
+asigna_param_php "display_startup_errors" "On" $CONF
+asigna_param_php "date.timezone" "'UTC'" $CONF
 
 DEST=/usr/local/bin/psysh
 SN="S"
