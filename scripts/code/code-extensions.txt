@@ -1,5 +1,12 @@
 bmewburn.vscode-intelephense-client
 felixfbecker.php-debug
+formulahendry.code-runner
 ikappas.phpcs
 junstyle.php-cs-fixer
 neilbrayfield.php-docblocker
+redhat.java
+VisualStudioExptTeam.vscodeintellicode
+vscjava.vscode-java-debug
+vscjava.vscode-java-dependency
+vscjava.vscode-java-pack
+vscjava.vscode-java-test
