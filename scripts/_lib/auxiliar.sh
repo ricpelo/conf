@@ -106,13 +106,33 @@ activa_modulo_apache()
 
 desactiva_xdebug()
 {
-    if phpquery -q -v $1 -s cli -m xdebug
+    if phpquery -q -v $1 -s $2 -m xdebug
     then
-        mensaje "Desactivando módulo xdebug de PHP para el SAPI cli..."
-        sudo phpdismod -v $1 -s cli xdebug
+        mensaje "Desactivando módulo xdebug de PHP para el SAPI $2..."
+        sudo phpdismod -v $1 -s $2 xdebug
     else
-        mensaje "Módulo xdebug de PHP ya desactivado para el SAPI cli."
+        mensaje "Módulo xdebug de PHP ya desactivado para el SAPI $2."
     fi
+}
+
+activa_xdebug()
+{
+    if phpquery -q -v $1 -s $2 -m xdebug
+    then
+        mensaje "Módulo xdebug de PHP ya activado para el SAPI $2."
+    else
+        mensaje "Activando módulo xdebug de PHP para el SAPI $2..."
+        sudo phpenmod -v $1 -s $2 xdebug
+    fi
+}
+
+activa_xdebug_remoto()
+{
+    mensaje "Activando depuración remota con xdebug..."
+    local RES="zend_extension=xdebug.so"
+    RES="$RES\nxdebug.remote_enable = 1"
+    RES="$RES\nxdebug.remote_autostart = 1"
+    echo $RES | sudo tee /etc/php/$1/mods-available/xdebug.ini > /dev/null
 }
 
 asigna_param_php()
