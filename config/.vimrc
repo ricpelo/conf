@@ -73,6 +73,11 @@ set ignorecase                  " Las búsquedas no distinguen mayúsculas...
 set smartcase                   " ... a menos que contengan al menos una mayúscula
 nnoremap <CR> :nohlsearch<cr>   " Borra el búfer de búsqueda al pusar Entrar
 
+" Recuerda la última posición cuando se vuelve a abrir un archivo
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " vim-gitgutter
 set updatetime=500
 if exists('&signcolumn')  " Vim 7.4.2201
