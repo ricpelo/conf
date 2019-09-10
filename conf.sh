@@ -23,9 +23,9 @@ fi
 PLIST="zsh wget git build-essential python-pygments sakura i3 feh
 x11-xserver-utils x11-utils xdg-user-dirs tmux ncurses-term xcape rofi redshift
 ranger command-not-found fonts-freefont-ttf libnotify-bin xsel pcmanfm
-fonts-powerline lxpolkit pulseaudio pasystray pavucontrol network-manager-gnome
-exuberant-ctags atom ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot
-emacs"
+fonts-powerline lxpolkit lubuntu-icon-theme pulseaudio pasystray pavucontrol
+network-manager-gnome exuberant-ctags atom ruby ttf-ancient-fonts at-spi2-core
+vim vim-gtk3 scrot emacs"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
