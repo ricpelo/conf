@@ -9,7 +9,7 @@ lista_paquetes()
     echo "postgresql-$1 postgresql-client-$1"
 }
 
-VER=11
+VER=12
 
 LIST=/etc/apt/sources.list.d/pgdg.list
 if [ ! -f $LIST ]; then
