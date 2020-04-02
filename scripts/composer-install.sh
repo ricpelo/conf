@@ -62,6 +62,6 @@ while true; do
     fi
 done
 
-desactiva_xdebug
+# desactiva_xdebug
 
 exit $RESULT
