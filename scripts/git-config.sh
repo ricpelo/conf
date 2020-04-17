@@ -81,16 +81,50 @@ if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
         fi
     fi
     if [ -n "$USUARIO" ]; then
-        DESC="Token de GitHub en $(hostname) $(date +%Y-%m-%d\ %H:%M)"
-        JSON='{"scopes":["repo","gist"],"note":"'$DESC'"}'
-        TOKEN=$(curl -s -u $USUARIO -d "$JSON" "https://api.github.com/authorizations" | grep '"token"')
-        if [ -n "$TOKEN" ]; then
-            TOKEN=$(echo $TOKEN | cut -d":" -f2 | tr -d '", ')
-            mensaje "Creando token de GitHub para git..."
-            github token "$TOKEN"
-        else
-            mensaje_error "Ocurrió un error al crear el token de GitHub."
-        fi
+        GENERAR="S"
+        while true; do
+            if [ "$GENERAR" = "S" ]; then
+                DESC="$(hostname) $(date +%Y-%m-%d\ %H:%M)"
+                DESC=$(echo $DESC | tr " " "+")
+                URL="https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC"
+                mensaje "1. Vete a $URL"
+                mensaje "2. No cambies nada en esa página"
+                mensaje "3. Pulsa directamente en 'Generate token'"
+                mensaje "4. Copia y pega el token aquí."
+                read -p "(Pulsa Entrar para abrir una ventana del navegador en dirección.)" _DUMMY
+                xdg-open $URL >/dev/null 2>&1
+            fi
+            while true; do
+                echo -n "Token: "
+                read TOKEN
+                if [ -n "$TOKEN" ]; then
+                    break
+                else
+                    mensaje "Ha introducido un token vacío"
+                    pregunta CANCELAR "¿Quiere cancelar la generación del token?" S $CALLA
+                    if [ "$CANCELAR" = "S" ]; then
+                        break
+                    fi
+                fi
+            done
+            if [ -n "$TOKEN" ]; then
+                mensaje "Creando token de GitHub para git..."
+                github token "$TOKEN"
+                mensaje "Comprobando token..."
+                RES=$(curl -s -X GET -u $USUARIO:$TOKEN https://api.github.com/user | grep '"login"')
+                RES=$(echo $RES | cut -d":" -f2 | tr -d '", ')
+                if [ "$USUARIO" = "$RES" ]; then
+                    mensaje "Comprobación correcta"
+                    break
+                else
+                    mensaje_error "El token no es correcto."
+                    pregunta GENERAR "¿Quiere volver a generar el token en GitHub?" N $CALLA
+                fi
+            elif [ "$CANCELAR" = "S" ]; then
+                TOKEN=""
+                break
+            fi
+        done
     fi
 fi
 
