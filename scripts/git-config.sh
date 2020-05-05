@@ -89,9 +89,9 @@ if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
                 URL="https://github.com/settings/tokens/new?scopes=repo,gist&description=$DESC"
                 mensaje "1. Vete a $URL"
                 mensaje "2. No cambies nada en esa página"
-                mensaje "3. Pulsa directamente en 'Generate token'"
+                mensaje "3. Pulsa directamente en 'Generate token' al final de la página"
                 mensaje "4. Copia y pega el token aquí."
-                read -p "(Pulsa Entrar para abrir una ventana del navegador en dirección.)" _DUMMY
+                read -p "(Pulsa Entrar para abrir una ventana del navegador en esa dirección.)" _DUMMY
                 xdg-open $URL >/dev/null 2>&1
             fi
             while true; do
@@ -115,6 +115,7 @@ if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
                 RES=$(echo $RES | cut -d":" -f2 | tr -d '", ')
                 if [ "$USUARIO" = "$RES" ]; then
                     mensaje "Comprobación correcta"
+                    mensaje "** Para que el cambio tenga efecto hay que cerrar la terminal y abrir otra **"
                     break
                 else
                     mensaje_error "El token no es correcto."
