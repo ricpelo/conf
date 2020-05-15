@@ -13,19 +13,22 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="white"
 POWERLEVEL9K_CONTEXT_REMOTE_BACKGROUND="red"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="white"
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND="darkgreen"
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="white"
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="059"
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="white"
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="052"
 POWERLEVEL9K_TIME_BACKGROUND="teal"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
 POWERLEVEL9K_DIR_HOME_BACKGROUND="106"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="106"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="106"
-POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND="white"
+POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND="black"
 POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND="106"
-POWERLEVEL9K_DIR_ETC_FOREGROUND="black"
+POWERLEVEL9K_DIR_ETC_FOREGROUND="white"
 POWERLEVEL9K_DIR_ETC_BACKGROUND="darkred"
 POWERLEVEL9K_DIR_SHOW_WRITABLE="true"
 POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD="true"
@@ -134,20 +137,20 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export LOCAL_GIT_DIRECTORY=/usr
 
 # Less Colors for Man Pages
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # start blink
-export LESS_TERMCAP_md=$(tput bold; tput setaf 29) # start bold
-export LESS_TERMCAP_me=$(tput sgr0) # turn off bold, blink and underline
-export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 29) # start standout (reverse video)
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0) # stop standout
-export LESS_TERMCAP_us=$(tput smul; tput setaf 7) # start underline
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0) # stop underline
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
-export LESS_TERMCAP_ZN=$(tput ssubm)
-export LESS_TERMCAP_ZV=$(tput rsubm)
-export LESS_TERMCAP_ZO=$(tput ssupm)
-export LESS_TERMCAP_ZW=$(tput rsupm)
-export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
+# export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # start blink
+# export LESS_TERMCAP_md=$(tput bold; tput setaf 29) # start bold
+# export LESS_TERMCAP_me=$(tput sgr0) # turn off bold, blink and underline
+# export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 29) # start standout (reverse video)
+# export LESS_TERMCAP_se=$(tput rmso; tput sgr0) # stop standout
+# export LESS_TERMCAP_us=$(tput smul; tput setaf 7) # start underline
+# export LESS_TERMCAP_ue=$(tput rmul; tput sgr0) # stop underline
+# export LESS_TERMCAP_mr=$(tput rev)
+# export LESS_TERMCAP_mh=$(tput dim)
+# export LESS_TERMCAP_ZN=$(tput ssubm)
+# export LESS_TERMCAP_ZV=$(tput rsubm)
+# export LESS_TERMCAP_ZO=$(tput ssupm)
+# export LESS_TERMCAP_ZW=$(tput rsupm)
+# export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
 
 eval `lesspipe`
 eval `dircolors ~/.dircolors`

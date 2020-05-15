@@ -220,7 +220,7 @@ exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
 # exec --no-startup-id lxpolkit
 # exec --no-startup-id start-pulseaudio-x11
-# exec --no-startup-id pasystray
+exec --no-startup-id pasystray
 # exec --no-startup-id pcmanfm -d
 exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
