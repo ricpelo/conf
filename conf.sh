@@ -20,7 +20,7 @@ else
     mensaje "Curl ya instalado."
 fi
 
-PLIST="zsh wget git build-essential python3-pygments sakura i3 feh
+PLIST="zsh wget git build-essential python3-pygments sakura i3 py3status feh
 x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape rofi redshift
 ranger nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
