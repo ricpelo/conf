@@ -9,7 +9,7 @@ lista_paquetes()
     echo "php$1 php$1-cli php$1-cgi php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-json php$1-zip php$1-common php$1-opcache php$1-readline libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml-"
 }
 
-VER=7.3
+VER=7.4
 EXTRA="php-xdebug sqlite sqlite3"
 
 if [ ! -f /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list ]; then
@@ -21,7 +21,7 @@ fi
 
 mensaje "Desinstalando versiones innecesarias de PHP..."
 P=""
-for V in 5.6 7.0 7.1 7.2 7.3; do
+for V in 5.6 7.0 7.1 7.2 7.3 7.4; do
     if [ "$V" != "$VER" ]
     then
         P="$P$(lista_paquetes $V) "
