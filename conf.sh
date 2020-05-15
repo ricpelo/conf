@@ -24,7 +24,7 @@ PLIST="zsh wget git build-essential python3-pygments sakura i3 feh
 x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape rofi redshift
 ranger nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
-exuberant-ctags ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot"
+ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
@@ -68,7 +68,7 @@ mensaje "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
 mensaje "Creando enlaces..."
-BLIST=".tmux.conf .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .spacemacs"
+BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .i3status.conf"
 for p in $BLIST; do
     backup_and_link $p
 done
