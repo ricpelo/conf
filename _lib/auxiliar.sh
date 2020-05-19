@@ -185,3 +185,14 @@ postfn_commandnotfound()
         sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
     fi
 }
+
+postfn_py3status()
+{
+    local dest=$HOME/.local/lib/python3.8/site-packages/py3status
+    mensaje "Volcando versión propia de py3status en $dest..."
+    if [ -d $dest ]; then
+        rm -rf $dest
+    fi
+    mkdir -p $dest
+    curl -sL https://github.com/ricpelo/py3status/archive/sysdata-free-memory.tar.gz | tar xfz - --strip 2 -C $dest py3status-sysdata-free-memory/py3status
+}
