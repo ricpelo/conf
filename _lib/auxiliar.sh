@@ -142,12 +142,12 @@ postfn_zsh()
         mensaje "Actualizando Zsh Syntax Highlighting..."
         (cd $dest && git pull)
     fi
-    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel9k
+    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
     if [ ! -d $dest ]; then
-        mensaje "Instalando tema Powerlevel9k..."
-        git clone https://github.com/bhilburn/powerlevel9k.git $dest
+        mensaje "Instalando tema Powerlevel10k..."
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $dest
     else
-        mensaje "Actualizando tema Powerlevel9k..."
+        mensaje "Actualizando tema Powerlevel10k..."
         (cd $dest && git pull)
     fi
     if grep $USER /etc/passwd | grep -vqs zsh; then
