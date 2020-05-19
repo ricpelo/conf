@@ -68,7 +68,7 @@ mensaje "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
 mensaje "Creando enlaces..."
-BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc .i3status.conf"
+BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc"
 for p in $BLIST; do
     backup_and_link $p
 done

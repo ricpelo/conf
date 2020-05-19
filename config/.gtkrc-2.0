@@ -1,18 +1,8 @@
-# DO NOT EDIT! This file will be overwritten by LXAppearance.
-# Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "/home/ricardo/.gtkrc-2.0.mine"
-gtk-theme-name="Redmond"
-gtk-icon-theme-name="Lubuntu"
-gtk-font-name="Sans 10"
-gtk-cursor-theme-name="DMZ-White"
-gtk-cursor-theme-size=0
-gtk-toolbar-style=GTK_TOOLBAR_BOTH
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-gtk-button-images=1
-gtk-menu-images=1
-gtk-enable-event-sounds=1
-gtk-enable-input-feedback-sounds=1
-gtk-xft-antialias=1
-gtk-xft-hinting=1
-gtk-xft-hintstyle="hintfull"
+# Created by lxqt-config-appearance (DO NOT EDIT!)
+gtk-theme-name = "Raleigh"
+gtk-icon-theme-name = "oxygen"
+gtk-font-name = "Sans Serif 12"
+gtk-button-images = 1
+gtk-menu-images = 1
+gtk-toolbar-style = GTK_TOOLBAR_BOTH_HORIZ

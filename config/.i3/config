@@ -37,7 +37,7 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Sans Serif-15'"
 bindsym $mod+Shift+space exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
 
 # change focus
@@ -203,6 +203,7 @@ bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-mute 48 toggle # mu
 # finds out, if available)
 bar {
     status_command py3status
+    font -misc-fixed-medium-r-normal--15-140-75-75-C-90-iso10646-1
 #    font pango:LiterationMono Nerd Font Book 10
 }
 
