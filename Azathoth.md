@@ -1,5 +1,12 @@
 # CONFIGURACIÓN DE AZATHOTH
 
+## MONITOR
+
+- Contraste: 50
+- Brillo: 40
+- Gamma: Gamma3
+- Adapt. Sync: Encendido
+
 ## BIOS
 
 ### MEMORIA RAM
