@@ -114,6 +114,11 @@ rm -f $ANTES $DESPUES && unset ANTES DESPUES
 
 source $ZSH/oh-my-zsh.sh
 
+# Corrige buen uso de libvte:
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte-2.91.sh
+fi
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
