@@ -1,12 +1,5 @@
 # CONFIGURACIÓN DE AZATHOTH
 
-## MONITOR
-
-- Contraste: 50
-- Brillo: 40
-- Gamma: Gamma3
-- Adapt. Sync: Encendido
-
 ## BIOS
 
 ### MEMORIA RAM
@@ -28,15 +21,22 @@
 
     Temp.    %
     ------ -----
-     20º     40
-     55º     40
-     65º     80
+     20º     38
+     60º     38
+     70º     80
      85º    100
 
     Step up time: 0.7s
     Step down time: 1.0s
 
-- Antes lo tenía así:
+- Otras curvas que he probado:
+
+    Temp.    %
+    ------ -----
+     20º     40
+     55º     40
+     65º     80
+     85º    100
 
     Temp.    %
     ------ -----
@@ -46,13 +46,16 @@
      85º    100
 
   pero resulta que Tdie está continuamente dando pequeños saltos de unos 10º,
-  lo que provoca que el ventilador de CPU pegue un salto y luego baje casi
+  lo que provoca que el ventilador de la CPU pegue un salto y luego baje casi
   enseguida, lo que resulta molesto (y seguramente no sea muy bueno para el
   motor del ventilador).
 
-  Para arreglarlo, pongo el ventilador a una velocidad constante de 40% hasta
-  los 55º, y a partir de ahí subo la velocidad. TODO: Testear por si hay que
-  poner una rampa más empinada en situaciones de estrés.
+  Para arreglarlo, pongo el ventilador a una velocidad constante de 38-40%
+  hasta los 55º-60º, y a partir de ahí subo la velocidad. TODO: Testear por si
+  hay que poner una rampa más empinada en situaciones de estrés.
+
+  Es mejor usar el 38% que el 40% para el ventilador de la CPU, porque al 40%
+  se oye un zumbido molesto de vibración, sobre todo por la noche.
 
 #### TRASERO (SYSFAN1 en placa, fan3 en lm_sensors)
 
@@ -62,8 +65,15 @@
 
 516 V
 
-Poner una gráfica dinámica en los ventiladores trasero o delanteros provoca
+Poner una curva dinámica en los ventiladores trasero o delanteros provoca
 vibraciones y ruido. Mejor poner un valor constante de 516 V.
+
+## MONITOR
+
+- Contraste: 50
+- Brillo: 40
+- Gamma: Gamma3
+- Adapt. Sync: Encendido
 
 ## NVIDIA
 
@@ -74,4 +84,3 @@ vibraciones y ruido. Mejor poner un valor constante de 516 V.
   - Allow G-SYNC/G-SYNC Compatible
   - La opción Allow Flipping se puede desactivar cuando se use Steam Link en la
     TV para que no parpadee.
-
