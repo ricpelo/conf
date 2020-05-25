@@ -5,7 +5,7 @@ gusto.
 
 ## Requisitos previos
 
-* Ubuntu 18.04 LTS (recomendable [Lubuntu](http://lubuntu.net))
+* Ubuntu 20.04 LTS (recomendable [Xubuntu](http://xubuntu.org))
 * [Git](https://git-scm.com) instalado y configurado, al menos, con `user.name`
   y `user.email`
 * *Recomendable*: disponer de cuenta en [GitHub.com](https://github.com)
@@ -35,7 +35,7 @@ $ ~/.conf/scripts/scripts.sh
 * Coloreado de `less` basado en Pygments
 * Sakura como emulador de terminal
 * [Vim](http://www.vim.org) (y muchos plugins) como editor de consola
-* [Powerline](https://github.com/powerline/powerline) para Zsh, tmux y Vim
+* [Powerline](https://github.com/powerline/powerline) para Zsh y Vim
 * [Tipografías](https://github.com/powerline/fonts) adaptadas a Powerline
 * Tipografía [Input Mono](http://input.fontbureau.com)
 * PulseAudio como servidor de sonido
@@ -43,7 +43,6 @@ $ ~/.conf/scripts/scripts.sh
 * NetworkManager para configuración de red
 * [Redshift](http://jonls.dk/redshift) para acomodar el color del monitor a la
   hora del día
-* [Atom](https://atom.io) como editor de texto en modo gráfico
 
 ## Gestor de ventanas i3wm
 
@@ -76,8 +75,8 @@ Con este repositorio se instala `i3wm` con la siguiente configuración:
 
 * `git-config.sh`: configura varios aspectos básicos de Git y crea un token
    para GitHub
-* `php-install.sh`: instala PHP 7.1 y extensiones interesantes
-* `postgresql-install.sh`: instala PostgreSQL 9.6
+* `php-install.sh`: instala PHP y extensiones interesantes
+* `postgresql-install.sh`: instala PostgreSQL
 * `composer-install.sh`: instala [Composer](https://getcomposer.org)
 * `composer-postinstall.sh`: aplica el token de GitHub en Composer e instala
   algunos paquetes globales, creando el enlace simbólico `/opt/composer`
