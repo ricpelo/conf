@@ -22,14 +22,21 @@
     Temp.    %
     ------ -----
      20º     38
-     60º     38
-     70º     80
+     65º     38
+     75º     80
      85º    100
 
     Step up time: 0.7s
     Step down time: 1.0s
 
 - Otras curvas que he probado:
+
+    Temp.    %
+    ------ -----
+     20º     38
+     60º     38
+     70º     80
+     85º    100
 
     Temp.    %
     ------ -----
@@ -51,8 +58,8 @@
   motor del ventilador).
 
   Para arreglarlo, pongo el ventilador a una velocidad constante de 38-40%
-  hasta los 55º-60º, y a partir de ahí subo la velocidad. TODO: Testear por si
-  hay que poner una rampa más empinada en situaciones de estrés.
+  hasta los 55º-60º-65º, y a partir de ahí subo la velocidad. TODO: Testear por
+  si hay que poner una rampa más empinada en situaciones de estrés.
 
   Es mejor usar el 38% que el 40% para el ventilador de la CPU, porque al 40%
   se oye un zumbido molesto de vibración, sobre todo por la noche.
