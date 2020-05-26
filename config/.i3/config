@@ -153,7 +153,7 @@ mode "resize" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym Mod4+r mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -172,10 +172,10 @@ mode "moveit" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym Mod4+m mode "default"
+    bindsym $mod+m mode "default"
 }
 
-bindsym Mod4+m focus floating; mode "moveit"
+bindsym $mod+m focus floating; mode "moveit"
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -192,7 +192,10 @@ bindsym --release Shift+Print exec scrot
 bindsym $mod+z exec xset r rate 250 30 ; exec setxkbmap -option "ctrl:swapcaps"
 
 # Bloquea la pantalla
-bindsym $mod+x exec i3lock
+bindsym $mod+Escape exec i3lock
+
+# Llama a xkill para matar ventanas
+bindsym --release $mod+x exec xkill
 
 # Control de volumen
 bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume 48 +5% #increase sound volume
@@ -207,25 +210,16 @@ bar {
 #    font pango:LiterationMono Nerd Font Book 10
 }
 
-assign [title="^Momentum$"] 3
-for_window [title="^Momentum$"] focus
-for_window [title="^Momentum$"] floating enable
+# Las ventanas de los navegadores no tienen borde
 for_window [window_role="^browser$"] border none
 
-# exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Constant Deceleration' 3
-# exec --no-startup-id xinput --set-prop 'pointer:Telink Wireless Receiver' 'Device Accel Profile' 4
-# exec --no-startup-id xset m 4 3
+# Autoarranque
 exec_always --no-startup-id xset r rate 250 30
 exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
-# exec --no-startup-id ~/.local/bin/xcape -e 'Control_L=Escape'
 exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
-# exec --no-startup-id lxpolkit
-# exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pasystray
-# exec --no-startup-id pcmanfm -d
 exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
-# exec --no-startup-id dropbox start
 exec --no-startup-id "i3-msg 'workspace 2; exec sakura -s; workspace 1'"
 exec --no-startup-id "i3-msg 'workspace 1; exec x-www-browser'"
