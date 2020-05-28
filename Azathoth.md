@@ -13,6 +13,10 @@
   especificaciones de la placa base, PERO hace que el test Prime95 Blend se
   rompa desde el primer momento, cosa que no pasa con el perfil 1.
 
+### OVERCLOCK
+
+- Precision Boost Overdrive desactivado.
+
 ### VENTILADORES
 
 #### CPU (fan2 en lm_sensors)
