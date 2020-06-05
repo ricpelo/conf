@@ -192,7 +192,7 @@ bindsym --release Shift+Print exec scrot
 bindsym $mod+z exec xset r rate 250 30 ; exec setxkbmap -option "ctrl:swapcaps"
 
 # Bloquea la pantalla
-bindsym $mod+Escape exec i3lock
+bindsym $mod+Escape exec i3lock -c 000000
 
 # Llama a xkill para matar ventanas
 bindsym --release $mod+x exec xkill
