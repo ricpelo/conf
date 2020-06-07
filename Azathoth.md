@@ -79,6 +79,11 @@
 Poner una curva dinámica en los ventiladores trasero o delanteros provoca
 vibraciones y ruido. Mejor poner un valor constante de 516 V.
 
+## CAJA
+
+- No apretar todos los tornillos del cristal templado para así evitar ruidos,
+  zumbidos y vibraciones molestas.
+
 ## MONITOR
 
 - Contraste: 50
