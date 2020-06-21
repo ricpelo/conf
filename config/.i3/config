@@ -212,10 +212,12 @@ bar {
 
 # Las ventanas de los navegadores no tienen borde
 for_window [window_role="^browser$"] border none
+for_window [instance="origin.exe"] floating enable
 
 # Autoarranque
 exec_always --no-startup-id xset r rate 250 30
 exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
+exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
 exec --no-startup-id pasystray
 exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
