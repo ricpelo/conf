@@ -118,6 +118,33 @@
   - La opción `Allow Flipping` se puede desactivar cuando se use _Steam Link_
     en la TV para que no parpadee.
 
+## AUDIO
+
+(Fuente: https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
+
+- Para evitar que el micrófono tenga mucho ruido:
+
+  - `$ sudo vim /etc/pulse/default.pa`
+
+    Añadir al final:
+
+    ```
+    load-module module-echo-cancel aec_method=webrtc aec_args="analog_gain_control=0 digital_gain_control=1" source_name=echoCancel_source sink_name=echoCancel_sink
+    set-default-source echoCancel_source
+    set-default-sink echoCancel_sink
+    ```
+
+  - En el *Control de volumen* de PulseAudio, usar como *Dispositivo de
+    entrada* el que ponga `echo cancelled...`.
+
+  - `$ sudo vim /etc/pulse/daemon.conf`
+
+    Establecer:
+
+    ```
+    default-sample-rate = 48000
+    ```
+
 ## JUEGOS
 
 ### CIVILIZATION V
