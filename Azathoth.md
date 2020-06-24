@@ -122,16 +122,18 @@
 
 (Fuente: https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
 
-- Para evitar que el micrófono tenga mucho ruido:
+- Para evitar que el micrófono tenga mucho ruido, lo mejor es usar un enchufe
+  con toma de tierra. Eso elimina el ruido de raíz.
+
+- Si no se puede, hacer:
 
   - `$ sudo vim /etc/pulse/default.pa`
 
     Añadir al final:
 
     ```
-    load-module module-echo-cancel aec_method=webrtc aec_args="analog_gain_control=0 digital_gain_control=1" source_name=echoCancel_source sink_name=echoCancel_sink
+    load-module module-echo-cancel aec_method=webrtc aec_args="analog_gain_control=0 digital_gain_control=1" source_name=echoCancel_source
     set-default-source echoCancel_source
-    set-default-sink echoCancel_sink
     ```
 
   - En el *Control de volumen* de PulseAudio, usar como *Dispositivo de
