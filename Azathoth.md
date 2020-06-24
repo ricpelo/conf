@@ -147,6 +147,19 @@
     default-sample-rate = 48000
     ```
 
+## SISTEMA DE ARCHIVOS
+
+- Para mejorar las prestaciones del sistema de archivos, se puede usar la
+  opción `noatime` en `/etc/fstab`:
+
+  - `$ sudo vim /etc/fstab`
+
+    Cambiar `defaults` por `defaults,noatime`
+    
+  - Para activar en el momento sin tener que reiniciar:
+
+    `$ sudo mount -o remount /`
+
 ## JUEGOS
 
 ### CIVILIZATION V
@@ -155,7 +168,7 @@
 
   - `$ vim .local/share/Aspyr/Sid\ Meier\'s\ Civilization\ 5/config.ini`
 
-  - Poner `MaxSimultaneousThreads = 16`
+    Poner `MaxSimultaneousThreads = 16`
 
 ### THE ELDER SCROLLS V: SKYRIM - SPECIAL EDITION
 
