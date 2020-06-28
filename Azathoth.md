@@ -178,3 +178,12 @@
   ```
   WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 %command%
   ```
+
+### THE WITCHER 3: WILD HUNT
+
+- Para que no haya caídas en el rendimiento en fps, poner todo a `Ultra`
+  excepto:
+
+  - `NVIDIA HairWorks`: No
+
+  - `Alcance de visibilidad del follaje`: Alta
