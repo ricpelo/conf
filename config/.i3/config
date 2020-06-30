@@ -198,9 +198,9 @@ bindsym $mod+Escape exec i3lock -c 000000
 bindsym --release $mod+x exec xkill
 
 # Control de volumen
-bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume 48 +5% #increase sound volume
-bindsym $mod+KP_Subtract exec --no-startup-id pactl set-sink-volume 48 -5% #decrease sound volume
-bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-mute 48 toggle # mute sound
+bindsym $mod+KP_Add exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% # increase sound volume
+bindsym $mod+KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% # decrease sound volume
+bindsym $mod+KP_Multiply exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
