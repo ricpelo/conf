@@ -134,27 +134,38 @@ postfn_zsh()
     else
         mensaje "Oh My ZSH ya instalado."
     fi
-    local dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    if [ ! -d $dest ]; then
+    local DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    if [ ! -d $DEST ]; then
         mensaje "Instalando Zsh Syntax Highlighting..."
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $dest
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DEST
     else
         mensaje "Actualizando Zsh Syntax Highlighting..."
-        (cd $dest && git pull)
+        (cd $DEST && git pull)
     fi
-    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-    if [ ! -d $dest ]; then
+    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    if [ ! -d $DEST ]; then
         mensaje "Instalando tema Powerlevel10k..."
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $dest
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $DEST
     else
         mensaje "Actualizando tema Powerlevel10k..."
-        (cd $dest && git pull)
+        (cd $DEST && git pull)
     fi
     if grep $USER /etc/passwd | grep -vqs zsh; then
-        mensaje "Instalando ZSH al usuario actual..."
+        mensaje "Instalando Zsh al usuario actual..."
         sudo chsh -s /bin/zsh $USER
     else
         mensaje "Zsh ya asignado al usuario actual."
+    fi
+    DEST="$HOME/.local/bin/exa"
+    if [ ! -f $DEST ]; then
+        mensaje "Instalando exa..."
+        local VER=$(curl --silent "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")')
+        local FILE="exa-linux-x86_64-$VER.zip"
+        local TEMP_FILE="$(mktemp)"
+        curl -sL -o $TEMP_FILE https://github.com/ogham/exa/releases/download/v$VER/$FILE && unzip -oqqp $TEMP_FILE > $DEST && chmod a+x $DEST
+        rm -f $TEMP_FILE
+    else
+        mensaje "Listador de archivos exa ya instalado."
     fi
 }
 
