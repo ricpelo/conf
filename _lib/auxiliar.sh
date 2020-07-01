@@ -199,11 +199,20 @@ postfn_commandnotfound()
 
 postfn_py3status()
 {
-    local dest=$HOME/.local/lib/python3.8/site-packages/py3status
-    mensaje "Volcando versión propia de py3status en $dest..."
-    if [ -d $dest ]; then
-        rm -rf $dest
+    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
+    mensaje "Volcando versión actualizada de py3status en $DEST..."
+    if [ -d $DEST ]; then
+        rm -rf $DEST
     fi
-    mkdir -p $dest
-    curl -sL https://github.com/ricpelo/py3status/archive/sysdata-free-memory.tar.gz | tar xfz - --strip 2 -C $dest py3status-sysdata-free-memory/py3status
+    mkdir -p $DEST
+    curl -sL https://github.com/ultrabug/py3status/archive/master.tar.gz | tar xfz - --strip 2 -C $DEST py3status-master/py3status
+
+#    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
+#    if [ ! -d $DEST ]; then
+#        mensaje "Instalando última versión de py3status en $DEST..."
+#        git clone https://github.com/ultrabug/py3status.git $DEST
+#    else
+#        mensaje "Actualizando py3status..."
+#        (cd $DEST && git pull)
+#    fi
 }
