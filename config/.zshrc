@@ -174,8 +174,8 @@ eval `dircolors ~/.dircolors`
 
 # alias ls="ls --color=tty --group-directories-first"
 alias ls="exa --icons --color=auto --group-directories-first"
-alias l="exa --icons --color=auto --group-directories-first --all --all --grid --long --binary --git"
-alias ll="exa --icons --color=auto --group-directories-first --all --all --long --header --binary --group --git"
+alias l="exa --icons --color=auto --group-directories-first --all --all --long --header --binary --group --git"
+alias ll="exa --icons --color=auto --group-directories-first --grid --long --binary --git"
 alias cd..="cd .."
 alias rm="rm -i"
 alias cp="cp -i"

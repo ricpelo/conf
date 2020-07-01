@@ -159,11 +159,7 @@ postfn_zsh()
     DEST="$HOME/.local/bin/exa"
     if [ ! -f $DEST ]; then
         mensaje "Instalando exa..."
-        local VER=$(curl --silent "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")')
-        local FILE="exa-linux-x86_64-$VER.zip"
-        local TEMP_FILE="$(mktemp)"
-        curl -sL -o $TEMP_FILE https://github.com/ogham/exa/releases/download/v$VER/$FILE && unzip -oqqp $TEMP_FILE > $DEST && chmod a+x $DEST
-        rm -f $TEMP_FILE
+        curl -sL https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2 | bunzip2 -d > $DEST && chmod a+x $DEST
     else
         mensaje "Listador de archivos exa ya instalado."
     fi
