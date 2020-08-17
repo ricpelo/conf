@@ -200,3 +200,12 @@
 - En Steam, configurar el mando en modo `Mando`.
 
 - El juego se bloqueará si se intenta jugar sin conectarse a Cerberus.
+
+### BIOSHOCK 2
+
+- Para que se carguen bien las texturas y todo vaya más rápido, poner los
+  siguientes parámetros de lanzamiento:
+
+  ```
+  PROTON_NO_ESYNC=1 %command% -nointro
+  ```
