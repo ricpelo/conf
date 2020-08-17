@@ -187,3 +187,16 @@
   - `NVIDIA HairWorks`: No
 
   - `Alcance de visibilidad del follaje`: Alta
+
+### MASS EFFECT 2
+
+- Instalar y arrancar una vez.
+
+- La primera vez que se arranca no hay sonido. Las siguientes veces ya sí.
+
+- Extraer `ME2Controller-1.7.2.7z` sobre la carpeta `BioGame` de la instalación
+  del juego.
+
+- En Steam, configurar el mando en modo `Mando`.
+
+- El juego se bloqueará si se intenta jugar sin conectarse a Cerberus.
