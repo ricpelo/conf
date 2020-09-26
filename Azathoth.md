@@ -209,3 +209,29 @@
   ```
   PROTON_NO_ESYNC=1 %command% -nointro
   ```
+
+### DEUS EX: HUMAN REVOLUTION
+
+(Fuente: https://gaming.stackexchange.com/questions/147596/how-can-i-fix-stuttering-and-lag-issues-in-deus-ex-hr-directors-cut/147642)
+
+- Al salir del juego hay que esperar unos tres minutos o matar el proceso.
+
+- NO usar DirectX 11 para que se carguen correctamente todas las texturas.
+
+- Para reducir bastante los tirones durante el juego:
+
+  - Investigar si se trata únicamente de la compilación de shaders. Si pasado
+    un tiempo dentro del juego se arregla solo, es que era eso. En caso
+    contrario:
+
+  - `$ WINEPREFIX=~/.local/share/Steam/steamapps/compatdata/28050/pfx ~/.local/share/Steam/steamapps/common/Proton\ 5.0/dist/bin/wine regedit`
+
+  - En `HKEY_CURRENT_USER\Software\Eidos\Deus Ex: HRDC`, poner `AllowJobStealing` a `0`.
+
+  - Usar los siguientes parámetros de lanzamiento:
+
+    ```
+    PROTON_NO_ESYNC=1 %command%
+    ```
+
+  - Poner un antialiasing bajo.
