@@ -217,7 +217,7 @@ for_window [instance="origin.exe"] floating enable
 # Autoarranque
 exec_always --no-startup-id xset r rate 250 30
 exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
-exec --no-startup-id "xset s noblank ; xset s 0 0 ; xset s off ; xset dpms 0 0 0 ; xset -dpms"
+exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
 exec --no-startup-id nvidia-settings --load-config-only
 exec --no-startup-id feh --no-fehbg --bg-fill ~/.conf/config/fondo.jpg
 exec --no-startup-id pasystray
