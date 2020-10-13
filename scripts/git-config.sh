@@ -165,7 +165,7 @@ fi
 
 if [ -n "$USUARIO" ] && [ -n "$TOKEN" ]; then
     mensaje "Creando entradas en ~/.netrc..."
-    [ -f ~/.netrc ] || touch ~/.netrc
+    [ -f ~/.netrc ] || touch ~/.netrc || chmod 600 ~/.netrc
     netrc "github.com" $USUARIO $TOKEN
     netrc "api.github.com" $USUARIO $TOKEN
 fi
