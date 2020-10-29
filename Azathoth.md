@@ -82,6 +82,9 @@
 
 - 516 V.
 
+- Ahora mismo (2020-10-29) hace mucho menos ruido poniendo 660 V. Con 516 V se
+  provocan vibraciones a intervalos de un segundo.
+
 - Poner una curva dinámica en los ventiladores trasero o delanteros provoca
   vibraciones y ruido. Mejor poner un valor constante de 516 V. [TODO: Probar
   de nuevo.]
