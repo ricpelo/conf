@@ -80,7 +80,7 @@ done
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh"
+BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh exa"
 for p in $BLIST; do
     local_bin $p
 done

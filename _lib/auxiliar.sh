@@ -156,13 +156,13 @@ postfn_zsh()
     else
         mensaje "Zsh ya asignado al usuario actual."
     fi
-    DEST="$HOME/.local/bin/exa"
-    if [ ! -f $DEST ]; then
-        mensaje "Instalando exa..."
-        curl -sL https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2 | bunzip2 -d > $DEST && chmod a+x $DEST
-    else
-        mensaje "Listador de archivos exa ya instalado."
-    fi
+#    DEST="$HOME/.local/bin/exa"
+#    if [ ! -f $DEST ]; then
+#        mensaje "Instalando exa..."
+#        curl -sL https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2 | bunzip2 -d > $DEST && chmod a+x $DEST
+#    else
+#        mensaje "Listador de archivos exa ya instalado."
+#    fi
 }
 
 postfn_vim()
