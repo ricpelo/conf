@@ -212,3 +212,18 @@ postfn_py3status()
 #        (cd $DEST && git pull)
 #    fi
 }
+
+prefn_gh()
+{
+    local DEST=/etc/apt/sources.list
+    local RET=0
+    if ! grep -qs "deb https://cli.github.com/packages $(lsb_release -sc) main" $DEST; then
+        mensaje "Activando el repositorio de GitHub CLI..."
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+        sudo apt-add-repository https://cli.github.com/packages
+        RET=1
+    else
+        mensaje "Repositorio de GitHub CLI ya activado."
+    fi
+    return $RET
+}
