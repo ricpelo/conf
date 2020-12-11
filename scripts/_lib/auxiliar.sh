@@ -130,8 +130,8 @@ activa_xdebug_remoto()
 {
     mensaje "Activando depuración remota con xdebug..."
     local RES="zend_extension=xdebug.so"
-    RES="$RES\nxdebug.remote_enable = 1"
-    RES="$RES\nxdebug.remote_autostart = 1"
+    RES="$RES\nxdebug.mode = debug"
+    RES="$RES\nxdebug.start_with_request = yes"
     echo $RES | sudo tee /etc/php/$1/mods-available/xdebug.ini > /dev/null
 }
 
