@@ -37,8 +37,8 @@ bindsym $mod+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Sans Serif-15'"
-bindsym $mod+Shift+space exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+Shift+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Sans Serif-15'"
+bindsym $mod+space exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi"
 
 # change focus
 bindsym $mod+h focus left
