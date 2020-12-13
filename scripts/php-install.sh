@@ -36,7 +36,7 @@ echo "\033[1;32m\$\033[0m\033[35m sudo apt -y install $P\033[0m"
 sudo apt -y --purge install $P $EXTRA
 
 activa_xdebug $VER cli
-activa_xdebug_remoto $VER
+#activa_xdebug_remoto $VER
 
 CONF="/etc/php/$VER/cli/php.ini"
 asigna_param_php "error_reporting" "E_ALL" $CONF
