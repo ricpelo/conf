@@ -150,6 +150,58 @@
     default-sample-rate = 48000
     ```
 
+## RED
+
+(Fuente: https://askubuntu.com/questions/1196348/ubuntu-19-10-wont-connect-to-2-4ghz-wifi-with-txbf-mu-mimo-enabled)
+
+- Para que pueda conectarse a la red WiFi 2.4 GHz con el router TP-Link Archer
+  C6, hay que usar `iwd` en lugar de `wpa_supplicant`. Para ello:
+
+1. Instalar `iwd`:
+
+   ```
+   sudo apt update
+   sudo apt install iwd
+   ```
+
+2. Crear el siguiente archivo dentro del directorio de archivos de
+   configuración de NetworkManager:
+
+   ```
+   sudo vim /etc/NetworkManager/conf.d/wifi_backend.conf
+   ```
+
+3. Copiar y pegar el siguiente contenido dentro de ese archivo, guardar y
+   salir:
+
+   ```
+   [device]
+   wifi.backend=iwd
+   ```
+
+4. Parar y desactivar el servicio `wpa_supplicant` (la desactivación es
+   persitente entre reinicios):
+
+   ```
+   systemctl stop wpa_supplicant.service
+   systemctl disable wpa_supplicant.service
+   ```
+
+5. Activar e iniciar el servicio `iwd` (la activación es persistente entre
+   reinicios):
+
+   ```
+   sudo systemctl enable iwd.service
+   sudo systemctl start iwd.service
+   ```
+
+6. Reiniciar el servicio de NetworkManager (así no habrá que reiniciar el
+   equipo para que los cambios tengan efecto):
+
+   ```
+   systemctl restart network-manager.service  
+   ```
+
 ## SISTEMA DE ARCHIVOS
 
 - Para mejorar las prestaciones del sistema de archivos, se puede usar la
