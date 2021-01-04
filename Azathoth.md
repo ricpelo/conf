@@ -105,6 +105,20 @@
 
 - Activar `Adapt. Sync`.
 
+## KERNEL
+
+- El kernel 5.8 tiene mejor soporte para los AMD Ryzen 5 y 7 que el kernel 5.4
+  que trae instalado por defecto Ubuntu 20.04 LTS.
+
+  Además, resuelve el problema que hace que se pierda el dispositivo de sonido
+  en PulseAudio cuando el monitor entra en suspensión.
+
+- Para instalar y usar el kernel 5.8:
+
+  ```
+  $ sudo apt install linux-generic-hwe-20.04-edge
+  ```
+
 ## NVIDIA
 
 - Poner resolución 1920x1080 a 75 Hz.
@@ -154,8 +168,8 @@
 
 (Fuente: https://askubuntu.com/questions/1196348/ubuntu-19-10-wont-connect-to-2-4ghz-wifi-with-txbf-mu-mimo-enabled)
 
-- Para que pueda conectarse a la red WiFi 2.4 GHz con el router TP-Link Archer
-  C6, hay que usar `iwd` en lugar de `wpa_supplicant`. Para ello:
+- Para que pueda conectarse a la red WiFi 2.4 GHz con el router TP-Link AC1200,
+  hay que usar `iwd` en lugar de `wpa_supplicant`. Para ello:
 
 1. Instalar `iwd`:
 
@@ -216,6 +230,18 @@
     `$ sudo mount -o remount /`
 
 ## JUEGOS
+
+### ALIEN ISOLATION
+
+- Es mucho mejor usar Proton 5.0 que la versión nativa de Linux (va más suave y
+  con más fps). Para ello:
+
+  - Entrar en las Propiedades del juego.
+
+  - En el apartado `Compatibilidad`, activar `Forzar el uso de una herramienta
+    específica de compatibilidad para Steam Play`.
+
+  - Elegir `Proton 5.0-10`.
 
 ### CIVILIZATION V
 
