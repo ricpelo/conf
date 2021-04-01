@@ -121,19 +121,21 @@
 
 ## NVIDIA
 
-- Poner resolución 1920x1080 a 75 Hz.
+- En _NVIDIA X Server Settings_:
 
-- En `Avanzada` poner `Allow G-SYNC on monitor not validated as G-SYNC
-  Compatible`.
+  - Poner resolución 1920x1080 a 75 Hz.
 
-- En `OpenGL Settings`:
+  - En `Avanzada` poner `Allow G-SYNC on monitor not validated as G-SYNC
+    Compatible`.
 
-  - Activar `Sync to VBlank`.
+  - En `OpenGL Settings`:
 
-  - Activar `Allow G-SYNC/G-SYNC Compatible`.
+    - Activar `Sync to VBlank`.
 
-  - La opción `Allow Flipping` se puede desactivar cuando se use _Steam Link_
-    en la TV para que no parpadee.
+    - Activar `Allow G-SYNC/G-SYNC Compatible`.
+
+    - La opción `Allow Flipping` se puede desactivar cuando se use _Steam Link_
+      en la TV para que no parpadee.
 
 ## AUDIO
 
@@ -230,6 +232,27 @@
     `$ sudo mount -o remount /`
 
 ## JUEGOS
+
+### STEAM LINK
+
+- Para que la imagen no parpadee:
+
+  - En _NVIDIA X Server Settings_, opción `OpenGL Settings`:
+
+    - Desactivar `Allow Flipping`.
+
+- Para que el sonido no se vaya degradando y se pierda con el tiempo:
+
+  - En _Control de volumen de PulseAudio_:
+
+    - En `Configuración`, desactivar todos los perfiles de audio.
+
+      Se creará automáticamente un dispositivo virtual `Dummy`. (Si no
+      apareciera, arrancar primero Steam.)
+
+- Cuando se acabe de jugar, se deben deshacer los cambios en sentido contrario.
+
+(Fuente: https://github.com/ValveSoftware/steam-for-linux/issues/6749#issuecomment-753639362)
 
 ### ALIEN ISOLATION
 
