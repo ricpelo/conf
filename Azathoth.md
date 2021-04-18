@@ -339,3 +339,14 @@
   - `$ WINEPREFIX=~/.local/share/Steam/steamapps/compatdata/28050/pfx ~/.local/share/Steam/steamapps/common/Proton\ 5.0/dist/bin/wine regedit`
 
   - En `HKEY_CURRENT_USER\Software\Eidos\Deus Ex: HRDC`, poner `AllowJobStealing` a `0`.
+
+### NO MAN'S SKY
+
+- En opciones gráficas:
+
+  - Poner la primera opción (tamaño de texturas) a `Media` y el resto de
+    opciones a `Alta`.
+
+  - Activar el Vsync.
+
+- La rama 6.0 de Proton funciona mejor que la 5.0.
