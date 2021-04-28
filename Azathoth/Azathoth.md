@@ -239,6 +239,27 @@
   bastante peor. Para que se desconecte menos hay que seguir unas
   configuraciones y recomendaciones.
 
+- Desactivar la coexistencia Bluetooth-Wifi:
+
+  `$ sudo vim /etc/modprobe.d/iwlwifi.conf`
+
+  Añadir:
+
+  ```
+  options iwlwifi bt_coex_active=0
+  ```
+
+- También se puede deshabilitar el ERTM del Bluetooth, pero creo que eso no
+  hace ningún efecto:
+
+  `$ sudo vim /etc/modprobe.d/bluetooth.conf`
+
+  Añadir el siguiente contenido:
+
+  ```
+  options bluetooth disable_ertm=1
+  ```
+
 - Juegos fuera de Steam:
 
   - Hay que usar los controladores
@@ -275,14 +296,6 @@
       mando:
 
       ![](opciones-locales-mando.png)
-
-- También deshabilito el ERTM del Bluetooth, pero creo que eso no hace ningún
-  efecto. Consiste en editar el archivo `/etc/modprobe.d/bluetooth.conf` con el
-  siguiente contenido:
-
-  ```
-  options bluetooth disable_ertm=1
-  ```
 
 ### STEAM LINK
 
