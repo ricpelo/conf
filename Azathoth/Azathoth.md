@@ -233,6 +233,57 @@
 
 ## JUEGOS
 
+### NINTENDO SWITCH PRO CONTROLLER
+
+- Conectado por USB funciona perfectamente. Conectado por Bluetooth ya funciona
+  bastante peor. Para que se desconecte menos hay que seguir unas
+  configuraciones y recomendaciones.
+
+- Juegos fuera de Steam:
+
+  - Hay que usar los controladores
+    [dkms-hid-nintendo](https://github.com/nicman23/dkms-hid-nintendo) y
+    [joycond](https://github.com/DanielOgorchock/joycond).
+
+- En Steam:
+
+  - Los controladores anteriores son incompatibles con el que usa Steam, así
+    que hay que deshabilitarlos:
+
+    - Crear `/etc/modprobe.d/blacklist-hid_nintendo.conf` con el siguiente
+      contenido:
+    
+      ```
+      blacklist hid_nintendo
+      ```
+
+    - `$ sudo systemctl disable joycond.service`
+
+  - Dentro de Steam, hay que:
+
+    - Usar siempre Big Picture.
+
+    - Dejar que Steam detecte el mando como un _Nintendo Switch Pro
+      Controller_.
+
+    - Desactivar la vibración en las preferencias del mando:
+
+      ![](opciones-globales-mando.png)
+
+    - La vibración se puede activar por cada juego de forma local durante una
+      partida pulsando el botón de la casa y entrando en las opciones del
+      mando:
+
+      ![](opciones-locales-mando.png)
+
+- También deshabilito el ERTM del Bluetooth, pero creo que eso no hace ningún
+  efecto. Consiste en editar el archivo `/etc/modprobe.d/bluetooth.conf` con el
+  siguiente contenido:
+
+  ```
+  options bluetooth disable_ertm=1
+  ```
+
 ### STEAM LINK
 
 - Para que la imagen no parpadee:
