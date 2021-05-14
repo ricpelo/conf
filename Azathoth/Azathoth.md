@@ -318,6 +318,12 @@
 
 (Fuente: https://github.com/ValveSoftware/steam-for-linux/issues/6749#issuecomment-753639362)
 
+### THE TALOS PRINCIPLE
+
+- Jugar en modo Big Picture.
+
+- En `Configuración del mando`, seleccionar la configuración `Mando`.
+
 ### ALIEN ISOLATION
 
 - Es mucho mejor usar Proton 5.0 que la versión nativa de Linux (va más suave y
