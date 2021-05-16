@@ -246,7 +246,9 @@
   Añadir:
 
   ```
-  options iwlwifi bt_coex_active=0
+  options iwlwifi bt_coex_active=0 swcrypto=1 11n_disable=8
+  options iwlmvm power_scheme=1
+  options cfg80211 cfg80211_disable_40mhz_24ghz=Y
   ```
 
 - También se puede deshabilitar el ERTM del Bluetooth, pero creo que eso no
