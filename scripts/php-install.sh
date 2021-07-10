@@ -6,7 +6,7 @@ CALLA=$1
 
 lista_paquetes()
 {
-    echo "php$1 php$1-cli php$1-cgi php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-zip php$1-common php$1-opcache php$1-readline php$1-xdebug libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml- php-xdebug-"
+    echo "php$1 php$1-cli php$1-cgi php$1-pgsql php$1-sqlite3 php$1-intl php$1-mbstring php$1-gd php$1-curl php$1-xml php$1-zip php$1-common php$1-opcache php$1-readline php$1-xdebug php$1-amqp php$1-redis libapache2-mod-php- php- php-cli- php-curl- php-gd- php-intl- php-json- php-mbstring- php-pgsql- php-sqlite3- php-xml- php-xdebug-"
 }
 
 VER=8.0
