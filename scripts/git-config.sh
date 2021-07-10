@@ -86,7 +86,7 @@ if [ -z "$TOKEN" ] || [ "$SN" = "S" ]; then
             if [ "$GENERAR" = "S" ]; then
                 DESC="$(hostname) $(date +%Y-%m-%d\ %H:%M)"
                 DESC=$(echo $DESC | tr " " "+")
-                URL="https://github.com/settings/tokens/new?scopes=repo,gist,read:org,read:discussion&description=$DESC"
+                URL="https://github.com/settings/tokens/new?scopes=repo,workflow,gist,read:org,read:discussion&description=$DESC"
                 mensaje "1. Vete a $URL"
                 mensaje "2. No cambies nada en esa página"
                 mensaje "3. Pulsa directamente en 'Generate token' al final de la página"
