@@ -206,6 +206,10 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias glg="git lg"
+if [ -n "$(which batcat)" ]
+then
+    alias bat="batcat --theme=GitHub --italic-text=always"
+fi
 
 # Configuración del teclado
 
