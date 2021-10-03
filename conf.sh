@@ -24,7 +24,7 @@ PLIST="zsh wget git build-essential python3-pygments sakura i3 py3status feh
 x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape rofi redshift
 ranger nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
-ruby ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot gh bat"
+ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot bat"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
@@ -68,19 +68,19 @@ mensaje "Instalando tipografías Powerline..."
 (cd fonts/powerline-fonts && ./install.sh)
 
 mensaje "Creando enlaces..."
-BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .i3 .terminfo .vimrc"
+BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .terminfo .vimrc"
 for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="sakura dunst htop"
+BLIST="sakura dunst htop i3"
 for p in $BLIST; do
     backup_and_link $p .config
 done
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh exa"
+BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh"
 for p in $BLIST; do
     local_bin $p
 done

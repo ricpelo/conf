@@ -71,28 +71,28 @@ prefn_emacssnapshot()
     return $RET
 }
 
-prefn_i3()
-{
-    local OLD=/etc/apt/sources.list.d/i3wm.list
-    local RET=0
-    if [ -f $OLD ]; then
-        echo "Desactivando el antiguo repositorio de i3wm..."
-        sudo rm -f $OLD $OLD.save
-        RET=1
-    fi
-    local LIST=/etc/apt/sources.list.d/sur5r-i3.list
-    if [ ! -f $LIST ]; then
-        mensaje "Activando el repositorio con la última versión de i3wm..."
-        /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
-        sudo dpkg -i ./keyring.deb
-        rm -f keyring.deb
-        echo "deb [arch=amd64] http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
-        RET=1
-    else
-        mensaje "Repositorio de i3wm ya activado."
-    fi
-    return $RET
-}
+#prefn_i3()
+#{
+#    local OLD=/etc/apt/sources.list.d/i3wm.list
+#    local RET=0
+#    if [ -f $OLD ]; then
+#        echo "Desactivando el antiguo repositorio de i3wm..."
+#        sudo rm -f $OLD $OLD.save
+#        RET=1
+#    fi
+#    local LIST=/etc/apt/sources.list.d/sur5r-i3.list
+#    if [ ! -f $LIST ]; then
+#        mensaje "Activando el repositorio con la última versión de i3wm..."
+#        /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
+#        sudo dpkg -i ./keyring.deb
+#        rm -f keyring.deb
+#        echo "deb [arch=amd64] http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
+#        RET=1
+#    else
+#        mensaje "Repositorio de i3wm ya activado."
+#    fi
+#    return $RET
+#}
 
 prefn_atom()
 {
@@ -116,15 +116,15 @@ prefn_atom()
     return $RET
 }
 
-postfn_sakura()
-{
-    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"; then
-        mensaje "Estableciendo Sakura como terminal predeterminado..."
-        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
-    else
-        mensaje "Sakura ya es el terminal predeterminado."
-    fi
-}
+#postfn_sakura()
+#{
+#    if ! update-alternatives --query x-terminal-emulator | grep -qs "^Value:.*sakura"; then
+#        mensaje "Estableciendo Sakura como terminal predeterminado..."
+#        sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
+#    else
+#        mensaje "Sakura ya es el terminal predeterminado."
+#    fi
+#}
 
 postfn_zsh()
 {
@@ -183,35 +183,35 @@ postfn_emacs()
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
 }
 
-postfn_commandnotfound()
-{
-    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
-        mensaje "LP #1766068 ya corregido."
-    else
-        mensaje "Corrigiendo LP #1766068..."
-        sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
-    fi
-}
-
-postfn_py3status()
-{
-    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
-    mensaje "Volcando versión actualizada de py3status en $DEST..."
-    if [ -d $DEST ]; then
-        rm -rf $DEST
-    fi
-    mkdir -p $DEST
-    curl -sL https://github.com/ultrabug/py3status/archive/master.tar.gz | tar xfz - --strip 2 -C $DEST py3status-master/py3status
-
-#    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
-#    if [ ! -d $DEST ]; then
-#        mensaje "Instalando última versión de py3status en $DEST..."
-#        git clone https://github.com/ultrabug/py3status.git $DEST
+#postfn_commandnotfound()
+#{
+#    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
+#        mensaje "LP #1766068 ya corregido."
 #    else
-#        mensaje "Actualizando py3status..."
-#        (cd $DEST && git pull)
+#        mensaje "Corrigiendo LP #1766068..."
+#        sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
 #    fi
-}
+#}
+
+#postfn_py3status()
+#{
+#    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
+#    mensaje "Volcando versión actualizada de py3status en $DEST..."
+#    if [ -d $DEST ]; then
+#        rm -rf $DEST
+#    fi
+#    mkdir -p $DEST
+#    curl -sL https://github.com/ultrabug/py3status/archive/master.tar.gz | tar xfz - --strip 2 -C $DEST py3status-master/py3status
+#
+##    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
+##    if [ ! -d $DEST ]; then
+##        mensaje "Instalando última versión de py3status en $DEST..."
+##        git clone https://github.com/ultrabug/py3status.git $DEST
+##    else
+##        mensaje "Actualizando py3status..."
+##        (cd $DEST && git pull)
+##    fi
+#}
 
 prefn_gh()
 {
