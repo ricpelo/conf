@@ -73,14 +73,14 @@ for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="sakura dunst htop i3"
+BLIST="sakura dunst htop i3 rofi picom"
 for p in $BLIST; do
     backup_and_link $p .config
 done
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh"
+BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh alacritty"
 for p in $BLIST; do
     local_bin $p
 done
