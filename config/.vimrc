@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'iCyMind/NeoSolarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'von-forks/vim-bracketed-paste'
 Plug 'airblade/vim-gitgutter'
@@ -31,9 +32,11 @@ call plug#end()
 set termguicolors
 set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
-set background=light
+set background=dark
+"set background=light
 try
-  colorscheme NeoSolarized
+  "colorscheme NeoSolarized
+  colorscheme nord
 catch /^Vim\%((\a\+)\)\=:E185/
   " No hacer nada si no está instalado
 endtry

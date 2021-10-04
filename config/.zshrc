@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
+#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -20,25 +20,25 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
-POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="white"
-POWERLEVEL9K_CONTEXT_REMOTE_BACKGROUND="red"
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND="white"
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND="darkgreen"
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="white"
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="059"
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="white"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="052"
-POWERLEVEL9K_TIME_BACKGROUND="teal"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_BACKGROUND="106"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="106"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="106"
-POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND="black"
-POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND="106"
-POWERLEVEL9K_DIR_ETC_FOREGROUND="white"
-POWERLEVEL9K_DIR_ETC_BACKGROUND="darkred"
+#POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="white"
+#POWERLEVEL9K_CONTEXT_REMOTE_BACKGROUND="red"
+#POWERLEVEL9K_VCS_CLEAN_FOREGROUND="white"
+#POWERLEVEL9K_VCS_CLEAN_BACKGROUND="darkgreen"
+#POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="white"
+#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="059"
+#POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="white"
+#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="052"
+#POWERLEVEL9K_TIME_BACKGROUND="teal"
+#POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+#POWERLEVEL9K_DIR_HOME_BACKGROUND="106"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="106"
+#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
+#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="106"
+#POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND="black"
+#POWERLEVEL9K_DIR_NOT_WRITABLE_BACKGROUND="106"
+#POWERLEVEL9K_DIR_ETC_FOREGROUND="white"
+#POWERLEVEL9K_DIR_ETC_BACKGROUND="darkred"
 POWERLEVEL9K_DIR_SHOW_WRITABLE="true"
 POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD="true"
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_absolute_chars"
@@ -124,22 +124,23 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
 
-local ANTES=$(mktemp) && set > $ANTES
+#local ANTES=$(mktemp) && set > $ANTES
 emulate sh -c 'source /etc/profile'
-local DESPUES=$(mktemp) && set > $DESPUES
-unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
-rm -f $ANTES $DESPUES && unset ANTES DESPUES
+#local DESPUES=$(mktemp) && set > $DESPUES
+#unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
+#rm -f $ANTES $DESPUES && unset ANTES DESPUES
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export PATH="$PATH:$HOME/.local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Corrige buen uso de libvte:
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-    source /etc/profile.d/vte-2.91.sh
-fi
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#    source /etc/profile.d/vte-2.91.sh
+#fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
