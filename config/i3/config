@@ -233,8 +233,7 @@ client.background       #242424
 bar {
     status_command py3status
     height 25
-    font pango:Source Code Pro 11
-    status_command i3status
+    font pango:Source Code Pro 13
     tray_padding 1
     strip_workspace_numbers yes
     bindsym button4 nop
@@ -247,10 +246,10 @@ bar {
         separator  $base01
         background $base01
         statusline #81a1c1
-        #                   border  background text
-        focused_workspace  $base01 $base01    #81a1c1
+        #                  border  background text
+        focused_workspace  $base01 $base01    $base0F
         active_workspace   $base01 $base02    $base03
-        inactive_workspace $base01 $base01    #4c566a
+        inactive_workspace $base01 $base01    #81a1c1 # #5c667a
         urgent_workspace   $base01 $base01    $base08
         binding_mode       $base01 #81a1c1    #2e3440
     }
@@ -272,7 +271,7 @@ exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
 exec --no-startup-id picom &
-exec --no-startup-id "i3-msg 'workspace 2; exec sakura; workspace 1'"
+#exec --no-startup-id "i3-msg 'workspace 2; exec /home/ricardo/.local/bin/alacritty; workspace 1'"
 exec --no-startup-id "i3-msg 'workspace 1; exec x-www-browser'"
 
 # Gaps
