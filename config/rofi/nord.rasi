@@ -7,11 +7,10 @@
  */
 
 configuration {
-
-	font: "Envy Code R 10";
-	width: 30;
+    font: "LiterationMono Nerd Font 12";
+/*	width: 30; */
 	line-margin: 10;
-	lines: 6;
+	lines: 10;
 	columns: 2;
 
     display-ssh:    "";
@@ -46,7 +45,7 @@ configuration {
     foreground:  @nord9;
     backlight:   #ccffeedd;
     background-color:  transparent;
-    
+
     highlight:     underline bold #eceff4;
 
     transparent: rgba(46,52,64,0);
