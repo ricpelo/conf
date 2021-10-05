@@ -1,7 +1,7 @@
 #!/bin/sh
 # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
-CMD=sakura
+CMD=$HOME/.local/bin/alacritty
 CWD=''
 
 # Get window ID
@@ -34,7 +34,7 @@ if [ -n "$PID" ]; then
     fi
 fi
 if [ -n "$CWD" ]; then
-    $CMD -d "$CWD"
+    $CMD --working-directory "$CWD" &
 else
-    $CMD
+    $CMD &
 fi
