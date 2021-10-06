@@ -247,7 +247,7 @@ bar {
         background $base01
         statusline #81a1c1
         #                  border  background text
-        focused_workspace  $base01 $base01    $base0F
+        focused_workspace  $base01 $base01    $base07
         active_workspace   $base01 $base02    $base03
         inactive_workspace $base01 $base01    #81a1c1 # #5c667a
         urgent_workspace   $base01 $base01    $base08
