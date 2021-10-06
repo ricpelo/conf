@@ -2,3 +2,4 @@ config/.vim/.netrwhist
 config/.vim/sessions/
 config/.vim/bundle/*
 !config/.vim/bundle/Vundle.vim
+fonts/powerline-fonts/

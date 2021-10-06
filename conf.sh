@@ -64,14 +64,14 @@ for f in $FLIST; do
 done
 fc-cache -f $FONTS_DIR
 
-DEST=$(BASE_DIR)/fonts/powerline-fonts
-if [ -d $DEST ]; then
+DEST="$BASE_DIR/fonts/powerline-fonts"
+if [ ! -d "$DEST" ]; then
     mensaje "Instalando tipografías Powerline..."
     git clone --depth=1 https://github.com/powerline/fonts.git $DEST
-    (cd fonts/powerline-fonts && ./install.sh)
+    (cd $DEST && ./install.sh)
 else
     mensaje "Actualizando tipografías Powerline..."
-    (cd $DEST && git pull)
+    (cd $DEST && git pull && ./install.sh)
 fi
 
 mensaje "Creando enlaces..."
