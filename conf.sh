@@ -75,12 +75,12 @@ else
 fi
 
 mensaje "Creando enlaces..."
-BLIST=".dircolors .Xresources .gtkrc-2.0 .less .lessfilter .terminfo .vimrc"
+BLIST=".xsessionrc .zprofile .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .terminfo .vimrc"
 for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="sakura dunst htop i3 rofi picom"
+BLIST="sakura alacritty dunst htop i3 rofi picom"
 for p in $BLIST; do
     backup_and_link $p .config
 done

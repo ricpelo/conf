@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games:/usr/local/games:$HOME/.local/bin"
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -8,7 +5,13 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+case $(tty) in
+    /dev/tty[0-9]*)
+        ;;
+    *)
+        ZSH_THEME="powerlevel10k/powerlevel10k"
+        ;;
+esac
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -124,17 +127,10 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
 
-#local ANTES=$(mktemp) && set > $ANTES
-emulate sh -c 'source /etc/profile'
-#local DESPUES=$(mktemp) && set > $DESPUES
-#unset $(diff $ANTES $DESPUES | grep "^>" | cut -c3- | cut -d"=" -f1 | grep -o "^[[:lower:]|_]*" | grep -v path)
-#rm -f $ANTES $DESPUES && unset ANTES DESPUES
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:$HOME/.local/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Corrige buen uso de libvte:
@@ -195,12 +191,19 @@ eval `dircolors ~/.dircolors`
 # Desactivar si se usa el plugin tmux de oh-my-zsh:
 # alias tmux="tmux -2"
 
-# alias ls="ls --color=tty --group-directories-first"
 if [ -n "$(which exa)" ]
 then
-    alias ls="exa --icons --color=auto --group-directories-first"
-    alias l="exa --icons --color=auto --group-directories-first --all --all --long --header --binary --group"
-    alias ll="exa --icons --color=auto --group-directories-first --grid --long --binary"
+    case $(tty) in
+        /dev/tty[0-9]*)
+            ICONS=""
+            ;;
+        *)
+            ICONS="--icons"
+            ;;
+    esac
+    alias ls="exa $ICONS --color=auto --group-directories-first"
+    alias l="exa $ICONS --color=auto --group-directories-first --all --all --long --header --binary --group"
+    alias ll="exa $ICONS --color=auto --group-directories-first --grid --long --binary"
 fi
 alias cd..="cd .."
 alias rm="rm -i"
