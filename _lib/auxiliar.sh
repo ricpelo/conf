@@ -49,6 +49,19 @@ backup_and_link()
     ln -sf $RP $ORIG
 }
 
+instala_tema()
+{
+    local DIR_THEMES="$1"
+    local TEMA="$2"
+    if [ ! -d "$DIR_THEMES/$TEMA" ]; then
+        mensaje "Instalando tema $TEMA..."
+        mkdir -p "$DIR_THEMES"
+        tar xfJ "temas/$TEMA.tar.xz" -C "$DIR_THEMES"
+    else
+        mensaje "Tema $TEMA ya instalado."
+    fi
+}
+
 local_bin()
 {
     if [ ! -f ~/.local/bin/$1 ]; then

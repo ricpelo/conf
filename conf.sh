@@ -10,8 +10,6 @@ if [ "$BASE_DIR" != "$PWD" ]; then
     exit 1
 fi
 
-git submodule update --init --recursive
-
 if no_instalado "curl"; then
     mensaje "Instalando curl..."
     sudo apt update
@@ -20,11 +18,12 @@ else
     mensaje "Curl ya instalado."
 fi
 
-PLIST="zsh wget git build-essential python3-pygments sakura i3 py3status feh
-x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape rofi redshift
-ranger nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
+PLIST="curl xz-utils zsh wget git build-essential python3-pygments sakura i3
+py3status feh x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape rofi
+redshift ranger nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
-ttf-ancient-fonts at-spi2-core vim vim-gtk3 scrot gh bat"
+ttf-ancient-fonts gtk2-engines-murrine lxappearance at-spi2-core vim vim-gtk3
+scrot gh bat"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
@@ -75,7 +74,8 @@ else
 fi
 
 mensaje "Creando enlaces..."
-BLIST=".xsessionrc .zprofile .dircolors .Xresources .gtkrc-2.0 .less .lessfilter .terminfo .vimrc"
+BLIST=".xsessionrc .zprofile .dircolors .Xresources .gtkrc-2.0 .less
+.lessfilter .terminfo .vimrc"
 for p in $BLIST; do
     backup_and_link $p
 done
@@ -99,6 +99,16 @@ fn "$PLIST" "post"
 # o este lo machacará:
 mensaje "Creando enlace a .zshrc..."
 backup_and_link .zshrc
+
+# Instalación de temas e iconos
+DIR_THEMES=~/.local/share/themes
+DIR_ICONS=~/.local/share/icons
+instala_tema "$DIR_THEMES" Nordic-bluish-accent-standard-buttons-v40
+instala_tema "$DIR_ICONS" NordArc-Icons
+[ -f ~/.themes -o -d ~/.themes ] && mv -f ~/.themes ~/.themes.viejo
+[ -f ~/.icons -o -d ~/.icons ] && mv -f ~/.icons ~/.icons.viejo
+ln -sf "$DIR_THEMES" ~/.themes
+ln -sf "$DIR_ICONS" ~/.icons
 
 if [ "$1" = "-q" ]; then
     SN="S"
