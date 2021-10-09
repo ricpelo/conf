@@ -250,7 +250,7 @@ bar {
         focused_workspace  $base01 $base01    $base07
         active_workspace   $base01 $base02    $base03
         inactive_workspace $base01 $base01    #81a1c1 # #5c667a
-        urgent_workspace   $base01 $base01    $base08
+        urgent_workspace   $base01 $base01    #bf616a # $base08
         binding_mode       $base01 #81a1c1    #2e3440
     }
 }
