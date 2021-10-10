@@ -7,8 +7,8 @@
  */
 
 configuration {
-    font: "LiterationMono Nerd Font 12";
-/*	width: 30; */
+    font: "LiterationMono Nerd Font 14";
+	width: 60;
 	line-margin: 10;
 	lines: 10;
 	columns: 2;
