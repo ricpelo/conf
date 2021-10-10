@@ -22,8 +22,8 @@ PLIST="curl xz-utils zsh wget git build-essential python3-pygments sakura i3
 py3status feh x11-xserver-utils x11-utils xdg-user-dirs ncurses-term xcape
 rofi redshift nnn command-not-found fonts-freefont-ttf libnotify-bin
 xsel fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
-policykit-1-gnome ttf-ancient-fonts gtk2-engines-murrine lxappearance
-at-spi2-core vim vim-gtk3 scrot gh bat exa thunar picom p7zip-full htop"
+policykit-1-gnome ttf-ancient-fonts gtk2-engines-murrine lxappearance vim
+vim-gtk3 scrot gh bat exa thunar picom p7zip-full htop"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
