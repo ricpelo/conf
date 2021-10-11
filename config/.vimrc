@@ -44,7 +44,7 @@ endtry
 highlight! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=NONE guibg=NONE
 
 " Airline
-let g:airline_theme='solarized'
+let g:airline_theme='base16_nord'
 let g:airline_powerline_fonts = 1
 
 " Opciones generales
