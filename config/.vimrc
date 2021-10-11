@@ -60,6 +60,23 @@ set showcmd                     " Display incomplete commands
 set wildmenu                    " A better menu in command mode
 set wildmode=longest:full,full
 
+set timeout                     " Do time out on mappings and others
+set timeoutlen=1000             " Wait {num} ms before timing out a mapping
+
+" When you’re pressing Escape to leave insert mode in the terminal, it will by
+" default take a second or another keystroke to leave insert mode completely
+" and update the statusline. This fixes that. I got this from:
+" https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
+" (Tomado de https://newbedev.com/how-to-exit-visual-mode-without-a-delay-in-vim)
+if !has('gui_running')
+"    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 " Espacios, tabulaciones e indentaciones
 set tabstop=4 shiftwidth=4      " Un tabulador son cuatro espacios
 set expandtab                   " Usa espacios, no tabuladores
@@ -115,11 +132,21 @@ endif
 " Las teclas Ctrl con las flechas no funcionan bien en Alacritty cuando
 " TERM=alacritty, a no ser que hagamos lo siguiente (cuando
 " TERM=xterm-256color, no hace falta)
-map <ESC>[1;5D <C-Left>
-map <ESC>[1;5C <C-Right>
-map! <ESC>[1;5D <C-Left>
-map! <ESC>[1;5C <C-Right>
-map <ESC>[1;5A <C-Up>
-map <ESC>[1;5B <C-Down>
-map! <ESC>[1;5A <C-Up>
-map! <ESC>[1;5B <C-Down>
+if &term == 'alacritty'
+    map  <ESC>[1;5D <C-Left>
+    map! <ESC>[1;5D <C-Left>
+    map  <ESC>[1;5C <C-Right>
+    map! <ESC>[1;5C <C-Right>
+    map  <ESC>[1;5A <C-Up>
+    map! <ESC>[1;5A <C-Up>
+    map  <ESC>[1;5B <C-Down>
+    map! <ESC>[1;5B <C-Down>
+endif
+
+" Esto se supone que hace lo mismo de arriba, pero no me funciona
+"if &term == 'alacritty'
+"    execute "set <xUp>=[1;*A"
+"    execute "set <xDown>=\e[1;*B"
+"    execute "set <xRight>=\e[1;*C"
+"    execute "set <xLeft>=\e[1;*D"
+"endif
