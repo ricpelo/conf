@@ -80,7 +80,7 @@ for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="sakura alacritty dunst htop i3 rofi picom"
+BLIST="sakura alacritty nvim dunst htop i3 rofi picom"
 for p in $BLIST; do
     backup_and_link $p .config
 done
