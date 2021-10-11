@@ -196,6 +196,23 @@ postfn_emacs()
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
 }
 
+postfn_evince()
+{
+    if no_instalado "xdg-utils"; then
+        mensaje "Instalando xdg-utils..."
+        sudo apt install -y xdg-utils
+    else
+        mensaje "xdg-utils ya instalado."
+    fi
+    local DEFAULT=$(xdg-mime query default application/pdf)
+    if [ "$DEFAULT" != "org.gnome.Evince.desktop" ]; then
+        mensaje "Estableciendo evince como visor de PDF predeterminado..."
+        xdg-mime default org.gnome.Evince.desktop application/pdf
+    else
+        mensaje "evince ya establecido como visor predeterminado de PDF."
+    fi
+}
+
 #postfn_commandnotfound()
 #{
 #    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
