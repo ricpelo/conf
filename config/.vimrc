@@ -111,3 +111,15 @@ nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
 if has('gui_running')
   set guifont=LiterationMono\ Nerd\ Font\ Book\ 14
 endif
+
+" Las teclas Ctrl con las flechas no funcionan bien en Alacritty cuando
+" TERM=alacritty, a no ser que hagamos lo siguiente (cuando
+" TERM=xterm-256color, no hace falta)
+map <ESC>[1;5D <C-Left>
+map <ESC>[1;5C <C-Right>
+map! <ESC>[1;5D <C-Left>
+map! <ESC>[1;5C <C-Right>
+map <ESC>[1;5A <C-Up>
+map <ESC>[1;5B <C-Down>
+map! <ESC>[1;5A <C-Up>
+map! <ESC>[1;5B <C-Down>
