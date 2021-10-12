@@ -226,6 +226,12 @@ postfn_commandnotfound()
     sudo update-command-not-found
 }
 
+postfn_xdgusersdirs()
+{
+    mensaje "Ejecutando xdg-user-dirs-update"
+    xdg-user-dirs-update
+}
+
 #postfn_commandnotfound()
 #{
 #    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
