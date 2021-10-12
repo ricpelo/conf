@@ -75,7 +75,7 @@ fi
 
 mensaje "Creando enlaces..."
 BLIST=".xsessionrc .zprofile .dircolors .Xresources .gtkrc-2.0 .less
-.lessfilter .terminfo .vimrc"
+.lessfilter .terminfo .vimrc .nvidia-settings-rc"
 for p in $BLIST; do
     backup_and_link $p
 done
