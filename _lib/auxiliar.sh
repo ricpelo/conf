@@ -213,6 +213,12 @@ postfn_evince()
     fi
 }
 
+postfn_pulseaudio()
+{
+    mensaje "Reiniciando Pulseaudio..."
+    systemctl --user restart pulseaudio.service
+}
+
 #postfn_commandnotfound()
 #{
 #    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
