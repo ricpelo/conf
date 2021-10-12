@@ -219,6 +219,13 @@ postfn_pulseaudio()
     systemctl --user restart pulseaudio.service
 }
 
+postfn_commandnotfound()
+{
+    mensaje "Reconstruyendo base de datos de command-not-found..."
+    sudo apt-file update
+    sudo update-command-not-found
+}
+
 #postfn_commandnotfound()
 #{
 #    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
