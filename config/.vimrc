@@ -88,11 +88,13 @@ endif
 set nojoinspaces                " Usa un solo espacio tras "." al unir líneas, no dos
 
 " Búsquedas
-set hlsearch                    " Resalta ajustes
 set incsearch                   " Búsqueda incremental
 set ignorecase                  " Las búsquedas no distinguen mayúsculas...
 set smartcase                   " ... a menos que contengan al menos una mayúscula
-nnoremap <CR> :nohlsearch<cr>   " Borra el búfer de búsqueda al pusar Entrar
+
+" Conmuta resaltado de ajustes al pulsar Entrar
+set hlsearch!
+nnoremap <CR> :set hlsearch!<CR>
 
 " Recuerda la última posición cuando se vuelve a abrir un archivo
 if has("autocmd")
