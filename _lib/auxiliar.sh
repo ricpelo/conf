@@ -62,6 +62,18 @@ instala_tema()
     fi
 }
 
+crea_enlace_temas_iconos()
+{
+    local ORIG="$1"
+    local DEST="$2"
+    if [ -f "$1" -o -d "$1" ]; then
+        mv -f "$1" "$1.viejo"
+        local DIR=$(realpath -s --relative-to=$HOME $2)
+        mensaje "$1 -> $DIR"
+        ln -sf "$DIR" $1
+    fi
+}
+
 local_bin()
 {
     if [ ! -f ~/.local/bin/$1 ]; then

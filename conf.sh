@@ -105,12 +105,11 @@ DIR_THEMES=~/.local/share/themes
 DIR_ICONS=~/.local/share/icons
 instala_tema "$DIR_THEMES" Nordic-bluish-accent-standard-buttons-v40
 instala_tema "$DIR_ICONS" NordArc-Icons
-[ -f ~/.themes -o -d ~/.themes ] && mv -f ~/.themes ~/.themes.viejo
-[ -f ~/.icons -o -d ~/.icons ] && mv -f ~/.icons ~/.icons.viejo
-DIR_THEMES=$(realpath -s --relative-to=$HOME $DIR_THEMES)
-DIR_ICONS=$(realpath -s --relative-to=$HOME $DIR_ICONS)
-ln -sf "$DIR_THEMES" ~/.themes
-ln -sf "$DIR_ICONS" ~/.icons
+instala_tema "$DIR_ICONS" PolarCursorTheme
+instala_tema "$DIR_ICONS" PolarCursorTheme-Blue
+instala_tema "$DIR_ICONS" PolarCursorTheme-Green
+crea_enlace_temas_iconos "~/.themes" "$DIR_THEMES"
+crea_enlace_temas_iconos "~/.icons" "$DIR_ICONS"
 
 if [ "$1" = "-q" ]; then
     SN="S"
