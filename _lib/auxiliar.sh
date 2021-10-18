@@ -233,9 +233,10 @@ postfn_pulseaudio()
 
 postfn_commandnotfound()
 {
-    mensaje "Reconstruyendo base de datos de command-not-found..."
-    sudo apt-file update
-    sudo update-command-not-found
+    if [ ! -f "/var/lib/command-not-found/commands.db" ]; then
+        mensaje "Reconstruyendo base de datos de command-not-found..."
+        sudo update-command-not-found
+    fi
 }
 
 postfn_xdgusersdirs()
