@@ -199,8 +199,8 @@
    persitente entre reinicios):
 
    ```
-   systemctl stop wpa_supplicant.service
-   systemctl disable wpa_supplicant.service
+   sudo systemctl stop wpa_supplicant.service
+   sudo systemctl disable wpa_supplicant.service
    ```
 
 5. Activar e iniciar el servicio `iwd` (la activación es persistente entre
@@ -215,7 +215,7 @@
    equipo para que los cambios tengan efecto):
 
    ```
-   systemctl restart network-manager.service  
+   sudo systemctl restart NetworkManager.service  
    ```
 
 ## SISTEMA DE ARCHIVOS

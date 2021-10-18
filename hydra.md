@@ -86,3 +86,79 @@ Elegir joy-theme.
 Actualizar el `grub` para que coja el tema nuevo:
 
 sudo update-grub
+
+## RED
+
+(Fuente: https://askubuntu.com/questions/1196348/ubuntu-19-10-wont-connect-to-2-4ghz-wifi-with-txbf-mu-mimo-enabled)
+
+- Para que pueda conectarse a la red WiFi 2.4 GHz con el router TP-Link AC1200,
+  hay que usar `iwd` en lugar de `wpa_supplicant`. Para ello:
+
+1. Instalar `iwd`:
+
+   ```
+   sudo apt update
+   sudo apt install iwd
+   ```
+
+2. Crear el siguiente archivo dentro del directorio de archivos de
+   configuración de NetworkManager:
+
+   ```
+   sudo vim /etc/NetworkManager/conf.d/wifi_backend.conf
+   ```
+
+3. Copiar y pegar el siguiente contenido dentro de ese archivo, guardar y
+   salir:
+
+   ```
+   [device]
+   wifi.backend=iwd
+   ```
+
+4. Parar y desactivar el servicio `wpa_supplicant` (la desactivación es
+   persitente entre reinicios):
+
+   ```
+   sudo systemctl disable --now wpa_supplicant.service
+   ```
+
+5. No activar el servicio `iwd`, en caso de que esté activado:
+
+   ```
+   sudo systemctl disable iwd.service
+   ```
+
+6. Reiniciar el servicio de NetworkManager (así no habrá que reiniciar el
+   equipo para que los cambios tengan efecto):
+
+   ```
+   sudo systemctl restart NetworkManager.service
+   ```
+
+Si la conexión del sistema no conecta bien, podemos hacer lo siguiente:
+
+1. Borrar la conexión del sistema:
+
+   ```
+   sudo rm /etc/NetworkManager/system-connections/RentelWifi5.nmconnection
+   ```
+
+2. Conectarse desde el applet de NetworkManager.
+
+   Esa conexión que se crea no es del sistema porque no se guarda la
+   contraseña. Por tanto, hacemos:
+
+   a. Arrancamos el editor de conexiones:
+
+      ```
+      nm-connection-editor
+      ```
+
+   b. Elegimos la conexión que queremos (en mi caso, `RentelWifi5`) y pulsamos
+   el botón de la rueda dentada.
+
+   c. En la pestaña `Seguridad inalámbrica`, escribimos la contraseña y le
+   damos a `Guardar`.
+
+Así ya se creará la conexión del sistema con la contraseña bien guardada.
