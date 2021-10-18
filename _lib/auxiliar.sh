@@ -96,29 +96,6 @@ prefn_emacssnapshot()
     return $RET
 }
 
-#prefn_i3()
-#{
-#    local OLD=/etc/apt/sources.list.d/i3wm.list
-#    local RET=0
-#    if [ -f $OLD ]; then
-#        echo "Desactivando el antiguo repositorio de i3wm..."
-#        sudo rm -f $OLD $OLD.save
-#        RET=1
-#    fi
-#    local LIST=/etc/apt/sources.list.d/sur5r-i3.list
-#    if [ ! -f $LIST ]; then
-#        mensaje "Activando el repositorio con la última versión de i3wm..."
-#        /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
-#        sudo dpkg -i ./keyring.deb
-#        rm -f keyring.deb
-#        echo "deb [arch=amd64] http://debian.sur5r.net/i3/ $(lsb_release -sc) universe" | sudo tee $LIST > /dev/null
-#        RET=1
-#    else
-#        mensaje "Repositorio de i3wm ya activado."
-#    fi
-#    return $RET
-#}
-
 prefn_atom()
 {
     local OLD="/etc/apt/sources.list.d/webupd8team-ubuntu-atom-$(lsb_release -sc).list"
@@ -181,13 +158,6 @@ postfn_zsh()
     else
         mensaje "Zsh ya asignado al usuario actual."
     fi
-#    DEST="$HOME/.local/bin/exa"
-#    if [ ! -f $DEST ]; then
-#        mensaje "Instalando exa..."
-#        curl -sL https://github.com/ricpelo/exa/releases/download/iconos/exa.bz2 | bunzip2 -d > $DEST && chmod a+x $DEST
-#    else
-#        mensaje "Listador de archivos exa ya instalado."
-#    fi
 }
 
 postfn_vim()
@@ -245,36 +215,6 @@ postfn_xdgusersdirs()
     xdg-user-dirs-update
 }
 
-#postfn_commandnotfound()
-#{
-#    if ! grep -qs -- "--no-failure-msg" /etc/zsh_command_not_found; then
-#        mensaje "LP #1766068 ya corregido."
-#    else
-#        mensaje "Corrigiendo LP #1766068..."
-#        sudo sed -ie "s/ --no-failure-msg//" /etc/zsh_command_not_found
-#    fi
-#}
-
-#postfn_py3status()
-#{
-#    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
-#    mensaje "Volcando versión actualizada de py3status en $DEST..."
-#    if [ -d $DEST ]; then
-#        rm -rf $DEST
-#    fi
-#    mkdir -p $DEST
-#    curl -sL https://github.com/ultrabug/py3status/archive/master.tar.gz | tar xfz - --strip 2 -C $DEST py3status-master/py3status
-#
-##    local DEST=$HOME/.local/lib/python3.8/site-packages/py3status
-##    if [ ! -d $DEST ]; then
-##        mensaje "Instalando última versión de py3status en $DEST..."
-##        git clone https://github.com/ultrabug/py3status.git $DEST
-##    else
-##        mensaje "Actualizando py3status..."
-##        (cd $DEST && git pull)
-##    fi
-#}
-
 prefn_gh()
 {
     local DEST=/etc/apt/sources.list.d/github-cli.list
@@ -288,4 +228,10 @@ prefn_gh()
         mensaje "Repositorio de GitHub CLI ya activado."
     fi
     return $RET
+}
+
+fn_git()
+{
+    mensaje "Creando alias lg para git..."
+    git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 }
