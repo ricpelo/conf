@@ -162,3 +162,14 @@ Si la conexión del sistema no conecta bien, podemos hacer lo siguiente:
    damos a `Guardar`.
 
 Así ya se creará la conexión del sistema con la contraseña bien guardada.
+
+## TIPOGRAFÍAS
+
+- Si se instala el paquete `ttf-bitstream-vera`, en LyX no se ven bien los
+  textos matemáticos. Dos soluciones:
+
+  - Desinstalar el paquete `ttf-bitstream-vera` (es lo mejor).
+
+  - Configurar LyX para usar las tipografías DejaVu en las tipografías de
+    pantalla en _Herramientas -> Preferencias -> Apariencia -> Tipografías de
+    pantalla_.
