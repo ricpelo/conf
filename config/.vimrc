@@ -11,6 +11,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-markdown'
 Plug 'iCyMind/NeoSolarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree'
@@ -128,6 +129,9 @@ let g:simpledb_use_default_keybindings = 0
 vnoremap <buffer> <c-q> :SimpleDBExecuteSql<cr>
 nnoremap <buffer> <c-q> m':SimpleDBExecuteSql <cr>g`'
 nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
+
+" vim-markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php']
 
 " Opciones para gvim
 if has('gui_running')
