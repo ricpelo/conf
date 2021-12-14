@@ -6,47 +6,32 @@
  *
  */
 
-configuration {
-    font: "LiterationMono Nerd Font 14";
-	width: 60;
-	line-margin: 10;
-	lines: 10;
-	columns: 2;
-
-    display-ssh:    "";
-    display-run:    "";
-    display-drun:   "";
-    display-window: "";
-    display-combi:  "";
-    show-icons:     true;
-}
-
 * {
-	nord0: #2e3440;
-	nord1: #3b4252;
-	nord2: #434c5e;
-	nord3: #4c566a;
+    nord0: #2e3440;
+    nord1: #3b4252;
+    nord2: #434c5e;
+    nord3: #4c566a;
 
-	nord4: #d8dee9;
-	nord5: #e5e9f0;
-	nord6: #eceff4;
+    nord4: #d8dee9;
+    nord5: #e5e9f0;
+    nord6: #eceff4;
 
-	nord7: #8fbcbb;
-	nord8: #88c0d0;
-	nord9: #81a1c1;
-	nord10: #5e81ac;
-	nord11: #bf616a;
+    nord7: #8fbcbb;
+    nord8: #88c0d0;
+    nord9: #81a1c1;
+    nord10: #5e81ac;
+    nord11: #bf616a;
 
-	nord12: #d08770;
-	nord13: #ebcb8b;
-	nord14: #a3be8c;
-	nord15: #b48ead;
+    nord12: #d08770;
+    nord13: #ebcb8b;
+    nord14: #a3be8c;
+    nord15: #b48ead;
 
-    foreground:  @nord9;
-    backlight:   #ccffeedd;
-    background-color:  transparent;
+    foreground: @nord9;
+    backlight: #ccffeedd;
+    background-color: transparent;
 
-    highlight:     underline bold #eceff4;
+    highlight: underline bold #eceff4;
 
     transparent: rgba(46,52,64,0);
 }
@@ -58,10 +43,11 @@ window {
     padding: 10px;
     border:  0px;
     border-radius: 6px;
+    width: 1200;
 
     background-color: @transparent;
     spacing: 0;
-    children:  [mainbox];
+    children: [mainbox];
     orientation: horizontal;
 }
 
@@ -74,7 +60,7 @@ message {
     color: @nord0;
     padding: 5;
     border-color: @foreground;
-    border:  0px 2px 2px 2px;
+    border: 0px 2px 2px 2px;
     background-color: @nord7;
 }
 
@@ -84,7 +70,7 @@ inputbar {
     background-color: #3b4252;
 
     border: 1px;
-    border-radius:  6px 6px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
     border-color: @nord10;
 }
 
@@ -102,8 +88,9 @@ listview {
     border-radius: 0px 0px 6px 6px;
     border-color: @nord10;
     border: 0px 1px 1px 1px;
-    background-color: rgba(46,52,64,0.9);
+    background-color: rgba(46,52,64,1.0);
     dynamic: false;
+    columns: 2;
 }
 
 element {
@@ -116,8 +103,8 @@ element {
 }
 
 element selected.normal {
-	background-color: @nord7;
-	text-color: #2e3440;
+    background-color: @nord7;
+    text-color: #2e3440;
 }
 
 element-text, element-icon {
