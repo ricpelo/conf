@@ -121,7 +121,9 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # browser for opening urls in context menu
-    browser = /usr/bin/firefox -new-tab
+    browser = /usr/bin/sensible-browser
+
+    corner_radius = 8
 
 [frame]
     width = 3
