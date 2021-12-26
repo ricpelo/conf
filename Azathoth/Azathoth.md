@@ -422,3 +422,8 @@
   - Activar el Vsync.
 
 - La rama 6.0 de Proton funciona mejor que la 5.0.
+
+### DEATH STRANDING
+
+- Desactivar Steam Input para que el juego detecte y gestione él solo el
+  Nintendo Switch Pro Controller.
