@@ -64,6 +64,15 @@ message {
     background-color: @nord7;
 }
 
+error-message {
+    color: @nord0;
+    padding: 10;
+    border-color: #3b4252;
+    border: 2px 2px 2px 2px;
+    border-radius: 6px;
+    background-color: @nord7;
+}
+
 inputbar {
     color: @nord6;
     padding: 11px;
