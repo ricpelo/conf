@@ -94,7 +94,7 @@ bindsym $mod+p focus parent
 bindsym $mod+c focus child
 
 # rename workspace
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+bindsym $mod+n exec i3-input -f 'pango:Source Code Pro 12' -F 'rename workspace to "%s"' -P 'Nombre nuevo para este espacio de trabajo: '
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -129,7 +129,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -f 'pango:Source Code Pro 13' -t warning -m '¿Deseas salir de i3? Esto terminará tu sesión con X-Window.' -b 'Sí: salir de i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -235,12 +235,12 @@ bar {
     height 25
     font pango:Source Code Pro 13
     tray_padding 1
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     bindsym button4 nop
     bindsym button5 nop
 
-#    font -misc-fixed-medium-r-normal--15-140-75-75-C-90-iso10646-1
-#    font pango:LiterationMono Nerd Font Book 10
+    # font -misc-fixed-medium-r-normal--15-140-75-75-C-90-iso10646-1
+    # font pango:LiterationMono Nerd Font Book 10
 
     colors {
         separator  $base01
