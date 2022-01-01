@@ -443,6 +443,44 @@
   BLUETOOTH_ENABLED=1
   ```
 
+- La mejor forma de conectar el mando a través de Bluetooth es usar el cliente
+  de consola `bluetoothctl`.
+
+  - La primera vez:
+
+    ```
+    $ bluetoothctl
+    # scan on
+    (espera a ver Pro Controller)
+    # scan off
+    # pair 48:A5:E7:D0:94:29
+    # trust 48:A5:E7:D0:94:29
+    # connect 48:A5:E7:D0:94:29
+    ```
+
+  - Las siguientes veces no hace falta emparejar ni confiar. Basta con
+    conectar:
+
+    ```
+    $ bluetoothctl
+    # connect 48:A5:E7:D0:94:29
+    ```
+
+    Cosa que se puede hacer directamente desde la línea de órdenes:
+
+    `$ bluetoothctl connect 48:A5:E7:D0:94:29`
+
+    Si en algún momento se perdiera el emparejamiento (cosa que ocurre, por
+    ejemplo, cuando emparejamos el mando con la Nintendo Switch), tendremos que
+    volver a repetir el proceso como si fuera la primera vez, eliminando
+    previamente el dispositivo mediante:
+
+    `$ bluetoothctl remove 48:A5:E7:D0:94:29`
+
+  - Para desconectar el mando, se hace:
+
+    `$ bluetoothctl disconnect 48:A5:E7:D0:94:29`
+
 - Juegos fuera de Steam:
 
   - Hay que usar los controladores
