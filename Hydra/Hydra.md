@@ -521,6 +521,30 @@
     - La mayoría de los juegos funcionan mejor forzando el uso de Stem Input en
       las preferencias de cada juego dentro de Steam.
 
+### STEAM EN NTFS
+
+- Se pueden instalar juegos de Steam en un disco NTFS (como un disco externo
+  USB). Para ello:
+
+  - Hay que añadir una nueva _biblioteca_ en los ajustes de Steam:
+
+    Steam -> Parámetros -> Descargas -> Carpetas de biblioteca de Steam
+
+    Damos al `+` y añadimos una nueva biblioteca en
+
+    `/media/ricardo/Elements/Juegos/VolumenSteam`
+
+  - Para que funcionen correctamente los juegos que se ejecutan con Proton, hay
+    que crear un enlace simbólico de la carpeta `compatdata` para que apunte a
+    la que hay en el disco local:
+
+    ```
+    $ mv /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata.viejo
+    $ ln -sf /home/ricardo/.steam/steam/steamapps/compatdata /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata
+    ```
+
+(Fuente: https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows)
+
 ### STEAM LINK
 
 - Para que la imagen no parpadee (ésto sólo me pasaba en Ubuntu):
