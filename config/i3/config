@@ -258,6 +258,7 @@ bar {
 # Las ventanas de los navegadores no tienen borde
 for_window [window_role="^browser$"] border none
 for_window [instance="origin.exe"] floating enable
+for_window [class="^Steam$" title="Lista de amigos"] floating enable
 
 # Autoarranque
 exec_always --no-startup-id xset r rate 250 30
