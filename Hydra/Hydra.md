@@ -601,6 +601,15 @@
   WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 %command%
   ```
 
+### FALLOUT 4
+
+- Para que se escuchen las voces y la música de fondo, poner los siguientes
+  parámetros de lanzamiento:
+
+  ```
+  WINEDLLOVERRIDES="xaudio2_7=n,b" PROTON_NO_ESYNC=1 %command%
+  ```
+
 ### THE WITCHER 3: WILD HUNT
 
 - Para que no haya caídas en el rendimiento en fps, poner todo a `Ultra`
