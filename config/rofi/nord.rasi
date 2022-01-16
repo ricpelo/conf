@@ -67,8 +67,8 @@ message {
 error-message {
     color: @nord0;
     padding: 10;
-    border-color: #3b4252;
-    border: 2px 2px 2px 2px;
+    border-color: @nord11;
+    border: 3px;
     border-radius: 6px;
     background-color: @nord7;
 }
@@ -78,7 +78,7 @@ inputbar {
     padding: 11px;
     background-color: #3b4252;
 
-    border: 1px;
+    border: 3px;
     border-radius: 6px 6px 0px 0px;
     border-color: @nord10;
 }
@@ -96,8 +96,8 @@ listview {
     padding: 8px;
     border-radius: 0px 0px 6px 6px;
     border-color: @nord10;
-    border: 0px 1px 1px 1px;
-    background-color: rgba(46,52,64,1.0);
+    border: 0px 3px 3px 3px;
+    background-color: #2b3242; /* antes: rgba(46,52,64,1.0) */
     dynamic: false;
     columns: 2;
 }
@@ -126,12 +126,12 @@ button {
     color: @foreground;
     horizontal-align: 0.5;
 
-    border: 2px 0px 2px 2px;
+    border: 3px 0px 3px 3px;
     border-radius: 4px 0px 0px 4px;
     border-color: @foreground;
 }
 
 button selected normal {
-    border: 2px 0px 2px 2px;
+    border: 3px 0px 3px 3px;
     border-color: @foreground;
 }
