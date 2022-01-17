@@ -432,6 +432,35 @@
     1. `/etc/zshenv`
     2. `~/.zshenv`
 
+## GOOGLE CHROME CON CACHÉ EN RAM
+
+- Para mejorar el rendimiento y no gastar demasiado el disco SSD, se puede
+  guardar la caché de Google Chrome en un disco RAM. Para ello:
+
+  - Borrar el directorio `~/.cache/google-chrome` si existiera:
+
+    `$ rm ~/.cache/google-chrome`
+
+  - Lo volvemos a crear vacío:
+
+    `$ mkdir -p ~/.cache/google-chrome`
+
+  - Crear un disco RAM de 1 GiB y montarlo en el directorio anterior. Para
+    ello, modificamos el archivo `/etc/fstab`:
+
+    `$ sudo vim /etc/fstab`
+
+    y añadimos la siguiente línea:
+
+    ```
+    tmpfs /home/ricardo/.cache/google-chrome tmpfs user,noatime,nodev,nosuid,uid=1000,gid=1000,size=1024M 0 0
+    ```
+
+  - Reiniciamos el equipo.
+
+- Como contrapartida, tenemos que la caché se limpia cada vez que se reinicia
+  el ordenador.
+
 ## JUEGOS
 
 ### NINTENDO SWITCH PRO CONTROLLER
@@ -682,4 +711,3 @@
 
 - Desactivar Steam Input para que el juego detecte y gestione él solo el
   Nintendo Switch Pro Controller.
-
