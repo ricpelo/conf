@@ -461,6 +461,67 @@
 - Como contrapartida, tenemos que la caché se limpia cada vez que se reinicia
   el ordenador.
 
+## APT PINNING
+
+- Para estar en `testing` pero poder instalar puntualmente determinados
+  paquetes de `unstable`, se puede hacer _APT pinning_.
+
+- Comprobar que en `/etc/apt/sources.list` están las siguientes líneas:
+
+  ```
+  deb http://deb.debian.org/debian/ testing main non-free contrib
+  deb-src http://deb.debian.org/debian/ testing main non-free contrib
+
+  deb http://security.debian.org/debian-security testing-security main contrib non-free
+  deb-src http://security.debian.org/debian-security testing-security main contrib non-free
+
+  # testing-updates, to get updates before a point release is made;
+  # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+  deb http://deb.debian.org/debian/ testing-updates main contrib non-free
+  deb-src http://deb.debian.org/debian/ testing-updates main contrib non-free
+
+  deb http://deb.debian.org/debian/ unstable main non-free contrib
+  deb-src http://deb.debian.org/debian/ unstable main non-free contrib
+  ```
+
+  Especialmente, tener cuidado de que pone `testing` y `unstable`, y no
+  `bookworm` ni `sid`.
+
+- Crear el archivo `/etc/apt/apt.conf.d/99default-release`:
+
+  `$ sudo vim /etc/apt/apt.conf.d/99default-release`
+
+  con el siguiente contenido:
+
+  ```
+  APT::Default-Release "testing";
+  ```
+
+- Crear el archivo `/etc/apt/preferences.d/pinning-unstable`:
+
+  `$ sudo vim /etc/apt/preferences.d/pinning-unstable`
+
+  con el siguiente contenido:
+
+  ```
+  Package: *
+  Pin: release a=testing
+  Pin-Priority: 900
+
+  Package: *
+  Pin: release a=unstable
+  Pin-Priority: 800
+  ```
+
+- Actualizar la lista de paquetes:
+
+  `$ sudo apt update`
+
+- A partir de ahora, cuando se quiera instalar un paquete de `unstable`, se usa
+  la opción `-t` de `apt`:
+
+  `$ sudo apt install -t unstable paquete`
+
 ## JUEGOS
 
 ### NINTENDO SWITCH PRO CONTROLLER
