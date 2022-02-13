@@ -271,9 +271,9 @@ exec --no-startup-id pasystray
 exec --no-startup-id redshift -l 36.7756:-6.3616 -t 6500:4200 &
 exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
-exec --no-startup-id picom &
 #exec --no-startup-id "i3-msg 'workspace 2; exec /home/ricardo/.local/bin/alacritty; workspace 1'"
 exec --no-startup-id "i3-msg 'workspace 1; exec x-www-browser'"
+exec --no-startup-id picom &
 
 # Gaps
 
