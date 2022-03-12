@@ -575,9 +575,8 @@
 
 - Juegos fuera de Steam:
 
-  - Hay que usar los controladores
-    [dkms-hid-nintendo](https://github.com/nicman23/dkms-hid-nintendo) y
-    [joycond](https://github.com/DanielOgorchock/joycond).
+  - Desde la versión 5.16 del kernel, el controlador `hid_nintendo` ya viene
+    cargado como un módulo de Linux, así que no hay que hacer nada en especial.
 
 - En Steam:
 
