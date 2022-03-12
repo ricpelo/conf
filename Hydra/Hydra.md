@@ -693,6 +693,15 @@
   WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 %command%
   ```
 
+- Para poder jugar en Steam Link, hay que saltarse el launcher que trae por
+  defecto. Para ello:
+
+  - Entrar en la carpeta del juego (en `steamapps/common/Skyrim Special
+    Edition`).
+
+  - Intercambiar los nombres de los ejecutables `SkyrimSE.exe` y
+    `SkyrimSELauncher.exe`.
+
 ### FALLOUT 4
 
 - Para que se escuchen las voces y la música de fondo, poner los siguientes
@@ -701,6 +710,14 @@
   ```
   WINEDLLOVERRIDES="xaudio2_7=n,b" PROTON_NO_ESYNC=1 %command%
   ```
+
+- Para poder jugar en Steam Link, hay que saltarse el launcher que trae por
+  defecto. Para ello:
+
+  - Entrar en la carpeta del juego (en `steamapps/common/Fallout 4`).
+
+  - Intercambiar los nombres de los ejecutables `Fallout4.exe` y
+    `Fallout4Launcher.exe`.
 
 ### THE WITCHER 3: WILD HUNT
 
