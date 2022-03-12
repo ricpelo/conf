@@ -658,6 +658,21 @@
 
 (Fuente: https://github.com/ValveSoftware/steam-for-linux/issues/6749#issuecomment-753639362)
 
+### ACENTOS Y CARACTERES ESPAÑOLES EN EL CHAT DE STEAM
+
+- Para poder escribir acentos y caracteres españoles correctamente en Steam,
+  tenemos que tener instalado el locale `en_US.UTF-8`. Para ello:
+
+  ```
+  $ sudo dpkg-reconfigure locales
+  ```
+
+  - Seleccionar `en_US.UTF-8` (además del `es_ES.UTF-8`, por supuesto).
+
+  - Asegurarse de marcar `es_ES.UTF-8` como el locale predeterminado.
+
+(Fuente: https://steamcommunity.com/app/221410/discussions/0/1760230437367808021/)
+
 ### THE TALOS PRINCIPLE
 
 - Jugar en modo Big Picture.
