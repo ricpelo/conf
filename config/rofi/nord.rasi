@@ -116,6 +116,11 @@ element selected.normal {
     text-color: #2e3440;
 }
 
+element selected.active {
+    background-color: @nord8;
+    text-color: #2e3440;
+}
+
 element-text, element-icon {
     background-color: inherit;
     text-color:       inherit;
