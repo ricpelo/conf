@@ -189,7 +189,7 @@
   sudo apt purge linux-headers-amd64 linux-image-amd64
   ```
 
-  Ahora pasamos a _testing_ cambiando /etc/apt/sources.list y sustituyendo
+  Ahora pasamos a _testing_ cambiando `/etc/apt/sources.list` y sustituyendo
   `bullseye` por `testing` con una búsqueda global.
 
   ```
@@ -526,6 +526,10 @@
 
 ## JUEGOS
 
+- Algunos juegos no funcionan bien cuando está funcionando el compositor
+  `picom`. En esos casos, pararlo mediante `killall picom` mejorará mucho el
+  funcionamiento del juego.
+
 ### NINTENDO SWITCH PRO CONTROLLER
 
 - Comprobar que está activo el Bluetooth mirando en `/etc/default/bluetooth`
@@ -688,7 +692,11 @@
   - En el apartado `Compatibilidad`, activar `Forzar el uso de una herramienta
     específica de compatibilidad para Steam Play`.
 
-  - Elegir `Proton 5.0-10`.
+  - Usar `Proton 6.21-GE-2` para evitar microparones y mantener siempre una
+    buena tasa de FPS.
+
+  - En las opciones gráficas del juego, poner todo al máximo menos el mapa de
+    texturas.
 
 ### CIVILIZATION V
 
