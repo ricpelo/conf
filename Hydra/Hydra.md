@@ -816,3 +816,23 @@
 
 - Desactivar Steam Input para que el juego detecte y gestione él solo el
   Nintendo Switch Pro Controller.
+
+### AMNESIA: THE DARK DESCENT
+
+(Fuente: https://steamcommunity.com/sharedfiles/filedetails/?id=2749061346)
+
+- Create a file called steam_appid.txt with 57300 inside
+
+- Crear un archivo llamado `steam_appid.txt` con `57300` dentro y guardarlo en
+  el directorio raíz del juego:
+
+  `$ echo 57300 > /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/common/Amnesia\ The\ Dark\ Descent/steam_appid.txt`
+
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  LC_ALL=es_ES.UTF-8 %command%
+  ```
+
+- Alternativamente, se podría usar la versión de Proton, que funciona muy bien
+  pero tiene el defecto de que no se puede configurar el gamma.
