@@ -566,6 +566,9 @@
 
     `$ bluetoothctl connect 48:A5:E7:D0:94:29`
 
+    Y lo normal es que ni siquiera haga falta usar `connect`. Lo normal es que
+    el mando se conecte solo, al pulsar cualquier botón del mando.
+
     Si en algún momento se perdiera el emparejamiento (cosa que ocurre, por
     ejemplo, cuando emparejamos el mando con la Nintendo Switch), tendremos que
     volver a repetir el proceso como si fuera la primera vez, eliminando
