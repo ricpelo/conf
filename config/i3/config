@@ -262,7 +262,7 @@ for_window [class="^Steam$" title="Lista de amigos"] floating enable
 
 # Autoarranque
 exec_always --no-startup-id xset r rate 250 30
-exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
+#exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id nvidia-settings --load-config-only

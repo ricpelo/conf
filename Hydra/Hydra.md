@@ -172,6 +172,9 @@
 
   Probar que funcionan las X.
 
+  Al seleccionar la distribución del teclado, usar la variante `Español (tilde
+  muerta)` para que salga el carácter `~` directamente al pulsar AltGr+Ñ.
+
   ```
   $ sudo apt install linux-headers-amd64 nvidia-drivers firmware-misc-nonfree
   ```
@@ -256,6 +259,88 @@
   ```
   $ sudo update-grub
   ```
+
+## TECLADO
+
+(Fuente: https://wiki.debian.org/Keyboard)
+
+- Las opciones del teclado se guardan en `/etc/default/keyboard`.
+
+- El contenido que me viene bien es:
+
+  ```
+  KEYBOARD CONFIGURATION FILE
+
+  # Consult the keyboard(5) manual page.
+
+  XKBMODEL="pc105"
+  XKBLAYOUT="es"
+  XKBVARIANT="deadtilde"
+  XKBOPTIONS="ctrl:swapcaps"
+
+  BACKSPACE="guess"
+  ```
+
+- Al seleccionar la distribución del teclado durante la instalación, usar la
+  variante `Español (tilde muerta)` para que salga el carácter `~` directamente
+  al pulsar AltGr+Ñ.
+
+- Hay que tener instalados los paquetes `keyboard-configuration` y
+  `console-setup`.
+
+- Para entrar en la configuración del teclado siempre que se quiera, hay que
+  hacer:
+
+  ```
+  $ sudo dpkg-reconfigure keyboard-configuration
+  ```
+
+  Allí, seleccionar:
+
+  - PC genérico 105 teclas
+  - Español - Español (tilde muerta)
+
+- Para aplicar la nueva configuación, hay que reiniciar el servicio
+  `keyboard-setup` o todo el equipo.
+
+- Para tener distribución de teclado español también en initramfs, hay que:
+
+  - Poner lo siguiente en `/etc/initramfs-tools/initramfs.conf`:
+
+    ```
+    #
+    # KEYMAP: [ y | n ]
+    #
+    # Load a keymap during the initramfs stage.
+    #
+
+    KEYMAP=y
+    ```
+
+  - Asegurarse de que ese mismo archivo contiene los módulos apropiados para
+    soportar teclados USB:
+
+    ```
+    #
+    # MODULES: [ most | netboot | dep | list ]
+    #
+    # most - Add most filesystem and all harddrive drivers.
+    #
+    # dep - Try and guess which modules to load.
+    #
+    # netboot - Add the base modules, network modules, but skip block devices.
+    #
+    # list - Only include modules from the 'additional modules' list
+    #
+
+    MODULES=most
+    ```
+
+  - Aplicar los cambios:
+
+    ```
+    $ sudo update-initramfs -u
+    ```
 
 ## NVIDIA
 
