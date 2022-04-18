@@ -85,6 +85,8 @@ BLIST="sakura alacritty nvim dunst htop i3 rofi picom"
 for p in $BLIST; do
     backup_and_link $p .config
 done
+mkdir -p ~/.mame
+backup_and_link mame.ini .mame
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
