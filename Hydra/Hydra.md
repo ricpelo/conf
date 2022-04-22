@@ -921,3 +921,23 @@
 
 - Alternativamente, se podría usar la versión de Proton, que funciona muy bien
   pero tiene el defecto de que no se puede configurar el gamma.
+
+## DNI ELECTRÓNICO
+
+(Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
+
+- Descargar `https://www.dnielectronico.es/descargas/distribuciones_linux/libpkcs11-dnie_1.6.8_amd64.deb`
+
+- Ejecutar:
+
+  ```
+  $ sudo apt install pcsc-tools pcsd pinentry-gtk2 libccid
+  $ sudo dpkg -i libpkcs11-dnie_1.6.8_amd64.deb
+  $ sudo apt -f install
+  $ sudo systemctl start pcscd
+  $ sudo pcsc_scan
+  ```
+
+- Seguir las indicaciones del PDF.
+
+- Introducir el DNI boca abajo.
