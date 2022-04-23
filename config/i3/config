@@ -189,7 +189,10 @@ bindsym --release Ctrl+Print exec scrot -s
 bindsym --release Shift+Print exec scrot
 
 # Restaura configuración de teclado (a veces se pierde al conectar un USB)
-bindsym $mod+z exec xset r rate 250 30 ; exec setxkbmap -option "ctrl:swapcaps"
+bindsym $mod+z exec --no-startup-id "xset r rate 250 30 ; setxkbmap -option 'ctrl:swapcaps'"
+
+# Activa y desactiva Picom
+bindsym $mod+i exec --no-startup-id "pgrep picom && killall picom || picom &"
 
 # Bloquea la pantalla
 bindsym $mod+Escape exec i3lock -c 000000
@@ -255,7 +258,6 @@ bar {
     }
 }
 
-# Las ventanas de los navegadores no tienen borde
 for_window [window_role="^browser$"] border none
 for_window [instance="origin.exe"] floating enable
 for_window [class="^Steam$" title="Lista de amigos"] floating enable
