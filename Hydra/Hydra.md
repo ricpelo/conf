@@ -548,6 +548,29 @@
 - Como contrapartida, tenemos que la caché se limpia cada vez que se reinicia
   el ordenador.
 
+## MOZILLA FIREFOX CON CACHÉ EN RAM
+
+- Aprovechando lo que hemos hecho ya para Google Chrome en el punto anterior,
+  se puede usar el mismo punto de montaje para guardar la caché de Firefox en
+  RAM. Para ello:
+
+  - Borrar el directorio `~/.cache/mozilla` si existiera:
+
+    `$ rm ~/.cache/mozilla`
+
+  - Abrimos Firefox y tecleamos `about:config` en la barra de direcciones.
+
+  - Creamos una nueva entrada llamada `browser.cache.disk.parent_directory` de
+    tipo cadena con el siguiente contenido:
+
+    ```
+    /home/ricardo/.cache/google-chrome
+    ```
+
+  - Guardamos y reiniciamos Firefox.
+
+(Fuente: https://ubuntuforums.org/showthread.php?t=991205)
+
 ## APT PINNING
 
 - Para estar en `testing` pero poder instalar puntualmente determinados
