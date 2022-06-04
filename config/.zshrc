@@ -124,7 +124,7 @@ ZSH_TMUX_AUTOCONNECT="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found composer history-substring-search z zsh-syntax-highlighting)
+plugins=(git command-not-found composer z zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -158,6 +158,10 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
 # Para que la pestaña de GitHub de Atom funcione:
 export LOCAL_GIT_DIRECTORY=/usr
+
+# Opciones para zsh-history-substring-search:
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 
 # Less Colors for Man Pages
 # export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # start blink
