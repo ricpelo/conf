@@ -911,6 +911,8 @@
 
 ### NO MAN'S SKY
 
+- Usar la variante de Proton de GloriousEggroll versión GE-Proton7-20.
+
 - En opciones gráficas:
 
   - Poner la primera opción (tamaño de texturas) a `Media` y el resto de
