@@ -90,7 +90,7 @@ backup_and_link mame.ini .mame
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh alacritty"
+BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh alacritty exa"
 for p in $BLIST; do
     local_bin $p
 done
