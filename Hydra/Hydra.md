@@ -231,7 +231,6 @@
   ```
   $ git clone https://github.com/ricpelo/conf.git .conf
   $ cd .conf
-  $ git checkout hydra
   $ ./conf.sh
   ```
 
