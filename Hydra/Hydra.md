@@ -19,6 +19,17 @@
 
 - Desactivar `Precision Boost Overdrive`.
 
+- La opción `Core Performance Boost` activa el overclocking automático que
+  hacen los Ryzen. Si se desactiva, provoca los siguientes efectos:
+
+  - La frecuencia queda clavada en 3,7 GHz.
+
+  - El `CPU Core Voltage` baja de 1,446 V a 1,104 V.
+
+- En el modo de voltaje automático, el `CPU Core Voltage` queda en 1,446 V. En
+  los foros se comenta que puede ser un voltaje un poco alto. Yo le he puesto
+  un offset al voltaje de -0,0500 V. [TODO: Probar con -0,1000 V.]
+
 ### VENTILADORES
 
 #### CPU (fan2 en lm_sensors)
