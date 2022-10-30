@@ -144,14 +144,6 @@ postfn_zsh()
         mensaje "Actualizando Zsh Syntax Highlighting..."
         (cd $DEST && git pull)
     fi
-    DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
-    if [ ! -d $DEST ]; then
-        mensaje "Instalando Zsh-Z..."
-        git clone https://github.com/agkozak/zsh-z.git $DEST
-    else
-        mensaje "Actualizando Zsh-Z..."
-        (cd $DEST && git pull)
-    fi
     DEST=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
     if [ ! -d $DEST ]; then
         mensaje "Instalando tema Powerlevel10k..."
