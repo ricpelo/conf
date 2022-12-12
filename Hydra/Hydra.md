@@ -854,6 +854,13 @@
   WINEDLLOVERRIDES="xaudio2_7=n,b" PROTON_NO_ESYNC=1 %command%
   ```
 
+- Configurar todo a `Ultra` excepto `Distancia de sombras` a `Medio`.
+
+  También se puede usar ENABLE_VKBASALT=1 para darle una sutil mejora a los
+  gráficos.
+
+  (Fuente: https://www.protondb.com/app/377160#jDuqIwqfVA)
+
 - Para poder jugar en Steam Link, hay que saltarse el launcher que trae por
   defecto. Para ello:
 
