@@ -964,6 +964,41 @@
 - Alternativamente, se podría usar la versión de Proton, que funciona muy bien
   pero tiene el defecto de que no se puede configurar el gamma.
 
+### RISEN
+
+(Fuentes: https://www.protondb.com/app/40300#0koszn85hC y https://www.pcgamingwiki.com/wiki/Risen#Mouse_sensitivity)
+
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  DXVK_FRAME_RATE=75 %command%
+  ```
+
+- Cambiar el archivo `/media/ricardo/Elements/Juegos/VolumenSteam/steamapps/common/Risen/data/ini/ConfigDefault.xml` así:
+
+  ```xml
+  ...
+    <Input>
+      <Mouse
+				ForceNumLockDisabled="true"
+		    SensitivityX="-0.29f"
+		    SensitivityY="0.05f"
+		    InvertX="false"
+		    InvertY="false"
+			>
+			</Mouse>
+		</Input>
+  ...
+	<Timer
+		AverageFPS="75.000000"
+		FixedFPS="75.000000"
+		MaxFPS="75.000000"
+		MinFPS="75.000000"
+	>
+	</Timer>
+  ...
+  ```
+
 ## DNI ELECTRÓNICO
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
