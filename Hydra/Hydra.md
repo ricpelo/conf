@@ -371,6 +371,25 @@
       en la TV para que no parpadee, aunque eso sólo me pasaba en Ubuntu y no
       en Debian.
 
+- Durante los juegos (y otras aplicaciones de uso intensivo de la tarjeta
+  gráfica) es muy conveniente aplicar una curva de potencia (_fan curve_) a los
+  ventiladores de la gráfica. Para ello, usar mi _fork_ de
+  `https://github.com/nan0s7/nfancurve`:
+
+  - Clonar el repositorio:
+
+    ```
+    $ git clone https://github.com/ricpelo/nfancurve.git
+    ```
+
+  - Arrancar el script `temp.sh` en una terminal y dejarla en segundo plano:
+
+    ```
+    $ ./temp.sh
+    ```
+
+  - La curva se puede cambiar en el archivo `config`.
+
 ## AUDIO
 
 (Fuente: https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
@@ -647,6 +666,27 @@
 - Algunos juegos no funcionan bien cuando está funcionando el compositor
   `picom`. En esos casos, pararlo mediante `killall picom` mejorará mucho el
   funcionamiento del juego.
+
+  En mi configuración de i3, basta con pulsar `Super+i` para activar o
+  desactivar el compositor `picom`.
+
+- Para usar MangoHud, se pueden arrancar los juegos en Steam usando el
+  parámetro de lanzamiento:
+
+  ```
+  mangohud %command%
+  ```
+
+  La configuración está en `~/.config/MangoHud/MangoHud.conf`. Está configurado
+  para que no se muestre inicialmente hasta que no se pulse la combinación de
+  teclas `Mayús+F12`.
+
+  También se puede activar MangoHud en todos los juegos de Steam arrancándolo
+  así:
+
+  ```
+  $ mangohud steam
+  ```
 
 ### NINTENDO SWITCH PRO CONTROLLER
 
