@@ -97,7 +97,6 @@ cebador() {
 		cur_spd="$old_spd"
 		while [ "$(get_speed)" -lt "$ceb_spd" ]; do
 			prf "Finalizando proceso de cebado..."
-			prf ""
 			sleep 10
 		done
 	fi
