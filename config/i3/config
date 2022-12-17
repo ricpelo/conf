@@ -263,6 +263,7 @@ for_window [instance="origin.exe"] floating enable
 for_window [class="^Steam$" title="Lista de amigos"] floating enable
 
 # Autoarranque
+exec_always --no-startup-id ~/.local/bin/temp.sh -c ~/.config/nfancurve/config >/tmp/nfancurve.log 2>&1 &
 exec_always --no-startup-id xset r rate 250 30
 #exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
@@ -275,7 +276,7 @@ exec --no-startup-id ~/.local/bin/xbanish &
 exec --no-startup-id nm-applet
 #exec --no-startup-id "i3-msg 'workspace 2; exec /home/ricardo/.local/bin/alacritty; workspace 1'"
 exec --no-startup-id "i3-msg 'workspace 1; exec x-www-browser'"
-exec --no-startup-id picom &
+exec --no-startup-id picom --daemon
 
 # Gaps
 

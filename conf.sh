@@ -80,7 +80,7 @@ for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="alacritty dunst htop i3 MangoHud nvim picom rofi sakura"
+BLIST="alacritty dunst htop i3 MangoHud nfancurve nvim picom rofi sakura"
 for p in $BLIST; do
     backup_and_link $p .config
 done
@@ -89,7 +89,7 @@ backup_and_link mame.ini .mame
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="unclutter xbanish lesscurl proyecto.sh atom-handler.sh alacritty exa"
+BLIST="alacritty atom-handler.sh exa lesscurl proyecto.sh temp.sh unclutter xbanish"
 for p in $BLIST; do
     local_bin $p
 done
