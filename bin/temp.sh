@@ -72,6 +72,7 @@ kill_already_running() {
 # DEPENDS: NVIDIA-SETTINGS
 get_temp() {
 	cur_t="$($gpu_cmd -q=[gpu:"$gpu"]/GPUCoreTemp -t $display)"
+    return $?
 }
 get_query() {
 	prf "$($gpu_cmd -q "$1" $display)"
@@ -106,12 +107,12 @@ cebador() {
 finish() {
 	i=0
 	while true; do
-		get_temp
+		get_temp || exit
 		# Bajamos la temperatura a <= 46º
 		if [ "$cur_t" -gt "46" ]; then
 			prf "Esperando a que baje la temperatura..."
 			if [ "$i" -eq "0" ]; then
-				# Si ya gira a más de 50%, probamos con 50%
+				# Si ya gira a más de 45%, probamos con 45%
 				arr="$fcurve"; n="1"; re_elem; cur_spd="$elem"
 				if [ "$(get_speed)" -lt "$cur_spd" ]; then
 					# Si no, probamos con 30%
@@ -124,11 +125,12 @@ finish() {
 		fi
 		sleep "$sleep_time"
 		# Si después de 10 intentos, la temperatura sigue alta
-		if [ "$i" -ge "10" ]; then
-			# Probamos al 55%
+		if [ "$i" -eq "10" ]; then
+			i=$((i+1))
+			# Probamos con todos al 60%
 			arr="$fcurve"; n="1"; re_elem; cur_spd="$elem"
 			set_speed
-		else
+		elif [ "$i" -lt "10" ]; then
 			i=$((i+1))
 		fi
 	done
