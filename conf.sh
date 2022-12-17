@@ -24,7 +24,7 @@ xcape rofi redshift nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
 policykit-1-gnome ttf-ancient-fonts gtk2-engines-murrine lxappearance
 at-spi2-core vim vim-gtk3 scrot gh bat exa thunar picom p7zip-full htop evince
-gvfs-backends gvfs-fuse obsidian-icon-theme"
+gvfs-backends gvfs-fuse obsidian-icon-theme alacritty"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
@@ -89,7 +89,7 @@ backup_and_link mame.ini .mame
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="alacritty atom-handler.sh exa lesscurl proyecto.sh temp.sh unclutter xbanish"
+BLIST="atom-handler.sh exa lesscurl proyecto.sh temp.sh unclutter xbanish"
 for p in $BLIST; do
     local_bin $p
 done
