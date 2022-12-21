@@ -12,7 +12,7 @@ import datetime
 import psutil
 
 
-T_MIN: int = 50   # Temperatura por debajo de la cual el ventilador se apaga
+T_MIN: int = 50   # Temperatura por debajo de la cual el ventilador no se enciende
 T_MAX: int = 90   # Temperatura a partir de la cual se enciende al 100%
 T_FIN: int = 45   # Temperatura a alcanzar al salir
 V_MIN: int = 0    # Velocidad mínima del ventilador
@@ -46,6 +46,8 @@ class Fan:
 
 
     def __init__(self, f_num: int, params: dict[str, int], curva: dict[int, int]) -> None:
+        if f_num not in range(Fan.get_num_fans()):
+            error('El número de GPU está fuera del rango.')
         self.__f_num = f_num
         self.__curva = curva
         self.__v_min = params['v_min']
@@ -84,8 +86,8 @@ class Fan:
 
 
     def cebador(self, sgte_veloc: int) -> bool:
-        if self.get_speed() == 0 and sgte_veloc > 0 and sgte_veloc > self.get_v_ceb():
-            log('Iniciando proceso de cebado...')
+        if self.get_speed() < self.get_v_ceb() and sgte_veloc > self.get_v_ceb():
+            log(f'Iniciando proceso de cebado a {self.get_v_ceb()} %...')
             self.set_speed(self.get_v_ceb())
             while self.get_speed() < self.get_v_ceb():
                 log('Finalizando proceso de cebado...')
@@ -137,6 +139,8 @@ class GPU:
 
 
     def __init__(self, g_num: int, params: dict[str, int], fans: list[Fan]) -> None:
+        if g_num not in range(GPU.get_num_gpus()):
+            error('El número de GPU está fuera del rango.')
         self.__g_num = g_num
         self.__fans = fans
         self.__t_min = params['t_min']
@@ -224,10 +228,10 @@ class Manager:
         _, objetivo = fan.buscar_objetivo(temp_actual, gpu)
         sgte_veloc = fan.siguiente_velocidad(veloc_actual, objetivo)
         if veloc_actual != 0 and sgte_veloc == 0 and temp_actual > gpu.get_t_fin():
-            log(f'No se apaga el ventilador por encima de {gpu.get_t_fin()} grados.')
+            log(f'[Actual: ({temp_actual} ºC, {veloc_actual} %)] No se apaga el ventilador por encima de {gpu.get_t_fin()} ºC.')
             return
         if veloc_actual != sgte_veloc:
-            log(f'Cambiando a velocidad {sgte_veloc}, con objetivo {objetivo}.')
+            log(f'[Actual: ({temp_actual} ºC, {veloc_actual} %)] Cambiando a velocidad {sgte_veloc} % con objetivo {objetivo} %.')
             if not fan.cebador(sgte_veloc):
                 fan.set_speed(sgte_veloc)
 
@@ -335,7 +339,7 @@ def finalizar(_signum, _frame) -> None:
 
 
 def finalizar_usr(_signum, _frame):
-    msg = 'Proceso temp.py detenido'
+    msg = "Proceso temp.py detenido.\n¡CUIDADO! El control sigue en modo manual."
     comando = ['notify-send', '-u', 'critical', msg]
     subprocess.run(comando, encoding='utf-8', check=True, stdout=subprocess.PIPE)
     log(msg)
@@ -345,6 +349,7 @@ def finalizar_usr(_signum, _frame):
 def error(s):
     log(f'Error: {s}')
     sys.exit(1)
+
 
 def comprobaciones():
     # kill_already_running()
@@ -357,24 +362,10 @@ def comprobaciones():
         error('No se pudo obtener el número de GPUs y ventiladores.')
 
     if GPU.get_num_gpus() != len(GPUS_FANS):
-        error('El número de GPUs instaladas no coincide con el de GPUS_FANS.')
+        error('El número de GPUs instaladas no coincide con los que aparecen en GPUS_FANS.')
 
     if Fan.get_num_fans() != sum(len(f) for f in GPUS_FANS.values()):
-        error('El número de ventiladores instalados no coincide con el de GPUS_FANS.')
-
-    g_set, f_set = set(), set()
-    for g_num, f_items in GPUS_FANS.items():
-        if g_num not in range(GPU.get_num_gpus()):
-            error('El número de GPU está fuera del rango.')
-        if g_num in g_set:
-            error('Número de GPU repetido.')
-        g_set.add(g_num)
-        for f_num in f_items:
-            if f_num not in range(Fan.get_num_fans()):
-                error('El número de GPU está fuera del rango.')
-            if f_num in f_set:
-                error('Número de ventilador repetido.')
-            f_set.add(f_num)
+        error('El número de ventiladores instalados no coincide con los que aparecen en GPUS_FANS.')
 
 
 def main():
@@ -386,10 +377,8 @@ def main():
         signal.SIGALRM,
         signal.SIGTERM
     }
-
     for sig in sigs:
         signal.signal(sig, finalizar)
-
     signal.signal(signal.SIGUSR1, finalizar_usr)
 
     comprobaciones()
