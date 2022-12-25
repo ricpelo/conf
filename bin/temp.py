@@ -12,13 +12,13 @@ import datetime
 import psutil
 
 
-T_MIN: int = 50   # Temperatura por debajo de la cual el ventilador no se enciende
-T_MAX: int = 90   # Temperatura a partir de la cual se enciende al 100%
-T_FIN: int = 45   # Temperatura a alcanzar al salir
-V_MIN: int = 0    # Velocidad mínima del ventilador
-V_MAX: int = 90   # Velocidad máxima del ventilador
-V_CEB: int = 30   # Velocidad de cebado
-SLEEP: int = 7    # Segundos de espera entre comprobaciones
+T_MIN: int   = 50    # Temperatura por debajo de la cual el ventilador no se enciende
+T_MAX: int   = 90    # Temperatura a partir de la cual se enciende al 100%
+T_FIN: int   = 45    # Temperatura a alcanzar al salir
+V_MIN: int   = 0     # Velocidad mínima del ventilador
+V_MAX: int   = 90    # Velocidad máxima del ventilador
+V_CEB: int   = 30    # Velocidad de cebado
+SLEEP: float = 7.0   # Segundos de espera entre comprobaciones
 
 
 # Curva de temperaturas y velocidades
@@ -87,17 +87,24 @@ class Fan:
 
     def cebador(self, sgte_veloc: int) -> bool:
         if self.get_speed() < self.get_v_ceb() and sgte_veloc > self.get_v_ceb():
-            log(f'Iniciando proceso de cebado a {self.get_v_ceb()} %...')
+            log(f'Iniciando proceso de cebado al {self.get_v_ceb()} %...')
             self.set_speed(self.get_v_ceb())
-            while self.get_speed() < self.get_v_ceb():
-                log('Finalizando proceso de cebado...')
-                esperar()
+            while True:
+                v_actual = self.get_speed()
+                if abs(v_actual - self.get_v_ceb()) <= 1:
+                    log(f'Proceso de cebado finalizado al {v_actual} %...')
+                    break
+                log(f'Continuando proceso de cebado, actualmente al {v_actual} %...')
+                esperar(SLEEP / 1.5)
             return True
         return False
 
 
     def get_speed(self) -> int:
-        return get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUCurrentFanSpeed')
+        return sum(
+            get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUCurrentFanSpeed')
+            for _ in range(3)
+        ) // 3
 
 
     def set_speed(self, veloc: int) -> None:
@@ -227,11 +234,12 @@ class Manager:
         veloc_actual = fan.get_speed()
         _, objetivo = fan.buscar_objetivo(temp_actual, gpu)
         sgte_veloc = fan.siguiente_velocidad(veloc_actual, objetivo)
+        stat = f'[Actual: ({temp_actual} ºC, {veloc_actual} %)]'
         if veloc_actual != 0 and sgte_veloc == 0 and temp_actual > gpu.get_t_fin():
-            log(f'[Actual: ({temp_actual} ºC, {veloc_actual} %)] No se apaga el ventilador por encima de {gpu.get_t_fin()} ºC.')
+            log(f'{stat} No se apaga el ventilador por encima de {gpu.get_t_fin()} ºC.')
             return
         if veloc_actual != sgte_veloc:
-            log(f'[Actual: ({temp_actual} ºC, {veloc_actual} %)] Cambiando a velocidad {sgte_veloc} % con objetivo {objetivo} %.')
+            log(f'{stat} Cambiando a velocidad {sgte_veloc} % con objetivo {objetivo} %.')
             if not fan.cebador(sgte_veloc):
                 fan.set_speed(sgte_veloc)
 
@@ -287,7 +295,7 @@ def log(s: str) -> None:
     sys.stdout.flush()
 
 
-def esperar(tiempo=SLEEP):
+def esperar(tiempo: float = SLEEP):
     time.sleep(tiempo)
 
 
@@ -339,7 +347,7 @@ def finalizar(_signum, _frame) -> None:
 
 
 def finalizar_usr(_signum, _frame):
-    msg = "Proceso temp.py detenido.\n¡CUIDADO! El control sigue en modo manual."
+    msg = "Proceso temp.py detenido.\n\n¡CUIDADO! El control sigue en modo manual."
     comando = ['notify-send', '-u', 'critical', msg]
     subprocess.run(comando, encoding='utf-8', check=True, stdout=subprocess.PIPE)
     log(msg)
