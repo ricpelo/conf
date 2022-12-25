@@ -17,7 +17,8 @@ T_MAX: int   = 90    # Temperatura a partir de la cual se enciende al 100%
 T_FIN: int   = 45    # Temperatura a alcanzar al salir
 V_MIN: int   = 0     # Velocidad mínima del ventilador
 V_MAX: int   = 90    # Velocidad máxima del ventilador
-V_CEB: int   = 30    # Velocidad de cebado
+V_INI: int   = 25    # Velocidad inicial del ventilador durante el cebado
+V_CEB: int   = 35    # Velocidad de cebado
 SLEEP: float = 7.0   # Segundos de espera entre comprobaciones
 
 
@@ -52,6 +53,7 @@ class Fan:
         self.__curva = curva
         self.__v_min = params['v_min']
         self.__v_max = params['v_max']
+        self.__v_ini = params['v_ini']
         self.__v_ceb = params['v_ceb']
         log(f'Creado ventilador n.º {f_num}.')
         log(f'El ventilador n.º {f_num} tiene la siguiente curva:')
@@ -77,6 +79,10 @@ class Fan:
         return self.__v_max
 
 
+    def get_v_ini(self):
+        return self.__v_ini
+
+
     def get_v_ceb(self):
         return self.__v_ceb
 
@@ -88,23 +94,27 @@ class Fan:
     def cebador(self, sgte_veloc: int) -> bool:
         if self.get_speed() < self.get_v_ceb() and sgte_veloc > self.get_v_ceb():
             log(f'Iniciando proceso de cebado al {self.get_v_ceb()} %...')
+            self.set_speed(self.get_v_ini())
+            esperar(3.0)
             self.set_speed(self.get_v_ceb())
-            while True:
-                v_actual = self.get_speed()
-                if abs(v_actual - self.get_v_ceb()) <= 1:
-                    log(f'Proceso de cebado finalizado al {v_actual} %...')
-                    break
-                log(f'Continuando proceso de cebado, actualmente al {v_actual} %...')
-                esperar(SLEEP / 1.5)
+            while self.get_speed() < self.get_v_ceb():
+                log(f'Continuando proceso de cebado, actualmente al {self.get_speed()} %...')
+                esperar(3.0)
+            log(f'Proceso de cebado finalizado al {self.get_speed()} %...')
             return True
         return False
 
 
     def get_speed(self) -> int:
-        return sum(
-            get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUCurrentFanSpeed')
-            for _ in range(3)
-        ) // 3
+        VECES = 3
+        ret = 0
+        for _ in range(VECES):
+            while True:
+                veloc = get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUCurrentFanSpeed')
+                if veloc in range(0, 101):
+                    break
+            ret += veloc
+        return ret // VECES
 
 
     def set_speed(self, veloc: int) -> None:
@@ -395,7 +405,8 @@ def main():
     for g_num, f_items in GPUS_FANS.items():
         fans = []
         for f_num, curva in f_items.items():
-            fan = Fan(f_num, {'v_min': V_MIN, 'v_max': V_MAX, 'v_ceb': V_CEB}, curva)
+            params = {'v_min': V_MIN, 'v_max': V_MAX, 'v_ini': V_INI, 'v_ceb': V_CEB}
+            fan = Fan(f_num, params, curva)
             fans.append(fan)
         gpu = GPU(g_num, {'t_min': T_MIN, 't_max': T_MAX, 't_fin': T_FIN}, fans)
         gpus.append(gpu)
