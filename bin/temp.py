@@ -9,8 +9,10 @@ import time
 import signal
 import os
 import datetime
+import statistics
 import psutil
 
+V_DEBUG = True
 
 T_MIN: int   = 50    # Temperatura por debajo de la cual el ventilador no se enciende
 T_MAX: int   = 90    # Temperatura a partir de la cual se enciende al 100%
@@ -96,25 +98,32 @@ class Fan:
             log(f'Iniciando proceso de cebado al {self.get_v_ceb()} %...')
             self.set_speed(self.get_v_ini())
             esperar(3.0)
+            self.get_speed() # Para hacer log de la velocidad actual
             self.set_speed(self.get_v_ceb())
-            while self.get_speed() < self.get_v_ceb():
-                log(f'Continuando proceso de cebado, actualmente al {self.get_speed()} %...')
+            while True:
+                v_actual = self.get_speed()
+                if v_actual >= self.get_v_ceb() and v_actual - self.get_v_ceb() <= 2:
+                    break
+                log(f'Continuando proceso de cebado, actualmente al {v_actual} %...')
                 esperar(3.0)
-            log(f'Proceso de cebado finalizado al {self.get_speed()} %...')
+            log(f'Proceso de cebado finalizado al {v_actual} %...')
             return True
         return False
 
 
     def get_speed(self) -> int:
-        VECES = 3
-        ret = 0
+        VECES = 5
+        lst = []
         for _ in range(VECES):
             while True:
                 veloc = get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUCurrentFanSpeed')
                 if veloc in range(0, 101):
                     break
-            ret += veloc
-        return ret // VECES
+            lst.append(veloc)
+        mediana = round(statistics.median(lst))
+        if V_DEBUG:
+            log(f'Velocidades: {lst} Mediana: {mediana} %')
+        return mediana
 
 
     def set_speed(self, veloc: int) -> None:
