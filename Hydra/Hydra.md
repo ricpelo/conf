@@ -1045,9 +1045,15 @@
 
 - En las propiedades de Steam:
 
-  - `Habilitar la interfaz de Steam en el juego`: No
+  - Una de dos:
 
-  - `Utilizar el modo cine mientras SteamVR esté activo`: No
+    - O bien:
+
+      - `Habilitar la interfaz de Steam en el juego`: No
+
+      - `Utilizar el modo cine mientras SteamVR esté activo`: No
+
+    - O bien: jugar en modo `Big Picture`.
 
   - Desactivar `Steam Input` en `Mando`.
 
