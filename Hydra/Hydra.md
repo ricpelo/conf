@@ -1039,6 +1039,49 @@
   ...
   ```
 
+### ASSASSIN'S CREED ORIGINS
+
+- Usar `GE-Proton7-42` en `Compatibilidad` para Steam Play.
+
+- En las propiedades de Steam:
+
+  - `Habilitar la interfaz de Steam en el juego`: No
+
+  - `Utilizar el modo cine mientras SteamVR esté activo`: No
+
+  - Desactivar `Steam Input` en `Mando`.
+
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  PROTON_LARGE_ADDRESS_AWARE=1 WINE_LARGE_ADDRESS_AWARE=1 DXVK_ASYNC=1 DXVK_FRAME_RATE=60 %command%
+  ```
+
+- En opciones gráficas dentro del juego:
+
+  - `Modo ventana`: `Pantalla completa`.
+
+  - `Frecuencia de actualización`: `75 Hz`.
+
+  - `Sincronización vertical`: `Sí`.
+
+  - `Límite de FPS`: `60`. [TODO: Probar con `Ninguno`]
+
+- Para quitar la notificación que aparece en la esquina superior derecha sobre
+  que la gráfica no es compatible:
+
+  - Pulsar `Mayús+F2`.
+
+  - Quitar las notificaciones en `Ajustes` -> `Notificaciones`.
+
+  - **NO** volver a pulsar `Mayús+F2`, o el juego se bloqueará.
+
+  - Pulsar `Esc`, luego mantener pulsado `Super+9` hasta que aparezca el
+    escritorio 9, y luego volver al escritorio del juego.
+
+- El juego no se termina de ejecutar correctamente. Hay que matar el proceso
+  desde Steam.
+
 ## DNI ELECTRÓNICO
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
