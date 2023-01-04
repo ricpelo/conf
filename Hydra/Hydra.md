@@ -32,7 +32,7 @@
 
 ### VENTILADORES
 
-#### CPU (fan2 en lm_sensors)
+#### CPU (`fan2` en `lm_sensors`)
 
 - Ahora mismo lo tengo así:
 
