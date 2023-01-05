@@ -21,20 +21,21 @@ V_MIN: int   = 0     # Velocidad mínima del ventilador
 V_MAX: int   = 90    # Velocidad máxima del ventilador
 V_INI: int   = 25    # Velocidad inicial del ventilador durante el cebado
 V_CEB: int   = 35    # Velocidad de cebado
+T_INI: float = 3.0   # Segundos de espera tras arranque inicial a V_INI %
 SLEEP: float = 7.0   # Segundos de espera entre comprobaciones
 
 
 # Curva de temperaturas y velocidades
 # Temperatura (ºC): velocidad (%)
-CURVA: dict[int, int] = {
-    55: 45,
-    60: 60,
-    65: 64,
-    70: 68,
-    75: 75,
-    80: 80,
-    85: 85
-}
+CURVA: dict[int, int] = {             # (-inf, T_MIN) ºC....: 0 %
+    55: 45,                           # [T_MIN, 55) ºC......: 45 %
+    60: 60,                           # [55, 60) ºC.........: 60 %
+    65: 64,                           # [60, 65) ºC.........: 64 %
+    70: 68,                           # [65, 70) ºC.........: 68 %
+    75: 75,                           # [70, 75) ºC.........: 75 %
+    80: 80,                           # [75, 80) ºC.........: 80 %
+    85: 85                            # [80, 85) ºC.........: 85 %
+}                                     # [85, +inf) ºC.......: V_MAX %
 
 
 # GPU: {Diccionario con cada número de ventilador y su curva asociada}
@@ -59,6 +60,7 @@ class Fan:
         self.__v_max = params['v_max']
         self.__v_ini = params['v_ini']
         self.__v_ceb = params['v_ceb']
+        self.__t_ini = params['t_ini']
         log(f'Creado ventilador n.º {f_num}.')
         log(f'El ventilador n.º {f_num} tiene la siguiente curva:')
         log(str(curva))
@@ -79,17 +81,17 @@ class Fan:
         return self.__f_num
 
 
-    def get_v_min(self):
+    def get_v_min(self) -> int:
         """Devuelve la velocidad mínima del ventilador."""
         return self.__v_min
 
 
-    def get_v_max(self):
+    def get_v_max(self) -> int:
         """Devuelve la velocidad máxima del ventilador."""
         return self.__v_max
 
 
-    def get_v_ini(self):
+    def get_v_ini(self) -> int:
         """
         Devuelve la velocidad inicial del ventilador durante el proceso
         de cebado.
@@ -97,25 +99,31 @@ class Fan:
         return self.__v_ini
 
 
-    def get_v_ceb(self):
+    def get_v_ceb(self) -> int:
         """Devuelve la velocidad de cebado del ventilador."""
         return self.__v_ceb
 
 
-    def get_curva(self):
+    def get_t_ini(self) -> float:
+        """Devuelve el tiempo de espera tras arranque inicial."""
+        return self.__t_ini
+
+
+    def get_curva(self) -> dict[int, int]:
         """Devuelve la curva de temperaturas y velocidades del ventilador."""
         return self.__curva
 
 
-    def arrancar(self):
+    def arrancar(self) -> None:
         """
         Pone el ventilador a una velocidad (v_ini, que en principio es 25 %)
         más baja que la de cebado, si no estaba ya a esa velocidad o superior,
-        y espera unos segundos.
+        y espera t_ini segundos.
         """
         if self.get_speed() < self.get_v_ini():
+            log(f'Arrancando al {self.get_v_ini()} %...')
             self.set_speed(self.get_v_ini())
-            esperar(3.0)
+            esperar(self.get_t_ini())
 
 
     def cebador(self, sgte_veloc: int) -> bool:
@@ -171,7 +179,8 @@ class Fan:
             lst.append(veloc)
         mediana = round(statistics.median(lst))
         if V_DEBUG:
-            log(f'Velocidades: {lst} Mediana: {mediana} %')
+            target = get_query_str(f'-q=[fan:{self.get_f_num()}]/GPUTargetFanSpeed')
+            log(f'Velocidades: {lst} - Mediana: {mediana} % - Target actual: {target} %')
         return mediana
 
 
@@ -262,7 +271,9 @@ class GPU:
 
     def get_temp(self) -> int:
         """Devuelve la temperatura actual (en ºC) de la GPU."""
-        return get_query_str(f'-q=[gpu:{self.g_num()}]/GPUCoreTemp')
+        temp = get_query_str(f'-q=[gpu:{self.g_num()}]/GPUCoreTemp')
+        log(f'Temp. actual: {temp} ºC')
+        return temp
 
 
     def get_fans(self) -> list[Fan]:
@@ -270,7 +281,7 @@ class GPU:
         return self.__fans
 
 
-    def get_t_min(self):
+    def get_t_min(self) -> int:
         """
         Devuelve la temperatura por debajo de la cual no se enciende nunca
         ninguno de los ventiladores de la GPU. Por omisión es T_MIN (50 %).
@@ -278,7 +289,7 @@ class GPU:
         return self.__t_min
 
 
-    def get_t_max(self):
+    def get_t_max(self) -> int:
         """
         Devuelve la temperatura por encima de la cual se encienden todos
         los ventiladores de la GPU al máximo (V_MAX, por omisión 90 %).
@@ -287,7 +298,7 @@ class GPU:
         return self.__t_max
 
 
-    def get_t_fin(self):
+    def get_t_fin(self) -> int:
         """
         Devuelve la temperatura que hay que alcanzar al finalizar el script y
         antes de apagar el ventilador (T_FIN, por omisión 45 ºC).
@@ -360,7 +371,7 @@ class Manager:
                 fan.set_speed(veloc)
 
 
-    def set_fans_control(self, estado: int):
+    def set_fans_control(self, estado: int) -> None:
         """
         Activa o desactiva el GPUFanStateControl a todas las GPUs instaladas
         en el sistema y registradas en el manager.
@@ -462,7 +473,7 @@ def log(s: str) -> None:
     sys.stdout.flush()
 
 
-def esperar(tiempo: float = SLEEP):
+def esperar(tiempo: float = SLEEP) -> None:
     """Detiene el proceso durante varios segundos (por omisión SLEEP = 7s)."""
     time.sleep(tiempo)
 
@@ -528,7 +539,7 @@ def finalizar(_signum, _frame) -> None:
     sys.exit(0)
 
 
-def finalizar_usr(_signum, _frame):
+def finalizar_usr(_signum, _frame) -> None:
     """
     Finaliza el proceso pero dejándolo en modo manual y sin hacer ninguna
     comprobación sobre la temperatura de la GPU.
@@ -541,13 +552,13 @@ def finalizar_usr(_signum, _frame):
     sys.exit(0)
 
 
-def error(s):
+def error(s: str) -> None:
     """Muestra un mensaje de error en el registro y se sale del script."""
     log(f'Error: {s}')
     sys.exit(1)
 
 
-def comprobaciones():
+def comprobaciones() -> None:
     """Lleva a cabo varias comprobaciones previas a empezar."""
     # kill_already_running()
     if hay_mas_procesos():
@@ -565,7 +576,7 @@ def comprobaciones():
         error('El número de ventiladores instalados no coincide con los que aparecen en GPUS_FANS.')
 
 
-def main():
+def main() -> None:
     """Función principal."""
     sigs = {
         signal.SIGINT,
@@ -585,7 +596,8 @@ def main():
     for g_num, f_items in GPUS_FANS.items():
         fans = []
         for f_num, curva in f_items.items():
-            params = {'v_min': V_MIN, 'v_max': V_MAX, 'v_ini': V_INI, 'v_ceb': V_CEB}
+            params = {'v_min': V_MIN, 'v_max': V_MAX, 'v_ini': V_INI,
+                      'v_ceb': V_CEB, 't_ini': T_INI}
             fan = Fan(f_num, params, curva)
             fans.append(fan)
         gpu = GPU(g_num, {'t_min': T_MIN, 't_max': T_MAX, 't_fin': T_FIN}, fans)
