@@ -27,7 +27,7 @@ SLEEP: float = 7.0   # Segundos de espera entre comprobaciones
 
 # Curva de temperaturas y velocidades
 # Temperatura (ºC): velocidad (%)
-CURVA: dict[int, int] = {             # (-inf, T_MIN) ºC....: 0 %
+CURVA: dict[int, int] = {             # (-inf, T_MIN) ºC....: V_MIN %
     55: 45,                           # [T_MIN, 55) ºC......: 45 %
     60: 60,                           # [55, 60) ºC.........: 60 %
     65: 64,                           # [60, 65) ºC.........: 64 %
@@ -199,11 +199,11 @@ class Fan:
         Devuelve una tupla (temperatura, velocidad), que representa el tramo
         adecuado de la curva.
         Actualmente, el componente de temperatura de la tupla no se usa.
-        Si la temperatura es inferior a t_min, devuelve (0, 0) para indicar
-        que el ventilador no se debe encender.
+        Si la temperatura es inferior a t_min, devuelve (0, gpu.get_v_min())
+        para indicar que el ventilador no se debe encender.
         """
         if temp < gpu.get_t_min():
-            return (0, 0)
+            return (0, self.get_v_min())
         for t, f in self.get_curva().items():
             if temp < t:
                 return (t, f)
@@ -222,8 +222,8 @@ class Fan:
         """
         if actual == objetivo:
             return actual
-        if objetivo == 0:
-            return 0
+        if objetivo == self.get_v_min():
+            return self.get_v_min()
         if actual < objetivo:
             for v in self.__curva.values():
                 if v <= actual:
@@ -391,7 +391,7 @@ class Manager:
         _, objetivo = fan.buscar_objetivo(temp_actual, gpu)
         sgte_veloc = fan.siguiente_velocidad(veloc_actual, objetivo)
         stat = f'[Actual: ({temp_actual} ºC, {veloc_actual} %)]'
-        if veloc_actual != 0 and sgte_veloc == 0 and temp_actual > gpu.get_t_fin():
+        if veloc_actual != fan.get_v_min() and sgte_veloc == fan.get_v_min() and temp_actual > gpu.get_t_fin():
             log(f'{stat} No se apaga el ventilador por encima de {gpu.get_t_fin()} ºC.')
             return
         if veloc_actual != sgte_veloc:
@@ -427,7 +427,8 @@ def run_command(command: str) -> subprocess.CompletedProcess[str]:
         comando,
         encoding='utf-8',
         check=True,
-        stdout=subprocess.PIPE
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL
     )
 
 
@@ -606,7 +607,7 @@ def main() -> None:
     manager = Manager.get_singleton()
     manager.set_gpus(gpus)
     manager.set_fans_control(1)
-    manager.set_speeds(0)
+    manager.set_speeds(V_MIN)
 
     while True:
         for gpu in manager.get_gpus():
