@@ -1,8 +1,8 @@
 #
 # /home/ricardo/.nvidia-settings-rc
 #
-# Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Thu Jul 21 23:52:21 2022
+# Configuration file for nvidia-settings - the NVIDIA Settings utility
+# Generated on Sat Apr  1 16:09:53 2023
 #
 
 # ConfigProperties:
@@ -11,11 +11,10 @@ RcFileLocale = C
 DisplayStatusBar = Yes
 SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
-ShowQuitDialog = Yes
 UpdateRulesOnProfileNameChange = Yes
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
@@ -68,3 +67,4 @@ Timer = Memory_Used_(GPU_0),Yes,3000
 [DPY:DP-1]/ColorSpace=0
 [DPY:DP-1]/ColorRange=0
 [DPY:DP-1]/SynchronousPaletteUpdates=0
+[GPU:0]/GPUPowerMizerMode=2
