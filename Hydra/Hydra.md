@@ -1088,6 +1088,29 @@
 - El juego no se termina de ejecutar correctamente. Hay que matar el proceso
   desde Steam.
 
+### ELITE DANGEROUS
+
+- Al instalar el juego, luego hay que instalar el contenido de **Elite
+  Dangerous: Horizons** desde el lanzador. Tarda muchísimo.
+
+- En la configuración gráfica, poner:
+
+  - `Sincronización vertical`: `No`.
+
+  - `Frecuencia de refresco`: `75 Hz`.
+
+  - `Límite de cuadros por segundo`: `60 Hz`.
+
+  - `Calidad`: `Ultra`.
+
+- Usar _Minimal Elite Dangerous Launcher_ (`https://github.com/rfvgyhn/min-ed-launcher`).
+
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  DXVK_ASYNC=1 DXVK_STATE_CACHE=0 alacritty -e ./MinEdLauncher %command% /autorun /edh4 /autoquit
+  ```
+
 ## DNI ELECTRÓNICO
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
