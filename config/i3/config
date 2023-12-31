@@ -261,6 +261,7 @@ bar {
 for_window [window_role="^browser$"] border none
 for_window [instance="origin.exe"] floating enable
 for_window [class="^Steam$" title="Lista de amigos"] floating enable
+for_window [window_type="notification"] floating enable
 
 # Autoarranque
 exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py >/tmp/nvidia-fan-curve.log 2>&1 &

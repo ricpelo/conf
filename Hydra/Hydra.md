@@ -979,6 +979,12 @@
 
 - La rama 6.0 de Proton funciona mejor que la 5.0.
 
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  %command% -vgui
+  ```
+
 ### DEATH STRANDING
 
 - Desactivar Steam Input para que el juego detecte y gestione él solo el
@@ -1037,6 +1043,14 @@
 	>
 	</Timer>
   ...
+  ```
+
+### BATMAN ARKHAM ORIGINS
+
+- Usar los siguientes parámetros de lanzamiento:
+
+  ```
+  %command% -nostartupmovies -d3d9
   ```
 
 ### ASSASSIN'S CREED ORIGINS
