@@ -192,7 +192,7 @@ bindsym --release Shift+Print exec scrot
 bindsym $mod+z exec --no-startup-id "xset r rate 250 30 ; setxkbmap -option 'ctrl:swapcaps'"
 
 # Activa y desactiva Picom
-bindsym $mod+i exec --no-startup-id "pgrep picom && killall picom || picom &"
+bindsym $mod+i exec --no-startup-id "pgrep picom && killall picom || picom --daemon"
 
 # Bloquea la pantalla
 bindsym $mod+Escape exec i3lock -c 000000
