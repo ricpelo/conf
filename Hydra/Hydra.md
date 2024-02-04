@@ -371,25 +371,6 @@
       en la TV para que no parpadee, aunque eso sólo me pasaba en Ubuntu y no
       en Debian.
 
-- Durante los juegos (y otras aplicaciones de uso intensivo de la tarjeta
-  gráfica) es muy conveniente aplicar una curva de potencia (_fan curve_) a los
-  ventiladores de la gráfica. Para ello, usar mi _fork_ de
-  `https://github.com/nan0s7/nfancurve`:
-
-  - Clonar el repositorio:
-
-    ```
-    $ git clone https://github.com/ricpelo/nfancurve.git
-    ```
-
-  - Arrancar el script `temp.sh` en una terminal y dejarla en segundo plano:
-
-    ```
-    $ ./temp.sh
-    ```
-
-  - La curva se puede cambiar en el archivo `config`.
-
 ## AUDIO
 
 (Fuente: https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
