@@ -1115,7 +1115,7 @@
 - Ejecutar:
 
   ```
-  $ sudo apt install pcsc-tools pcsd pinentry-gtk2 libccid
+  $ sudo apt install pcsc-tools pcscd pinentry-gtk2 libccid
   $ sudo dpkg -i libpkcs11-dnie_1.6.8_amd64.deb
   $ sudo apt -f install
   $ sudo systemctl start pcscd
