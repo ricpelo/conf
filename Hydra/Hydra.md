@@ -1110,16 +1110,16 @@
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
 
-- Descargar `https://www.dnielectronico.es/descargas/distribuciones_linux/libpkcs11-dnie_1.6.8_amd64.deb`
+- Descargar `https://www.sede.fnmt.gob.es/documents/10445900/11635653/libpkcs11-fnmtdnie_1.6.9_amd64.deb`
 
 - Ejecutar:
 
   ```
-  $ sudo apt install pcsc-tools pcscd pinentry-gtk2 libccid
+  $ sudo apt install pcsc-tools pcscd pinentry-gtk2 libassuan0 libccid
   $ sudo dpkg -i libpkcs11-dnie_1.6.8_amd64.deb
   $ sudo apt -f install
   $ sudo systemctl start pcscd
-  $ sudo pcsc_scan
+  $ pcsc_scan
   ```
 
 - Seguir las indicaciones del PDF.
