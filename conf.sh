@@ -89,7 +89,7 @@ backup_and_link mame.ini .mame
 
 mensaje "Instalando binarios locales..."
 mkdir -p ~/.local/bin
-BLIST="atom-handler.sh exa lesscurl proyecto.sh temp.py unclutter xbanish"
+BLIST="atom-handler.sh lesscurl proyecto.sh temp.py unclutter xbanish"
 for p in $BLIST; do
     local_bin $p
 done
