@@ -23,9 +23,9 @@ case "$1" in
     *.zoo)
         exit 1;;
     .bash_aliases|.bash_environment)
-        pygmentize -l sh "$1";;
+        pygmentize -l sh -O style=nord "$1";;
     *)
-        pygmentize -g "$1";;
+        pygmentize -g -O style=nord "$1";;
 esac
 
 exit 0
