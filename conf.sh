@@ -24,7 +24,7 @@ xcape rofi redshift nnn command-not-found fonts-freefont-ttf libnotify-bin xsel
 fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
 policykit-1-gnome ttf-ancient-fonts gtk2-engines-murrine lxappearance
 at-spi2-core vim vim-gtk3 scrot gh bat lsd pcmanfm picom p7zip-full htop evince
-gvfs-backends gvfs-fuse obsidian-icon-theme alacritty"
+gvfs-backends gvfs-fuse obsidian-icon-theme alacritty xcwd"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""

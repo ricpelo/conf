@@ -27,7 +27,7 @@ hide_edge_borders smart
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id ~/.config/i3/i3-shell.sh
+bindsym $mod+Return exec --no-startup-id alacritty --working-directory `xcwd`
 
 # kill focused window
 bindsym $mod+q kill
