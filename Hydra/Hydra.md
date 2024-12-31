@@ -763,22 +763,19 @@
 - Se pueden instalar juegos de Steam en un disco NTFS (como un disco externo
   USB). Para ello:
 
-  - Hay que añadir una nueva _biblioteca_ en los ajustes de Steam:
+  - Montar el disco con `ntfs-3g`, añadiendo la siguiente línea en `/etc/fstab`:
+
+    ```
+    /dev/disk/by-id/wwn-0x50014ee65e9ba6b7-part1 /media/Elements ntfs-3g nosuid,nodev,nofail,noauto,x-gvfs-show,uid=1000,gid=1000 0 0
+    ```
+
+  - Añadir una nueva _biblioteca_ en los ajustes de Steam:
 
     Steam -> Parámetros -> Descargas -> Carpetas de biblioteca de Steam
 
     Damos al `+` y añadimos una nueva biblioteca en
 
-    `/media/ricardo/Elements/Juegos/VolumenSteam`
-
-  - Para que funcionen correctamente los juegos que se ejecutan con Proton, hay
-    que crear un enlace simbólico de la carpeta `compatdata` para que apunte a
-    la que hay en el disco local:
-
-    ```
-    $ mv /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata.viejo
-    $ ln -sf /home/ricardo/.steam/steam/steamapps/compatdata /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/compatdata
-    ```
+    `/media/Elements/Juegos/VolumenSteam`
 
 (Fuente: https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows)
 
