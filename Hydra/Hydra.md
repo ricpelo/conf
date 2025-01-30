@@ -19,8 +19,11 @@
 
 - Desactivar `Precision Boost Overdrive`.
 
-- La opción `Core Performance Boost` activa el overclocking automático que
-  hacen los Ryzen. Si se desactiva, provoca los siguientes efectos:
+- Desactivar `Game Boost`.
+
+- Poner `Core Performance Boost` en `Auto`. Esta opción activa el overclocking
+  automático que hacen los Ryzen. Si se desactiva, provoca los siguientes
+  efectos:
 
   - La frecuencia queda clavada en 3,7 GHz.
 
@@ -89,6 +92,10 @@
 
 - 516 V.
 
+#### `SYSFAN2` en placa (no se usa)
+
+- 720 V.
+
 #### DELANTEROS (`SYSFAN3` en placa, `fan6` en `lm_sensors`)
 
 - 516 V.
@@ -101,6 +108,10 @@
 - Poner una curva dinámica en los ventiladores trasero o delanteros provoca
   vibraciones y ruido. Mejor poner un valor constante de 516 V. [TODO: Probar
   de nuevo.]
+
+#### `SYSFAN4` en placa (no se usa)
+
+- 720 V.
 
 ## CAJA
 
