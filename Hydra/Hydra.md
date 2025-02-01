@@ -730,6 +730,8 @@
 
     `$ bluetoothctl disconnect 48:A5:E7:D0:94:29`
 
+- Usar joycond (`https://github.com/DanielOgorchock/joycond`)
+
 - Juegos fuera de Steam:
 
   - Desde la versión 5.16 del kernel, el controlador `hid_nintendo` ya viene
@@ -737,37 +739,29 @@
 
 - En Steam:
 
-  - Los controladores anteriores son incompatibles con el que usa Steam, así
-    que hay que deshabilitarlos:
+  - Usar siempre Big Picture.
 
-    - Crear `/etc/modprobe.d/blacklist-hid_nintendo.conf` con el siguiente
-      contenido:
-    
-      ```
-      blacklist hid_nintendo
-      ```
+  - Dejar que Steam detecte el mando como un _Nintendo Switch Pro Controller_.
 
-    - `$ sudo systemctl disable joycond.service`
+### STEAM
 
-  - Dentro de Steam, hay que:
+- En el apartado `Interfaz`:
 
-    - Usar siempre Big Picture.
+  - Iniciar Steam siempre en modo Big Picture.
 
-    - Dejar que Steam detecte el mando como un _Nintendo Switch Pro
-      Controller_.
+  - Activar el renderizado acelerado por GPU al visitar páginas web.
 
-    - Desactivar la vibración en las preferencias del mando:
+  - Activar la decodificación de vídeo por hardware si está disponible.
 
-      ![](opciones-globales-mando.png)
+- En el apartado `Pantalla`:
 
-    - La vibración se puede activar por cada juego de forma local durante una
-      partida pulsando el botón de la casa y entrando en las opciones del
-      mando:
+  - Desactivar lista de GPU bloqueadas.
 
-      ![](opciones-locales-mando.png)
+- Arrancar Steam en modo Big Picture con `picom` activado. Luego, una vez
+  arrancado, desactivar `picom` antes de arrancar un juego.
 
-    - La mayoría de los juegos funcionan mejor forzando el uso de Stem Input en
-      las preferencias de cada juego dentro de Steam.
+  Si no tenemos activado `picom` con el renderizado acelerado por GPU, al
+  arrancar Steam se verá todo en negro.
 
 ### STEAM EN NTFS
 
