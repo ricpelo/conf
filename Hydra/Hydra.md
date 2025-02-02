@@ -982,12 +982,10 @@
 
 (Fuente: https://steamcommunity.com/sharedfiles/filedetails/?id=2749061346)
 
-- Create a file called steam_appid.txt with 57300 inside
-
 - Crear un archivo llamado `steam_appid.txt` con `57300` dentro y guardarlo en
   el directorio raíz del juego:
 
-  `$ echo 57300 > /media/ricardo/Elements/Juegos/VolumenSteam/steamapps/common/Amnesia\ The\ Dark\ Descent/steam_appid.txt`
+  `$ echo 57300 > /media/Elements/Juegos/VolumenSteam/steamapps/common/Amnesia\ The\ Dark\ Descent/steam_appid.txt`
 
 - Usar los siguientes parámetros de lanzamiento:
 
