@@ -784,26 +784,26 @@
 
 (Fuente: https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows)
 
-### STEAM LINK
+### STEAM LINK (REMOTE PLAY)
 
-- Para que la imagen no parpadee (ésto sólo me pasaba en Ubuntu):
+- Para jugar desde el portátil a los juegos de Steam en remoto hacia el PC,
+  hacer lo siguiente:
 
-  - En _NVIDIA X Server Settings_, opción `OpenGL Settings`:
+  - En el PC, en Remote Play:
 
-    - Desactivar `Allow Flipping`.
+    - Activar `Activar la configuración avanzada del host`.
 
-- Para que el sonido no se vaya degradando y se pierda con el tiempo:
+      - Activar `Activar codificación por hardware`.
 
-  - En _Control de volumen de PulseAudio_:
+    - Activar `Activar la configuración avanzada del cliente`.
 
-    - En `Configuración`, desactivar todos los perfiles de audio.
+      - Vídeo `Equilibrada`.
 
-      Se creará automáticamente un dispositivo virtual `Dummy`. (Si no
-      apareciera, arrancar primero Steam.)
+      - Activar `Decodificación por hardware`.
 
-- Cuando se acabe de jugar, se deben deshacer los cambios en sentido contrario.
+  - En el portátil:
 
-(Fuente: https://github.com/ValveSoftware/steam-for-linux/issues/6749#issuecomment-753639362)
+    - No jugar desde GNOME, sino desde una sesión de IceWM.
 
 ### ACENTOS Y CARACTERES ESPAÑOLES EN EL CHAT DE STEAM
 
