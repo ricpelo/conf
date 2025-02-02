@@ -743,6 +743,11 @@
 
   - Dejar que Steam detecte el mando como un _Nintendo Switch Pro Controller_.
 
+  - Si al entrar en algún juego no reconoce el mando, pulsar el botón de la
+    casita en el mando (lo que abrirá las opciones de Steam) y desde ahí
+    activar o desactivar `Steam Input` según corresponda, hasta que reconozca
+    el mando.
+
 ### STEAM
 
 - En el apartado `Interfaz`:
