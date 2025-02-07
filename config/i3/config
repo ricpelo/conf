@@ -236,7 +236,7 @@ client.background       #242424
 bar {
     status_command py3status
     height 25
-    font pango:Source Code Pro 13
+    font pango:Source Code Pro 14
     tray_padding 1
     # strip_workspace_numbers yes
     bindsym button4 nop
