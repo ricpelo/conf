@@ -12,10 +12,6 @@ import datetime
 import statistics
 import psutil
 
-LOG_FILE = "/tmp/nvidia-fan-curve.log"
-MAX_SIZE = 200 * 1024  # Tamaño máximo en bytes (200 KB)
-CROP_LINES = 100       # Cantidad de líneas a borrar del inicio del log
-
 V_DEBUG = True
 
 T_MIN: int   = 50    # Temperatura por debajo de la cual el ventilador no se enciende
@@ -474,19 +470,8 @@ def hay_mas_procesos() -> bool:
 def log(s: str) -> None:
     """Genera un registro a la salida."""
     ts = datetime.datetime.now().replace(microsecond=0)
-    mensaje = f'{ts} - {s}'
-    if os.path.exists(LOG_FILE) and os.path.getsize(LOG_FILE) >= MAX_SIZE:
-        trim_log()
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(mensaje + "\n")
-
-
-def trim_log():
-    """Elimina las líneas más antiguas del log para mantener el tamaño bajo control."""
-    with open(LOG_FILE, "r", encoding="utf-8") as f:
-        lineas = f.readlines()
-    with open(LOG_FILE, "w", encoding="utf-8") as f:
-        f.writelines(lineas[CROP_LINES:])
+    print(f'{ts} - {s}')
+    sys.stdout.flush()
 
 
 def esperar(tiempo: float = SLEEP) -> None:
