@@ -264,7 +264,7 @@ for_window [class="^Steam$" title="Lista de amigos"] floating enable
 for_window [window_type="notification"] floating enable
 
 # Autoarranque
-exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py >/tmp/nvidia-fan-curve.log 2>&1 &
+exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py &
 exec_always --no-startup-id xset r rate 250 30
 #exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
