@@ -182,6 +182,9 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 eval `lesspipe`
 eval `dircolors ~/.dircolors`
 
+# Para correcta previsualización de archivos en ranger:
+export PYGMENTIZE_STYLE=nord
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -197,9 +200,17 @@ eval `dircolors ~/.dircolors`
 if [ -n "$(which lsd)" ]
 then
     alias ls="lsd"
-    alias l="lsd --all --long"
+    alias l="lsd --all --long --header"
     alias ll="lsd --all"
+    alias la="lsd --almost-all"
 fi
+#if [ -n "$(which eza)" ]
+#then
+#    alias ls="eza --group-directores-first --icons --binary --git"
+#    alias l="eza --group-directories-first --icons --binary --git --all --long --header"
+#    alias ll="eza --group-directories-first --icons --binary --git --all"
+#    alias la="eza --group-directories-first --icons --binary --git --almost-all"
+#fi
 alias cd..="cd .."
 alias rm="rm -i"
 alias cp="cp -i"
@@ -231,7 +242,3 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 bindkey -M vicmd "^[[3~" delete-char
-
-if [ -f /home/ricardo/.ghcup/env ]; then
-   source /home/ricardo/.ghcup/env
-fi
