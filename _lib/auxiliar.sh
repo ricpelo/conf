@@ -85,6 +85,17 @@ local_bin()
     fi
 }
 
+instala_tarea_cron_temp_py()
+{
+    # Instala tarea en el crontab del usuario para truncar periódicamente el
+    # registro de salida de temp.py:
+    mensaje "Creando tarea en el crontab del usuario para temp.py..."
+    local comando_cron="[ \"\$(stat --printf='%s' /tmp/nvidia-fan-curve.log 2>/dev/null)\" -gt 200000 ] && truncate -s 0 /tmp/nvidia-fan-curve.log"
+    local tarea_cron="0 * * * * $comando_cron"
+    ( crontab -l | grep -v -F "$comando_cron" ; echo "$tarea_cron" ) | crontab -
+    # cat <(fgrep -i -v "$comando_cron" <(crontab -l)) <(echo "$tarea") | crontab -
+}
+
 prefn_emacssnapshot()
 {
     local RET=0

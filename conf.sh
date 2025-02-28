@@ -97,6 +97,10 @@ done
 # Postinstalación de paquetes
 fn "$PLIST" "post"
 
+# Instala tarea en el crontab del usuario para truncar periódicamente el
+# registro de salida de temp.py:
+instala_tarea_cron_temp_py
+
 # Hay que hacerlo después de haber post-instalado el zsh,
 # o este lo machacará:
 mensaje "Creando enlace a .zshrc..."
