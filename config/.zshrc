@@ -206,10 +206,10 @@ then
 fi
 #if [ -n "$(which eza)" ]
 #then
-#    alias ls="eza --group-directores-first --icons --binary --git"
-#    alias l="eza --group-directories-first --icons --binary --git --all --long --header"
-#    alias ll="eza --group-directories-first --icons --binary --git --all"
-#    alias la="eza --group-directories-first --icons --binary --git --almost-all"
+#    alias ls="eza --group-directories-first --icons --binary --git"
+#    alias l="eza --group-directories-first --icons --binary --git --all --all --long --header"
+#    alias ll="eza --group-directories-first --icons --binary --git --all --all"
+#    alias la="eza --group-directories-first --icons --binary --git --all"
 #fi
 alias cd..="cd .."
 alias rm="rm -i"
