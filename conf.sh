@@ -62,7 +62,6 @@ for f in $FLIST; do
     mensaje "Instalando tipografía $f..."
     cp -f fonts/$f/* $FONTS_DIR
 done
-fc-cache -f $FONTS_DIR
 
 DEST="$BASE_DIR/fonts/powerline-fonts"
 if [ ! -d "$DEST" ]; then
@@ -80,6 +79,9 @@ if [ ! -d "Liberation" ]; then
     mkdir -p $DEST
     curl -sL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/LiberationMono.tar.xz | tar xfJ - -C $DEST
 fi
+
+mensaje "Actualizando caché de tipografías..."
+fc-cache -f $FONTS_DIR
 
 mensaje "Creando enlaces..."
 BLIST=".dircolors .gtkrc-2.0 .less .lessfilter .nvidia-settings-rc .terminfo .vimrc .Xresources .xsessionrc .zprofile"
