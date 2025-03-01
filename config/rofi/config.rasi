@@ -6,7 +6,7 @@ configuration {
     display-run:    " ";
     display-drun:   "";
     display-window: " ";
-    display-combi:  "";
+    display-combi:  " ";
     show-icons:     true;
 }
 

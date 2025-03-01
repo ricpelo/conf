@@ -56,7 +56,7 @@ fi
 fn "$PLIST"
 
 FONTS_DIR=~/.local/share/fonts
-FLIST="InputMono FiraCode mononoki nerd-fonts"
+FLIST="InputMono FiraCode mononoki"
 mkdir -p $FONTS_DIR
 for f in $FLIST; do
     mensaje "Instalando tipografía $f..."
@@ -72,6 +72,13 @@ if [ ! -d "$DEST" ]; then
 else
     mensaje "Actualizando tipografías Powerline..."
     (cd $DEST && git pull && ./install.sh)
+fi
+
+DEST="$FONTS_DIR/Liberation"
+if [ ! -d "Liberation" ]; then
+    mensaje "Instalando tipografías LiterationMono Nerd Fonts..."
+    mkdir -p $DEST
+    curl -sL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/LiberationMono.tar.xz | tar xfJ - -C $DEST
 fi
 
 mensaje "Creando enlaces..."
