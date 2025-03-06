@@ -592,6 +592,22 @@
 
 (Fuente: https://ubuntuforums.org/showthread.php?t=991205)
 
+## CONFIGURACIÓN DE MOZILLA FIREFOX
+
+- Además de lo anterior, se puede establecer:
+
+  - En `about:config`:
+
+    - `ui.textScaleFactor` a `125`.
+
+    - `browser.tabs.tabMinWidth` a `50`.
+
+    - (Opcional) `browser.uidensity` a `1`.
+
+  - Ampliación predeterminada al 120 %.
+
+  - Instalar la extesión `Firefox Multi-Account Containers`.
+
 ## APT PINNING
 
 - Para estar en `testing` pero poder instalar puntualmente determinados
