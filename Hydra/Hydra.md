@@ -604,7 +604,7 @@
 
     - (Opcional) `browser.uidensity` a `1`.
 
-  - Ampliación predeterminada al 120 %.
+  - Ampliación predeterminada al 100 %.
 
   - Instalar la extesión `Firefox Multi-Account Containers`.
 
