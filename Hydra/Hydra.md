@@ -602,6 +602,8 @@
 
     - `browser.tabs.tabMinWidth` a `50`.
 
+    - `media.ffmpeg.vaapi.enabled` a `true`. (TODO: Probar si hace algo.)
+
     - (Opcional) `browser.uidensity` a `1`.
 
   - Ampliación predeterminada al 100 %.
