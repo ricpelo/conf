@@ -598,9 +598,9 @@
 
   - En `about:config`:
 
-    - `ui.textScaleFactor` a `115`.
+    - `ui.textScaleFactor` a `120`.
 
-    - `layout.css.devPixelsPerPx` a `1.1`.
+    - `layout.css.devPixelsPerPx` a `1.05`.
 
     - `browser.tabs.tabMinWidth` a `50`.
 
