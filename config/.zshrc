@@ -242,3 +242,7 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 bindkey -M vicmd "^[[3~" delete-char
+
+if [ -f /home/ricardo/.ghcup/env ]; then
+   source /home/ricardo/.ghcup/env
+fi

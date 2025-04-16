@@ -606,7 +606,7 @@
 
     - `media.ffmpeg.vaapi.enabled` a `true`. (TODO: Probar si hace algo.)
 
-    - (Opcional) `browser.uidensity` a `1`.
+    - (Opcional) `browser.uidensity` a `1`. (Mejor dejarlo a `0`.)
 
   - Ampliación predeterminada al 100 %.
 
