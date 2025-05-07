@@ -84,6 +84,8 @@ endif
 " Espacios, tabulaciones e indentaciones
 set tabstop=4 shiftwidth=4      " Un tabulador son cuatro espacios
 set expandtab                   " Usa espacios, no tabuladores
+set autoindent                  " Aplica indentación de línea actual a la siguiente
+set smartindent                 " Tiene en cuenta la sintaxis/estilo del texto
 
 " Unir líneas
 if v:version > 703 || v:version == 703 && has("patch541")
