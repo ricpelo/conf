@@ -4,3 +4,4 @@
 
 vim.opt.conceallevel = 0
 vim.opt.spelllang = "es"
+vim.g.autoformat = false
