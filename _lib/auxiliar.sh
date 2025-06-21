@@ -180,13 +180,28 @@ postfn_vim()
 postfn_emacs()
 {
     mensaje "Instalación de SpaceMacs..."
-    if [ -d /.emacs.d ]; then
-        if ! (cd /.emacs.d; git pull 2>/dev/null); then
-            [ -d /.emacs.d.viejo ] && rm -rf /.emacs.d.viejo
-            mv -f /.emacs.d /.emacs.d.viejo
+    if [ -d ~/.emacs.d ]; then
+        if ! (cd ~/.emacs.d; git pull 2>/dev/null); then
+            [ -d ~/.emacs.d.viejo ] && rm -rf ~/.emacs.d.viejo
+            mv -f ~/.emacs.d ~/.emacs.d.viejo
         fi
     fi
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d 2>/dev/null
+}
+
+postfn_neovim()
+{
+    mensaje "Instalación de LazyVim..."
+    if [ -d ~/.config/nvim ]; then
+        if ! (cd ~/.config/nvim; git pull 2>/dev/null); then
+            [ -d ~/.config/nvim.viejo ] && rm -rf ~/.config/nvim.viejo
+            mv -f ~/.config/nvim ~/.config/nvim.viejo
+        fi
+        rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
+    fi
+    git clone https://github.com/LazyVim/starter ~/.config/nvim 2>/dev/null
+    backup_and_link options.lua .config/nvim/lua/config
+    backup_and_link snacks.lua .config/nvim/lua/plugins
 }
 
 postfn_evince()
