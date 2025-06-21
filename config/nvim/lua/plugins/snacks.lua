@@ -3,7 +3,7 @@ return {
   "folke/snacks.nvim",
   opts = {
     scroll = {
-      filter = function(buf)
+      filter = function(_)
         return false
       end,
     },
