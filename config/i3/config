@@ -267,6 +267,7 @@ for_window [window_type="notification"] floating enable
 exec_always --no-startup-id /usr/bin/python3 ~/.local/bin/temp.py >>/tmp/nvidia-fan-curve.log 2>&1 &
 exec_always --no-startup-id xset r rate 250 30
 #exec_always --no-startup-id setxkbmap -option "ctrl:swapcaps"
+exec --no-startup-id xcape
 exec --no-startup-id "xset s 1800 ; xset dpms 1800 1800 1800"
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id nvidia-settings --load-config-only
