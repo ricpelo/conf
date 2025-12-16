@@ -84,7 +84,7 @@ mensaje "Actualizando caché de tipografías..."
 fc-cache -f $FONTS_DIR
 
 mensaje "Creando enlaces..."
-BLIST=".dircolors .gtkrc-2.0 .less .lessfilter .nvidia-settings-rc .terminfo .vimrc .Xresources .xsessionrc .zprofile"
+BLIST=".dircolors .gtkrc-2.0 .less .lessfilter .nvidia-settings-rc .terminfo .vimrc .Xresources .profile .xsessionrc .zprofile"
 for p in $BLIST; do
     backup_and_link $p
 done
