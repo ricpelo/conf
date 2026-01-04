@@ -828,7 +828,8 @@
 
   - En el portátil:
 
-    - No jugar desde GNOME, sino desde una sesión de IceWM.
+    - No jugar desde GNOME, sino desde una sesión de IceWM (**NO** con i3wm,
+      ya sea con Picom o sin Picom).
 
 ### ACENTOS Y CARACTERES ESPAÑOLES EN EL CHAT DE STEAM
 
