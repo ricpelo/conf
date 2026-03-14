@@ -231,6 +231,12 @@ postfn_xdgusersdirs()
     xdg-user-dirs-update
 }
 
+postfn_zathura()
+{
+    mensaje "Estableciendo Zathura como visor predeterminado de PDF..."
+    xdg-mime default org.pwmt.zathura.desktop application/pdf
+}
+
 fn_git()
 {
     mensaje "Creando alias lg para git..."

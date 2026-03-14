@@ -220,6 +220,10 @@ if [ -n "$(which batcat)" ]
 then
     alias bat="batcat --theme=Nord --italic-text=always"
 fi
+if [ -n "$(which zathura)" ]
+then
+    alias za="zathura"
+fi
 
 # Configuración del teclado
 
