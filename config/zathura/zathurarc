@@ -1,0 +1,3 @@
+set scroll-step 60
+map <PageUp> scroll half-up
+map <PageDown> scroll half-down

@@ -89,7 +89,7 @@ for p in $BLIST; do
     backup_and_link $p
 done
 mkdir -p ~/.config
-BLIST="alacritty dunst htop i3 MangoHud picom rofi sakura lsd pcmanfm nvim"
+BLIST="alacritty dunst htop i3 MangoHud picom rofi sakura lsd pcmanfm nvim zathura"
 for p in $BLIST; do
     backup_and_link $p .config
 done
