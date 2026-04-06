@@ -116,8 +116,10 @@
 ## CAJA
 
 - No apretar todos los tornillos del cristal templado para así evitar ruidos,
-  zumbidos y vibraciones molestas. Recomendado apretar sólo los dos tornillos
-  superiores y dejar los inferiores al aire.
+  zumbidos y vibraciones molestas.
+
+- Una forma de no hacer ruido es no apretar el tornillo superior derecho, es
+  decir, el que está más cerca del botón de encendido de la caja.
 
 ## MONITOR AOC
 
