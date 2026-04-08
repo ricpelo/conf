@@ -1,3 +1,6 @@
 set scroll-step 60
 map <PageUp> scroll half-up
 map <PageDown> scroll half-down
+set adjust-open width
+set font "monospace normal 14"
+set page-v-padding 5
