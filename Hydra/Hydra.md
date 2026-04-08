@@ -675,6 +675,21 @@
 
   `$ sudo apt install -t unstable paquete`
 
+## APT PIPELINE
+
+- Para que `apt` vaya más rápido y no se quede trabado en `Waiting for
+  headers...`, se puede probar lo siguiente.
+
+- Crear el archivo `/etc/apt/apt.conf.d/99pipeline`:
+
+  `$sudo vim /etc/apt/apt.conf.d/99pipeline`
+
+  con el siguiente contenido:
+
+  ```
+  Acquire::http::Pipeline-Depth "0";
+  ```
+
 ## JUEGOS
 
 - Algunos juegos no funcionan bien cuando está funcionando el compositor
