@@ -25,7 +25,7 @@ fonts-powerline pulseaudio pasystray pavucontrol network-manager-gnome
 policykit-1-gnome ttf-ancient-fonts gtk2-engines-murrine lxappearance
 at-spi2-core vim vim-gtk3 scrot gh bat lsd pcmanfm picom p7zip-full htop evince
 zathura gvfs-backends gvfs-fuse obsidian-icon-theme alacritty xcwd neovim
-ranger atool"
+ranger atool poppler-utils"
 
 # Preinstalación de paquetes
 CAMBIA_APT=""
