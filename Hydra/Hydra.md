@@ -1149,6 +1149,14 @@
   DXVK_ASYNC=1 DXVK_STATE_CACHE=0 alacritty -e ./MinEdLauncher %command% /autorun /edh4 /autoquit
   ```
 
+### HALF LIFE 2: UPDATE
+
+- Para que arranque, usar los siguientes parámetros de lanzamiento:
+
+  ```
+  GLIBC_TUNABLES=glibc.rtld.execstack=2 %command% -vulkan
+  ```
+
 ## DNI ELECTRÓNICO
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
