@@ -1157,6 +1157,23 @@
   GLIBC_TUNABLES=glibc.rtld.execstack=2 %command% -vulkan
   ```
 
+### DETROIT: BECOME HUMAN
+
+- Usar gráficos en calidad `Baja`.
+
+- Desactivar el Core Performance Boost para que la temperatura de la CPU no
+  suba tanto:
+
+  ```
+  $ echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+  ```
+
+- Para volver a activarlo:
+
+  ```
+  $ echo 1 | sudo tee /sys/devices/system/cpu/cpufreq/boost
+  ```
+
 ## DNI ELECTRÓNICO
 
 (Fuente: https://www.dnielectronico.es/PDFs/manuales_instalacion_unix/Manual_de_Instalacion_de_MulticardPKCS11_DNIE_v2.pdf)
