@@ -22,8 +22,8 @@
 - Desactivar `Game Boost`.
 
 - Poner `Core Performance Boost` en `Auto`. Esta opción activa el overclocking
-  automático que hacen los Ryzen. Si se desactiva, provoca los siguientes
-  efectos:
+  automático que hacen los Ryzen (y que provoca esos picos de temperatura tan
+  característicos en Tdie). Si se desactiva, provoca los siguientes efectos:
 
   - La frecuencia queda clavada en 3,7 GHz.
 
